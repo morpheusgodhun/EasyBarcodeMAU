@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="EasyBarcodeMAU.MainPage"
+             BackgroundColor="Turquoise">
+
+    <Grid>
+        <!-- Arka Plan Resmi Burda -->
+        <Image
+            Source="antrepofotosu.png"
+            Aspect="AspectFill"
+            VerticalOptions="FillAndExpand"
+            HorizontalOptions="FillAndExpand" />
+
+        <!-- İkinci Katman - Burda -->
+        <Image
+            Source="dotnet_bot.png"
+            HeightRequest="100"
+            WidthRequest="100"
+            HorizontalOptions="Start"
+            VerticalOptions="Start" />
+        <Image
+            Source="istlog.jpg"
+            HeightRequest="100"
+            WidthRequest="100"
+            HorizontalOptions="CenterAndExpand"
+            VerticalOptions="Start" />
+
+        <!-- Sayfa İçeriği -->
+        <ScrollView>
+            <VerticalStackLayout
+                Spacing="25"
+                Padding="30,0"
+                VerticalOptions="Center">
+
+                <Label
+                 Text="ISTANBUL LOGISTIC BARCODE APPLICATION"
+                  SemanticProperties.HeadingLevel="Level5"
+                  SemanticProperties.Description="Welcome to dot net Multi platform App U I"
+                    TextColor="DarkGray"
+                FontSize="20"
+                HorizontalOptions="Center"/>
+
+                <Entry
+                    Placeholder="Kullanıcı Adı"
+                    TextColor="Black"
+                    FontAttributes="Bold"
+                    x:Name="UsernameEntry"
+                    HorizontalOptions="FillAndExpand"
+                    ReturnType="Next" />
+
+                <Entry
+                    Placeholder="Şifre"
+                    TextColor="Black"
+                    FontAttributes="Bold"
+                    x:Name="PasswordEntry"
+                    IsPassword="True"
+                    HorizontalOptions="FillAndExpand"
+                    ReturnType="Done" />
+
+                <Button
+                    x:Name="LoginButton"
+                    Text="Giriş Yap"
+                    Clicked="OnLoginButtonClicked"
+                    HorizontalOptions="Center" />
+
+            </VerticalStackLayout>
+        </ScrollView>
+    </Grid>
+
+</ContentPage>

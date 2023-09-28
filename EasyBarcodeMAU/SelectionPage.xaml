@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="EasyBarcodeMAU.SelectionPage"
+             BackgroundColor="Gray"
+             Title="SelectionPage">
+
+    <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+
+        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+            <Label Text="İŞLEM MENÜ SEÇİMİ" BackgroundColor="Gray" FontSize="20"/>
+        </StackLayout>
+
+        <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" Padding="10">
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Button x:Name="productInputButton" BackgroundColor="BlueViolet" Text="Ürün Giriş" Clicked="ProductInputButton_Clicked" Grid.Column="0" WidthRequest="500" HeightRequest="500" />
+                <Button x:Name="productOutputButton" BackgroundColor="DeepPink" Text="Ürün Çıkış" Clicked="ProductOutputButton_Clicked" Grid.Column="1" WidthRequest="500" HeightRequest="500" />
+            </Grid>
+
+            <StackLayout HorizontalOptions="Center" VerticalOptions="FillAndExpand">
+
+                <Button BackgroundColor="Red" Text="Çıkış Yap" Clicked="ExitButton_Clicked" WidthRequest="500" />
+
+            </StackLayout>
+
+        </StackLayout>
+
+    </StackLayout>
+</ContentPage>
