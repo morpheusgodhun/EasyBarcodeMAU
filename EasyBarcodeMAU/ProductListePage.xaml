@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="EasyBarcodeMAU.ProductListPage"
+             BackgroundColor="White">
+
+    <StackLayout>
+        <!-- Seçeneklerin listesi -->
+        <Picker x:Name="IdPicker" Title="Ürünü Seç">
+            <Picker.ItemsSource>
+                <x:Array Type="{x:Type x:String}">
+                    <x:String>1</x:String>
+                    <x:String>2</x:String>
+                    <x:String>3</x:String>
+                    <x:String>4</x:String>
+                    <x:String>5</x:String>
+                </x:Array>
+            </Picker.ItemsSource>
+        </Picker>
+
+        <!-- Seçilen öğelerin listesi -->
+        <ListView x:Name="ItemList">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Orientation="Vertical">
+                            <Label Text="{Binding}" LineBreakMode="WordWrap" />
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <!-- Onay butonu -->
+        <Button Text="Seçimi Onayla" Clicked="OnConfirmButtonClicked" />
+    </StackLayout>
+</ContentPage>
