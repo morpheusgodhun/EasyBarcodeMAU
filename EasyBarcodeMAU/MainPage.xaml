@@ -34,12 +34,12 @@
                 VerticalOptions="Center">
 
                 <Label
-                 Text="ISTANBUL LOGISTIC BARCODE APPLICATION"
-                  SemanticProperties.HeadingLevel="Level5"
-                  SemanticProperties.Description="Welcome to dot net Multi platform App U I"
+                    Text="ISTANBUL LOGISTIC BARCODE APPLICATION"
+                    SemanticProperties.HeadingLevel="Level5"
+                    SemanticProperties.Description="Welcome to dot net Multi platform App U I"
                     TextColor="DarkGray"
-                FontSize="20"
-                HorizontalOptions="Center"/>
+                    FontSize="20"
+                    HorizontalOptions="Center"/>
 
                 <Entry
                     Placeholder="Kullanıcı Adı"
