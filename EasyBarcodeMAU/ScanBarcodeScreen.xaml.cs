@@ -20,12 +20,9 @@ public partial class ScanBarcodeScreen : ContentPage {
         barCodereader.IsDetecting = false;
         if (e.Results.Any()) {
             var result = e.Results.FirstOrDefault();
-            Dispatcher.Dispatch(async () => {
-                var navigationParam = new Dictionary<string, object>() {
-                    {"qrCodeResult" , result.Value }
-                };
-                await Shell.Current.GoToAsync("..", navigationParam);
-            });
+            var barcodeValue = result.Value;
+            barcodeValueLabel2.BindingContext = barcodeValue;
+            Dispatcher.Dispatch(() => { });
         }
     }
 }
