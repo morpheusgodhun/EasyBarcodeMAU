@@ -42,7 +42,8 @@ namespace EasyBarcodeMAU {
 
 
         private void OnConfirmButtonClicked(object sender, EventArgs e) {
-            // Burada seçilen öðeyi iþleyebilirsiniz, seçilen öðeyi almak için IdPicker.SelectedItem kullanabilirsiniz.
+            var scanPage = new ScanBarcodeScreen();
+            Navigation.PushAsync(scanPage);
         }
     }
 }
