@@ -5,11 +5,9 @@ namespace EasyBarcodeMAU {
         public ProductListPage() {
             InitializeComponent();
 
-            // ProductModel sýnýfýndan verileri alýn
             var productModel = new ProductModel();
             productItems = productModel.MyItems;
 
-            // Tüm ürünleri birleþtirip ListView'a baðlayýn
             var itemDescriptions = new List<string>();
             foreach (var item in productItems) {
                 var description =
@@ -17,7 +15,6 @@ namespace EasyBarcodeMAU {
                 itemDescriptions.Add(description);
             }
 
-            //ItemList.ItemsSource = itemDescriptions;
         }
 
         async void Frame_Tapped(object sender, EventArgs e)
