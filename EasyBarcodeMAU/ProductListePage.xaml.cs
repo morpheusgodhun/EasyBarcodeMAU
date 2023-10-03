@@ -20,7 +20,7 @@ namespace EasyBarcodeMAU {
             //ItemList.ItemsSource = itemDescriptions;
         }
 
-        private void Frame_Tapped(object sender, EventArgs e)
+         void Frame_Tapped(object sender, EventArgs e)
         {
             if (sender is Frame tappedFrame)
             {
@@ -28,12 +28,21 @@ namespace EasyBarcodeMAU {
                 {
                     if (stackLayout.Children[0] is Grid grid)
                     {
+                        List<string> labelContents = new List<string>();
+
                         foreach (var child in grid.Children)
                         {
                             if (child is Label label)
                             {
                                 string labelText = label.Text;
+                                labelContents.Add(labelText);
                             }
+                        }
+
+                        // Label içeriklerini console'a yazdýr
+                        foreach (var content in labelContents)
+                        {
+                            Console.WriteLine(content);
                         }
                     }
                 }
