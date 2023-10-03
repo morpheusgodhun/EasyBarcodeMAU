@@ -20,7 +20,7 @@ namespace EasyBarcodeMAU {
             //ItemList.ItemsSource = itemDescriptions;
         }
 
-         void Frame_Tapped(object sender, EventArgs e)
+        async void Frame_Tapped(object sender, EventArgs e)
         {
             if (sender is Frame tappedFrame)
             {
@@ -38,17 +38,12 @@ namespace EasyBarcodeMAU {
                                 labelContents.Add(labelText);
                             }
                         }
-
-                        // Label içeriklerini console'a yazdýr
-                        foreach (var content in labelContents)
-                        {
-                            Console.WriteLine(content);
-                        }
+                        string message = string.Join("\n", labelContents);
+                        await DisplayAlert("Label Ýçerikleri", message, "Tamam");
                     }
                 }
             }
         }
-
 
         private void OnConfirmButtonClicked(object sender, EventArgs e) {
             var scanPage = new ScanBarcodeScreen();
