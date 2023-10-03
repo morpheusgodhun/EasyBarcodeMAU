@@ -1,13 +1,9 @@
 ﻿using EasyBarcodeMAU.Models;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
 
 namespace EasyBarcodeMAU {
     public class ProductModel : BaseViewModel {
         public ProductModel() {
-            FirmaId = 1; // Varsayılan seçim 1
+            FirmaId = 1;
         }
 
         public List<ProductItemBase> MyItems { get; set; } = new List<ProductItemBase>
@@ -20,7 +16,6 @@ namespace EasyBarcodeMAU {
         };
 
         public List<ProductItemBase> GetItemsById(int id) {
-            // Id'ye göre filtrele
             return MyItems.Where(item => item.Id == id).ToList();
         }
 
