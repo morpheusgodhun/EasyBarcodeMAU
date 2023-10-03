@@ -37,7 +37,7 @@
         private bool ValidateCredentials(string username, string password) {
             //hazır kullanıcı adı sifre kontrolü ilerde veri tabanı üzerinden proptan çekilecek
             string validUsername = "orhun";
-            string validPassword = "orhunsifre";
+            string validPassword = "1234";
 
             return (username == validUsername && password == validPassword);
         }

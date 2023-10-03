@@ -5,9 +5,10 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:EasyBarcodeMAU"
     Shell.FlyoutBehavior="Disabled">
+    
 
     <ShellContent
-        Title="ISTANBUL LOGISTIC GROUP"
+        
         ContentTemplate="{DataTemplate local:MainPage}"
         Route="MainPage" />
 

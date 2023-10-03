@@ -2,36 +2,43 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="EasyBarcodeMAU.ProductListPage"
-             BackgroundColor="White">
+              BackgroundImageSource="page6">
 
-    <StackLayout>
-        <!-- Seçeneklerin listesi -->
-        <Picker x:Name="IdPicker" Title="Ürünü Seç">
-            <Picker.ItemsSource>
-                <x:Array Type="{x:Type x:String}">
-                    <x:String>1</x:String>
-                    <x:String>2</x:String>
-                    <x:String>3</x:String>
-                    <x:String>4</x:String>
-                    <x:String>5</x:String>
-                </x:Array>
-            </Picker.ItemsSource>
-        </Picker>
+    <StackLayout Padding="10">
+        <Frame BorderColor="Grey" 
+               Padding="5"
+               CornerRadius="3"
+               BackgroundColor="WhiteSmoke"
+               >
+            <Frame.GestureRecognizers>
+                <TapGestureRecognizer Tapped="Frame_Tapped" />
+            </Frame.GestureRecognizers>
+            <StackLayout Orientation="Horizontal" Spacing="15" >
+                <Grid ColumnSpacing="20" RowSpacing="0" HorizontalOptions="FillAndExpand" Padding="5"  HeightRequest="180" >
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="20"/>
+                        <RowDefinition Height="20"/>
+                        <RowDefinition Height="20"/>
+                        <RowDefinition Height="20"/>
+                        <RowDefinition Height="20"/>
+                        <RowDefinition Height="20"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
 
-        <!-- Seçilen öğelerin listesi -->
-        <ListView x:Name="ItemList">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <ViewCell>
-                        <StackLayout Orientation="Vertical">
-                            <Label Text="{Binding}" LineBreakMode="WordWrap" />
-                        </StackLayout>
-                    </ViewCell>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Row="0"  Text="Id : "  BindingContext="kkk"></Label>
+                    <Label Grid.Row="1"  Text="DefterNo : 25491287"></Label>
+                    <Label Grid.Row="2"  Text="MusteriAd : Ali Çukur"></Label>
+                    <Label Grid.Row="3"  Text="UrunCins : Teknoloji"></Label>
+                    <Label Grid.Row="4"  Text="UrunAdet : 153489"></Label>
+                    <Label Grid.Row="5"  Text="UrunAgirlik : 154787987965"></Label>
+                    <Label Grid.Row="6"  Text="DepoKonum : Almanya antrepo deposu yanında bi yerlerde " Grid.ColumnSpan="2" ></Label>
 
-        <!-- Onay butonu -->
-        <Button Text="Seçimi Onayla" Clicked="OnConfirmButtonClicked" />
+                </Grid>
+            </StackLayout>
+        </Frame>
     </StackLayout>
 </ContentPage>
+    

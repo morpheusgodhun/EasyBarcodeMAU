@@ -2,70 +2,68 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="EasyBarcodeMAU.MainPage"
-             BackgroundColor="Turquoise">
+             BackgroundImageSource="page6">
+    
+    <Grid Padding="50,80" RowSpacing="20" >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="70"/>
+            <RowDefinition Height="45"/>
+            <RowDefinition Height="45"/>
+            <RowDefinition Height="200"/>
+            <RowDefinition Height="100"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
 
-    <Grid>
-        <!-- Arka Plan Resmi Burda -->
-        <Image
-            Source="antrepofotosu.png"
-            Aspect="AspectFill"
-            VerticalOptions="FillAndExpand"
-            HorizontalOptions="FillAndExpand" />
-
-        <!-- İkinci Katman - Burda -->
-        <Image
-            Source="dotnet_bot.png"
-            HeightRequest="100"
-            WidthRequest="100"
-            HorizontalOptions="Start"
-            VerticalOptions="Start" />
-        <Image
-            Source="istlog.jpg"
-            HeightRequest="100"
-            WidthRequest="100"
-            HorizontalOptions="CenterAndExpand"
-            VerticalOptions="Start" />
-
-        <!-- Sayfa İçeriği -->
-        <ScrollView>
-            <VerticalStackLayout
-                Spacing="25"
-                Padding="30,0"
-                VerticalOptions="Center">
-
-                <Label
+        <Label Grid.Row="0"
                     Text="ISTANBUL LOGISTIC BARCODE APPLICATION"
                     SemanticProperties.HeadingLevel="Level5"
-                    SemanticProperties.Description="Welcome to dot net Multi platform App U I"
-                    TextColor="DarkGray"
-                    FontSize="20"
-                    HorizontalOptions="Center"/>
-
-                <Entry
-                    Placeholder="Kullanıcı Adı"
-                    TextColor="Black"
                     FontAttributes="Bold"
+                    TextColor="Black"
+                    FontSize="20"
+                    HorizontalTextAlignment="Center"
+                    FontFamily="Lobster"/>
+
+        <Entry Grid.Row="1"
+                    Placeholder="Kullanıcı Adı"
+                    PlaceholderColor="Black"
+                    TextColor="Black"
+                    FontAttributes="Bold" 
                     x:Name="UsernameEntry"
                     HorizontalOptions="FillAndExpand"
-                    ReturnType="Next" />
+                    ReturnType="Next"                 
+                       />
 
-                <Entry
+        <Entry Grid.Row="2"
                     Placeholder="Şifre"
                     TextColor="Black"
                     FontAttributes="Bold"
+                    PlaceholderColor="Black"
                     x:Name="PasswordEntry"
                     IsPassword="True"
                     HorizontalOptions="FillAndExpand"
-                    ReturnType="Done" />
+                    ReturnType="Done" 
+                    />
 
-                <Button
-                    x:Name="LoginButton"
-                    Text="Giriş Yap"
-                    Clicked="OnLoginButtonClicked"
-                    HorizontalOptions="Center" />
+        <VerticalStackLayout Grid.Row="3">
+            <Button Grid.Row="4"
+              x:Name="LoginButton"
+              Text="Giriş Yap"
+              TextColor="Black"
+              Clicked="OnLoginButtonClicked"
+              HorizontalOptions="Center"
+              BackgroundColor="Transparent"
+              BorderColor="Black"
+              BorderWidth="1"
+              CornerRadius="5"
+              FontSize="Body"
+              WidthRequest="280"
+              />
+        </VerticalStackLayout>
 
-            </VerticalStackLayout>
-        </ScrollView>
+        <VerticalStackLayout Grid.Row="4">
+            <Image Source="page11.png" WidthRequest="210" HeightRequest="240" Grid.Row="5"/>
+        </VerticalStackLayout>
     </Grid>
-
 </ContentPage>
