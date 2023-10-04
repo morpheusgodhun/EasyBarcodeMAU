@@ -29,6 +29,18 @@ namespace EasyBarcodeMAU {
                 }
             }
         }
+        private int _firmaAd;
+        public int FirmaAd {
+            get { return _firmaAd; }
+            set {
+                if (_firmaAd != value) {
+                    _firmaAd = value;
+                    OnPropertyChanged(nameof(FirmaAd));
+                }
+            }
+        }
+
+
         private int _defterNo;
         public int DefterNo {
             get { return _defterNo; }
