@@ -2,7 +2,8 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="EasyBarcodeMAU.ProductListPage"
-              BackgroundImageSource="page6">
+             BackgroundImageSource="page6">
+    
     <ScrollView>
         <StackLayout Padding="10">
             <Frame BorderColor="DarkGrey" 
@@ -40,25 +41,42 @@
                             <Label Grid.Row="6" FontAttributes="Bold" Text="Depo Girisi"></Label>
                             <Label Grid.Row="7" FontAttributes="Bold" Text="Depo Konumu"></Label>
                         </Grid>
-                        <Grid Grid.Column="1" RowSpacing="7" Padding="5">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="20" />
-                                <RowDefinition Height="20"/>
-                                <RowDefinition Height="20"/>
-                                <RowDefinition Height="20"/>
-                                <RowDefinition Height="20"/>
-                                <RowDefinition Height="20"/>
-                                <RowDefinition Height="20"/>
-                                <RowDefinition Height="*"/>
-                            </Grid.RowDefinitions>
-                            <Label Grid.Row="0"  Text=": 1" ></Label>
+                        <Grid Grid.Column="1" RowSpacing="2" Padding="5">
+                            <ListView ItemsSource="{Binding MyItems}" RowHeight="50">
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <ViewCell>
+                                            <Grid Grid.Column="1" RowSpacing="2" Padding="5">
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="20"/>
+                                                    <RowDefinition Height="20"/>
+                                                    <RowDefinition Height="20"/>
+                                                    <RowDefinition Height="20"/>
+                                                    <RowDefinition Height="20"/>
+                                                    <RowDefinition Height="20"/>
+                                                    <RowDefinition Height="*"/>
+                                                </Grid.RowDefinitions>
+                                                <Label Grid.Row="0" Text="{Binding Id, StringFormat=': {0}'}" />
+                                                <Label Grid.Row="1" Text="{Binding DefterNo, StringFormat=': {0}'}" />
+                                                <Label Grid.Row="2" Text="{Binding MusteriAd, StringFormat=': {0}'}" />
+                                                <Label Grid.Row="3" Text="{Binding UrunCins, StringFormat=': {0}'}" />
+                                                <Label Grid.Row="4" Text="{Binding UrunAdet, StringFormat=': {0}'}" />
+                                                <Label Grid.Row="5" Text="{Binding UrunAgirlik, StringFormat=': {0}'}" />
+                                                <Label Grid.Row="6" Text="{Binding DepoGirisi, StringFormat=': {0:dd.MM.yyyy}'}" />
+                                                <Label Grid.Row="7" Text="{Binding DepoKonum, StringFormat=': {0}'}" />
+                                            </Grid>
+                                        </ViewCell>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+                            <!--<Label Grid.Row="0"  Text="{Binding Id}" ></Label>
                             <Label Grid.Row="1"  Text=": 25491287"></Label>
                             <Label Grid.Row="2"  Text=": Ali Çukur"></Label>
                             <Label Grid.Row="3"  Text=": Teknoloji"></Label>
                             <Label Grid.Row="4"  Text=": 153489"></Label>
                             <Label Grid.Row="5"  Text=": 154787987965"></Label>
                             <Label Grid.Row="6"  Text=": 10.12.2023"></Label>
-                            <Label Grid.Row="7"  Text=": Büyükdere Caddesi No:106 Şerbetçi İş Merkezi Esentepe Şişli/İstanbul Sancaktepe caddesi pınar sokak no 6 antrepo depo no : 88 " ></Label>
+                            <Label Grid.Row="7"  Text=": Büyükdere Caddesi No:106 Şerbetçi İş Merkezi Esentepe Şişli/İstanbul Sancaktepe caddesi pınar sokak no 6 antrepo depo no : 88 " ></Label>-->
                         </Grid>
                     </Grid>
                 </StackLayout>
@@ -98,25 +116,43 @@
                             <Label Grid.Row="6" FontAttributes="Bold" Text="Depo Girisi"></Label>
                             <Label Grid.Row="7" FontAttributes="Bold" Text="Depo Konumu"></Label>
                         </Grid>
-                        <Grid Grid.Column="1" RowSpacing="7" Padding="5">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="20" />
-                                <RowDefinition Height="20"/>
-                                <RowDefinition Height="20"/>
-                                <RowDefinition Height="20"/>
-                                <RowDefinition Height="20"/>
-                                <RowDefinition Height="20"/>
-                                <RowDefinition Height="20"/>
-                                <RowDefinition Height="*"/>
-                            </Grid.RowDefinitions>
-                            <Label Grid.Row="0"  Text=": 2" ></Label>
-                            <Label Grid.Row="1"  Text=": 25491287"></Label>
-                            <Label Grid.Row="2"  Text=": Ali Çukur"></Label>
-                            <Label Grid.Row="3"  Text=": Teknoloji"></Label>
-                            <Label Grid.Row="4"  Text=": 153489"></Label>
-                            <Label Grid.Row="5"  Text=": 154787987965"></Label>
-                            <Label Grid.Row="6"  Text=": 10.12.2023"></Label>
-                            <Label Grid.Row="7"  Text=": Büyükdere Caddesi No:106 Şerbetçi İş Merkezi Esentepe Şişli/İstanbul Sancaktepe caddesi pınar sokak no 6 antrepo depo no : 88 " ></Label>
+                        <Grid Grid.Column="1" RowSpacing="6.5" Padding="5">
+                            <ListView ItemsSource="{Binding MyItems}" RowHeight="350">
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <ViewCell>
+                                            <Grid Grid.Column="1" RowSpacing="6.5" Padding="5" >
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="20"/>
+                                                    <RowDefinition Height="20"/>
+                                                    <RowDefinition Height="20"/>
+                                                    <RowDefinition Height="20"/>
+                                                    <RowDefinition Height="20"/>
+                                                    <RowDefinition Height="20"/>
+                                                    <RowDefinition Height="20"/>
+                                                    <RowDefinition Height="*"/>
+                                                </Grid.RowDefinitions>
+                                                <Label Grid.Row="0" Text="{Binding Id}" />
+                                                <Label Grid.Row="1" Text="{Binding DefterNo}" />
+                                                <Label Grid.Row="2" Text="{Binding MusteriAd }" />
+                                                <Label Grid.Row="3" Text="{Binding UrunCins }" />
+                                                <Label Grid.Row="4" Text="{Binding UrunAdet }" />
+                                                <Label Grid.Row="5" Text="{Binding UrunAgirlik }" />
+                                                <Label Grid.Row="6" Text="{Binding DepoGirisi}" />
+                                                <Label Grid.Row="7" Text="{Binding DepoKonum}" />
+                                            </Grid>
+                                        </ViewCell>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+                            <!--<Label Grid.Row="0"  Text="{Binding Id}" ></Label>
+     <Label Grid.Row="1"  Text=": 25491287"></Label>
+     <Label Grid.Row="2"  Text=": Ali Çukur"></Label>
+     <Label Grid.Row="3"  Text=": Teknoloji"></Label>
+     <Label Grid.Row="4"  Text=": 153489"></Label>
+     <Label Grid.Row="5"  Text=": 154787987965"></Label>
+     <Label Grid.Row="6"  Text=": 10.12.2023"></Label>
+     <Label Grid.Row="7"  Text=": Büyükdere Caddesi No:106 Şerbetçi İş Merkezi Esentepe Şişli/İstanbul Sancaktepe caddesi pınar sokak no 6 antrepo depo no : 88 " ></Label>-->
                         </Grid>
                     </Grid>
                 </StackLayout>
