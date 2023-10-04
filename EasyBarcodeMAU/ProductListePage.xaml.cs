@@ -20,7 +20,7 @@ namespace EasyBarcodeMAU {
             //ItemList.ItemsSource = itemDescriptions;
         }
 
-        async void Frame_Tapped(object sender, EventArgs e)
+        private async void Frame_Tapped(object sender, EventArgs e)
         {
             if (sender is Frame tappedFrame)
             {
@@ -32,14 +32,28 @@ namespace EasyBarcodeMAU {
 
                         foreach (var child in grid.Children)
                         {
-                            if (child is Label label)
+                            if (child is Grid childGrid)
                             {
-                                string labelText = label.Text;
-                                labelContents.Add(labelText);
+                                foreach (var labelChild in childGrid.Children)
+                                {
+                                    if (labelChild is Label label)
+                                    {
+                                        string labelText = label.Text;
+                                        labelContents.Add(labelText);
+                                    }
+                                }
                             }
                         }
-                        string message = string.Join("\n", labelContents);
-                        await DisplayAlert("Label Ýçerikleri", message, "Tamam");
+
+                        // Düzenleme: labelContents listesini düzenle
+                        List<string> modifiedContents = new List<string>();
+                        for (int i = 0; i < labelContents.Count / 2; i++)
+                        {
+                            modifiedContents.Add($"{labelContents[i]} {labelContents[i + labelContents.Count / 2]}");
+                        }
+
+                        string message = string.Join("\n", modifiedContents);
+                        await DisplayAlert("Ürün Detayý", message, "Tamam");
                     }
                 }
             }
