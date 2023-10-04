@@ -18,8 +18,7 @@
         <Button x:Name="productInputButton" Text="Ürün Girişi" Grid.Column="0" Grid.Row="0" HeightRequest="100" WidthRequest="170" BackgroundColor="Green" Clicked="ProductInputButton_Clicked"
 ></Button>
         <Button x:Name="productOutputButton" Clicked="ProductOutputButton_Clicked" Text="Ürün Çıkışı" Grid.Column="1" Grid.Row="0" HeightRequest="100" WidthRequest="170" ></Button>
-        <Button Text="Çıkış" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" HeightRequest="100" WidthRequest="340" FontSize="Body" BackgroundColor="Red" ></Button>
-
+        <Button Text="Çıkış" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" HeightRequest="100" WidthRequest="340" FontSize="Body" BackgroundColor="Red" Clicked="ExitButton_Clicked"></Button>
     </Grid>
 
 </ContentPage>
