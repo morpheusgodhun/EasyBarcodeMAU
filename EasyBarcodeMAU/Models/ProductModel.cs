@@ -40,13 +40,13 @@ namespace EasyBarcodeMAU {
             }
         }
 
-        private DateTime _depoGirisTarih;
-        public DateTime DepoGirisTarih {
-            get { return _depoGirisTarih; }
+        private DateTime _depoGirisi;
+        public DateTime DepoGirisi {
+            get { return _depoGirisi; }
             set {
-                if (_depoGirisTarih != value) {
-                    _depoGirisTarih = value;
-                    OnPropertyChanged(nameof(DepoGirisTarih));
+                if (_depoGirisi != value) {
+                    _depoGirisi = value;
+                    OnPropertyChanged(nameof(DepoGirisi));
                 }
             }
         }
