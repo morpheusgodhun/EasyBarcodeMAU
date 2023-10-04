@@ -22,7 +22,8 @@
                         </Grid.ColumnDefinitions>
                         <Grid Grid.Column="0" BackgroundColor="LightSkyBlue" RowSpacing="7" Padding="5" >
                             <Grid.RowDefinitions >
-                                <RowDefinition Height="20" />
+                                <RowDefinition Height="20"/>
+                                <RowDefinition Height="20"/>
                                 <RowDefinition Height="20"/>
                                 <RowDefinition Height="20"/>
                                 <RowDefinition Height="20"/>
@@ -30,17 +31,19 @@
                                 <RowDefinition Height="20"/>
                                 <RowDefinition Height="*"/>
                             </Grid.RowDefinitions>
-                            <Label Grid.Row="0" FontAttributes="Bold"  Text="Id"></Label>
+                            <Label Grid.Row="0" FontAttributes="Bold" Text="Id"></Label>
                             <Label Grid.Row="1" FontAttributes="Bold" Text="Defter No"></Label>
-                            <Label Grid.Row="2" FontAttributes="Bold" Text="Müşteri Adı"></Label>
+                            <Label Grid.Row="2" FontAttributes="Bold" Text="Müsteri Ad"></Label>
                             <Label Grid.Row="3" FontAttributes="Bold" Text="Ürün Cins"></Label>
                             <Label Grid.Row="4" FontAttributes="Bold" Text="Ürün Adet"></Label>
-                            <Label Grid.Row="5" FontAttributes="Bold" Text="Ürün Ağırlık"></Label>
-                            <Label Grid.Row="6" FontAttributes="Bold" Text="Depo Konumu"></Label>
+                            <Label Grid.Row="5" FontAttributes="Bold" Text="Ürün Agırlık"></Label>
+                            <Label Grid.Row="6" FontAttributes="Bold" Text="Depo Girisi"></Label>
+                            <Label Grid.Row="7" FontAttributes="Bold" Text="Depo Konumu"></Label>
                         </Grid>
                         <Grid Grid.Column="1" RowSpacing="7" Padding="5">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="20" />
+                                <RowDefinition Height="20"/>
                                 <RowDefinition Height="20"/>
                                 <RowDefinition Height="20"/>
                                 <RowDefinition Height="20"/>
@@ -54,7 +57,8 @@
                             <Label Grid.Row="3"  Text=": Teknoloji"></Label>
                             <Label Grid.Row="4"  Text=": 153489"></Label>
                             <Label Grid.Row="5"  Text=": 154787987965"></Label>
-                            <Label Grid.Row="6"  Text=": Büyükdere Caddesi No:106 Şerbetçi İş Merkezi Esentepe Şişli/İstanbul Sancaktepe caddesi pınar sokak no 6 antrepo depo no : 88 " ></Label>
+                            <Label Grid.Row="6"  Text=": 10.12.2023"></Label>
+                            <Label Grid.Row="7"  Text=": Büyükdere Caddesi No:106 Şerbetçi İş Merkezi Esentepe Şişli/İstanbul Sancaktepe caddesi pınar sokak no 6 antrepo depo no : 88 " ></Label>
                         </Grid>
                     </Grid>
                 </StackLayout>
@@ -76,7 +80,8 @@
                         </Grid.ColumnDefinitions>
                         <Grid Grid.Column="0" BackgroundColor="LightSkyBlue" RowSpacing="7" Padding="5" >
                             <Grid.RowDefinitions >
-                                <RowDefinition Height="20" />
+                                <RowDefinition Height="20"/>
+                                <RowDefinition Height="20"/>
                                 <RowDefinition Height="20"/>
                                 <RowDefinition Height="20"/>
                                 <RowDefinition Height="20"/>
@@ -84,17 +89,19 @@
                                 <RowDefinition Height="20"/>
                                 <RowDefinition Height="*"/>
                             </Grid.RowDefinitions>
-                            <Label Grid.Row="0" FontAttributes="Bold"  Text="Id"></Label>
+                            <Label Grid.Row="0" FontAttributes="Bold" Text="Id"></Label>
                             <Label Grid.Row="1" FontAttributes="Bold" Text="Defter No"></Label>
-                            <Label Grid.Row="2" FontAttributes="Bold" Text="Müşteri Adı"></Label>
+                            <Label Grid.Row="2" FontAttributes="Bold" Text="Müsteri Ad"></Label>
                             <Label Grid.Row="3" FontAttributes="Bold" Text="Ürün Cins"></Label>
                             <Label Grid.Row="4" FontAttributes="Bold" Text="Ürün Adet"></Label>
-                            <Label Grid.Row="5" FontAttributes="Bold" Text="Ürün Ağırlık"></Label>
-                            <Label Grid.Row="6" FontAttributes="Bold" Text="Depo Konumu"></Label>
+                            <Label Grid.Row="5" FontAttributes="Bold" Text="Ürün Agırlık"></Label>
+                            <Label Grid.Row="6" FontAttributes="Bold" Text="Depo Girisi"></Label>
+                            <Label Grid.Row="7" FontAttributes="Bold" Text="Depo Konumu"></Label>
                         </Grid>
                         <Grid Grid.Column="1" RowSpacing="7" Padding="5">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="20" />
+                                <RowDefinition Height="20"/>
                                 <RowDefinition Height="20"/>
                                 <RowDefinition Height="20"/>
                                 <RowDefinition Height="20"/>
@@ -108,7 +115,8 @@
                             <Label Grid.Row="3"  Text=": Teknoloji"></Label>
                             <Label Grid.Row="4"  Text=": 153489"></Label>
                             <Label Grid.Row="5"  Text=": 154787987965"></Label>
-                            <Label Grid.Row="6"  Text=": Büyükdere Caddesi No:106 Şerbetçi İş Merkezi Esentepe Şişli/İstanbul Sancaktepe caddesi pınar sokak no 6 antrepo depo no : 88 " ></Label>
+                            <Label Grid.Row="6"  Text=": 10.12.2023"></Label>
+                            <Label Grid.Row="7"  Text=": Büyükdere Caddesi No:106 Şerbetçi İş Merkezi Esentepe Şişli/İstanbul Sancaktepe caddesi pınar sokak no 6 antrepo depo no : 88 " ></Label>
                         </Grid>
                     </Grid>
                 </StackLayout>
@@ -130,7 +138,8 @@
                         </Grid.ColumnDefinitions>
                         <Grid Grid.Column="0" BackgroundColor="LightSkyBlue" RowSpacing="7" Padding="5" >
                             <Grid.RowDefinitions >
-                                <RowDefinition Height="20" />
+                                <RowDefinition Height="20"/>
+                                <RowDefinition Height="20"/>
                                 <RowDefinition Height="20"/>
                                 <RowDefinition Height="20"/>
                                 <RowDefinition Height="20"/>
@@ -138,17 +147,19 @@
                                 <RowDefinition Height="20"/>
                                 <RowDefinition Height="*"/>
                             </Grid.RowDefinitions>
-                            <Label Grid.Row="0" FontAttributes="Bold"  Text="Id"></Label>
+                            <Label Grid.Row="0" FontAttributes="Bold" Text="Id"></Label>
                             <Label Grid.Row="1" FontAttributes="Bold" Text="Defter No"></Label>
-                            <Label Grid.Row="2" FontAttributes="Bold" Text="Müşteri Adı"></Label>
+                            <Label Grid.Row="2" FontAttributes="Bold" Text="Müsteri Ad"></Label>
                             <Label Grid.Row="3" FontAttributes="Bold" Text="Ürün Cins"></Label>
                             <Label Grid.Row="4" FontAttributes="Bold" Text="Ürün Adet"></Label>
-                            <Label Grid.Row="5" FontAttributes="Bold" Text="Ürün Ağırlık"></Label>
-                            <Label Grid.Row="6" FontAttributes="Bold" Text="Depo Konumu"></Label>
+                            <Label Grid.Row="5" FontAttributes="Bold" Text="Ürün Agırlık"></Label>
+                            <Label Grid.Row="6" FontAttributes="Bold" Text="Depo Girisi"></Label>
+                            <Label Grid.Row="7" FontAttributes="Bold" Text="Depo Konumu"></Label>
                         </Grid>
                         <Grid Grid.Column="1" RowSpacing="7" Padding="5">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="20" />
+                                <RowDefinition Height="20"/>
                                 <RowDefinition Height="20"/>
                                 <RowDefinition Height="20"/>
                                 <RowDefinition Height="20"/>
@@ -162,7 +173,8 @@
                             <Label Grid.Row="3"  Text=": Teknoloji"></Label>
                             <Label Grid.Row="4"  Text=": 153489"></Label>
                             <Label Grid.Row="5"  Text=": 154787987965"></Label>
-                            <Label Grid.Row="6"  Text=": Büyükdere Caddesi No:106 Şerbetçi İş Merkezi Esentepe Şişli/İstanbul Sancaktepe caddesi pınar sokak no 6 antrepo depo no : 88 " ></Label>
+                            <Label Grid.Row="6"  Text=": 10.12.2023"></Label>
+                            <Label Grid.Row="7"  Text=": Büyükdere Caddesi No:106 Şerbetçi İş Merkezi Esentepe Şişli/İstanbul Sancaktepe caddesi pınar sokak no 6 antrepo depo no : 88 " ></Label>
                         </Grid>
                     </Grid>
                 </StackLayout>
@@ -184,7 +196,8 @@
                         </Grid.ColumnDefinitions>
                         <Grid Grid.Column="0" BackgroundColor="LightSkyBlue" RowSpacing="7" Padding="5" >
                             <Grid.RowDefinitions >
-                                <RowDefinition Height="20" />
+                                <RowDefinition Height="20"/>
+                                <RowDefinition Height="20"/>
                                 <RowDefinition Height="20"/>
                                 <RowDefinition Height="20"/>
                                 <RowDefinition Height="20"/>
@@ -192,17 +205,19 @@
                                 <RowDefinition Height="20"/>
                                 <RowDefinition Height="*"/>
                             </Grid.RowDefinitions>
-                            <Label Grid.Row="0" FontAttributes="Bold"  Text="Id"></Label>
+                            <Label Grid.Row="0" FontAttributes="Bold" Text="Id"></Label>
                             <Label Grid.Row="1" FontAttributes="Bold" Text="Defter No"></Label>
-                            <Label Grid.Row="2" FontAttributes="Bold" Text="Müşteri Adı"></Label>
+                            <Label Grid.Row="2" FontAttributes="Bold" Text="Müsteri Ad"></Label>
                             <Label Grid.Row="3" FontAttributes="Bold" Text="Ürün Cins"></Label>
                             <Label Grid.Row="4" FontAttributes="Bold" Text="Ürün Adet"></Label>
-                            <Label Grid.Row="5" FontAttributes="Bold" Text="Ürün Ağırlık"></Label>
-                            <Label Grid.Row="6" FontAttributes="Bold" Text="Depo Konumu"></Label>
+                            <Label Grid.Row="5" FontAttributes="Bold" Text="Ürün Agırlık"></Label>
+                            <Label Grid.Row="6" FontAttributes="Bold" Text="Depo Girisi"></Label>
+                            <Label Grid.Row="7" FontAttributes="Bold" Text="Depo Konumu"></Label>
                         </Grid>
                         <Grid Grid.Column="1" RowSpacing="7" Padding="5">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="20" />
+                                <RowDefinition Height="20"/>
                                 <RowDefinition Height="20"/>
                                 <RowDefinition Height="20"/>
                                 <RowDefinition Height="20"/>
@@ -216,7 +231,8 @@
                             <Label Grid.Row="3"  Text=": Teknoloji"></Label>
                             <Label Grid.Row="4"  Text=": 153489"></Label>
                             <Label Grid.Row="5"  Text=": 154787987965"></Label>
-                            <Label Grid.Row="6"  Text=": Büyükdere Caddesi No:106 Şerbetçi İş Merkezi Esentepe Şişli/İstanbul Sancaktepe caddesi pınar sokak no 6 antrepo depo no : 88 " ></Label>
+                            <Label Grid.Row="6"  Text=": 10.12.2023"></Label>
+                            <Label Grid.Row="7"  Text=": Büyükdere Caddesi No:106 Şerbetçi İş Merkezi Esentepe Şişli/İstanbul Sancaktepe caddesi pınar sokak no 6 antrepo depo no : 88 " ></Label>
                         </Grid>
                     </Grid>
                 </StackLayout>
@@ -238,7 +254,8 @@
                         </Grid.ColumnDefinitions>
                         <Grid Grid.Column="0" BackgroundColor="LightSkyBlue" RowSpacing="7" Padding="5" >
                             <Grid.RowDefinitions >
-                                <RowDefinition Height="20" />
+                                <RowDefinition Height="20"/>
+                                <RowDefinition Height="20"/>
                                 <RowDefinition Height="20"/>
                                 <RowDefinition Height="20"/>
                                 <RowDefinition Height="20"/>
@@ -246,17 +263,19 @@
                                 <RowDefinition Height="20"/>
                                 <RowDefinition Height="*"/>
                             </Grid.RowDefinitions>
-                            <Label Grid.Row="0" FontAttributes="Bold"  Text="Id"></Label>
+                            <Label Grid.Row="0" FontAttributes="Bold" Text="Id"></Label>
                             <Label Grid.Row="1" FontAttributes="Bold" Text="Defter No"></Label>
-                            <Label Grid.Row="2" FontAttributes="Bold" Text="Müşteri Adı"></Label>
+                            <Label Grid.Row="2" FontAttributes="Bold" Text="Müsteri Ad"></Label>
                             <Label Grid.Row="3" FontAttributes="Bold" Text="Ürün Cins"></Label>
                             <Label Grid.Row="4" FontAttributes="Bold" Text="Ürün Adet"></Label>
-                            <Label Grid.Row="5" FontAttributes="Bold" Text="Ürün Ağırlık"></Label>
-                            <Label Grid.Row="6" FontAttributes="Bold" Text="Depo Konumu"></Label>
+                            <Label Grid.Row="5" FontAttributes="Bold" Text="Ürün Agırlık"></Label>
+                            <Label Grid.Row="6" FontAttributes="Bold" Text="Depo Girisi"></Label>
+                            <Label Grid.Row="7" FontAttributes="Bold" Text="Depo Konumu"></Label>
                         </Grid>
                         <Grid Grid.Column="1" RowSpacing="7" Padding="5">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="20" />
+                                <RowDefinition Height="20"/>
                                 <RowDefinition Height="20"/>
                                 <RowDefinition Height="20"/>
                                 <RowDefinition Height="20"/>
@@ -270,7 +289,66 @@
                             <Label Grid.Row="3"  Text=": Teknoloji"></Label>
                             <Label Grid.Row="4"  Text=": 153489"></Label>
                             <Label Grid.Row="5"  Text=": 154787987965"></Label>
-                            <Label Grid.Row="6"  Text=": Büyükdere Caddesi No:106 Şerbetçi İş Merkezi Esentepe Şişli/İstanbul Sancaktepe caddesi pınar sokak no 6 antrepo depo no : 88 " ></Label>
+                            <Label Grid.Row="6"  Text=": 10.12.2023"></Label>
+                            <Label Grid.Row="7"  Text=": Büyükdere Caddesi No:106 Şerbetçi İş Merkezi Esentepe Şişli/İstanbul Sancaktepe caddesi pınar sokak no 6 antrepo depo no : 88 " ></Label>
+                        </Grid>
+                    </Grid>
+                </StackLayout>
+            </Frame>
+            <Frame BorderColor="DarkGrey" 
+            Padding="5"
+            CornerRadius="3"
+            BackgroundColor="Transparent"
+                 Margin="5"
+>
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="Frame_Tapped" />
+                </Frame.GestureRecognizers>
+                <StackLayout Orientation="Horizontal" Spacing="15" >
+                    <Grid ColumnSpacing="1" HorizontalOptions="FillAndExpand" Padding="8" MinimumHeightRequest="200" >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition  Width="105"/>
+                            <ColumnDefinition  Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid Grid.Column="0" BackgroundColor="LightSkyBlue" RowSpacing="7" Padding="5" >
+                            <Grid.RowDefinitions >
+                                <RowDefinition Height="20"/>
+                                <RowDefinition Height="20"/>
+                                <RowDefinition Height="20"/>
+                                <RowDefinition Height="20"/>
+                                <RowDefinition Height="20"/>
+                                <RowDefinition Height="20"/>
+                                <RowDefinition Height="20"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <Label Grid.Row="0" FontAttributes="Bold" Text="Id"></Label>
+                            <Label Grid.Row="1" FontAttributes="Bold" Text="Defter No"></Label>
+                            <Label Grid.Row="2" FontAttributes="Bold" Text="Müsteri Ad"></Label>
+                            <Label Grid.Row="3" FontAttributes="Bold" Text="Ürün Cins"></Label>
+                            <Label Grid.Row="4" FontAttributes="Bold" Text="Ürün Adet"></Label>
+                            <Label Grid.Row="5" FontAttributes="Bold" Text="Ürün Agırlık"></Label>
+                            <Label Grid.Row="6" FontAttributes="Bold" Text="Depo Girisi"></Label>
+                            <Label Grid.Row="7" FontAttributes="Bold" Text="Depo Konumu"></Label>
+                        </Grid>
+                        <Grid Grid.Column="1" RowSpacing="7" Padding="5">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="20" />
+                                <RowDefinition Height="20"/>
+                                <RowDefinition Height="20"/>
+                                <RowDefinition Height="20"/>
+                                <RowDefinition Height="20"/>
+                                <RowDefinition Height="20"/>
+                                <RowDefinition Height="20"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <Label Grid.Row="0"  Text=": 6" ></Label>
+                            <Label Grid.Row="1"  Text=": 25491287"></Label>
+                            <Label Grid.Row="2"  Text=": Ali Çukur"></Label>
+                            <Label Grid.Row="3"  Text=": Teknoloji"></Label>
+                            <Label Grid.Row="4"  Text=": 153489"></Label>
+                            <Label Grid.Row="5"  Text=": 154787987965"></Label>
+                            <Label Grid.Row="6"  Text=": 10.12.2023"></Label>
+                            <Label Grid.Row="7"  Text=": Büyükdere Caddesi No:106 Şerbetçi İş Merkezi Esentepe Şişli/İstanbul Sancaktepe caddesi pınar sokak no 6 antrepo depo no : 88 " ></Label>
                         </Grid>
                     </Grid>
                 </StackLayout>
