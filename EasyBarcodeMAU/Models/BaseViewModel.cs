@@ -1,20 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
 namespace EasyBarcodeMAU.Models {
     public class BaseViewModel : INotifyPropertyChanged {
         #region Variables
         private string title = string.Empty;
-        private int firmaId;
         #endregion
 
         #region Properties
-        public int FirmaId {
-            get { return firmaId; }
-            set { SetProperty(ref firmaId, value); }
-        }
 
         public string Description {
             get { return title; }

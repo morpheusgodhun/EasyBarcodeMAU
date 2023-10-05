@@ -1,7 +1,5 @@
-﻿using System.ComponentModel;
-
-namespace EasyBarcodeMAU {
-    public class ProductItemBase : INotifyPropertyChanged {
+﻿namespace EasyBarcodeMAU.Models {
+    public class ProductItemBase {
         public int Id { get; set; }
         public int DefterNo { get; set; }
         public DateTime DepoGirisi { get; set; }
@@ -10,12 +8,6 @@ namespace EasyBarcodeMAU {
         public int UrunAdet { get; set; }
         public int UrunAgirlik { get; set; }
         public string DepoKonum { get; set; }
-        public long BarkodNo { get; set; }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        protected virtual void OnPropertyChanged(string propertyName) {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
+        public long BarkodNo { get; set; }   
     }
 }

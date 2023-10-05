@@ -1,21 +1,14 @@
+using EasyBarcodeMAU.Models;
+
 namespace EasyBarcodeMAU {
     public partial class ProductListPage : ContentPage {
-        private List<ProductItemBase> productItems;
 
         public ProductListPage() {
             InitializeComponent();
-
-            var productModel = new ProductModel();
-            productItems = productModel.MyItems;
-
-            var itemDescriptions = new List<string>();
-            foreach (var item in productItems) {
-                var description =
-                    $"ÜRÜN NUMARASI={item.Id}, Defter Numarasý={item.DefterNo}, Depo Giriþ Tarihi={item.DepoGirisi:dd.MM.yyyy}, Müþteri Adý ={item.MusteriAd}, Ürün Adedi ={item.UrunAdet}, Ürün Aðýrlýðý={item.UrunAgirlik}, Depo Konumu={item.DepoKonum}";
-                itemDescriptions.Add(description);
-            }
-
+            viewModel = new ProductModel();
+            BindingContext = viewModel;
         }
+        ProductModel viewModel;
 
         private async void Frame_Tapped(object sender, EventArgs e) {
             if (sender is Frame tappedFrame) {
