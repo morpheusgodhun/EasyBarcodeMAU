@@ -1,5 +1,3 @@
-using System.Collections.ObjectModel;
-
 namespace EasyBarcodeMAU {
     public partial class ProductListPage : ContentPage {
         private List<ProductItemBase> productItems;
@@ -8,7 +6,6 @@ namespace EasyBarcodeMAU {
             InitializeComponent();
 
             var productModel = new ProductModel();
-            BindingContext = productModel;
             productItems = productModel.MyItems;
 
             var itemDescriptions = new List<string>();
@@ -16,23 +13,9 @@ namespace EasyBarcodeMAU {
                 var description =
                     $"ÜRÜN NUMARASI={item.Id}, Defter Numarasý={item.DefterNo}, Depo Giriþ Tarihi={item.DepoGirisi:dd.MM.yyyy}, Müþteri Adý ={item.MusteriAd}, Ürün Adedi ={item.UrunAdet}, Ürün Aðýrlýðý={item.UrunAgirlik}, Depo Konumu={item.DepoKonum}";
                 itemDescriptions.Add(description);
-            }            
-        }
-     
-        private ObservableCollection<ProductItemBase> myItems;
-        public ObservableCollection<ProductItemBase> MyItems
-        {
-            get { return myItems; }
-            set
-            {
-                if (myItems != value)
-                {
-                    myItems = value;
-                    OnPropertyChanged(nameof(MyItems)); // Implement INotifyPropertyChanged
-                }
             }
-        }
 
+        }
 
         private async void Frame_Tapped(object sender, EventArgs e) {
             if (sender is Frame tappedFrame) {
