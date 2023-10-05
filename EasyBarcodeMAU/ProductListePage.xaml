@@ -5,7 +5,7 @@
              xmlns:vm="clr-namespace:EasyBarcodeMAU.Models"
              BackgroundImageSource="page6">
              <ContentPage.BindingContext>
-            <vm:ProductModel />
+            <vm:ProductModel/>
              </ContentPage.BindingContext>
     <ScrollView>
         <StackLayout Padding="10">
