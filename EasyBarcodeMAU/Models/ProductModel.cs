@@ -23,7 +23,6 @@
                 if (_id != value) {
                     _id = value;
                     OnPropertyChanged(nameof(Id));
-                    UpdateOtherFields();
                 }
             }
         }
@@ -34,7 +33,6 @@
                 if (_defterNo != value) {
                     _defterNo = value;
                     OnPropertyChanged(nameof(DefterNo));
-                    UpdateOtherFields();
                 }
             }
         }
@@ -46,7 +44,6 @@
                 if (_depoGirisi != value) {
                     _depoGirisi = value;
                     OnPropertyChanged(nameof(DepoGirisi));
-                    UpdateOtherFields();
                 }
             }
         }
@@ -58,7 +55,6 @@
                 if (_musteriAd != value) {
                     _musteriAd = value;
                     OnPropertyChanged(nameof(MusteriAd));
-                    UpdateOtherFields();
                 }
             }
         }
@@ -69,7 +65,6 @@
                 if (_urunCins != value) {
                     _urunCins = value;
                     OnPropertyChanged(nameof(UrunCins));
-                    UpdateOtherFields();
                 }
             }
         }
@@ -80,7 +75,6 @@
                 if (_urunAdet != value) {
                     _urunAdet = value;
                     OnPropertyChanged(nameof(UrunAdet));
-                    UpdateOtherFields();
                 }
             }
         }
@@ -91,7 +85,6 @@
                 if (_urunAgirlik != value) {
                     _urunAgirlik = value;
                     OnPropertyChanged(nameof(UrunAgirlik));
-                    UpdateOtherFields();
                 }
             }
         }
@@ -102,7 +95,6 @@
                 if (_depoKonum != value) {
                     _depoKonum = value;
                     OnPropertyChanged(nameof(DepoKonum));
-                    UpdateOtherFields();
                 }
             }
         }
@@ -113,7 +105,6 @@
                 if (_barkodNo != value) {
                     _barkodNo = value;
                     OnPropertyChanged(nameof(BarkodNo));
-                    UpdateOtherFields();
                 }
             }
         }

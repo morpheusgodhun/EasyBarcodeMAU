@@ -27,7 +27,6 @@ namespace EasyBarcodeMAU {
                             }
                         }
 
-                        // Düzenleme: labelContents listesini düzenle
                         List<string> modifiedContents = new List<string>();
                         for (int i = 0; i < labelContents.Count / 2; i++) {
                             modifiedContents.Add($"{labelContents[i]} {labelContents[i + labelContents.Count / 2]}");
