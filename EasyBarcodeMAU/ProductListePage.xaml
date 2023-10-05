@@ -4,15 +4,15 @@
              x:Class="EasyBarcodeMAU.ProductListPage"
              xmlns:vm="clr-namespace:EasyBarcodeMAU.Models"
              BackgroundImageSource="page6">
-             <ContentPage.BindingContext>
-            <vm:ProductModel/>
-             </ContentPage.BindingContext>
+    <ContentPage.BindingContext>
+        <vm:ProductModel/>
+    </ContentPage.BindingContext>
     <ScrollView>
         <StackLayout Padding="10">
             <StackLayout Orientation="Horizontal" Spacing="15" >
-                    <CollectionView ItemsSource="{Binding MyItems}">
-                        <CollectionView.ItemTemplate>
-                            <DataTemplate>
+                <CollectionView ItemsSource="{Binding MyItems}">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
                             <Frame BorderColor="DarkGrey" 
                                     Padding="5"
                                     CornerRadius="3"
@@ -22,494 +22,58 @@
                                     <TapGestureRecognizer Tapped="Frame_Tapped"/>
                                 </Frame.GestureRecognizers>
                                 <StackLayout>
-                                <Grid ColumnSpacing="1" HorizontalOptions="FillAndExpand" Padding="8" MinimumHeightRequest="200" MinimumWidthRequest="350">
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition  Width="105"/>
-                                        <ColumnDefinition  Width="*"/>
-                                    </Grid.ColumnDefinitions>
-                                    <Grid Grid.Column="0" BackgroundColor="LightSkyBlue" RowSpacing="7" Padding="5" >
-                                        <Grid.RowDefinitions >
-                                            <RowDefinition Height="20"/>
-                                            <RowDefinition Height="20"/>
-                                            <RowDefinition Height="20"/>
-                                            <RowDefinition Height="20"/>
-                                            <RowDefinition Height="20"/>
-                                            <RowDefinition Height="20"/>
-                                            <RowDefinition Height="20"/>
-                                            <RowDefinition Height="*"/>
-                                        </Grid.RowDefinitions>
-                                        <Label Grid.Row="0" FontAttributes="Bold" Text="Id"></Label>
-                                        <Label Grid.Row="1" FontAttributes="Bold" Text="Defter No"></Label>
-                                        <Label Grid.Row="2" FontAttributes="Bold" Text="Müsteri Ad"></Label>
-                                        <Label Grid.Row="3" FontAttributes="Bold" Text="Ürün Cins"></Label>
-                                        <Label Grid.Row="4" FontAttributes="Bold" Text="Ürün Adet"></Label>
-                                        <Label Grid.Row="5" FontAttributes="Bold" Text="Ürün Agırlık"></Label>
-                                        <Label Grid.Row="6" FontAttributes="Bold" Text="Depo Girisi"></Label>
-                                        <Label Grid.Row="7" FontAttributes="Bold" Text="Depo Konumu"></Label>
+                                    <Grid ColumnSpacing="1" HorizontalOptions="FillAndExpand" Padding="8" MinimumHeightRequest="200" MinimumWidthRequest="350">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition  Width="105"/>
+                                            <ColumnDefinition  Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Grid Grid.Column="0" BackgroundColor="LightSkyBlue" RowSpacing="7" Padding="5" >
+                                            <Grid.RowDefinitions >
+                                                <RowDefinition Height="20"/>
+                                                <RowDefinition Height="20"/>
+                                                <RowDefinition Height="20"/>
+                                                <RowDefinition Height="20"/>
+                                                <RowDefinition Height="20"/>
+                                                <RowDefinition Height="20"/>
+                                                <RowDefinition Height="20"/>
+                                                <RowDefinition Height="*"/>
+                                            </Grid.RowDefinitions>
+                                            <Label Grid.Row="0" FontAttributes="Bold" Text="Id"></Label>
+                                            <Label Grid.Row="1" FontAttributes="Bold" Text="Defter No"></Label>
+                                            <Label Grid.Row="2" FontAttributes="Bold" Text="Müsteri Ad"></Label>
+                                            <Label Grid.Row="3" FontAttributes="Bold" Text="Ürün Cins"></Label>
+                                            <Label Grid.Row="4" FontAttributes="Bold" Text="Ürün Adet"></Label>
+                                            <Label Grid.Row="5" FontAttributes="Bold" Text="Ürün Agırlık"></Label>
+                                            <Label Grid.Row="6" FontAttributes="Bold" Text="Depo Girisi"></Label>
+                                            <Label Grid.Row="7" FontAttributes="Bold" Text="Depo Konumu"></Label>
+                                        </Grid>
+                                        <Grid Grid.Column="1" RowSpacing="7" Padding="5">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="20" />
+                                                <RowDefinition Height="20"/>
+                                                <RowDefinition Height="20"/>
+                                                <RowDefinition Height="20"/>
+                                                <RowDefinition Height="20"/>
+                                                <RowDefinition Height="20"/>
+                                                <RowDefinition Height="20"/>
+                                                <RowDefinition Height="*"/>
+                                            </Grid.RowDefinitions>
+                                            <Label Grid.Row="0" Text="{Binding Id, StringFormat=': {0}'}"  />
+                                            <Label Grid.Row="1"  Text="{Binding DefterNo, StringFormat=': {0}'}" />
+                                            <Label Grid.Row="2"  Text="{Binding MusteriAd, StringFormat=': {0}'}" />
+                                            <Label Grid.Row="3"  Text="{Binding UrunCins, StringFormat=': {0}'}" />
+                                            <Label Grid.Row="4"  Text="{Binding UrunAdet, StringFormat=': {0}'}" />
+                                            <Label Grid.Row="5"  Text="{Binding UrunAgirlik, StringFormat=': {0}'}" />
+                                            <Label Grid.Row="6"  Text="{Binding DepoGirisi, StringFormat=': {0}'}" />
+                                            <Label Grid.Row="7"  Text="{Binding DepoKonum, StringFormat=': {0}'}" />
+                                        </Grid>
                                     </Grid>
-                                    <Grid Grid.Column="1" RowSpacing="7" Padding="5">
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition Height="20" />
-                                            <RowDefinition Height="20"/>
-                                            <RowDefinition Height="20"/>
-                                            <RowDefinition Height="20"/>
-                                            <RowDefinition Height="20"/>
-                                            <RowDefinition Height="20"/>
-                                            <RowDefinition Height="20"/>
-                                            <RowDefinition Height="*"/>
-                                        </Grid.RowDefinitions>
-                                        <Label Grid.Row="0" Text="{Binding Id, StringFormat=': {0}'}"  />
-                                        <Label Grid.Row="1"  Text="{Binding DefterNo, StringFormat=': {0}'}" />
-                                        <Label Grid.Row="2"  Text="{Binding MusteriAd, StringFormat=': {0}'}" />
-                                        <Label Grid.Row="3"  Text="{Binding UrunCins, StringFormat=': {0}'}" />
-                                        <Label Grid.Row="4"  Text="{Binding UrunAdet, StringFormat=': {0}'}" />
-                                        <Label Grid.Row="5"  Text="{Binding UrunAgirlik, StringFormat=': {0}'}" />
-                                        <Label Grid.Row="6"  Text="{Binding DepoGirisi, StringFormat=': {0}'}" />
-                                        <Label Grid.Row="7"  Text="{Binding DepoKonum, StringFormat=': {0}'}" />
-                                    </Grid>
-                                </Grid>
                                 </StackLayout>
                             </Frame>
-                            </DataTemplate>
-                        </CollectionView.ItemTemplate>
-                    </CollectionView>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
             </StackLayout>
         </StackLayout>
     </ScrollView>
 </ContentPage>
-
-    
-
-<!--<Frame BorderColor="DarkGrey" 
-            Padding="5"
-            CornerRadius="3"
-            BackgroundColor="Transparent"
-                 Margin="5"
->
-    <Frame.GestureRecognizers>
-        <TapGestureRecognizer Tapped="Frame_Tapped" />
-    </Frame.GestureRecognizers>
-    <StackLayout Orientation="Horizontal" Spacing="15" >
-        <Grid ColumnSpacing="1" HorizontalOptions="FillAndExpand" Padding="8" MinimumHeightRequest="200" >
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition  Width="105"/>
-                <ColumnDefinition  Width="*"/>
-            </Grid.ColumnDefinitions>
-            <Grid Grid.Column="0" BackgroundColor="LightSkyBlue" RowSpacing="7" Padding="5" >
-                <Grid.RowDefinitions >
-                    <RowDefinition Height="20"/>
-                    <RowDefinition Height="20"/>
-                    <RowDefinition Height="20"/>
-                    <RowDefinition Height="20"/>
-                    <RowDefinition Height="20"/>
-                    <RowDefinition Height="20"/>
-                    <RowDefinition Height="20"/>
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
-                <Label Grid.Row="0" FontAttributes="Bold" Text="Id"></Label>
-                <Label Grid.Row="1" FontAttributes="Bold" Text="Defter No"></Label>
-                <Label Grid.Row="2" FontAttributes="Bold" Text="Müsteri Ad"></Label>
-                <Label Grid.Row="3" FontAttributes="Bold" Text="Ürün Cins"></Label>
-                <Label Grid.Row="4" FontAttributes="Bold" Text="Ürün Adet"></Label>
-                <Label Grid.Row="5" FontAttributes="Bold" Text="Ürün Agırlık"></Label>
-                <Label Grid.Row="6" FontAttributes="Bold" Text="Depo Girisi"></Label>
-                <Label Grid.Row="7" FontAttributes="Bold" Text="Depo Konumu"></Label>
-            </Grid>
-            <Grid Grid.Column="1" RowSpacing="7" Padding="5">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="20" />
-                    <RowDefinition Height="20"/>
-                    <RowDefinition Height="20"/>
-                    <RowDefinition Height="20"/>
-                    <RowDefinition Height="20"/>
-                    <RowDefinition Height="20"/>
-                    <RowDefinition Height="20"/>
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
-                <Label Grid.Row="0" Text="{Binding Id, StringFormat=': {0}'}"  />
-                <Label Grid.Row="1"  Text="{Binding DefterNo, StringFormat=': {0}'}" />
-                <Label Grid.Row="2"  Text="{Binding MusteriAd, StringFormat=': {0}'}" />
-                <Label Grid.Row="3"  Text="{Binding UrunCins, StringFormat=': {0}'}" />
-                <Label Grid.Row="4"  Text="{Binding UrunAdet, StringFormat=': {0}'}" />
-                <Label Grid.Row="5"  Text="{Binding UrunAgirlik, StringFormat=': {0}'}" />
-                <Label Grid.Row="6"  Text="{Binding DepoGirisi, StringFormat=': {0}'}" />
-                <Label Grid.Row="7"  Text="{Binding DepoKonum, StringFormat=': {0}'}" />
-            </Grid>
-        </Grid>
-    </StackLayout>
-</Frame>
-<Frame BorderColor="DarkGrey" 
-            Padding="5"
-            CornerRadius="3"
-            BackgroundColor="Transparent"
-                 Margin="5"
->
-    <Frame.GestureRecognizers>
-        <TapGestureRecognizer Tapped="Frame_Tapped" />
-    </Frame.GestureRecognizers>
-    <StackLayout Orientation="Horizontal" Spacing="15" >
-        <Grid ColumnSpacing="1" HorizontalOptions="FillAndExpand" Padding="8" MinimumHeightRequest="200" >
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition  Width="105"/>
-                <ColumnDefinition  Width="*"/>
-            </Grid.ColumnDefinitions>
-            <Grid Grid.Column="0" BackgroundColor="LightSkyBlue" RowSpacing="7" Padding="5" >
-                <Grid.RowDefinitions >
-                    <RowDefinition Height="20"/>
-                    <RowDefinition Height="20"/>
-                    <RowDefinition Height="20"/>
-                    <RowDefinition Height="20"/>
-                    <RowDefinition Height="20"/>
-                    <RowDefinition Height="20"/>
-                    <RowDefinition Height="20"/>
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
-                <Label Grid.Row="0" FontAttributes="Bold" Text="Id"></Label>
-                <Label Grid.Row="1" FontAttributes="Bold" Text="Defter No"></Label>
-                <Label Grid.Row="2" FontAttributes="Bold" Text="Müsteri Ad"></Label>
-                <Label Grid.Row="3" FontAttributes="Bold" Text="Ürün Cins"></Label>
-                <Label Grid.Row="4" FontAttributes="Bold" Text="Ürün Adet"></Label>
-                <Label Grid.Row="5" FontAttributes="Bold" Text="Ürün Agırlık"></Label>
-                <Label Grid.Row="6" FontAttributes="Bold" Text="Depo Girisi"></Label>
-                <Label Grid.Row="7" FontAttributes="Bold" Text="Depo Konumu"></Label>
-            </Grid>
-            <Grid Grid.Column="1" RowSpacing="7" Padding="5">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="20" />
-                    <RowDefinition Height="20"/>
-                    <RowDefinition Height="20"/>
-                    <RowDefinition Height="20"/>
-                    <RowDefinition Height="20"/>
-                    <RowDefinition Height="20"/>
-                    <RowDefinition Height="20"/>
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
-                <Label Grid.Row="0" Text="{Binding Id, StringFormat=': {0}'}"  />
-                <Label Grid.Row="1"  Text="{Binding DefterNo, StringFormat=': {0}'}" />
-                <Label Grid.Row="2"  Text="{Binding MusteriAd, StringFormat=': {0}'}" />
-                <Label Grid.Row="3"  Text="{Binding UrunCins, StringFormat=': {0}'}" />
-                <Label Grid.Row="4"  Text="{Binding UrunAdet, StringFormat=': {0}'}" />
-                <Label Grid.Row="5"  Text="{Binding UrunAgirlik, StringFormat=': {0}'}" />
-                <Label Grid.Row="6"  Text="{Binding DepoGirisi, StringFormat=': {0}'}" />
-                <Label Grid.Row="7"  Text="{Binding DepoKonum, StringFormat=': {0}'}" />
-            </Grid>
-        </Grid>
-    </StackLayout>
-</Frame>
-<Frame BorderColor="DarkGrey" 
-            Padding="5"
-            CornerRadius="3"
-            BackgroundColor="Transparent"
-                 Margin="5"
->
-    <Frame.GestureRecognizers>
-        <TapGestureRecognizer Tapped="Frame_Tapped" />
-    </Frame.GestureRecognizers>
-    <StackLayout Orientation="Horizontal" Spacing="15" >
-        <Grid ColumnSpacing="1" HorizontalOptions="FillAndExpand" Padding="8" MinimumHeightRequest="200" >
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition  Width="105"/>
-                <ColumnDefinition  Width="*"/>
-            </Grid.ColumnDefinitions>
-            <Grid Grid.Column="0" BackgroundColor="LightSkyBlue" RowSpacing="7" Padding="5" >
-                <Grid.RowDefinitions >
-                    <RowDefinition Height="20"/>
-                    <RowDefinition Height="20"/>
-                    <RowDefinition Height="20"/>
-                    <RowDefinition Height="20"/>
-                    <RowDefinition Height="20"/>
-                    <RowDefinition Height="20"/>
-                    <RowDefinition Height="20"/>
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
-                <Label Grid.Row="0" FontAttributes="Bold" Text="Id"></Label>
-                <Label Grid.Row="1" FontAttributes="Bold" Text="Defter No"></Label>
-                <Label Grid.Row="2" FontAttributes="Bold" Text="Müsteri Ad"></Label>
-                <Label Grid.Row="3" FontAttributes="Bold" Text="Ürün Cins"></Label>
-                <Label Grid.Row="4" FontAttributes="Bold" Text="Ürün Adet"></Label>
-                <Label Grid.Row="5" FontAttributes="Bold" Text="Ürün Agırlık"></Label>
-                <Label Grid.Row="6" FontAttributes="Bold" Text="Depo Girisi"></Label>
-                <Label Grid.Row="7" FontAttributes="Bold" Text="Depo Konumu"></Label>
-            </Grid>
-            <Grid Grid.Column="1" RowSpacing="7" Padding="5">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="20" />
-                    <RowDefinition Height="20"/>
-                    <RowDefinition Height="20"/>
-                    <RowDefinition Height="20"/>
-                    <RowDefinition Height="20"/>
-                    <RowDefinition Height="20"/>
-                    <RowDefinition Height="20"/>
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
-                <Label Grid.Row="0" Text="{Binding Id, StringFormat=': {0}'}"  />
-                <Label Grid.Row="1"  Text="{Binding DefterNo, StringFormat=': {0}'}" />
-                <Label Grid.Row="2"  Text="{Binding MusteriAd, StringFormat=': {0}'}" />
-                <Label Grid.Row="3"  Text="{Binding UrunCins, StringFormat=': {0}'}" />
-                <Label Grid.Row="4"  Text="{Binding UrunAdet, StringFormat=': {0}'}" />
-                <Label Grid.Row="5"  Text="{Binding UrunAgirlik, StringFormat=': {0}'}" />
-                <Label Grid.Row="6"  Text="{Binding DepoGirisi, StringFormat=': {0}'}" />
-                <Label Grid.Row="7"  Text="{Binding DepoKonum, StringFormat=': {0}'}" />
-            </Grid>
-        </Grid>
-    </StackLayout>
-</Frame>
-<Frame BorderColor="DarkGrey" 
-            Padding="5"
-            CornerRadius="3"
-            BackgroundColor="Transparent"
-                 Margin="5"
->
-    <Frame.GestureRecognizers>
-        <TapGestureRecognizer Tapped="Frame_Tapped" />
-    </Frame.GestureRecognizers>
-    <StackLayout Orientation="Horizontal" Spacing="15" >
-        <Grid ColumnSpacing="1" HorizontalOptions="FillAndExpand" Padding="8" MinimumHeightRequest="200" >
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition  Width="105"/>
-                <ColumnDefinition  Width="*"/>
-            </Grid.ColumnDefinitions>
-            <Grid Grid.Column="0" BackgroundColor="LightSkyBlue" RowSpacing="7" Padding="5" >
-                <Grid.RowDefinitions >
-                    <RowDefinition Height="20"/>
-                    <RowDefinition Height="20"/>
-                    <RowDefinition Height="20"/>
-                    <RowDefinition Height="20"/>
-                    <RowDefinition Height="20"/>
-                    <RowDefinition Height="20"/>
-                    <RowDefinition Height="20"/>
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
-                <Label Grid.Row="0" FontAttributes="Bold" Text="Id"></Label>
-                <Label Grid.Row="1" FontAttributes="Bold" Text="Defter No"></Label>
-                <Label Grid.Row="2" FontAttributes="Bold" Text="Müsteri Ad"></Label>
-                <Label Grid.Row="3" FontAttributes="Bold" Text="Ürün Cins"></Label>
-                <Label Grid.Row="4" FontAttributes="Bold" Text="Ürün Adet"></Label>
-                <Label Grid.Row="5" FontAttributes="Bold" Text="Ürün Agırlık"></Label>
-                <Label Grid.Row="6" FontAttributes="Bold" Text="Depo Girisi"></Label>
-                <Label Grid.Row="7" FontAttributes="Bold" Text="Depo Konumu"></Label>
-            </Grid>
-            <Grid Grid.Column="1" RowSpacing="7" Padding="5">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="20" />
-                    <RowDefinition Height="20"/>
-                    <RowDefinition Height="20"/>
-                    <RowDefinition Height="20"/>
-                    <RowDefinition Height="20"/>
-                    <RowDefinition Height="20"/>
-                    <RowDefinition Height="20"/>
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
-                <Label Grid.Row="0" Text="{Binding Id, StringFormat=': {0}'}"  />
-                <Label Grid.Row="1"  Text="{Binding DefterNo, StringFormat=': {0}'}" />
-                <Label Grid.Row="2"  Text="{Binding MusteriAd, StringFormat=': {0}'}" />
-                <Label Grid.Row="3"  Text="{Binding UrunCins, StringFormat=': {0}'}" />
-                <Label Grid.Row="4"  Text="{Binding UrunAdet, StringFormat=': {0}'}" />
-                <Label Grid.Row="5"  Text="{Binding UrunAgirlik, StringFormat=': {0}'}" />
-                <Label Grid.Row="6"  Text="{Binding DepoGirisi, StringFormat=': {0}'}" />
-                <Label Grid.Row="7"  Text="{Binding DepoKonum, StringFormat=': {0}'}" />
-            </Grid>
-        </Grid>
-    </StackLayout>
-</Frame>-->
-
-
-<!--<Grid.RowDefinitions>
-    <RowDefinition Height="20"/>
-    <RowDefinition Height="20"/>
-    <RowDefinition Height="20"/>
-    <RowDefinition Height="20"/>
-    <RowDefinition Height="20"/>
-    <RowDefinition Height="20"/>
-    <RowDefinition Height="*"/>
-</Grid.RowDefinitions>
-<Grid.ColumnDefinitions>
-    <ColumnDefinition />
-    <ColumnDefinition />
-</Grid.ColumnDefinitions>
-<Label Grid.Row="0"  Text="Id : 6" ></Label>
-<Label Grid.Row="1"  Text="DefterNo : 25491287"></Label>
-<Label Grid.Row="2"  Text="MusteriAd : Ali Çukur"></Label>
-<Label Grid.Row="3"  Text="UrunCins : Teknoloji"></Label>
-<Label Grid.Row="4"  Text="UrunAdet : 153489"></Label>
-<Label Grid.Row="5"  Text="UrunAgirlik : 154787987965"></Label>
-<Label Grid.Row="6"  Text="DepoKonum : Almanya antrepo deposu yanında bi yerlerde " Grid.ColumnSpan="2" >
-</Label>
- -->
-
-
-<!--<Frame BorderColor="Grey" 
-            Padding="5"
-            CornerRadius="3"
-            BackgroundColor="Transparent"
-            Margin="5"
-            >
-             <Frame.GestureRecognizers>
-                 <TapGestureRecognizer Tapped="Frame_Tapped" />
-             </Frame.GestureRecognizers>
-             <StackLayout Orientation="Horizontal" Spacing="15" >
-                 <Grid ColumnSpacing="20" RowSpacing="0" HorizontalOptions="FillAndExpand" Padding="5"  HeightRequest="180" >
-                     <Grid.RowDefinitions>
-                         <RowDefinition Height="20"/>
-                         <RowDefinition Height="20"/>
-                         <RowDefinition Height="20"/>
-                         <RowDefinition Height="20"/>
-                         <RowDefinition Height="20"/>
-                         <RowDefinition Height="20"/>
-                         <RowDefinition Height="*"/>
-                     </Grid.RowDefinitions>
-                     <Grid.ColumnDefinitions>
-                         <ColumnDefinition />
-
-                     </Grid.ColumnDefinitions>
-                     <Label Grid.Row="0"  Text="Id : 1"  BindingContext="kkk"></Label>
-                     <Label Grid.Row="1"  Text="DefterNo : 25491287"></Label>
-                     <Label Grid.Row="2"  Text="MusteriAd : Ali Çukur"></Label>
-                     <Label Grid.Row="3"  Text="UrunCins : Teknoloji"></Label>
-                     <Label Grid.Row="4"  Text="UrunAdet : 153489"></Label>
-                     <Label Grid.Row="5"  Text="UrunAgirlik : 154787987965"></Label>
-                     <Label Grid.Row="6"  Text="DepoKonum : Almanya antrepo deposu yanında bi yerlerde " Grid.ColumnSpan="2" ></Label>
-
-                 </Grid>
-             </StackLayout>
-         </Frame>
-         <Frame BorderColor="Grey" 
-    Padding="5"
-    CornerRadius="3"
-    BackgroundColor="Transparent"
-                 Margin="5"
-    >
-             <Frame.GestureRecognizers>
-                 <TapGestureRecognizer Tapped="Frame_Tapped" />
-             </Frame.GestureRecognizers>
-             <StackLayout Orientation="Horizontal" Spacing="15" >
-                 <Grid ColumnSpacing="20" RowSpacing="0" HorizontalOptions="FillAndExpand" Padding="5"  HeightRequest="180" >
-                     <Grid.RowDefinitions>
-                         <RowDefinition Height="20"/>
-                         <RowDefinition Height="20"/>
-                         <RowDefinition Height="20"/>
-                         <RowDefinition Height="20"/>
-                         <RowDefinition Height="20"/>
-                         <RowDefinition Height="20"/>
-                         <RowDefinition Height="*"/>
-                     </Grid.RowDefinitions>
-                     <Grid.ColumnDefinitions>
-                         <ColumnDefinition />
-
-                     </Grid.ColumnDefinitions>
-                     <Label Grid.Row="0"  Text="Id : 2"  BindingContext="kkk"></Label>
-                     <Label Grid.Row="1"  Text="DefterNo : 25491287"></Label>
-                     <Label Grid.Row="2"  Text="MusteriAd : Ali Çukur"></Label>
-                     <Label Grid.Row="3"  Text="UrunCins : Teknoloji"></Label>
-                     <Label Grid.Row="4"  Text="UrunAdet : 153489"></Label>
-                     <Label Grid.Row="5"  Text="UrunAgirlik : 154787987965"></Label>
-                     <Label Grid.Row="6"  Text="DepoKonum : Almanya antrepo deposu yanında bi yerlerde " Grid.ColumnSpan="2" ></Label>
-
-                 </Grid>
-             </StackLayout>
-         </Frame>
-         <Frame BorderColor="Grey" 
-        Padding="5"
-        CornerRadius="3"
-        BackgroundColor="Transparent"
-                 Margin="5"
-        >
-             <Frame.GestureRecognizers>
-                 <TapGestureRecognizer Tapped="Frame_Tapped" />
-             </Frame.GestureRecognizers>
-             <StackLayout Orientation="Horizontal" Spacing="15" >
-                 <Grid ColumnSpacing="20" RowSpacing="0" HorizontalOptions="FillAndExpand" Padding="5"  HeightRequest="180" >
-                     <Grid.RowDefinitions>
-                         <RowDefinition Height="20"/>
-                         <RowDefinition Height="20"/>
-                         <RowDefinition Height="20"/>
-                         <RowDefinition Height="20"/>
-                         <RowDefinition Height="20"/>
-                         <RowDefinition Height="20"/>
-                         <RowDefinition Height="*"/>
-                     </Grid.RowDefinitions>
-                     <Grid.ColumnDefinitions>
-                         <ColumnDefinition />
-
-                     </Grid.ColumnDefinitions>
-                     <Label Grid.Row="0"  Text="Id 3: "  BindingContext="kkk"></Label>
-                     <Label Grid.Row="1"  Text="DefterNo : 25491287"></Label>
-                     <Label Grid.Row="2"  Text="MusteriAd : Ali Çukur"></Label>
-                     <Label Grid.Row="3"  Text="UrunCins : Teknoloji"></Label>
-                     <Label Grid.Row="4"  Text="UrunAdet : 153489"></Label>
-                     <Label Grid.Row="5"  Text="UrunAgirlik : 154787987965"></Label>
-                     <Label Grid.Row="6"  Text="DepoKonum : Almanya antrepo deposu yanında bi yerlerde " Grid.ColumnSpan="2" ></Label>
-
-                 </Grid>
-             </StackLayout>
-         </Frame>
-         <Frame BorderColor="Grey" 
-            Padding="5"
-            CornerRadius="3"
-            BackgroundColor="Transparent"
-                 Margin="5"
->
-             <Frame.GestureRecognizers>
-                 <TapGestureRecognizer Tapped="Frame_Tapped" />
-             </Frame.GestureRecognizers>
-             <StackLayout Orientation="Horizontal" Spacing="15" >
-                 <Grid ColumnSpacing="20" RowSpacing="0" HorizontalOptions="FillAndExpand" Padding="5"  HeightRequest="180" >
-                     <Grid.RowDefinitions>
-                         <RowDefinition Height="20"/>
-                         <RowDefinition Height="20"/>
-                         <RowDefinition Height="20"/>
-                         <RowDefinition Height="20"/>
-                         <RowDefinition Height="20"/>
-                         <RowDefinition Height="20"/>
-                         <RowDefinition Height="*"/>
-                     </Grid.RowDefinitions>
-                     <Grid.ColumnDefinitions>
-                         <ColumnDefinition />
-
-                     </Grid.ColumnDefinitions>
-                     <Label Grid.Row="0"  Text="Id : 4"  BindingContext="kkk"></Label>
-                     <Label Grid.Row="1"  Text="DefterNo : 25491287"></Label>
-                     <Label Grid.Row="2"  Text="MusteriAd : Ali Çukur"></Label>
-                     <Label Grid.Row="3"  Text="UrunCins : Teknoloji"></Label>
-                     <Label Grid.Row="4"  Text="UrunAdet : 153489"></Label>
-                     <Label Grid.Row="5"  Text="UrunAgirlik : 154787987965"></Label>
-                     <Label Grid.Row="6"  Text="DepoKonum : Almanya antrepo deposu yanında bi yerlerde " Grid.ColumnSpan="2" ></Label>
-
-                 </Grid>
-             </StackLayout>
-         </Frame>
-         <Frame BorderColor="Grey" 
-            Padding="5"
-            CornerRadius="3"
-            BackgroundColor="Transparent"
-                 Margin="5"
->
-             <Frame.GestureRecognizers>
-                 <TapGestureRecognizer Tapped="Frame_Tapped" />
-             </Frame.GestureRecognizers>
-             <StackLayout Orientation="Horizontal" Spacing="15" >
-                 <Grid ColumnSpacing="20" RowSpacing="0" HorizontalOptions="FillAndExpand" Padding="5"  HeightRequest="180" >
-                     <Grid.RowDefinitions>
-                         <RowDefinition Height="20"/>
-                         <RowDefinition Height="20"/>
-                         <RowDefinition Height="20"/>
-                         <RowDefinition Height="20"/>
-                         <RowDefinition Height="20"/>
-                         <RowDefinition Height="20"/>
-                         <RowDefinition Height="*"/>
-                     </Grid.RowDefinitions>
-                     <Grid.ColumnDefinitions>
-                         <ColumnDefinition />
-
-                     </Grid.ColumnDefinitions>
-                     <Label Grid.Row="0"  Text="Id : 5"  BindingContext="kkk"></Label>
-                     <Label Grid.Row="1"  Text="DefterNo : 25491287"></Label>
-                     <Label Grid.Row="2"  Text="MusteriAd : Ali Çukur"></Label>
-                     <Label Grid.Row="3"  Text="UrunCins : Teknoloji"></Label>
-                     <Label Grid.Row="4"  Text="UrunAdet : 153489"></Label>
-                     <Label Grid.Row="5"  Text="UrunAgirlik : 154787987965"></Label>
-                     <Label Grid.Row="6"  Text="DepoKonum : Almanya antrepo deposu yanında bi yerlerde " Grid.ColumnSpan="2" ></Label>
-
-                 </Grid>
-             </StackLayout>
-         </Frame>-->
