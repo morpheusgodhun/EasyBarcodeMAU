@@ -3,26 +3,29 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="EasyBarcodeMAU.ProductListPage"
              xmlns:vm="clr-namespace:EasyBarcodeMAU.Models"
-             BackgroundImageSource="page6">
+             BackgroundImageSource="page6"
+             Title="Ürün Seçiniz"
+             >
+             
     <ContentPage.BindingContext>
         <vm:ProductModel/>
     </ContentPage.BindingContext>
-    <ScrollView>
-        <StackLayout Padding="10">
-            <StackLayout Orientation="Horizontal" Spacing="15" >
-                <CollectionView ItemsSource="{Binding MyItems}">
+    <RefreshView >
+        <ScrollView>
+            <FlexLayout Direction="Column" AlignItems="Center" JustifyContent="Center"    >
+                <CollectionView ItemsSource="{Binding MyItems}" Margin="10">
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
                             <Frame BorderColor="DarkGrey" 
-                                    Padding="5"
-                                    CornerRadius="3"
-                                    BackgroundColor="Transparent"
-                                    Margin="5">
+                                 Padding="1"
+                                 CornerRadius="3"
+                                 BackgroundColor="Transparent"
+                                 Margin="5">
                                 <Frame.GestureRecognizers>
                                     <TapGestureRecognizer Tapped="Frame_Tapped"/>
                                 </Frame.GestureRecognizers>
-                                <StackLayout>
-                                    <Grid ColumnSpacing="1" HorizontalOptions="FillAndExpand" Padding="8" MinimumHeightRequest="200" MinimumWidthRequest="350">
+                                <StackLayout MinimumWidthRequest="330">
+                                    <Grid ColumnSpacing="1" Padding="10">
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition  Width="105"/>
                                             <ColumnDefinition  Width="*"/>
@@ -73,7 +76,7 @@
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
                 </CollectionView>
-            </StackLayout>
-        </StackLayout>
-    </ScrollView>
+            </FlexLayout>
+        </ScrollView>
+    </RefreshView>
 </ContentPage>

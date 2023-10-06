@@ -1,18 +1,19 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:cv="clr-namespace:Camera.MAUI;assembly=Camera.MAUI"
              x:Class="EasyBarcodeMAU.ScanBarcodeScreen"
-             xmlns:vm="clr-namespace:EasyBarcodeMAU"
-             xmlns:zxing="clr-namespace:ZXing.Net.Maui.Controls;assembly=ZXing.Net.Maui.Controls"
-             Title="ScanBarcodeScreen">
+        
+     >
+
     <StackLayout>
-        <zxing:CameraBarcodeReaderView x:Name="barCodereader" BarcodesDetected="barCodereader_BarcodesDetected"/>
-
-        <StackLayout x:Name="barcodeBox" BackgroundColor="#000000">
-            <Label Text="Barkod Değeri:" FontSize="30" TextColor="#ffffff" />
-        </StackLayout>
-
-        <StackLayout x:Name="barcodeValueLabel2" BackgroundColor="#ffffff">
+        <!--<zxing:CameraBarcodeReaderView x:Name="barCodereader" BarcodesDetected="barCodereader_BarcodesDetected"/>-->
+        <VerticalStackLayout Spacing="10" Padding="30,0,10,0" VerticalOptions="Center">
+            <Label x:Name="barcodeResult"  FontSize="30" TextColor="Black" />
+            <cv:CameraView  x:Name="cameraView" WidthRequest="400" HeightRequest="200" CamerasLoaded="cameraView_CamerasLoaded" BarCodeDetectionEnabled="True" BarcodeDetected="cameraView_BarcodeDetected"/>
+        </VerticalStackLayout>
+ 
+        <!--<StackLayout x:Name="barcodeValueLabel2" BackgroundColor="#ffffff">
             <Label Text="{Binding BarcodeValue}" FontSize="40" TextColor="#000000" />
         </StackLayout>
 
@@ -20,7 +21,7 @@
 
         <StackLayout x:Name="barcodeValueBox" BackgroundColor="#ffffff">
             <Label x:Name="barcodeValueLabel" FontSize="40" TextColor="#000000" />
-        </StackLayout>
+        </StackLayout>-->
 
         <Image Source="istlog.jpg" WidthRequest="200" HeightRequest="200"/>
 

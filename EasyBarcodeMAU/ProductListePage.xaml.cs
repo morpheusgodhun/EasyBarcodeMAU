@@ -1,3 +1,6 @@
+using System.Collections.ObjectModel;
+using System.Windows.Input;
+
 using EasyBarcodeMAU.Models;
 
 namespace EasyBarcodeMAU
@@ -11,7 +14,7 @@ namespace EasyBarcodeMAU
             BindingContext = new ProductModel();
         }
 
-        private async void Frame_Tapped(object sender, EventArgs e)
+        private async  void Frame_Tapped(object sender, EventArgs e)
         {
             if (sender is Frame tappedFrame)
             {
@@ -43,17 +46,20 @@ namespace EasyBarcodeMAU
                         }
 
                         string message = string.Join("\n", modifiedContents);
-                        await DisplayAlert("Ürün Detayý", message, "Tamam");
+                         await DisplayAlert("Ürün Detayý", message, "Tamam");
+                        
                     }
-                    await Navigation.PushModalAsync(new ScanBarcodeScreen());
+                    await Navigation.PushAsync(new ScanBarcodeScreen());
                 }
             }
         }
 
+ 
         private void OnConfirmButtonClicked(object sender, EventArgs e)
         {
             var scanPage = new ScanBarcodeScreen();
             Navigation.PushAsync(scanPage);
         }
+ 
     }
 }
