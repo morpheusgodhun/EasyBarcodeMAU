@@ -19,7 +19,7 @@ public partial class ScanBarcodeScreen : ContentPage
         {
             var format = args.Result[0].BarcodeFormat;
             var text = args.Result[0].Text;
-            barcodeResult.Text = $"{format}: {text}";
+            barcodeResult.Text = $"{text}";
         }
         else
         {
