@@ -8,5 +8,7 @@ public class ReadBaseModel {
     public int UrunAdet { get; set; }
     public int UrunAgirlik { get; set; }
     public string DepoKonum { get; set; }
-    public long BarcodeValue { get; set; }
+    public long RequiredCount { get; set; }
+    public long ReadedCount { get; set; }
+
 }

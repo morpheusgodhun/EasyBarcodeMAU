@@ -7,21 +7,18 @@
      >
 
     <StackLayout>
-        <!--<zxing:CameraBarcodeReaderView x:Name="barCodereader" BarcodesDetected="barCodereader_BarcodesDetected"/>-->
         <VerticalStackLayout Spacing="10" Padding="30,0,10,0" VerticalOptions="Center">
             <Label x:Name="barcodeResult"  FontSize="30" TextColor="Black" />
             <cv:CameraView  x:Name="cameraView" WidthRequest="400" HeightRequest="200" CamerasLoaded="cameraView_CamerasLoaded" BarCodeDetectionEnabled="True" BarcodeDetected="cameraView_BarcodeDetected"/>
         </VerticalStackLayout>
  
-        <!--<StackLayout x:Name="barcodeValueLabel2" BackgroundColor="#ffffff">
-            <Label Text="{Binding BarcodeValue}" FontSize="40" TextColor="#000000" />
-        </StackLayout>
-
-        <StackLayout x:Name="barcodeValueBox" BackgroundColor="#ffffff">
-            <Label x:Name="barcodeValueLabel" FontSize="40" TextColor="#000000" />
-        </StackLayout>-->
+      
 
         <Image Source="istlog.jpg" WidthRequest="200" HeightRequest="200"/>
+        <Label Text="Okunan Adet:" FontSize="10" TextColor="#ffffff" VerticalTextAlignment="Start" HorizontalTextAlignment="Start" />
+        <StackLayout>
+            <Label Text="{Binding ReadedCount}" FontSize="Small"/>
+        </StackLayout>
 
         <Label Text="Barkod Değeri:" FontSize="30" TextColor="#ffffff" VerticalTextAlignment="End" HorizontalTextAlignment="End" />
     </StackLayout>
