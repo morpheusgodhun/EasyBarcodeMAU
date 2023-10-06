@@ -1,4 +1,4 @@
-﻿namespace EasyBarcodeMAU.Models {
+﻿namespace EasyBarcodeMAU.Models;
     public class ProductItemBase {
         public int Id { get; set; }
         public int DefterNo { get; set; }
@@ -10,4 +10,3 @@
         public string DepoKonum { get; set; }
         public long BarkodNo { get; set; }   
     }
-}

@@ -17,8 +17,6 @@
             <Label Text="{Binding BarcodeValue}" FontSize="40" TextColor="#000000" />
         </StackLayout>
 
-
-
         <StackLayout x:Name="barcodeValueBox" BackgroundColor="#ffffff">
             <Label x:Name="barcodeValueLabel" FontSize="40" TextColor="#000000" />
         </StackLayout>-->

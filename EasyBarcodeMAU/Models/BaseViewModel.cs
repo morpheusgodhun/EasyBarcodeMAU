@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
-namespace EasyBarcodeMAU.Models {
+namespace EasyBarcodeMAU.Models;
     public class BaseViewModel : INotifyPropertyChanged {
         #region Variables
         private string title = string.Empty;
@@ -39,4 +39,3 @@ namespace EasyBarcodeMAU.Models {
         }
         #endregion
     }
-}
