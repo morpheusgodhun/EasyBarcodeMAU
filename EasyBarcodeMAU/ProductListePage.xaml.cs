@@ -7,54 +7,25 @@ namespace EasyBarcodeMAU
 {
     public partial class ProductListPage : ContentPage
     {
-
+        private ProductItemBase selectedItem;
         public ProductListPage()
         {
             InitializeComponent();
             BindingContext = new ProductModel();
         }
 
-        private async  void Frame_Tapped(object sender, EventArgs e)
-        {
-            if (sender is Frame tappedFrame)
-            {
-                if (tappedFrame.Content is StackLayout stackLayout)
-                {
-                    if (stackLayout.Children[0] is Grid grid)
-                    {
-                        List<string> labelContents = new List<string>();
+        private async void Frame_Tapped(object sender, EventArgs e) {
+            if (sender is Frame tappedFrame) {
+                if (tappedFrame.BindingContext is ProductItemBase itemBase) {
+                    selectedItem = itemBase; 
 
-                        foreach (var child in grid.Children)
-                        {
-                            if (child is Grid childGrid)
-                            {
-                                foreach (var labelChild in childGrid.Children)
-                                {
-                                    if (labelChild is Label label)
-                                    {
-                                        string labelText = label.Text;
-                                        labelContents.Add(labelText);
-                                    }
-                                }
-                            }
-                        }
-
-                        List<string> modifiedContents = new List<string>();
-                        for (int i = 0; i < labelContents.Count / 2; i++)
-                        {
-                            modifiedContents.Add($"{labelContents[i]} {labelContents[i + labelContents.Count / 2]}");
-                        }
-
-                        //string message = string.Join("\n", modifiedContents); // Bu kýsýmý kaldýrdýk 
-                        // await DisplayAlert("Ürün Detayý", message, "Tamam"); 
-                        
-                    }
-                    await Navigation.PushAsync(new ScanBarcodeScreen());
+                    var scanPage = new ScanBarcodeScreen(selectedItem);
+                    await Navigation.PushAsync(scanPage);
                 }
             }
         }
 
- 
+
         private void OnConfirmButtonClicked(object sender, EventArgs e)
         {
             var scanPage = new ScanBarcodeScreen();

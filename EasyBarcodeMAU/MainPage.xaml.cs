@@ -33,7 +33,7 @@
                 await DisplayAlert("Hata", "Kullanıcı adı veya şifre yanlış.", "Tamam");
             }
         }
-
+             
         private bool ValidateCredentials(string username, string password) {
             //hazır kullanıcı adı sifre kontrolü ilerde veri tabanı üzerinden proptan çekilecek
             string validUsername = "orhun";
