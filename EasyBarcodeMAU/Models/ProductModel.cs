@@ -30,7 +30,6 @@ namespace EasyBarcodeMAU.Models {
 
 
 
-
         private string selectedProduct;
         public string SelectedProduct {
             get { return selectedProduct; }
