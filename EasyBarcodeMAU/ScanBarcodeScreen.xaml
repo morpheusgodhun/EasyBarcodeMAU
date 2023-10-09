@@ -21,8 +21,6 @@
             <Label x:Name="barcodeValueLabel" FontSize="40" TextColor="#000000" />
         </StackLayout>-->
 
-        <Image Source="istlog.jpg" WidthRequest="200" HeightRequest="200"/>
-
         <Label Text="Barkod Değeri:" FontSize="30" TextColor="#ffffff" VerticalTextAlignment="End" HorizontalTextAlignment="End" />
     </StackLayout>
 </ContentPage>

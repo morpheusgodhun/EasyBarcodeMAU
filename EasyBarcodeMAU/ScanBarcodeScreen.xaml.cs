@@ -40,10 +40,7 @@ public partial class ScanBarcodeScreen : ContentPage
                 await cameraView.StartCameraAsync();
             });
         }
-
     }
-
-   
 }
 
 
@@ -71,8 +68,6 @@ public partial class ScanBarcodeScreen : ContentPage
 //        await Shell.Current.GoToAsync("..", navigationParam);
 //    });
 //}
-
-
 
 
 //namespace EasyBarcodeMAU;

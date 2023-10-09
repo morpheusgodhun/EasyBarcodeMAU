@@ -45,8 +45,8 @@ namespace EasyBarcodeMAU
                             modifiedContents.Add($"{labelContents[i]} {labelContents[i + labelContents.Count / 2]}");
                         }
 
-                        string message = string.Join("\n", modifiedContents);
-                         await DisplayAlert("Ürün Detayý", message, "Tamam");
+                        //string message = string.Join("\n", modifiedContents); // Bu kýsýmý kaldýrdýk 
+                        // await DisplayAlert("Ürün Detayý", message, "Tamam"); 
                         
                     }
                     await Navigation.PushAsync(new ScanBarcodeScreen());

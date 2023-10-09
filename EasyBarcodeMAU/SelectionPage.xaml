@@ -5,20 +5,19 @@
              BackgroundImageSource="page6"
              Title="Menü Seçimi">
 
-    <Grid Padding="10,0">
+    <Grid Padding="10,20">
         <Grid.RowDefinitions>
-            <RowDefinition Height="150"/>
-            <RowDefinition Height="100"/>
+            <RowDefinition Height="70"/>
+            <RowDefinition Height="70"/>
+            <RowDefinition Height="70"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions >
-            <ColumnDefinition />
-            <ColumnDefinition />
+            <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-        <Button x:Name="productInputButton" Text="Ürün Girişi" Grid.Column="0" Grid.Row="0" HeightRequest="100" WidthRequest="170" BackgroundColor="Green" Clicked="ProductInputButton_Clicked"
-></Button>
-        <Button x:Name="productOutputButton" Clicked="ProductOutputButton_Clicked" Text="Ürün Çıkışı" Grid.Column="1" Grid.Row="0" HeightRequest="100" WidthRequest="170" ></Button>
-        <Button Text="Çıkış" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" HeightRequest="100" WidthRequest="340" FontSize="Body" BackgroundColor="Red" Clicked="ExitButton_Clicked"></Button>
+        <Button x:Name="productInputButton" Text="Ürün Girişi"  Grid.Row="0" HeightRequest="60" WidthRequest="330" BackgroundColor="MediumSeaGreen"  Clicked="ProductInputButton_Clicked" FontSize="Body" FontAttributes="Bold" BorderWidth="1" BorderColor="Black"></Button>
+        <Button x:Name="productOutputButton" Clicked="ProductOutputButton_Clicked" Text="Ürün Çıkışı" Grid.Row="1" HeightRequest="60" WidthRequest="330" FontSize="Body"  FontAttributes="Bold" BackgroundColor="DarkSlateBlue" BorderWidth="1" BorderColor="Black"></Button>
+        <Button Text="Çıkış" Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2" HeightRequest="60" WidthRequest="330" BackgroundColor="IndianRed"  Clicked="ExitButton_Clicked" FontSize="Body"  FontAttributes="Bold" BorderWidth="1" BorderColor="Black"></Button>
     </Grid>
 
 </ContentPage>
