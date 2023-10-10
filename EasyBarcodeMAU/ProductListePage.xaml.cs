@@ -5,10 +5,13 @@ namespace EasyBarcodeMAU;
 
         #region Variables
         private ProductItemBase selectedItem;
-        #endregion
+    #endregion
 
-        #region InitModel
-        public ProductListPage() {
+  
+
+
+    #region InitModel
+    public ProductListPage() {
             InitializeComponent();
             BindingContext = new ProductModel();
         }
@@ -17,16 +20,29 @@ namespace EasyBarcodeMAU;
 
         #region Methods
 
-        private async void Frame_Tapped(object sender, EventArgs e) {
-            if (sender is Frame tappedFrame) {
-                if (tappedFrame.BindingContext is ProductItemBase itemBase) {
-                    selectedItem = itemBase;
-
-                    var scanPage = new ScanBarcodeScreen(selectedItem);
-                    await Navigation.PushAsync(scanPage);
+        private async void Frame_Tapped(object sender, EventArgs e)
+{
+    if (sender is Frame tappedFrame)
+    {
+        if (tappedFrame.BindingContext is ProductItemBase itemBase)
+        {
+            if (selectedItem != null)
+            {
+                    selectedItem.BorderColor = Color.FromRgb(128, 128, 128);  
+                                                                            
                 }
-            }
+
+                var greenColor = Color.FromRgba(0, 255, 0, 255); 
+                tappedFrame.BorderColor = greenColor;   
+
+            selectedItem = itemBase;
+
+            var scanPage = new ScanBarcodeScreen(selectedItem);
+            await Navigation.PushAsync(scanPage);
         }
+    }
+}
+
 
         private void OnConfirmButtonClicked(object sender, EventArgs e) {
             var scanPage = new ScanBarcodeScreen();
