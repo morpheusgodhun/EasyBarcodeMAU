@@ -11,9 +11,8 @@
     <StackLayout>
         <VerticalStackLayout Spacing="10" Padding="30,0,10,0" VerticalOptions="Center">
             <Label x:Name="barcodeResult"  FontSize="30" TextColor="Black" />
-            <cv:CameraView  x:Name="cameraView" WidthRequest="400" HeightRequest="200" CamerasLoaded="cameraView_CamerasLoaded" BarCodeDetectionEnabled="True" BarcodeDetected="cameraView_BarcodeDetected"/>
+            <cv:CameraView  x:Name="cameraView" WidthRequest="400" HeightRequest="100" CamerasLoaded="cameraView_CamerasLoaded" BarCodeDetectionEnabled="True" BarcodeDetected="cameraView_BarcodeDetected"/>
         </VerticalStackLayout>
-        <Image Source="istlog.jpg" WidthRequest="100" HeightRequest="100"/>
         <Label Text="Okunan Adet:" FontSize="10" TextColor="#ffffff" VerticalTextAlignment="Start" HorizontalTextAlignment="Start" />
         <Frame BackgroundColor="Pink" Padding="10,5" CornerRadius="5" HasShadow="True">
             <StackLayout>
