@@ -33,11 +33,6 @@ public class ProductModel : BaseViewModel
         }
     }
 
-
-
-
-
-
     private string selectedProduct;
     public string SelectedProduct
     {
