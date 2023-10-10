@@ -1,6 +1,5 @@
 ﻿using Camera.MAUI;
 using Microsoft.Extensions.Logging;
-//using ZXing.Net.Maui.Controls;
 
 namespace EasyBarcodeMAU {
     public static class MauiProgram {

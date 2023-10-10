@@ -38,4 +38,5 @@ namespace EasyBarcodeMAU.Models;
             changed?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
         #endregion
+
     }

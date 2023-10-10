@@ -1,10 +1,12 @@
 ﻿namespace EasyBarcodeMAU.Models;
 public class ReadBaseModel : BaseViewModel {
-    public int Id { get; set; }
-
-    private int _defterNo;
 
     public event EventHandler SelectedProductChanged;
+
+    #region Properties
+
+    public int Id { get; set; }
+    private int _defterNo;
     public int DefterNo {
         get { return _defterNo; }
         set {
@@ -69,8 +71,8 @@ public class ReadBaseModel : BaseViewModel {
     }
 
 
-    private int _requiredCount;
-    public int RequiredCount {
+    private long _requiredCount;
+    public long RequiredCount {
         get { return _requiredCount; }
         set {
             if (_requiredCount != value) {
@@ -102,4 +104,6 @@ public class ReadBaseModel : BaseViewModel {
             }
         }
     }
+    #endregion
+
 }

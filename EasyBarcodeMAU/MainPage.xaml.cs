@@ -1,25 +1,17 @@
-﻿namespace EasyBarcodeMAU {
+﻿namespace EasyBarcodeMAU;
     public partial class MainPage : ContentPage {
-        public MainPage() {
+
+    #region InitModel
+    
+    public MainPage() {
             InitializeComponent();
         }
 
-        private void OnCounterClicked(object sender, EventArgs e) {
+    #endregion
 
-            //click sayısı öğrenmek için kod
-            //int count = 0;
-            //count++;           
-            //if (count == 1)
-            //    CounterBtn.Text = $"Clicked {count} time";
-            //else
-            //    CounterBtn.Text = $"Clicked {count} times";
-
-            //SemanticScreenReader.Announce(CounterBtn.Text);
-        }
-
-
-        //kullanıcı adı şifre kontrol
-        private async void OnLoginButtonClicked(object sender, EventArgs e) {
+    #region Methods
+    
+    private async void OnLoginButtonClicked(object sender, EventArgs e) {
             string username = UsernameEntry.Text;
             string password = PasswordEntry.Text;
 
@@ -41,5 +33,7 @@
 
             return (username == validUsername && password == validPassword);
         }
-    }
+
+    #endregion
+
 }
