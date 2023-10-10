@@ -28,7 +28,7 @@ namespace EasyBarcodeMAU;
         {
             if (selectedItem != null)
             {
-                    selectedItem.BorderColor = Color.FromRgb(128, 128, 128);  
+                    tappedFrame.BorderColor = Color.FromRgb(128, 128, 128);  
                                                                             
                 }
 
