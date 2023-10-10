@@ -1,38 +1,36 @@
 ﻿namespace EasyBarcodeMAU;
-    public partial class MainPage : ContentPage {
+public partial class MainPage : ContentPage {
 
     #region InitModel
-    
+
     public MainPage() {
-            InitializeComponent();
-        }
+        InitializeComponent();
+    }
 
     #endregion
 
     #region Methods
-    
+
     private async void OnLoginButtonClicked(object sender, EventArgs e) {
-            string username = UsernameEntry.Text;
-            string password = PasswordEntry.Text;
+        string username = UsernameEntry.Text;
+        string password = PasswordEntry.Text;
 
-            bool isCredentialsValid = ValidateCredentials(username, password);
+        bool isCredentialsValid = ValidateCredentials(username, password);
 
-            if (isCredentialsValid) {
-                await Navigation.PushAsync(new SelectionPage());
-            }
-            else {
-                // Kullanıcı adı ve şifre yanlışsa kullanıcıyı uyarabilirsiniz.
-                await DisplayAlert("Hata", "Kullanıcı adı veya şifre yanlış.", "Tamam");
-            }
+        if (isCredentialsValid) {
+            await Navigation.PushAsync(new SelectionPage());
         }
-             
-        private bool ValidateCredentials(string username, string password) {
-            //hazır kullanıcı adı sifre kontrolü ilerde veri tabanı üzerinden proptan çekilecek
-            string validUsername = "orhun";
-            string validPassword = "1234";
-
-            return (username == validUsername && password == validPassword);
+        else {
+            await DisplayAlert("Hata", "Kullanıcı adı veya şifre yanlış.", "Tamam");
         }
+    }
+
+    private bool ValidateCredentials(string username, string password) {
+        string validUsername = "orhun";
+        string validPassword = "1234";
+
+        return (username == validUsername && password == validPassword);
+    }
 
     #endregion
 
