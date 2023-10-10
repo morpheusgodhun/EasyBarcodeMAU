@@ -2,21 +2,44 @@ using ZXing;
 using Camera.MAUI.ZXingHelper;
 using EasyBarcodeMAU.Models;
 
-namespace EasyBarcodeMAU {
+namespace EasyBarcodeMAU;
     public partial class ScanBarcodeScreen : ContentPage {
+
+        #region Variables
+
         private ProductItemBase selectedItem;
-        private ReadBaseModel viewModel; // viewModel burada tanýmlanýr
+        private ReadBaseModel viewModel;
+
+        #endregion
+
+        #region InitModel
 
         public ScanBarcodeScreen() {
             InitializeComponent();
-            viewModel = new ReadBaseModel(); // viewModel burada oluþturulur
+            viewModel = new ReadBaseModel();
             BindingContext = viewModel;
         }
 
-        public ScanBarcodeScreen(ProductItemBase selectedItem) : this() {
-            this.selectedItem = selectedItem;
-            viewModel.SelectedProduct = selectedItem?.MusteriAd + "," + "Konum:" + selectedItem?.DepoKonum;
+        #endregion
+
+        #region Properties
+
+        private int _count;
+        public int Count {
+            get { return _count; }
+            set {
+
+                if (_count != value) {
+                    _count = value;
+                    OnPropertyChanged(nameof(Count));
+                }
+            }
         }
+        #endregion
+
+        #region Methods
+
+       
 
         private void cameraView_BarcodeDetected(object sender, BarcodeEventArgs args) {
             MainThread.BeginInvokeOnMainThread(() => {
@@ -30,19 +53,7 @@ namespace EasyBarcodeMAU {
                     barcodeResult.Text = "Barkod bulunamadý.";
                 }
             });
-        }
-
-        private int _count;
-        public int Count {
-            get { return _count; }
-            set {
-
-                if (_count != value) {
-                    _count = value;
-                    OnPropertyChanged(nameof(Count));
-                }
-            }
-        }
+        }       
 
         private void cameraView_CamerasLoaded(object sender, EventArgs e) {
             if (cameraView.Cameras.Count > 0) {
@@ -53,5 +64,11 @@ namespace EasyBarcodeMAU {
                 });
             }
         }
-    }
+        public ScanBarcodeScreen(ProductItemBase selectedItem) : this() {
+            this.selectedItem = selectedItem;
+            viewModel.SelectedProduct = selectedItem?.MusteriAd + ", " + "Konum:" + selectedItem?.DepoKonum;
+            this.viewModel.RequiredCount = selectedItem.RequiredCount;
+        }    
+    #endregion
+
 }

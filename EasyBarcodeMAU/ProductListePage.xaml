@@ -69,6 +69,7 @@
                                             <Label Grid.Row="5"  Text="{Binding UrunAgirlik, StringFormat=': {0}'}" />
                                             <Label Grid.Row="6"  Text="{Binding DepoGirisi, StringFormat=': {0}'}" />
                                             <Label Grid.Row="7"  Text="{Binding DepoKonum, StringFormat=': {0}'}" />
+                                            <Label Grid.Row="8" IsVisible="false" Text="{Binding RequiredCount, StringFormat=': {0}'}" />
                                         </Grid>
                                     </Grid>
                                 </StackLayout>
