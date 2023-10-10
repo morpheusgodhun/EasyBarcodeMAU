@@ -13,7 +13,7 @@
     <RefreshView >
         <ScrollView>
             <FlexLayout Direction="Column" AlignItems="Center" JustifyContent="Center"    >
-                <CollectionView ItemsSource="{Binding MyItems}" Margin="10">
+                <CollectionView ItemsSource="{Binding ProductItems}" Margin="10">
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
                             <Frame BorderColor="DarkGrey" 
