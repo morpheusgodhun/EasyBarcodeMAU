@@ -24,30 +24,21 @@ public partial class ProductListPage : ContentPage
 
     private async void Frame_Tapped(object sender, EventArgs e)
     {
-        if (sender is Frame tappedFrame)
+        if (sender is Frame tappedFrame && tappedFrame.BindingContext is ProductItemBase itemBase)
         {
-            if (tappedFrame.BindingContext is ProductItemBase itemBase)
+            if (selectedItem != null)
             {
-                if (selectedItem != null)
-                {
-                    selectedItem.BorderColor = Color.FromRgb(128, 128, 128);
-                }
-
-                var greenColor = Color.FromRgba(0, 255, 0, 255);
-                tappedFrame.BorderColor = greenColor;
-
-                selectedItem = itemBase;
-
-                var scanPage = new ScanBarcodeScreen(selectedItem);
-                await Navigation.PushAsync(scanPage);
+                selectedItem.IsSelected = false;
             }
-        }
 
-        // Eðer geri döndüðünüzde veya baþka bir Frame'e týkladýðýnýzda eski Frame'in rengini eski haline getirin.
-        if (selectedItem != null && selectedItem != (sender as Frame)?.BindingContext)
-        {
-            selectedItem.BorderColor = Color.FromRgb(128, 128, 128);
-            selectedItem = null;
+            itemBase.IsSelected = true;
+            var greenColor = Color.FromRgba(0, 255, 0, 255);
+            tappedFrame.BorderColor = greenColor;
+
+            selectedItem = itemBase;
+
+            var scanPage = new ScanBarcodeScreen(selectedItem);
+            await Navigation.PushAsync(scanPage);
         }
     }
 
