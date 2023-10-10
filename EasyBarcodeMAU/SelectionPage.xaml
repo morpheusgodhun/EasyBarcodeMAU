@@ -5,7 +5,7 @@
              BackgroundImageSource="page6"
              Title="Menü Seçimi">
 
-    <Grid Padding="10,20">
+    <Grid Padding="10,20" WidthRequest="340">
         <Grid.RowDefinitions>
             <RowDefinition Height="70"/>
             <RowDefinition Height="70"/>

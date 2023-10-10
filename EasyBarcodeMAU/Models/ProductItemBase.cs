@@ -9,6 +9,6 @@
         public int UrunAgirlik { get; set; }
         public string DepoKonum { get; set; }
         public long BarkodNo { get; set; }   
-        public int? RequiredCount { get; set; }   
+        public int RequiredCount { get; set; }   
         public long ReadedCount { get; set; }   
     }

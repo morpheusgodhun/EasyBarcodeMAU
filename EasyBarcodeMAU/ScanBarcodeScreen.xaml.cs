@@ -15,7 +15,7 @@ namespace EasyBarcodeMAU {
 
         public ScanBarcodeScreen(ProductItemBase selectedItem) : this() {
             this.selectedItem = selectedItem;
-            viewModel.SelectedProduct = selectedItem?.MusteriAd + ", " + "Konum:" + selectedItem?.DepoKonum;
+            viewModel.SelectedProduct = selectedItem?.MusteriAd + "," + "Konum:" + selectedItem?.DepoKonum;
         }
 
         private void cameraView_BarcodeDetected(object sender, BarcodeEventArgs args) {
@@ -23,7 +23,7 @@ namespace EasyBarcodeMAU {
                 if (args.Result.Length > 0) {
                     var format = args.Result[0].BarcodeFormat;
                     var text = args.Result[0].Text;
-                    barcodeResult.Text = $"{format}: {text}";
+                    barcodeResult.Text = $"{text}";
                     viewModel.ReadedCount++;
                 }
                 else {

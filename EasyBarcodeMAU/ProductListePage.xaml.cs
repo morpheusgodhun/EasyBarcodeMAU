@@ -25,7 +25,6 @@ namespace EasyBarcodeMAU
             }
         }
 
-
         private void OnConfirmButtonClicked(object sender, EventArgs e)
         {
             var scanPage = new ScanBarcodeScreen();

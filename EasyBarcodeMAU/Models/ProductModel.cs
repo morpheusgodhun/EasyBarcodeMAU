@@ -27,8 +27,9 @@ namespace EasyBarcodeMAU.Models {
         }
 
 
+      
 
-
+ 
 
         private string selectedProduct;
         public string SelectedProduct {
