@@ -86,8 +86,11 @@ public partial class ScanBarcodeScreen : ContentPage {
         this.viewModel.RequiredCount = selectedItem.RequiredCount;
         this.viewModel.DepoKonum = selectedItem.DepoKonum;
     }
+
+
     #endregion
 
-
-
+    private void Vazgec_Clicked(object sender, EventArgs e) {
+        Navigation.PushAsync(new ProductListPage());
+    }
 }

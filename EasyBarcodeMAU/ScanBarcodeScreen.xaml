@@ -67,7 +67,8 @@
             </Grid.ColumnDefinitions>
 
             <Button Text="Onayla"  Grid.Column="0" HeightRequest="60" WidthRequest="100" BackgroundColor="MediumSeaGreen"  FontSize="Body" FontAttributes="Bold" BorderWidth="1" BorderColor="Black"></Button>
-            <Button Text="Vazgeç"  Grid.Column="1" HeightRequest="60" WidthRequest="100" BackgroundColor="Red" FontSize="Body"  FontAttributes="Bold"  BorderWidth="1" BorderColor="Black"></Button>
+            <Button Text="Vazgeç"  Grid.Column="1" HeightRequest="60" WidthRequest="100" BackgroundColor="Red" FontSize="Body" Clicked="Vazgec_Clicked" FontAttributes="Bold"  BorderWidth="1" BorderColor="Black"></Button>
+
 
         </Grid>
     </VerticalStackLayout>
