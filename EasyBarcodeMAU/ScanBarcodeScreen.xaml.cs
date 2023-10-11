@@ -62,7 +62,6 @@ public partial class ScanBarcodeScreen : ContentPage {
                     var text = args.Result[i].Text;
                     barcodeResult.Text = $"{text}";
                     viewModel.ReadedCount++;
-
                     scannedBarcodes.Add(text);
                 }
             }
