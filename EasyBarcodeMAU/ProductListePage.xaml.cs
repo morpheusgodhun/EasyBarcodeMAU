@@ -25,7 +25,7 @@ public partial class ProductListPage : ContentPage
 
     private async void Frame_Tapped(object sender, EventArgs e) {
         if (lastTappedFrame != null) {
-            lastTappedFrame.BorderColor = Color.FromRgb(128, 128, 128);
+            lastTappedFrame.BorderColor = Color.FromRgb(173, 216, 230);
         }
 
         if (sender is Frame tappedFrame) {
