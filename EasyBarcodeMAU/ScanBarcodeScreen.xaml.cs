@@ -39,8 +39,6 @@ public partial class ScanBarcodeScreen : ContentPage {
 
     #region Methods
 
-
-
     private void cameraView_BarcodeDetected(object sender, BarcodeEventArgs args) {
         MainThread.BeginInvokeOnMainThread(() => {
             if (args.Result.Length > 0) {
