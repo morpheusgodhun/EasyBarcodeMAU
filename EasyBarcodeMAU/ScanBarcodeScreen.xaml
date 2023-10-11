@@ -3,48 +3,50 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:vm="clr-namespace:EasyBarcodeMAU.Models"
              xmlns:cv="clr-namespace:Camera.MAUI;assembly=Camera.MAUI"
-             x:Class="EasyBarcodeMAU.ScanBarcodeScreen">
+             x:Class="EasyBarcodeMAU.ScanBarcodeScreen"
+             >
+    
     <ContentPage.BindingContext>
         <vm:ReadBaseModel />
     </ContentPage.BindingContext>
-    <VerticalStackLayout Padding="10,10">
-        <Frame Padding="20,10" CornerRadius="5" HasShadow="True">
+    
+    <VerticalStackLayout Padding="15,10" Margin="5">
+        <Frame Padding="20,10" CornerRadius="10" HasShadow="True" BackgroundColor="Transparent" Margin="5" >
             <StackLayout>
                 <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
                     <StackLayout Orientation="Horizontal" WidthRequest="155" >
-                        <Label Text="Stok Adet  : " TextColor="Black" FontAttributes="Bold"/>
-                        <Label Text="{Binding RequiredCount}" TextColor="Black"/>
+                        <Label x:Name="label1" Text="Stok Adet  : " TextColor="Black" FontAttributes="Bold"/>
+                        <Label x:Name="label2"  Text="{Binding RequiredCount}" TextColor="Black"/>
                     </StackLayout>
-                    <StackLayout Orientation="Horizontal"  WidthRequest="155" Margin="10,0,0,0">
-                        <Label Text="Ürün : " TextColor="Black" FontAttributes="Bold" />
-                        <Label Text="{Binding SelectedProduct}" TextColor="Black" />
+                    <StackLayout Orientation="Horizontal"  WidthRequest="155" >
+                        <Label  x:Name="label3"  Text="Ürün : " TextColor="Black" FontAttributes="Bold" />
+                        <Label  x:Name="label4"  Text="{Binding SelectedProduct}" TextColor="Black" />
                     </StackLayout>
                 </StackLayout>
-                <BoxView HeightRequest="1" BackgroundColor="Gray" HorizontalOptions="FillAndExpand" VerticalOptions="Center" Margin="0,5"/>
+                <BoxView x:Name="boxView1" HeightRequest="1" BackgroundColor="Gray" HorizontalOptions="FillAndExpand" VerticalOptions="Center" Margin="0,5" />
                 <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" >
                     <StackLayout Orientation="Horizontal" WidthRequest="155"  >
-                        <Label Text="Ürün Adet : " TextColor="Black" FontAttributes="Bold" />
-                        <Label Text="{Binding ReadedCount}" TextColor="Black"/>
+                        <Label  x:Name="label5"  Text="Ürün Adet : " TextColor="Black" FontAttributes="Bold" />
+                        <Label  x:Name="label6"  Text="{Binding ReadedCount}" TextColor="Black"/>
                     </StackLayout>
-                    <StackLayout Orientation="Horizontal"   WidthRequest="155" Margin="10,0,0,0">
-                        <Label Text="Depo : " TextColor="Black" FontAttributes="Bold"   />
-                        <Label Text="{Binding DepoKonum}" TextColor="Black" />
+                    <StackLayout Orientation="Horizontal"   WidthRequest="155"  >
+                        <Label  x:Name="label7"  Text="Depo : " TextColor="Black" FontAttributes="Bold"   />
+                        <Label  x:Name="label8"  Text="{Binding DepoKonum}" TextColor="Black" />
                     </StackLayout>
                 </StackLayout>
-                <BoxView HeightRequest="1" BackgroundColor="Gray" HorizontalOptions="FillAndExpand" VerticalOptions="Center" Margin="0,5"/>
+                <BoxView  x:Name="boxView2" HeightRequest="1" BackgroundColor="Gray" HorizontalOptions="FillAndExpand" VerticalOptions="Center" Margin="0,5"/>
             </StackLayout>
         </Frame>
-        <VerticalStackLayout Spacing="10"  VerticalOptions="Center">
-            <Label x:Name="barcodeResult"  FontSize="15" TextColor="White" HorizontalTextAlignment="Center" BackgroundColor="DarkGreen" Margin="0,10" Padding="0,5"/>
+        <VerticalStackLayout Spacing="10"  VerticalOptions="Center" Padding="10">
             <cv:CameraView  x:Name="cameraView" WidthRequest="400" HeightRequest="100" CamerasLoaded="cameraView_CamerasLoaded" BarCodeDetectionEnabled="True" BarcodeDetected="cameraView_BarcodeDetected"/>
         </VerticalStackLayout>
-        <StackLayout Padding="10,20" Margin="0,10,0,0"  >
-            <Frame BorderColor="Black">
-                <ScrollView Padding="5,5">
-                    <ListView x:Name="barcodeListView" HeightRequest="200" >
+        <StackLayout Padding="0,5" Margin="0,10,0,0"  >
+            <Frame BorderColor="LightGrey" CornerRadius="10"  BackgroundColor="Transparent">
+                <ScrollView Padding="5,5" >
+                    <ListView x:Name="barcodeListView" HeightRequest="200"   >
                         <ListView.ItemTemplate>
                             <DataTemplate>
-                                <TextCell Text="{Binding}" />
+                                <TextCell x:Name="barcode1" Text="{Binding}" TextColor="Black"/>
                             </DataTemplate>
                         </ListView.ItemTemplate>
                     </ListView>
@@ -61,9 +63,11 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-            <Button Text="Onayla"  Grid.Column="0" HeightRequest="60" WidthRequest="100" BackgroundColor="MediumSeaGreen" Clicked="Onayla_Clicked" FontSize="Body" FontAttributes="Bold" BorderWidth="1" BorderColor="Black"></Button>
-            <Button Text="Vazgeç"  Grid.Column="1" HeightRequest="60" WidthRequest="100" BackgroundColor="Red" FontSize="Body" Clicked="Vazgec_Clicked" FontAttributes="Bold"  BorderWidth="1" BorderColor="Black"></Button>
-
+            <Button Text="Onayla"  Grid.Column="0" HeightRequest="45" WidthRequest="100" BackgroundColor="MediumSeaGreen" Clicked="Onayla_Clicked" FontSize="Body" FontAttributes="Bold" BorderWidth="1" BorderColor="Black"></Button>
+            <Button Text="Vazgeç"  Grid.Column="1" HeightRequest="45" WidthRequest="100" BackgroundColor="Red" FontSize="Body" Clicked="Vazgec_Clicked" FontAttributes="Bold"  BorderWidth="1" BorderColor="Black"></Button>
         </Grid>
-    </VerticalStackLayout>
+        <VerticalStackLayout>
+            <Label x:Name="barcodeResult"  FontSize="18" FontAttributes="Bold" TextColor="White" HorizontalTextAlignment="Center"  Margin="0,10" Padding="0,5" />
+        </VerticalStackLayout>
+        </VerticalStackLayout>
 </ContentPage>
