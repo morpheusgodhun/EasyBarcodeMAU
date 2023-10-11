@@ -88,8 +88,8 @@ public partial class ScanBarcodeScreen : ContentPage {
         this.viewModel.DepoKonum = selectedItem.DepoKonum;
     }
 
-    private void Vazgec_Clicked(object sender, EventArgs e) {
-        Navigation.PushAsync(new ProductListPage());
+    private async void Vazgec_Clicked(object sender, EventArgs e) {
+        await Navigation.PopAsync();
     }
 
     private void Onayla_Clicked(object sender, EventArgs e) {
