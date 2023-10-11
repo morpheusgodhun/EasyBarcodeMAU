@@ -6,6 +6,7 @@ public partial class ProductListPage : ContentPage
 
     #region Variables
     private ProductItemBase selectedItem;
+    private Frame lastTappedFrame;
     #endregion
  
     #region InitModel
@@ -18,26 +19,22 @@ public partial class ProductListPage : ContentPage
 
     #endregion
 
-    #region 
- 
-    private async void Frame_Tapped(object sender, EventArgs e)
-    {
-        if (sender is Frame tappedFrame && tappedFrame.BindingContext is ProductItemBase itemBase)
-        {
-            if (selectedItem != null)
-            {
-                selectedItem.IsSelected = false;
-                selectedItem.BorderColor = Color.FromRgba(150, 255, 150,  255); 
-            }
+    #region Methods
 
-            itemBase.IsSelected = true;
-            var greenColor = Color.FromRgba(0, 255, 0, 255);
+    private async void Frame_Tapped(object sender, EventArgs e) {
+        if (lastTappedFrame != null) {
+            lastTappedFrame.BorderColor = Color.FromRgb(173, 216, 230);
+        }
+
+        if (sender is Frame tappedFrame) {
+            var greenColor = Color.FromRgba(255, 0, 0, 255);
             tappedFrame.BorderColor = greenColor;
+            lastTappedFrame = tappedFrame;
 
-            selectedItem = itemBase;
-
-            var scanPage = new ScanBarcodeScreen(selectedItem);
-            await Navigation.PushAsync(scanPage);
+            if (tappedFrame.BindingContext is ProductItemBase itemBase) {
+                var scanPage = new ScanBarcodeScreen(itemBase);
+                await Navigation.PushAsync(scanPage);
+            }
         }
     }
 
