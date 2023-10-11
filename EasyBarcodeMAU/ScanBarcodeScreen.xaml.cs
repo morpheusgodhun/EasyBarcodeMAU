@@ -15,8 +15,7 @@ public partial class ScanBarcodeScreen : ContentPage {
 
     #region InitModel
 
-    private void ClearScannedBarcodes()
-    {
+    private void ClearScannedBarcodes() {
         scannedBarcodes.Clear();
     }
 
@@ -31,7 +30,7 @@ public partial class ScanBarcodeScreen : ContentPage {
     #endregion
 
     private ObservableCollection<string> scannedBarcodes = new ObservableCollection<string>();
- 
+
 
     #region Properties
 
@@ -50,22 +49,23 @@ public partial class ScanBarcodeScreen : ContentPage {
 
     #region Methods
 
-
-
     private void cameraView_BarcodeDetected(object sender, BarcodeEventArgs args) {
         MainThread.BeginInvokeOnMainThread(() => {
-            if (args.Result.Length > 0)
-            {
-                var format = args.Result[0].BarcodeFormat;
-                var text = args.Result[0].Text;
-                barcodeResult.Text = $"{text}";
-                viewModel.ReadedCount++;
+            if (args.Result.Length > 0) {
+                for (int i = 0; i < args.Result.Length; i++) {
+                    if (viewModel.ReadedCount >= viewModel.RequiredCount) {
+                        break;
+                    }
 
-                // Add the scanned barcode to the list
-                scannedBarcodes.Add(text);
+                    var format = args.Result[i].BarcodeFormat;
+                    var text = args.Result[i].Text;
+                    barcodeResult.Text = $"{text}";
+                    viewModel.ReadedCount++;
+
+                    scannedBarcodes.Add(text);
+                }
             }
-            else
-            {
+            else {
                 barcodeResult.Text = "Barkod bulunamadý.";
             }
         });
@@ -80,17 +80,27 @@ public partial class ScanBarcodeScreen : ContentPage {
             });
         }
     }
+
     public ScanBarcodeScreen(ProductItemBase selectedItem) : this() {
         this.selectedItem = selectedItem;
-        viewModel.SelectedProduct = selectedItem?.UrunCins;/*+ ", " + "Konum:" + selectedItem?.DepoKonum;*/
+        viewModel.SelectedProduct = selectedItem?.UrunCins;
         this.viewModel.RequiredCount = selectedItem.RequiredCount;
         this.viewModel.DepoKonum = selectedItem.DepoKonum;
     }
 
-
-    #endregion
-
     private void Vazgec_Clicked(object sender, EventArgs e) {
         Navigation.PushAsync(new ProductListPage());
     }
+
+    private void Onayla_Clicked(object sender, EventArgs e) {
+        if (viewModel.ReadedCount == viewModel.RequiredCount) {
+            barcodeResult.Text = "Kayýt Onaylandý, Hedeflenen Stok Adedi Sayýmýna Ulaþýldý.";
+            this.BackgroundColor = Color.FromRgb(153, 255, 153);
+        }
+        else {
+            barcodeResult.Text = "! Hatalý Sayým Gerçekleþtirdiniz";
+            this.BackgroundColor = Color.FromRgba(255, 0, 0, 255);
+        }
+    }
+    #endregion
 }

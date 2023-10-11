@@ -5,7 +5,6 @@ public partial class ProductListPage : ContentPage
 {
 
     #region Variables
-    private ProductItemBase selectedItem;
     private Frame lastTappedFrame;
     #endregion
  
@@ -14,7 +13,6 @@ public partial class ProductListPage : ContentPage
     {
         InitializeComponent();
         BindingContext = new ProductModel();
-        selectedItem = null;
     }
 
     #endregion
