@@ -28,7 +28,6 @@ public partial class MainPage : ContentPage {
     private bool ValidateCredentials(string username, string password) {
         string validUsername = "orhun";
         string validPassword = "1234";
-
         return (username == validUsername && password == validPassword);
     }
 

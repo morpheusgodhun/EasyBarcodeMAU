@@ -7,21 +7,19 @@ public partial class ProductListPage : ContentPage
     #region Variables
     private ProductItemBase selectedItem;
     #endregion
-
-
-
-
+ 
     #region InitModel
     public ProductListPage()
     {
         InitializeComponent();
         BindingContext = new ProductModel();
+        selectedItem = null;
     }
 
     #endregion
 
-    #region Methods
-
+    #region 
+ 
     private async void Frame_Tapped(object sender, EventArgs e)
     {
         if (sender is Frame tappedFrame && tappedFrame.BindingContext is ProductItemBase itemBase)
@@ -29,6 +27,7 @@ public partial class ProductListPage : ContentPage
             if (selectedItem != null)
             {
                 selectedItem.IsSelected = false;
+                selectedItem.BorderColor = Color.FromRgba(150, 255, 150,  255); 
             }
 
             itemBase.IsSelected = true;
@@ -42,7 +41,7 @@ public partial class ProductListPage : ContentPage
         }
     }
 
-
+  
     private void OnConfirmButtonClicked(object sender, EventArgs e)
     {
         var scanPage = new ScanBarcodeScreen();

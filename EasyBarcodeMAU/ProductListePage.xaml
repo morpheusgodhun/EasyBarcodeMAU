@@ -6,12 +6,11 @@
              BackgroundImageSource="page6"
              Title="Ürün Seçiniz"
              >
-             
+
     <ContentPage.BindingContext>
         <vm:ProductModel/>
     </ContentPage.BindingContext>
-    <RefreshView >
-        <ScrollView>
+    <ScrollView>
             <FlexLayout Direction="Column" AlignItems="Center" JustifyContent="Center"    >
                 <CollectionView ItemsSource="{Binding ProductItems}" Margin="10">
                     <CollectionView.ItemTemplate>
@@ -79,5 +78,4 @@
                 </CollectionView>
             </FlexLayout>
         </ScrollView>
-    </RefreshView>
 </ContentPage>

@@ -3,7 +3,7 @@
 
     #region Properties
  
-        // Diğer özellikler... 
+       
  
         public int Id { get; set; }
         public int DefterNo { get; set; }
