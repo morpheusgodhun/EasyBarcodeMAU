@@ -64,7 +64,7 @@ public partial class ScanBarcodeScreen : ContentPage {
     }
     public ScanBarcodeScreen(ProductItemBase selectedItem) : this() {
         this.selectedItem = selectedItem;
-        viewModel.SelectedProduct = selectedItem?.MusteriAd;/*+ ", " + "Konum:" + selectedItem?.DepoKonum;*/
+        viewModel.SelectedProduct = selectedItem?.UrunCins;/*+ ", " + "Konum:" + selectedItem?.DepoKonum;*/
         this.viewModel.RequiredCount = selectedItem.RequiredCount;
         this.viewModel.DepoKonum = selectedItem.DepoKonum;
     }
