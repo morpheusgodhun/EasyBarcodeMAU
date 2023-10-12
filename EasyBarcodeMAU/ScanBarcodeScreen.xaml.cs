@@ -30,7 +30,7 @@ public partial class ScanBarcodeScreen : ContentPage {
 
     #endregion
 
-    private ObservableCollection<string> scannedBarcodes = new ObservableCollection<string>();
+    private ObservableCollection<string> scannedBarcodes = new();
 
 
     #region Properties
@@ -53,14 +53,15 @@ public partial class ScanBarcodeScreen : ContentPage {
     private async void cameraView_BarcodeDetected(object sender, BarcodeEventArgs args) {
         if (!isFocusing) {
             isFocusing = true;
-            MainThread.BeginInvokeOnMainThread(() => {
+            MainThread.BeginInvokeOnMainThread(async () => {
+                
                 if (args.Result.Length > 0) {
                     for (int i = 0; i < args.Result.Length; i++) {
                         var format = args.Result[i].BarcodeFormat;
                         var text = args.Result[i].Text;
                         barcodeResult.Text = $"{text}";
                         viewModel.ReadedCount++;
-                        scannedBarcodes.Add(text);
+                        scannedBarcodes.Add(text);                        
                         Vibration.Vibrate();
                     }
                 }
@@ -95,8 +96,10 @@ public partial class ScanBarcodeScreen : ContentPage {
         await Navigation.PopAsync();
     }
 
-    private void Onayla_Clicked(object sender, EventArgs e) {
+    private async void Onayla_Clicked(object sender, EventArgs e) {
+
         if (viewModel.ReadedCount == viewModel.RequiredCount) {
+
             barcodeResult.Text = "Kayýt Onaylandý, Hedeflenen Stok Adedi Sayýmýna Ulaþýldý.";
             this.BackgroundColor = Color.FromRgb(51, 153, 255);
             label1.TextColor = Color.FromRgb(255, 255, 255);
@@ -107,9 +110,10 @@ public partial class ScanBarcodeScreen : ContentPage {
             label6.TextColor = Color.FromRgb(255, 255, 255);
             label7.TextColor = Color.FromRgb(255, 255, 255);
             label8.TextColor = Color.FromRgb(255, 255, 255);
-            boxView1.Color   = Color.FromRgb(255, 255, 255);
-            boxView2.Color   = Color.FromRgb(255, 255, 255);
-
+            boxView1.Color =   Color.FromRgb(255, 255, 255);
+            boxView2.Color =   Color.FromRgb(255, 255, 255);
+            await DisplayAlert("UYARI", "Ürün Kontrol, Düzenleme Ekranýna Yönlendirileceksiniz" , "TAMAM");
+            await Navigation.PushAsync(new EditItemPage());
         }
         else {
             barcodeResult.Text = "! Hatalý Sayým Gerçekleþtirdiniz";
@@ -125,7 +129,7 @@ public partial class ScanBarcodeScreen : ContentPage {
             boxView1.Color   = Color.FromRgb(255, 255, 255);
             boxView2.Color   = Color.FromRgb(255, 255, 255);
 
+        }                            
         }
-    }
     #endregion
 }
