@@ -1,16 +1,16 @@
-using ZXing;
 using Camera.MAUI.ZXingHelper;
 using EasyBarcodeMAU.Models;
 using System.Collections.ObjectModel;
-using ZXing.QrCode.Internal;
 
 namespace EasyBarcodeMAU;
 public partial class ScanBarcodeScreen : ContentPage {
 
     #region Variables
 
-    private ProductItemBase selectedItem;
+    private ProductItemBase _selectedItem;
     private ReadBaseModel viewModel;
+    private bool isFocusing = false;
+    private int focusDelayMilliseconds = 1500;
 
     #endregion
 
@@ -50,25 +50,28 @@ public partial class ScanBarcodeScreen : ContentPage {
 
     #region Methods
 
-    private void cameraView_BarcodeDetected(object sender, BarcodeEventArgs args) {
-        MainThread.BeginInvokeOnMainThread(() => {
-            if (args.Result.Length > 0) {
-                for (int i = 0; i < args.Result.Length; i++) {
-                    if (viewModel.ReadedCount >= viewModel.RequiredCount) {
-                        break;
+    private async void cameraView_BarcodeDetected(object sender, BarcodeEventArgs args) {
+        if (!isFocusing) {
+            isFocusing = true;
+            MainThread.BeginInvokeOnMainThread(() => {
+                if (args.Result.Length > 0) {
+                    for (int i = 0; i < args.Result.Length; i++) {
+                        var format = args.Result[i].BarcodeFormat;
+                        var text = args.Result[i].Text;
+                        barcodeResult.Text = $"{text}";
+                        viewModel.ReadedCount++;
+                        scannedBarcodes.Add(text);
+                        Vibration.Vibrate();
                     }
-
-                    var format = args.Result[i].BarcodeFormat;
-                    var text = args.Result[i].Text;
-                    barcodeResult.Text = $"{text}";
-                    viewModel.ReadedCount++;
-                    scannedBarcodes.Add(text);
                 }
-            }
-            else {
-                barcodeResult.Text = "Barkod bulunamadý.";
-            }
-        });
+                else {
+                    barcodeResult.Text = "Barkod bulunamadý.";
+                }
+            });
+
+            await Task.Delay(focusDelayMilliseconds);
+            isFocusing = false;
+        }
     }
 
     private void cameraView_CamerasLoaded(object sender, EventArgs e) {
@@ -81,11 +84,11 @@ public partial class ScanBarcodeScreen : ContentPage {
         }
     }
 
-    public ScanBarcodeScreen(ProductItemBase selectedItem) : this() {
-        this.selectedItem = selectedItem;
-        viewModel.SelectedProduct = selectedItem?.UrunCins;
-        this.viewModel.RequiredCount = selectedItem.RequiredCount;
-        this.viewModel.DepoKonum = selectedItem.DepoKonum;
+    public ScanBarcodeScreen(ProductItemBase _selectedItem) : this() {
+        this._selectedItem = _selectedItem;
+        viewModel.SelectedProduct = _selectedItem?.UrunCins;
+        this.viewModel.RequiredCount = _selectedItem.RequiredCount;
+        this.viewModel.DepoKonum = _selectedItem.DepoKonum;
     }
 
     private async void Vazgec_Clicked(object sender, EventArgs e) {
@@ -104,11 +107,8 @@ public partial class ScanBarcodeScreen : ContentPage {
             label6.TextColor = Color.FromRgb(255, 255, 255);
             label7.TextColor = Color.FromRgb(255, 255, 255);
             label8.TextColor = Color.FromRgb(255, 255, 255);
-            boxView1.Color = Color.FromRgb(255, 255, 255);
-            boxView2.Color = Color.FromRgb(255, 255, 255);
-            
-
-
+            boxView1.Color   = Color.FromRgb(255, 255, 255);
+            boxView2.Color   = Color.FromRgb(255, 255, 255);
 
         }
         else {
@@ -122,8 +122,8 @@ public partial class ScanBarcodeScreen : ContentPage {
             label6.TextColor = Color.FromRgb(255, 255, 255);
             label7.TextColor = Color.FromRgb(255, 255, 255);
             label8.TextColor = Color.FromRgb(255, 255, 255);
-            boxView1.Color = Color.FromRgb(255, 255, 255);
-            boxView2.Color = Color.FromRgb(255, 255, 255);
+            boxView1.Color   = Color.FromRgb(255, 255, 255);
+            boxView2.Color   = Color.FromRgb(255, 255, 255);
 
         }
     }
