@@ -14,7 +14,6 @@ public partial class MainPage : ContentPage {
     private async void OnLoginButtonClicked(object sender, EventArgs e) {
         string username = UsernameEntry.Text;
         string password = PasswordEntry.Text;
-
         bool isCredentialsValid = ValidateCredentials(username, password);
 
         if (isCredentialsValid) {
@@ -25,7 +24,7 @@ public partial class MainPage : ContentPage {
         }
     }
 
-    private bool ValidateCredentials(string username, string password) {
+    private static bool ValidateCredentials(string username, string password) {
         string validUsername = "orhun";
         string validPassword = "1234";
         return (username == validUsername && password == validPassword);

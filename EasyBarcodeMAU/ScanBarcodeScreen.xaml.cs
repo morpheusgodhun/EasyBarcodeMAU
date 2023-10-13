@@ -1,16 +1,16 @@
-using ZXing;
 using Camera.MAUI.ZXingHelper;
 using EasyBarcodeMAU.Models;
 using System.Collections.ObjectModel;
-using ZXing.QrCode.Internal;
 
 namespace EasyBarcodeMAU;
 public partial class ScanBarcodeScreen : ContentPage {
 
     #region Variables
 
-    private ProductItemBase selectedItem;
+    private ProductItemBase _selectedItem;
     private ReadBaseModel viewModel;
+    private bool isFocusing = false;
+    private int focusDelayMilliseconds = 1500;
 
     #endregion
 
@@ -30,7 +30,7 @@ public partial class ScanBarcodeScreen : ContentPage {
 
     #endregion
 
-    private ObservableCollection<string> scannedBarcodes = new ObservableCollection<string>();
+    private ObservableCollection<string> scannedBarcodes = new();
 
 
     #region Properties
@@ -50,25 +50,29 @@ public partial class ScanBarcodeScreen : ContentPage {
 
     #region Methods
 
-    private void cameraView_BarcodeDetected(object sender, BarcodeEventArgs args) {
-        MainThread.BeginInvokeOnMainThread(() => {
-            if (args.Result.Length > 0) {
-                for (int i = 0; i < args.Result.Length; i++) {
-                    if (viewModel.ReadedCount >= viewModel.RequiredCount) {
-                        break;
+    private async void cameraView_BarcodeDetected(object sender, BarcodeEventArgs args) {
+        if (!isFocusing) {
+            isFocusing = true;
+            MainThread.BeginInvokeOnMainThread(async() => {
+                
+                if (args.Result.Length > 0) {
+                    for (int i = 0; i < args.Result.Length; i++) {
+                        var format = args.Result[i].BarcodeFormat;
+                        var text = args.Result[i].Text;
+                        barcodeResult.Text = $"{text}";
+                        viewModel.ReadedCount++;
+                        scannedBarcodes.Add(text);                        
+                        Vibration.Vibrate();
                     }
-
-                    var format = args.Result[i].BarcodeFormat;
-                    var text = args.Result[i].Text;
-                    barcodeResult.Text = $"{text}";
-                    viewModel.ReadedCount++;
-                    scannedBarcodes.Add(text);
                 }
-            }
-            else {
-                barcodeResult.Text = "Barkod bulunamadý.";
-            }
-        });
+                else {
+                    barcodeResult.Text = "Barkod bulunamadý.";
+                }
+            });
+
+            await Task.Delay(focusDelayMilliseconds);
+            isFocusing = false;
+        }
     }
 
     private void cameraView_CamerasLoaded(object sender, EventArgs e) {
@@ -81,19 +85,21 @@ public partial class ScanBarcodeScreen : ContentPage {
         }
     }
 
-    public ScanBarcodeScreen(ProductItemBase selectedItem) : this() {
-        this.selectedItem = selectedItem;
-        viewModel.SelectedProduct = selectedItem?.UrunCins;
-        this.viewModel.RequiredCount = selectedItem.RequiredCount;
-        this.viewModel.DepoKonum = selectedItem.DepoKonum;
+    public ScanBarcodeScreen(ProductItemBase _selectedItem) : this() {
+        this._selectedItem = _selectedItem;
+        viewModel.SelectedProduct = _selectedItem?.UrunCins;
+        this.viewModel.RequiredCount = _selectedItem.RequiredCount;
+        this.viewModel.DepoKonum = _selectedItem.DepoKonum;
     }
 
     private async void Vazgec_Clicked(object sender, EventArgs e) {
         await Navigation.PopAsync();
     }
 
-    private void Onayla_Clicked(object sender, EventArgs e) {
+    private async void Onayla_Clicked(object sender, EventArgs e) {
+
         if (viewModel.ReadedCount == viewModel.RequiredCount) {
+
             barcodeResult.Text = "Kayýt Onaylandý, Hedeflenen Stok Adedi Sayýmýna Ulaþýldý.";
             this.BackgroundColor = Color.FromRgb(51, 153, 255);
             label1.TextColor = Color.FromRgb(255, 255, 255);
@@ -104,8 +110,12 @@ public partial class ScanBarcodeScreen : ContentPage {
             label6.TextColor = Color.FromRgb(255, 255, 255);
             label7.TextColor = Color.FromRgb(255, 255, 255);
             label8.TextColor = Color.FromRgb(255, 255, 255);
-            boxView1.Color = Color.FromRgb(255, 255, 255);
-            boxView2.Color = Color.FromRgb(255, 255, 255);
+            boxView1.Color =   Color.FromRgb(255, 255, 255);
+            boxView2.Color =   Color.FromRgb(255, 255, 255);
+            await DisplayAlert("UYARI", "Ürün Kontrol, Düzenleme Ekranýna Yönlendirileceksiniz" , "TAMAM");
+            await Navigation.PushAsync(new EditItemPage(_selectedItem, viewModel.ReadedCount));
+
+
         }
         else {
             barcodeResult.Text = "! Hatalý Sayým Gerçekleþtirdiniz";
@@ -116,10 +126,11 @@ public partial class ScanBarcodeScreen : ContentPage {
             label4.TextColor = Color.FromRgb(255, 255, 255);
             label5.TextColor = Color.FromRgb(255, 255, 255);
             label6.TextColor = Color.FromRgb(255, 255, 255);
-            label7.TextColor = Color.FromRgb(255, 255, 255);
-            label8.TextColor = Color.FromRgb(255, 255, 255);
-            boxView1.Color = Color.FromRgb(255, 255, 255);
-            boxView2.Color = Color.FromRgb(255, 255, 255);
+            boxView1.Color   = Color.FromRgb(255, 255, 255);
+            boxView2.Color   = Color.FromRgb(255, 255, 255);
+
+        }                            
+        }
         }
     }
     #endregion

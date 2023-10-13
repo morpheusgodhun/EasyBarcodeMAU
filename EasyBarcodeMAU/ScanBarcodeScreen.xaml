@@ -3,8 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:vm="clr-namespace:EasyBarcodeMAU.Models"
              xmlns:cv="clr-namespace:Camera.MAUI;assembly=Camera.MAUI"
-             x:Class="EasyBarcodeMAU.ScanBarcodeScreen"
-             >
+             x:Class="EasyBarcodeMAU.ScanBarcodeScreen">
     
     <ContentPage.BindingContext>
         <vm:ReadBaseModel />
