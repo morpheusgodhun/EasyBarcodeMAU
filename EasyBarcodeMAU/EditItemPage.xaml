@@ -5,14 +5,50 @@
              xmlns:cv="clr-namespace:Camera.MAUI;assembly=Camera.MAUI"
              x:Class="EasyBarcodeMAU.EditItemPage"
              Title="Ürün Değişikliği">
-    
-     <ContentPage.BindingContext>
-     <vm:ReadBaseModel />
- </ContentPage.BindingContext>
-    <VerticalStackLayout>
-        <Button Text="+" Clicked="ArtirButton_Clicked" />
-        <Button Text="-" Clicked="AzaltButton_Clicked" />
-        <Label Text="{Binding ReadedCount}" />
+
+    <ContentPage.BindingContext>
+        <vm:ReadBaseModel />
+    </ContentPage.BindingContext>
+    <VerticalStackLayout VerticalOptions="Start" Margin="5">
+        <StackLayout>
+            <Frame BorderColor="DarkGrey" 
+                   Padding="1"
+                   CornerRadius="3"
+                   BackgroundColor="Transparent"
+                   Margin="5"
+                   MinimumHeightRequest="400"
+                   >
+
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="300"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    
+                    
+
+                </Grid>
+            </Frame>
+            <StackLayout>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                </Grid>
+                <Button Grid.Row="0" Margin="10" Text="Düzenlemeyi Kaydet" BackgroundColor="LightSkyBlue"></Button>
+                <Button Grid.Row="1" Margin="10"  Text="Vazgeç" BackgroundColor="LightSlateGray"></Button>
+            </StackLayout>
+        </StackLayout>
     </VerticalStackLayout>
-    
+
+    <!--<Button Text="+" Clicked="ArtirButton_Clicked" />
+        <Button Text="-" Clicked="AzaltButton_Clicked" />
+        <Label Text="{Binding ReadedCount}" />-->
 </ContentPage>

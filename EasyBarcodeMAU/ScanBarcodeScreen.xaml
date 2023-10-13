@@ -45,7 +45,7 @@
                     <ListView x:Name="barcodeListView" HeightRequest="200"   >
                         <ListView.ItemTemplate>
                             <DataTemplate>
-                                <TextCell Text="{Binding}" TextColor="Black"/>
+                                <TextCell Text="{Binding}" TextColor="Black"/> 
                             </DataTemplate>
                         </ListView.ItemTemplate>
                     </ListView>

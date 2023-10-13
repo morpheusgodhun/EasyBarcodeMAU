@@ -30,7 +30,7 @@ public partial class ScanBarcodeScreen : ContentPage {
 
     #endregion
 
-    private ObservableCollection<string> scannedBarcodes = new();
+   
 
 
     #region Properties
@@ -50,22 +50,46 @@ public partial class ScanBarcodeScreen : ContentPage {
 
     #region Methods
 
-    private async void cameraView_BarcodeDetected(object sender, BarcodeEventArgs args) {
-        if (!isFocusing) {
+    public class BarcodeItem
+    {
+        public string Barcode { get; set; }
+        public int Count { get; set; }
+    }
+
+    private ObservableCollection<(string Barcode, int Count)> scannedBarcodes = new();
+
+    private async void cameraView_BarcodeDetected(object sender, BarcodeEventArgs args)
+    {
+        if (!isFocusing)
+        {
             isFocusing = true;
-            MainThread.BeginInvokeOnMainThread(async() => {
-                
-                if (args.Result.Length > 0) {
-                    for (int i = 0; i < args.Result.Length; i++) {
+            MainThread.BeginInvokeOnMainThread(() => {
+
+                if (args.Result.Length > 0)
+                {
+                    for (int i = 0; i < args.Result.Length; i++)
+                    {
                         var format = args.Result[i].BarcodeFormat;
                         var text = args.Result[i].Text;
                         barcodeResult.Text = $"{text}";
                         viewModel.ReadedCount++;
-                        scannedBarcodes.Add(text);                        
+
+                        var existingItem = scannedBarcodes.FirstOrDefault(item => item.Barcode == text);
+                        if (existingItem != default)
+                        {
+                            scannedBarcodes.Remove(existingItem);
+                            scannedBarcodes.Add((text, existingItem.Count + 1));
+                        }
+                        else
+                        {
+                            scannedBarcodes.Add((text, 1));
+                        }
+
                         Vibration.Vibrate();
                     }
                 }
-                else {
+                else
+                {
                     barcodeResult.Text = "Barkod bulunamadý.";
                 }
             });
@@ -112,7 +136,6 @@ public partial class ScanBarcodeScreen : ContentPage {
             label8.TextColor = Color.FromRgb(255, 255, 255);
             boxView1.Color =   Color.FromRgb(255, 255, 255);
             boxView2.Color =   Color.FromRgb(255, 255, 255);
-            await DisplayAlert("UYARI", "Ürün Kontrol, Düzenleme Ekranýna Yönlendirileceksiniz" , "TAMAM");
             await Navigation.PushAsync(new EditItemPage(_selectedItem, viewModel.ReadedCount));
 
 
@@ -130,8 +153,7 @@ public partial class ScanBarcodeScreen : ContentPage {
             boxView2.Color   = Color.FromRgb(255, 255, 255);
 
         }                            
-        }
-        }
+       
     }
     #endregion
 }
