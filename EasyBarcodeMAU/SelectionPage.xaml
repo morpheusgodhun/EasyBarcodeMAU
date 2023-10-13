@@ -15,9 +15,9 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-        <Button x:Name="productInputButton" Text="Ürün Girişi"  Grid.Row="0" HeightRequest="60" WidthRequest="330" BackgroundColor="MediumSeaGreen"  Clicked="ProductInputButton_Clicked" FontSize="Body" FontAttributes="Bold" BorderWidth="1" BorderColor="Black"></Button>
-        <Button x:Name="productOutputButton" Clicked="ProductOutputButton_Clicked" Text="Ürün Çıkışı" Grid.Row="1" HeightRequest="60" WidthRequest="330" FontSize="Body"  FontAttributes="Bold" BackgroundColor="DarkSlateBlue" BorderWidth="1" BorderColor="Black"></Button>
-        <Button Text="Çıkış" Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2" HeightRequest="60" WidthRequest="330" BackgroundColor="IndianRed"  Clicked="ExitButton_Clicked" FontSize="Body"  FontAttributes="Bold" BorderWidth="1" BorderColor="Black"></Button>
+        <Button x:Name="productInputButton" Text="Ürün Girişi"  Grid.Row="0" HeightRequest="60" WidthRequest="300" BackgroundColor="MediumSeaGreen"  Clicked="ProductInputButton_Clicked" FontSize="Body" FontAttributes="Bold" BorderWidth="1" BorderColor="Black" FontFamily="Lobster"></Button>
+        <Button x:Name="productOutputButton" Clicked="ProductOutputButton_Clicked" Text="Ürün Çıkışı" Grid.Row="1" HeightRequest="60" WidthRequest="300" FontSize="Body"  FontAttributes="Bold" BackgroundColor="DarkSlateBlue" BorderWidth="1" BorderColor="Black"></Button>
+        <Button Text="Çıkış" Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2" HeightRequest="60" WidthRequest="300" BackgroundColor="IndianRed"  Clicked="ExitButton_Clicked" FontSize="Body"  FontAttributes="Bold" BorderWidth="1" BorderColor="Black"></Button>
     </Grid>
 
 </ContentPage>

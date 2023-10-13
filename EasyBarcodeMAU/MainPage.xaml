@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="EasyBarcodeMAU.MainPage"
              BackgroundImageSource="page6">
-    
+
     <Grid Padding="50,80" RowSpacing="20" >
         <Grid.RowDefinitions>
             <RowDefinition Height="70"/>

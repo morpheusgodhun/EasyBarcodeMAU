@@ -16,7 +16,7 @@ public partial class ProductListPage : ContentPage
     }
 
     #endregion
-
+     
     #region Methods
 
     private async void Frame_Tapped(object sender, EventArgs e) {
@@ -43,5 +43,4 @@ public partial class ProductListPage : ContentPage
         Navigation.PushAsync(scanPage);
     }
     #endregion
-
 }

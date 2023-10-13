@@ -106,10 +106,6 @@ public partial class ScanBarcodeScreen : ContentPage {
             label8.TextColor = Color.FromRgb(255, 255, 255);
             boxView1.Color = Color.FromRgb(255, 255, 255);
             boxView2.Color = Color.FromRgb(255, 255, 255);
-            
-
-
-
         }
         else {
             barcodeResult.Text = "! Hatalý Sayým Gerçekleþtirdiniz";
@@ -124,7 +120,6 @@ public partial class ScanBarcodeScreen : ContentPage {
             label8.TextColor = Color.FromRgb(255, 255, 255);
             boxView1.Color = Color.FromRgb(255, 255, 255);
             boxView2.Color = Color.FromRgb(255, 255, 255);
-
         }
     }
     #endregion
