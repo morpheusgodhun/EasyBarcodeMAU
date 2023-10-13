@@ -147,6 +147,8 @@ public partial class ScanBarcodeScreen : ContentPage {
             label4.TextColor = Color.FromRgb(255, 255, 255);
             label5.TextColor = Color.FromRgb(255, 255, 255);
             label6.TextColor = Color.FromRgb(255, 255, 255);
+            label7.TextColor = Color.FromRgb(255, 255, 255);
+            label8.TextColor = Color.FromRgb(255, 255, 255);
             boxView1.Color   = Color.FromRgb(255, 255, 255);
             boxView2.Color   = Color.FromRgb(255, 255, 255);
 
