@@ -30,9 +30,7 @@ public partial class ScanBarcodeScreen : ContentPage {
 
     #endregion
 
-   
-
-
+ 
     #region Properties
 
     private int _count;
@@ -63,7 +61,7 @@ public partial class ScanBarcodeScreen : ContentPage {
         if (!isFocusing)
         {
             isFocusing = true;
-            MainThread.BeginInvokeOnMainThread(() => {
+            MainThread.BeginInvokeOnMainThread( () => {
 
                 if (args.Result.Length > 0)
                 {
@@ -83,7 +81,7 @@ public partial class ScanBarcodeScreen : ContentPage {
                         else
                         {
                             scannedBarcodes.Add((text, 1));
-                        }
+                        } 
 
                         Vibration.Vibrate();
                     }

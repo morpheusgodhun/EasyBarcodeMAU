@@ -1,7 +1,11 @@
-﻿namespace EasyBarcodeMAU.Models;
+﻿using System.ComponentModel;
+
+namespace EasyBarcodeMAU.Models;
 public class ReadBaseModel : BaseViewModel {
 
     public event EventHandler SelectedProductChanged;
+
+ 
 
     #region Properties
 
@@ -84,15 +88,19 @@ public class ReadBaseModel : BaseViewModel {
 
 
     private int _readedCount;
-    public int ReadedCount {
+    public int ReadedCount
+    {
         get { return _readedCount; }
-        set {
-            if (_readedCount != value) {
+        set
+        {
+            if (_readedCount != value)
+            {
                 _readedCount = value;
                 OnPropertyChanged(nameof(ReadedCount));
             }
         }
     }
+
     private string _selectedProduct;
     public string SelectedProduct {
         get { return _selectedProduct; }
@@ -104,6 +112,8 @@ public class ReadBaseModel : BaseViewModel {
             }
         }
     }
+
+    public object ScannedBarcodes { get; internal set; }
     #endregion
 
 }
