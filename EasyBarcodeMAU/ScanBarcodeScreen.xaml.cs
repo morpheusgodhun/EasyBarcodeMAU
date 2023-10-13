@@ -53,7 +53,7 @@ public partial class ScanBarcodeScreen : ContentPage {
     private async void cameraView_BarcodeDetected(object sender, BarcodeEventArgs args) {
         if (!isFocusing) {
             isFocusing = true;
-            MainThread.BeginInvokeOnMainThread(async () => {
+            MainThread.BeginInvokeOnMainThread(async() => {
                 
                 if (args.Result.Length > 0) {
                     for (int i = 0; i < args.Result.Length; i++) {
@@ -113,7 +113,7 @@ public partial class ScanBarcodeScreen : ContentPage {
             boxView1.Color =   Color.FromRgb(255, 255, 255);
             boxView2.Color =   Color.FromRgb(255, 255, 255);
             await DisplayAlert("UYARI", "Ürün Kontrol, Düzenleme Ekranýna Yönlendirileceksiniz" , "TAMAM");
-            await Navigation.PushAsync(new EditItemPage());
+            await Navigation.PushAsync(new EditItemPage(_selectedItem, viewModel.ReadedCount));
         }
         else {
             barcodeResult.Text = "! Hatalý Sayým Gerçekleþtirdiniz";

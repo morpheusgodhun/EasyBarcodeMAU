@@ -9,11 +9,10 @@
      <ContentPage.BindingContext>
      <vm:ReadBaseModel />
  </ContentPage.BindingContext>
-    
     <VerticalStackLayout>
-        <Label 
-            Text="Ürün Değişikliklerinizi Uyarlayınız."
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
+        <Button Text="+" Clicked="ArtirButton_Clicked" />
+        <Button Text="-" Clicked="AzaltButton_Clicked" />
+        <Label Text="{Binding ReadedCount}" />
     </VerticalStackLayout>
+    
 </ContentPage>
