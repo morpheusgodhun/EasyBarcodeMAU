@@ -20,6 +20,6 @@
             <Button Text="Çıkış" Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2" HeightRequest="60" WidthRequest="300" BackgroundColor="IndianRed"  Clicked="ExitButton_Clicked" FontSize="Body"  FontAttributes="Bold" BorderWidth="1" BorderColor="Black"></Button>
         </Grid>
     </HorizontalStackLayout>
-    
+
 
 </ContentPage>

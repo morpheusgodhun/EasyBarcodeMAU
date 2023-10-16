@@ -53,16 +53,18 @@ public partial class ScanBarcodeScreen : ContentPage {
         public int Count { get; set; }
     }
 
-    private ObservableCollection<BarcodeItem> scannedBarcodes = new ObservableCollection<BarcodeItem>();
+    private ObservableCollection<(string Barcode, int Count)> scannedBarcodes = new ObservableCollection<(string Barcode, int Count)>();
 
-    public ObservableCollection<BarcodeItem> GetScannedBarcodes() {
+    public ObservableCollection<(string Barcode, int Count)> GetScannedBarcodes() {
         return scannedBarcodes;
     }
+
 
     private async void cameraView_BarcodeDetected(object sender, BarcodeEventArgs args) {
         if (!isFocusing) {
             isFocusing = true;
-            MainThread.BeginInvokeOnMainThread(() => {
+            MainThread.BeginInvokeOnMainThread(() =>
+            {
                 if (args.Result.Length > 0) {
                     for (int i = 0; i < args.Result.Length; i++) {
                         var format = args.Result[i].BarcodeFormat;
@@ -71,18 +73,16 @@ public partial class ScanBarcodeScreen : ContentPage {
 
                         viewModel.ReadedCount++;
 
-                        MainThread.BeginInvokeOnMainThread(() => {
-                            var barcodeItem = new BarcodeItem {
-                                Barcode = text,
-                                Count = 1
-                            };
-
+                        // Bu kýsmý ayrý bir MainThread içine alýn
+                        MainThread.BeginInvokeOnMainThread(() =>
+                        {
                             var existingItem = scannedBarcodes.FirstOrDefault(item => item.Barcode == text);
-                            if (existingItem != null) {
-                                existingItem.Count++;
+                            if (existingItem != default) {
+                                scannedBarcodes.Remove(existingItem);
+                                scannedBarcodes.Add((text, existingItem.Count + 1));
                             }
                             else {
-                                scannedBarcodes.Add(new BarcodeItem { Barcode = "Barkod Deðeri", Count = 1 });
+                                scannedBarcodes.Add((text, 1));
                             }
 
                             Vibration.Vibrate();
@@ -98,6 +98,7 @@ public partial class ScanBarcodeScreen : ContentPage {
             isFocusing = false;
         }
     }
+
 
     private void cameraView_CamerasLoaded(object sender, EventArgs e) {
         if (cameraView.Cameras.Count > 0) {
@@ -136,7 +137,9 @@ public partial class ScanBarcodeScreen : ContentPage {
             label8.TextColor = Color.FromRgb(255, 255, 255);
             boxView1.Color = Color.FromRgb(255, 255, 255);
             boxView2.Color = Color.FromRgb(255, 255, 255);
-            await Navigation.PopAsync();
+            await Navigation.PushAsync(new EditItemPage(_selectedItem, viewModel.ReadedCount, scannedBarcodes));
+
+
         }
         else {
             barcodeResult.Text = "! Hatalý Sayým Gerçekleþtirdiniz";
