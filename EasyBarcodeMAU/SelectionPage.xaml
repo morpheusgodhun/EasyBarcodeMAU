@@ -4,20 +4,22 @@
              x:Class="EasyBarcodeMAU.SelectionPage"
              BackgroundImageSource="page6"
              Title="Menü Seçimi">
+    <HorizontalStackLayout HorizontalOptions="Center">
+        <Grid Padding="10,20">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="70"/>
+                <RowDefinition Height="70"/>
+                <RowDefinition Height="70"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions >
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
 
-    <Grid Padding="10,20" WidthRequest="340">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="70"/>
-            <RowDefinition Height="70"/>
-            <RowDefinition Height="70"/>
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions >
-            <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
-
-        <Button x:Name="productInputButton" Text="Ürün Girişi"  Grid.Row="0" HeightRequest="60" WidthRequest="300" BackgroundColor="MediumSeaGreen"  Clicked="ProductInputButton_Clicked" FontSize="Body" FontAttributes="Bold" BorderWidth="1" BorderColor="Black" FontFamily="Lobster"></Button>
-        <Button x:Name="productOutputButton" Clicked="ProductOutputButton_Clicked" Text="Ürün Çıkışı" Grid.Row="1" HeightRequest="60" WidthRequest="300" FontSize="Body"  FontAttributes="Bold" BackgroundColor="DarkSlateBlue" BorderWidth="1" BorderColor="Black"></Button>
-        <Button Text="Çıkış" Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2" HeightRequest="60" WidthRequest="300" BackgroundColor="IndianRed"  Clicked="ExitButton_Clicked" FontSize="Body"  FontAttributes="Bold" BorderWidth="1" BorderColor="Black"></Button>
-    </Grid>
+            <Button x:Name="productInputButton" Text="Ürün Girişi"  Grid.Row="0" HeightRequest="60" WidthRequest="300" BackgroundColor="MediumSeaGreen"  Clicked="ProductInputButton_Clicked" FontSize="Body" FontAttributes="Bold" BorderWidth="1" BorderColor="Black" FontFamily="Lobster"></Button>
+            <Button x:Name="productOutputButton" Clicked="ProductOutputButton_Clicked" Text="Ürün Çıkışı" Grid.Row="1" HeightRequest="60" WidthRequest="300" FontSize="Body"  FontAttributes="Bold" BackgroundColor="DarkSlateBlue" BorderWidth="1" BorderColor="Black"></Button>
+            <Button Text="Çıkış" Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2" HeightRequest="60" WidthRequest="300" BackgroundColor="IndianRed"  Clicked="ExitButton_Clicked" FontSize="Body"  FontAttributes="Bold" BorderWidth="1" BorderColor="Black"></Button>
+        </Grid>
+    </HorizontalStackLayout>
+    
 
 </ContentPage>

@@ -11,26 +11,30 @@
     </ContentPage.BindingContext>
     <VerticalStackLayout VerticalOptions="Start" Margin="5">
         <StackLayout>
-            <Frame BorderColor="DarkGrey" 
-                   Padding="1"
-                   CornerRadius="3"
-                   BackgroundColor="Transparent"
-                   Margin="5"
-                   MinimumHeightRequest="400"
-                   >
+            <Frame BorderColor="DarkGrey"
+               Padding="1"
+               CornerRadius="3"
+               BackgroundColor="Transparent"
+               Margin="5"
+               MinimumHeightRequest="400">
 
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="300"/>
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
-                    
-                    
-
-                </Grid>
+                <ScrollView>
+                    <StackLayout>
+                        <!-- Tarayıcı ekranında okunan barkodları burada listeleyeceğiz -->
+                        <ListView x:Name="barcodeListView">
+                            <ListView.ItemTemplate >
+                                <DataTemplate>
+                                    <ViewCell>
+                                        <StackLayout Orientation="Vertical" Padding="10">
+                                            <Label Text="{Binding}" TextColor="Black"/>
+                                            <BoxView HeightRequest="10" BackgroundColor="Transparent" />
+                                        </StackLayout>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </StackLayout>
+                </ScrollView>
             </Frame>
             <StackLayout>
                 <Grid>
@@ -48,7 +52,9 @@
         </StackLayout>
     </VerticalStackLayout>
 
-    <!--<Button Text="+" Clicked="ArtirButton_Clicked" />
+
+</ContentPage>
+
+<!--<Button Text="+" Clicked="ArtirButton_Clicked" />
         <Button Text="-" Clicked="AzaltButton_Clicked" />
         <Label Text="{Binding ReadedCount}" />-->
-</ContentPage>
