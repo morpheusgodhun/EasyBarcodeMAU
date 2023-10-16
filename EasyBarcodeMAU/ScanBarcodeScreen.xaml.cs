@@ -72,19 +72,16 @@ public partial class ScanBarcodeScreen : ContentPage {
                         viewModel.ReadedCount++;
 
                         MainThread.BeginInvokeOnMainThread(() => {
-                            // Barkodu ayrý bir BarcodeItem olarak oluþtur
                             var barcodeItem = new BarcodeItem {
                                 Barcode = text,
                                 Count = 1
                             };
 
-                            // Eðer scannedBarcodes koleksiyonu içinde ayný barkod zaten varsa adedini artýr
                             var existingItem = scannedBarcodes.FirstOrDefault(item => item.Barcode == text);
                             if (existingItem != null) {
                                 existingItem.Count++;
                             }
                             else {
-                                // Yeni bir barkodu scannedBarcodes koleksiyonuna ekle
                                 scannedBarcodes.Add(new BarcodeItem { Barcode = "Barkod Deðeri", Count = 1 });
                             }
 

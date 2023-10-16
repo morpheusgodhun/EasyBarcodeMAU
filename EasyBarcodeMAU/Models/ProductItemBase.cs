@@ -2,9 +2,7 @@
     public class ProductItemBase {
 
     #region Properties
- 
        
- 
         public int Id { get; set; }
         public int DefterNo { get; set; }
         public DateTime DepoGirisi { get; set; }

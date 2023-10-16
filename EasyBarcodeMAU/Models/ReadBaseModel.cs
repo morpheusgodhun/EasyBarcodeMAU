@@ -112,6 +112,17 @@ public class ReadBaseModel : BaseViewModel {
             }
         }
     }
+    private string _barcodeText;
+    public string BarcodeText {
+        get { return _selectedProduct; }
+        set {
+            if (_barcodeText != value) {
+                _barcodeText = value;
+                OnPropertyChanged(nameof(BarcodeText));
+                SelectedProductChanged?.Invoke(this, EventArgs.Empty);
+            }
+        }
+    }
     #endregion
 
 }
