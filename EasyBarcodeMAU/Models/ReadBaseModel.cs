@@ -5,9 +5,12 @@ public class ReadBaseModel : BaseViewModel {
 
     public event EventHandler SelectedProductChanged;
 
- 
+
 
     #region Properties
+
+    public string Barcode { get; set; }
+    public int Count { get; set; }
 
     public int Id { get; set; }
     private int _defterNo;

@@ -2,15 +2,16 @@ using System.Collections.ObjectModel;
 
 using EasyBarcodeMAU.Models;
 
-namespace EasyBarcodeMAU {
+namespace EasyBarcodeMAU
+{
     public partial class EditItemPage : ContentPage
     {
         private int _readedCount;
         private ProductItemBase _selectedItem;
         private ReadBaseModel viewModel;
-        private ObservableCollection<(string Barcode, int Count)> scannedBarcodes;
+        private ObservableCollection<ReadBaseModel> scannedBarcodes;
 
-        public EditItemPage(ProductItemBase selectedItem, int readedCount, ObservableCollection<(string Barcode, int Count)> scannedBarcodes)
+        public EditItemPage(ProductItemBase selectedItem, int readedCount, ObservableCollection<ReadBaseModel> scannedBarcodes)
         {
             InitializeComponent();
             _selectedItem = selectedItem;
@@ -21,7 +22,6 @@ namespace EasyBarcodeMAU {
             BindingContext = viewModel;
         }
 
- 
         protected override void OnAppearing()
         {
             base.OnAppearing();
@@ -43,5 +43,4 @@ namespace EasyBarcodeMAU {
             }
         }
     }
-
 }

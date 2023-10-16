@@ -11,6 +11,7 @@ public partial class ScanBarcodeScreen : ContentPage {
     private ReadBaseModel viewModel;
     private bool isFocusing = false;
     private int focusDelayMilliseconds = 1500;
+ 
 
     #endregion
 
@@ -47,22 +48,25 @@ public partial class ScanBarcodeScreen : ContentPage {
     #endregion
 
     #region Methods
+ 
+    private ObservableCollection<ReadBaseModel> scannedBarcodes = new ObservableCollection<ReadBaseModel>();
 
-    public class BarcodeItem
+    public ObservableCollection<ReadBaseModel> ScannedBarcodes
     {
-        public string Barcode { get; set; }
-        public int Count { get; set; }
+        get { return scannedBarcodes; }
+        set
+        {
+            if (scannedBarcodes != value)
+            {
+                scannedBarcodes = value;
+                OnPropertyChanged(nameof(ScannedBarcodes));
+            }
+        }
     }
 
-    private ObservableCollection<(string Barcode, int Count)> scannedBarcodes = new ObservableCollection<(string Barcode, int Count)>();
-
-    public ObservableCollection<(string Barcode, int Count)> GetScannedBarcodes()
-    {
-        return scannedBarcodes;
-    }
 
 
-   private async void cameraView_BarcodeDetected(object sender, BarcodeEventArgs args)
+    private async void cameraView_BarcodeDetected(object sender, BarcodeEventArgs args)
 {
     if (!isFocusing)
     {
@@ -85,14 +89,13 @@ public partial class ScanBarcodeScreen : ContentPage {
                         var existingItem = scannedBarcodes.FirstOrDefault(item => item.Barcode == text);
                         if (existingItem != default)
                         {
-                            scannedBarcodes.Remove(existingItem);
-                            scannedBarcodes.Add((text, existingItem.Count + 1));
+                            existingItem.Count++;
+                            OnPropertyChanged();
                         }
                         else
                         {
-                            scannedBarcodes.Add((text, 1));
+                            scannedBarcodes.Add(new ReadBaseModel { Barcode = text, Count = 1 });
                         }
-
                         Vibration.Vibrate();
                     });
                 }
@@ -147,6 +150,8 @@ public partial class ScanBarcodeScreen : ContentPage {
             boxView1.Color =   Color.FromRgb(255, 255, 255);
             boxView2.Color =   Color.FromRgb(255, 255, 255);
             await Navigation.PushAsync(new EditItemPage(_selectedItem, viewModel.ReadedCount, scannedBarcodes));
+
+
 
 
         }
