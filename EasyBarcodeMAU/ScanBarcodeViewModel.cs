@@ -30,5 +30,4 @@ public class ScanBarcodeViewModel : INotifyPropertyChanged {
     }
 
     #endregion
-
 }

@@ -1,5 +1,4 @@
 using System.Collections.ObjectModel;
-
 using EasyBarcodeMAU.Models;
 
 namespace EasyBarcodeMAU
@@ -19,26 +18,21 @@ namespace EasyBarcodeMAU
             this.scannedBarcodes = scannedBarcodes;
             viewModel = new ReadBaseModel();
             viewModel.ReadedCount = _readedCount;
-            BindingContext = viewModel;
+            BindingContext = this;
         }
 
         protected override void OnAppearing()
         {
             base.OnAppearing();
-
-            // EditItemPage açýldýðýnda, scannedBarcodes koleksiyonundaki verileri barcodeListView'a ekliyoruz.
             barcodeListView.ItemsSource = scannedBarcodes;
         }
 
-        private void ArtirButton_Clicked(object sender, EventArgs e)
-        {
+        private void ArtirButton_Clicked(object sender, EventArgs e) {
             viewModel.ReadedCount++;
         }
 
-        private void AzaltButton_Clicked(object sender, EventArgs e)
-        {
-            if (viewModel.ReadedCount > 0)
-            {
+        private void AzaltButton_Clicked(object sender, EventArgs e) {
+            if (viewModel.ReadedCount > 0) {
                 viewModel.ReadedCount--;
             }
         }

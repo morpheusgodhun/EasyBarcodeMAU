@@ -20,7 +20,6 @@
 
                 <ScrollView>
                     <StackLayout>
-                        <!-- Tarayıcı ekranında okunan barkodları burada listeleyeceğiz -->
                         <ListView x:Name="barcodeListView">
                             <ListView.ItemTemplate >
                                 <DataTemplate>
@@ -55,7 +54,3 @@
 
 
 </ContentPage>
-
-<!--<Button Text="+" Clicked="ArtirButton_Clicked" />
-        <Button Text="-" Clicked="AzaltButton_Clicked" />
-        <Label Text="{Binding ReadedCount}" />-->
