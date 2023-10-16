@@ -1,4 +1,5 @@
 using System.Collections.ObjectModel;
+
 using EasyBarcodeMAU.Models;
 
 namespace EasyBarcodeMAU
@@ -18,7 +19,7 @@ namespace EasyBarcodeMAU
             this.scannedBarcodes = scannedBarcodes;
             viewModel = new ReadBaseModel();
             viewModel.ReadedCount = _readedCount;
-            BindingContext = this;
+            BindingContext = viewModel;
         }
 
         protected override void OnAppearing()
@@ -37,4 +38,5 @@ namespace EasyBarcodeMAU
             }
         }
     }
+
 }
