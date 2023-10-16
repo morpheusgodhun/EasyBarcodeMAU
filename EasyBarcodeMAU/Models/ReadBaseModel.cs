@@ -112,8 +112,6 @@ public class ReadBaseModel : BaseViewModel {
             }
         }
     }
-
-    public object ScannedBarcodes { get; internal set; }
     #endregion
 
 }
