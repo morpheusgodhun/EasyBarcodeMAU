@@ -1,6 +1,5 @@
-﻿using System.ComponentModel;
+﻿namespace EasyBarcodeMAU.Models;
 
-namespace EasyBarcodeMAU.Models;
 public class ReadBaseModel : BaseViewModel {
 
     public event EventHandler SelectedProductChanged;
