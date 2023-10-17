@@ -11,9 +11,11 @@ namespace EasyBarcodeMAU.Models
 {
     public class ScanViewModel:INotifyPropertyChanged
     {
-        private ObservableCollection<string> scannedBarcodes = new ObservableCollection<string>();
+ 
 
-        public ObservableCollection<string> ScannedBarcodes
+        private ObservableCollection<ReadBaseModel> scannedBarcodes = new ObservableCollection<ReadBaseModel>();
+
+        public ObservableCollection<ReadBaseModel> ScannedBarcodes
         {
             get => scannedBarcodes;
             set

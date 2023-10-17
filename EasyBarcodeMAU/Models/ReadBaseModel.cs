@@ -11,7 +11,20 @@ public class ReadBaseModel : BaseViewModel
     #region Properties
 
     public string Barcode { get; set; }
-    public int Count { get; set; }
+    private int _count;
+    public int Count
+    {
+        get { return _count; }
+        set
+        {
+
+            if (_count != value)
+            {
+                _count = value;
+                OnPropertyChanged(nameof(Count));
+            }
+        }
+    }
 
     public int Id { get; set; }
     private int _defterNo;

@@ -4,13 +4,16 @@
              xmlns:vm="clr-namespace:EasyBarcodeMAU.Models"
              xmlns:cv="clr-namespace:Camera.MAUI;assembly=Camera.MAUI"
              x:Class="EasyBarcodeMAU.ScanBarcodeScreen">
-
+  
     <ContentPage.BindingContext>
         <vm:ReadBaseModel />
     </ContentPage.BindingContext>
 
     <VerticalStackLayout Padding="15,10" Margin="5">
-        <Frame Padding="20,10" CornerRadius="10" HasShadow="True" BackgroundColor="Transparent" Margin="5" >
+        <VerticalStackLayout Spacing="10"  VerticalOptions="Center" Padding="10">
+            <cv:CameraView  x:Name="cameraView" WidthRequest="400" HeightRequest="100" CamerasLoaded="cameraView_CamerasLoaded" BarCodeDetectionEnabled="True" BarcodeDetected="cameraView_BarcodeDetected"/>
+        </VerticalStackLayout>
+        <Frame Padding="20,10" CornerRadius="5" HasShadow="True" BackgroundColor="Transparent" Margin="5" >
             <StackLayout>
                 <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
                     <StackLayout Orientation="Horizontal" WidthRequest="155" >
@@ -36,13 +39,10 @@
                 <BoxView  x:Name="boxView2" HeightRequest="1" BackgroundColor="Gray" HorizontalOptions="FillAndExpand" VerticalOptions="Center" Margin="0,5"/>
             </StackLayout>
         </Frame>
-        <VerticalStackLayout Spacing="10"  VerticalOptions="Center" Padding="10">
-            <cv:CameraView  x:Name="cameraView" WidthRequest="400" HeightRequest="100" CamerasLoaded="cameraView_CamerasLoaded" BarCodeDetectionEnabled="True" BarcodeDetected="cameraView_BarcodeDetected"/>
-        </VerticalStackLayout>
         <StackLayout Padding="0,5" Margin="0,10,0,0"  >
-            <Frame BorderColor="LightGrey" CornerRadius="10"  BackgroundColor="Transparent">
+            <Frame BorderColor="LightGrey" CornerRadius="5"  BackgroundColor="Transparent" Margin="5">
                 <ScrollView Padding="5,5" >
-                    <ListView x:Name="barcodeListView" HeightRequest="200">
+                    <ListView x:Name="barcodeListView" HeightRequest="260">
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <ViewCell>
@@ -63,7 +63,6 @@
                             </DataTemplate>
                         </ListView.ItemTemplate>
                     </ListView>
-
                 </ScrollView>
             </Frame>
         </StackLayout>

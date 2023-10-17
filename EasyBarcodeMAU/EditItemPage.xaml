@@ -26,7 +26,7 @@
                                     <ViewCell>
                                         <StackLayout Orientation="Vertical" Padding="10">
                                             <Label Text="{Binding Barcode}" TextColor="Black"/>
-                                            <Label Text="{Binding Count}" TextColor="Black"/>
+                                            <Label Text="{Binding Count}"  TextColor="Black"/>
                                             <BoxView HeightRequest="10" BackgroundColor="Transparent" />
                                         </StackLayout>
                                     </ViewCell>
