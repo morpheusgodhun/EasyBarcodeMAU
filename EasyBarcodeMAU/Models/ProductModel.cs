@@ -48,6 +48,18 @@ public class ProductModel : BaseViewModel
         }
     }
 
+    private string readcount;
+    public string ReadCount {
+        get { return readcount; }
+        set {
+            if (readcount != value) {
+                readcount = value;
+                OnPropertyChanged(nameof(ReadCount));
+
+            }
+        }
+    }
+
     #endregion
 
 }

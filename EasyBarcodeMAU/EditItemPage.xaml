@@ -9,14 +9,15 @@
     <ContentPage.BindingContext>
         <vm:ReadBaseModel />
     </ContentPage.BindingContext>
+
     <VerticalStackLayout VerticalOptions="Start" Margin="5">
         <StackLayout>
             <Frame BorderColor="DarkGrey"
-               Padding="1"
-               CornerRadius="3"
-               BackgroundColor="Transparent"
-               Margin="5"
-               MinimumHeightRequest="400">
+                   Padding="1"
+                   CornerRadius="3"
+                   BackgroundColor="Transparent"
+                   Margin="5"
+                   MinimumHeightRequest="400">
 
                 <ScrollView>
                     <StackLayout>
@@ -24,10 +25,13 @@
                             <ListView.ItemTemplate >
                                 <DataTemplate>
                                     <ViewCell>
-                                        <StackLayout Orientation="Vertical" Padding="10">
-                                            <Label Text="{Binding Barcode}" TextColor="Black"/>
-                                            <Label Text="{Binding Count}"  TextColor="Black"/>
-                                            <BoxView HeightRequest="10" BackgroundColor="Transparent" />
+                                        <StackLayout Orientation="Horizontal" Padding="10">
+
+                                            <Label Text="{Binding Barcode}" TextColor="Black" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"/>
+                                            <Button Text="+" TextColor="White" Clicked="ArtirButton_Clicked" WidthRequest="40" HeightRequest="40"/>
+                                            <Label Text="{Binding Count}" TextColor="Black" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+                                            <Button Text="-" TextColor="White" Clicked="AzaltButton_Clicked" WidthRequest="40" HeightRequest="40"/>
+
                                         </StackLayout>
                                     </ViewCell>
                                 </DataTemplate>
@@ -47,10 +51,9 @@
                     </Grid.ColumnDefinitions>
                 </Grid>
                 <Button Grid.Row="0" Margin="10" Text="Düzenlemeyi Kaydet" BackgroundColor="LightSkyBlue"></Button>
-                <Button Grid.Row="1" Margin="10"  Text="Vazgeç" BackgroundColor="LightSlateGray"></Button>
+                <Button Grid.Row="1" Margin="10" Text="Vazgeç" BackgroundColor="LightSlateGray"></Button>
             </StackLayout>
         </StackLayout>
     </VerticalStackLayout>
-
 
 </ContentPage>
