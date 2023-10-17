@@ -29,12 +29,12 @@ namespace EasyBarcodeMAU
         }
 
         private void ArtirButton_Clicked(object sender, EventArgs e) {
-            viewModel.ReadedCount++;
+            viewModel.Count++;
         }
 
         private void AzaltButton_Clicked(object sender, EventArgs e) {
-            if (viewModel.ReadedCount > 0) {
-                viewModel.ReadedCount--;
+            if (viewModel.Count > 0) {
+                viewModel.Count--;
             }
         }
     }
