@@ -110,7 +110,7 @@ public partial class ScanBarcodeScreen : ContentPage {
         boxView1.Color = Color.FromRgb(255, 255, 255);
         boxView2.Color = Color.FromRgb(255, 255, 255);
 
-        await DisplayAlert("Yönlendiriliyorsunuz ", "Düzenleme Sayfasýna Yönlendiriliyorsunuz", "TAMAM");
+        await DisplayAlert("Düzenleme Sayfasýna Yönlendiriliyorsunuz ", "Yönlendiriliyorsunuz", "TAMAM");
         await Navigation.PushAsync(new EditItemPage(_selectedItem, viewModel.ReadedCount, scannedBarcodes));
     }
     #endregion
