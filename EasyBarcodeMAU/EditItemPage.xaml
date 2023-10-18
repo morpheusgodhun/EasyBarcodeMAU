@@ -10,28 +10,26 @@
         <vm:ReadBaseModel />
     </ContentPage.BindingContext>
 
-    <VerticalStackLayout VerticalOptions="Start" Margin="5">
+    <VerticalStackLayout VerticalOptions="Start" Margin="10">
         <StackLayout>
             <Frame BorderColor="DarkGrey"
-                   Padding="1"
+                   Padding="10"
                    CornerRadius="3"
                    BackgroundColor="Transparent"
                    Margin="5"
-                   MinimumHeightRequest="400">
+                   MinimumHeightRequest="420">
 
                 <ScrollView>
                     <StackLayout>
-                        <ListView x:Name="barcodeListView">
-                            <ListView.ItemTemplate >
+                        <ListView x:Name="barcodeListView"  >
+                            <ListView.ItemTemplate HeightRequest="220" RowHeight="35">
                                 <DataTemplate>
                                     <ViewCell>
                                         <StackLayout Orientation="Horizontal" Padding="10">
-
-                                            <Label Text="{Binding Barcode}" TextColor="Black" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"/>
-                                            <Button Text="+" TextColor="White" Clicked="ArtirButton_Clicked" WidthRequest="40" HeightRequest="40"/>
-                                            <Label Text="{Binding Count}" TextColor="Black" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
-                                            <Button Text="-" TextColor="White" Clicked="AzaltButton_Clicked" WidthRequest="40" HeightRequest="40"/>
-
+                                            <Label Text="{Binding Barcode}"   TextColor="Black" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" />
+                                            <Button Text="-"  FontSize="Body" Padding="0" Margin="0" TextColor="White" Clicked="ArtirButton_Clicked" WidthRequest="25" HeightRequest="25" CornerRadius="4"/>
+                                            <Label Text="{Binding Count}"  TextColor="Black" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"  />
+                                            <Button Text="+" FontSize="Body" Padding="0" Margin="0" TextColor="White" Clicked="ArtirButton_Clicked" WidthRequest="25" HeightRequest="25"  CornerRadius="4"  />
                                         </StackLayout>
                                     </ViewCell>
                                 </DataTemplate>
