@@ -34,12 +34,12 @@
                                                 <ColumnDefinition Width="100" />
                                             </Grid.ColumnDefinitions>
                                             <StackLayout Grid.Column="0" >
-                                                <Label Text="{Binding Barcode}" TextColor="Black"/>
+                                                <Label Text="{Binding Barcode}" TextColor="Black" FontSize="Large" HeightRequest="40"/>
                                             </StackLayout>
                                             <StackLayout Grid.Column="1" Orientation="Horizontal" >
-                                                <Label Text="{Binding Count}" TextColor="Black" />
-                                                <Button Text="-" CommandParameter="{Binding .}" FontSize="Body" Padding="0" Margin="0" TextColor="White" Clicked="ArtirAzaltButton_Clicked" WidthRequest="25" HeightRequest="25"  CornerRadius="4"/>
-                                                <Button Text="+" CommandParameter="{Binding .}" FontSize="Body" Padding="0" Margin="0" TextColor="White" Clicked="ArtirAzaltButton_Clicked" WidthRequest="25" HeightRequest="25"  CornerRadius="4" />
+                                                <Label Text="{Binding Count}" TextColor="Black" FontSize="Large" HeightRequest="25" />
+                                                <Button Text="-" CommandParameter="{Binding .}" FontSize="Large" Padding="0" Margin="0" TextColor="White" Clicked="ArtirAzaltButton_Clicked" WidthRequest="30" HeightRequest="30"  CornerRadius="4"/>
+                                                <Button Text="+" CommandParameter="{Binding .}" FontSize="Large" Padding="0" Margin="0" TextColor="White" Clicked="ArtirAzaltButton_Clicked" WidthRequest="30" HeightRequest="30"  CornerRadius="4" />
                                             </StackLayout>
                                         </Grid>
                                     </ViewCell>
@@ -59,7 +59,7 @@
                         <ColumnDefinition />
                     </Grid.ColumnDefinitions>
                 </Grid>
-                <Button Grid.Row="0" Margin="10" Text="Düzenlemeyi Kaydet" BackgroundColor="LightSkyBlue"></Button>
+                <Button Grid.Row="0" Margin="10" Text="Düzenlemeyi Kaydet"  Clicked="Kaydet_Clicked" BackgroundColor="LightSkyBlue"></Button>
                 <Button Grid.Row="1" Margin="10" Text="Vazgeç" BackgroundColor="LightSlateGray"></Button>
             </StackLayout>
         </StackLayout>
