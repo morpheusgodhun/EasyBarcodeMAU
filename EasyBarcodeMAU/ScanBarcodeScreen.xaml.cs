@@ -21,23 +21,12 @@ public partial class ScanBarcodeScreen : ContentPage {
 
     #region InitModel
 
-    //private void ClearScannedBarcodes()
-    //{
-    //    scannedBarcodes.Clear();
-    //}
-
-
     public ScanBarcodeScreen() {
         InitializeComponent();
         viewModel = new ReadBaseModel();
         BindingContext = viewModel;
         barcodeListView.ItemsSource = scannedBarcodes;
     }
-
-    #endregion
-
-    #region Properties
-
 
     #endregion
 
@@ -67,8 +56,6 @@ public partial class ScanBarcodeScreen : ContentPage {
                         barcodeResult.Text = $"{text}";
 
                         viewModel.ReadedCount++;
-
-                        // Bu kýsmý ayrý bir MainThread içine alýn
                         MainThread.BeginInvokeOnMainThread(() => {
                             var existingItem = scannedBarcodes.FirstOrDefault(item => item.Barcode == text);
                             if (existingItem != default) {
@@ -78,7 +65,7 @@ public partial class ScanBarcodeScreen : ContentPage {
                             else {
                                 scannedBarcodes.Add(new ReadBaseModel { Barcode = text, Count = 1 });
                             }
-                            Vibration.Vibrate();
+
                         });
                     }
                 }

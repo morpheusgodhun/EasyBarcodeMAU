@@ -5,7 +5,7 @@
              xmlns:cv="clr-namespace:Camera.MAUI;assembly=Camera.MAUI"
              x:Class="EasyBarcodeMAU.EditItemPage"
              Title="Ürün Değişikliği"
-             BackgroundColor="AntiqueWhite"  >
+             BackgroundColor="White"  >
 
     <ContentPage.BindingContext>
         <vm:ReadBaseModel />

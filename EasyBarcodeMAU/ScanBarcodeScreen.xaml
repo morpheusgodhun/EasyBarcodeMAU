@@ -5,7 +5,7 @@
              xmlns:cv="clr-namespace:Camera.MAUI;assembly=Camera.MAUI"
              x:Class="EasyBarcodeMAU.ScanBarcodeScreen">
   
-  <ContentPage.BindingContext>
+    <ContentPage.BindingContext>
         <vm:ReadBaseModel />
     </ContentPage.BindingContext>
 
@@ -13,6 +13,7 @@
         <VerticalStackLayout Spacing="10"  VerticalOptions="Center" Padding="10">
             <cv:CameraView  x:Name="cameraView" WidthRequest="400" HeightRequest="100" CamerasLoaded="cameraView_CamerasLoaded" BarCodeDetectionEnabled="True" BarcodeDetected="cameraView_BarcodeDetected"/>
         </VerticalStackLayout>
+        
         <Frame Padding="20,10" CornerRadius="5" HasShadow="True" BackgroundColor="Transparent" Margin="5" >
             <StackLayout>
                 <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
@@ -77,7 +78,6 @@
             <Grid.ColumnDefinitions >
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-
             <Button Text="Onayla"  Grid.Row="0" HeightRequest="45" BackgroundColor="LightSkyBlue" Clicked="Onayla_Clicked" FontSize="Body" FontAttributes="Bold" BorderWidth="1" BorderColor="Black"></Button>
             <Button Text="Vazgeç"  Grid.Row="1" HeightRequest="45" BackgroundColor="LightSlateGray" FontSize="Body" Clicked="Vazgec_Clicked" FontAttributes="Bold"  BorderWidth="1" BorderColor="Black"></Button>
         </Grid>
