@@ -27,7 +27,7 @@
                                     <ViewCell>
                                         <StackLayout Orientation="Horizontal" Padding="10">
                                             <Label Text="{Binding Barcode}"   TextColor="Black" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" />
-                                            <Button Text="-"  FontSize="Body" Padding="0" Margin="0" TextColor="White" Clicked="ArtirButton_Clicked" WidthRequest="25" HeightRequest="25" CornerRadius="4"/>
+                                            <Button Text="-"  FontSize="Body" Padding="0" Margin="0" TextColor="White" Clicked="AzaltButton_Clicked" WidthRequest="25" HeightRequest="25" CornerRadius="4"/>
                                             <Label Text="{Binding Count}"  TextColor="Black" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"  />
                                             <Button Text="+" FontSize="Body" Padding="0" Margin="0" TextColor="White" Clicked="ArtirButton_Clicked" WidthRequest="25" HeightRequest="25"  CornerRadius="4"  />
                                         </StackLayout>
@@ -53,5 +53,4 @@
             </StackLayout>
         </StackLayout>
     </VerticalStackLayout>
-
 </ContentPage>

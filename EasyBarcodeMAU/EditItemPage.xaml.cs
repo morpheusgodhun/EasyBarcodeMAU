@@ -1,7 +1,7 @@
 using System.Collections.ObjectModel;
 using EasyBarcodeMAU.Models;
 
-namespace EasyBarcodeMAU {
+namespace EasyBarcodeMAU;
     public partial class EditItemPage : ContentPage {
         private int _readedCount;
         private int _count;
@@ -25,15 +25,11 @@ namespace EasyBarcodeMAU {
             barcodeListView.ItemsSource = scannedBarcodes;
         }
 
-        private void ArtirButton_Clicked(object sender, EventArgs e) {
+        private void ArtirButton_Clicked() {
             _count++;
         }
 
-        private void AzaltButton_Clicked(object sender, EventArgs e) {
-            if (_count > 0) {
-                _count--;
-            }
+        private void AzaltButton_Clicked() {           
+             _count--;          
         }
     }
-
-}
