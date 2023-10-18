@@ -21,16 +21,27 @@
 
                 <ScrollView>
                     <StackLayout>
-                        <ListView x:Name="barcodeListView"  >
-                            <ListView.ItemTemplate HeightRequest="220" RowHeight="35">
+                        <ListView x:Name="barcodeListView" HeightRequest="220" RowHeight="40" >
+                            <ListView.ItemTemplate>
                                 <DataTemplate>
                                     <ViewCell>
-                                        <StackLayout Orientation="Horizontal" Padding="10">
-                                            <Label Text="{Binding Barcode}"   TextColor="Black" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" />
-                                            <Button Text="-"  FontSize="Body" Padding="0" Margin="0" TextColor="White" Clicked="ArtirButton_Clicked" WidthRequest="25" HeightRequest="25" CornerRadius="4"/>
-                                            <Label Text="{Binding Count}"  TextColor="Black" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"  />
-                                            <Button Text="+" FontSize="Body" Padding="0" Margin="0" TextColor="White" Clicked="ArtirButton_Clicked" WidthRequest="25" HeightRequest="25"  CornerRadius="4"  />
-                                        </StackLayout>
+                                        <Grid Padding="10">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="*"/>
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="100" />
+                                            </Grid.ColumnDefinitions>
+                                            <StackLayout Grid.Column="0" >
+                                                <Label Text="{Binding Barcode}" TextColor="Black"/>
+                                            </StackLayout>
+                                            <StackLayout Grid.Column="1" Orientation="Horizontal" >
+                                                <Label Text="{Binding Count}" TextColor="Black" />
+                                                <Button Text="-" CommandParameter="{Binding .}" FontSize="Body" Padding="0" Margin="0" TextColor="White" Clicked="ArtirAzaltButton_Clicked" WidthRequest="25" HeightRequest="25"  CornerRadius="4"/>
+                                                <Button Text="+" CommandParameter="{Binding .}" FontSize="Body" Padding="0" Margin="0" TextColor="White" Clicked="ArtirAzaltButton_Clicked" WidthRequest="25" HeightRequest="25"  CornerRadius="4" />
+                                            </StackLayout>
+                                        </Grid>
                                     </ViewCell>
                                 </DataTemplate>
                             </ListView.ItemTemplate>
