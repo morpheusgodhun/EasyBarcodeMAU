@@ -4,11 +4,13 @@
              xmlns:vm="clr-namespace:EasyBarcodeMAU.Models"
              xmlns:cv="clr-namespace:Camera.MAUI;assembly=Camera.MAUI"
              x:Class="EasyBarcodeMAU.EditItemPage"
-             Title="Ürün Değişikliği">
+             Title="Ürün Değişikliği"
+             BackgroundColor="AntiqueWhite"  >
 
     <ContentPage.BindingContext>
         <vm:ReadBaseModel />
     </ContentPage.BindingContext>
+    
 
     <VerticalStackLayout VerticalOptions="Start" Margin="10">
         <StackLayout>
@@ -21,6 +23,7 @@
 
                 <ScrollView>
                     <StackLayout>
+                        <Label Text="Düzenleme İşlemlerinizi Uygun Şekilde Yapınız." FontSize="Large" TextColor="Black" FontAttributes="Bold" HorizontalTextAlignment="Center" Margin="0, 10, 0, 10" />
                         <ListView x:Name="barcodeListView" HeightRequest="220" RowHeight="40" >
                             <ListView.ItemTemplate>
                                 <DataTemplate>
@@ -30,8 +33,8 @@
                                                 <RowDefinition Height="*"/>
                                             </Grid.RowDefinitions>
                                             <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="220" />
                                                 <ColumnDefinition Width="*" />
-                                                <ColumnDefinition Width="100" />
                                             </Grid.ColumnDefinitions>
                                             <StackLayout Grid.Column="0" >
                                                 <Label Text="{Binding Barcode}" TextColor="Black" FontSize="Large" HeightRequest="40"/>
