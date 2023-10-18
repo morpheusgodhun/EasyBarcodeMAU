@@ -4,8 +4,7 @@ using EasyBarcodeMAU.Models;
 
 using System.Collections.ObjectModel;
 
-namespace EasyBarcodeMAU
-{
+namespace EasyBarcodeMAU;
     public partial class ScanBarcodeScreen : ContentPage
     {
 
@@ -38,7 +37,6 @@ namespace EasyBarcodeMAU
         }
 
         #endregion
-
 
         #region Properties
 
@@ -173,6 +171,5 @@ namespace EasyBarcodeMAU
 
         }
         #endregion
-    }
 }
 
