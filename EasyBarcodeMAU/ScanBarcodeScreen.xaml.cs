@@ -111,34 +111,23 @@ public partial class ScanBarcodeScreen : ContentPage {
         if (!string.IsNullOrWhiteSpace(barcodeEntry.Text) /*&& !string.IsNullOrWhiteSpace(countEntry.Text)*/)
         {
             string barcode = barcodeEntry.Text;
-            //int count = Convert.ToInt32(countEntry.Text);
 
-            // Yeni öðeyi listeye eklemek için model oluþtur
             ReadBaseModel newItem = new ReadBaseModel { Barcode = barcode, Count = 1 };
             scannedBarcodes.Add(newItem);
 
-            // Listeyi güncellemek için ListView'i yeniden ata
             barcodeListView.ItemsSource = null;
             barcodeListView.ItemsSource = scannedBarcodes;
 
-            // Giriþ alanlarýný temizle
             barcodeEntry.Text = string.Empty;
-            //countEntry.Text = string.Empty;
         }
         else
         {
-            // Kullanýcýdan gerekli bilgileri girmesi istenebilir
         }
     }
 
 
     public async void Onayla_Clicked(object sender, EventArgs e)
         {
-
-            //if (viewModel.ReadedCount != 0)
-            //{
-
-                //barcodeResult.Text = "Kayýt Onaylandý, Hedeflenen Stok Adedi Sayýmýna Ulaþýldý.";
                 this.BackgroundColor = Color.FromRgb(51, 153, 255);
                 label1.TextColor = Color.FromRgb(255, 255, 255);
                 label2.TextColor = Color.FromRgb(255, 255, 255);
@@ -150,24 +139,9 @@ public partial class ScanBarcodeScreen : ContentPage {
                 label8.TextColor = Color.FromRgb(255, 255, 255);
                 boxView1.Color = Color.FromRgb(255, 255, 255);
                 boxView2.Color = Color.FromRgb(255, 255, 255);
-                await Navigation.PushAsync(new EditItemPage(_selectedItem, viewModel.ReadedCount, scannedBarcodes));
+                await Navigation.PushAsync(new EditItemPage(_selectedItem, viewModel.ReadedCount,viewModel.UrunCins,scannedBarcodes));
 
-            //}
-            //else
-            //{
-            //    barcodeResult.Text = "! Hatalý Sayým Gerçekleþtirdiniz";
-            //    this.BackgroundColor = Color.FromRgba(255, 0, 0, 255);
-            //    label1.TextColor = Color.FromRgb(255, 255, 255);
-            //    label2.TextColor = Color.FromRgb(255, 255, 255);
-            //    label3.TextColor = Color.FromRgb(255, 255, 255);
-            //    label4.TextColor = Color.FromRgb(255, 255, 255);
-            //    label5.TextColor = Color.FromRgb(255, 255, 255);
-            //    label6.TextColor = Color.FromRgb(255, 255, 255);
-            //    label7.TextColor = Color.FromRgb(255, 255, 255);
-            //    label8.TextColor = Color.FromRgb(255, 255, 255);
-            //    boxView1.Color = Color.FromRgb(255, 255, 255);
-            //    boxView2.Color = Color.FromRgb(255, 255, 255);
-            //}
+           
 
         }
         #endregion

@@ -22,9 +22,8 @@
                    MinimumHeightRequest="420">
 
                 <ScrollView>
-                    <StackLayout> 
+                    <StackLayout>
                         <StackLayout HeightRequest="110" BackgroundColor="Red" Margin="5,20,10,5" >
-                            <!--burada bi düzenleme yapılıcak içerisine sayımı yapılan ürün ile alakalı bilgileri yazıcaz ufak bikaç bilgi olucak sonra altında sayım adetleri zaten gözüküyo --> 
                         </StackLayout>
                         <ListView x:Name="barcodeListView" HeightRequest="300" RowHeight="40" Margin="5" >
                             <ListView.ItemTemplate>
