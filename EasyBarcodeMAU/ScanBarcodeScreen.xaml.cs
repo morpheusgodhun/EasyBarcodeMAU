@@ -15,6 +15,7 @@ public partial class ScanBarcodeScreen : ContentPage {
 
 
 
+
     #endregion
 
     #region InitModel
@@ -30,6 +31,16 @@ public partial class ScanBarcodeScreen : ContentPage {
 
     #region Methods
 
+
+    private bool IsDigitsOnly(string str) {
+        foreach (char c in str) {
+            if (!char.IsDigit(c))
+                return false;
+        }
+        return true;
+    }
+
+
     public ObservableCollection<ReadBaseModel> ScannedBarcodes {
         get { return scannedBarcodes; }
         set {
@@ -42,41 +53,31 @@ public partial class ScanBarcodeScreen : ContentPage {
 
 
 
-        private async void cameraView_BarcodeDetected(object sender, BarcodeEventArgs args)
-        {
-            if (!isFocusing)
-            {
-                isFocusing = true;
-                MainThread.BeginInvokeOnMainThread(() =>
-                {
-                    if (args.Result.Length > 0)
-                    {
-                        for (int i = 0; i < args.Result.Length; i++)
-                        {
-                            var format = args.Result[i].BarcodeFormat;
-                            var text = args.Result[i].Text;
-                            //barcodeResult.Text = $"{text}";
-
+    private async void cameraView_BarcodeDetected(object sender, BarcodeEventArgs args) {
+        if (!isFocusing) {
+            isFocusing = true;
+            MainThread.BeginInvokeOnMainThread(() => {
+                if (args.Result.Length > 0) {
+                    for (int i = 0; i < args.Result.Length; i++) {
+                        var format = args.Result[i].BarcodeFormat;
+                        var text = args.Result[i].Text;
                         viewModel.ReadedCount++;
                         MainThread.BeginInvokeOnMainThread(() => {
                             var existingItem = scannedBarcodes.FirstOrDefault(item => item.Barcode == text);
                             if (existingItem != default) {
                                 existingItem.Count++;
 
-                                }
-                                else
-                                {
-                                    scannedBarcodes.Add(new ReadBaseModel { Barcode = text, Count = 1 });
-                                }
-                                Vibration.Vibrate();
-                            });
-                        }
+                            }
+                            else {
+                                scannedBarcodes.Add(new ReadBaseModel { Barcode = text, Count = 1 });
+                            }
+                            Vibration.Vibrate();
+                        });
                     }
-                    else
-                    {
-                        //barcodeResult.Text = "Barkod bulunamadý.";
-                    }
-                });
+                }
+                else {
+                }
+            });
 
             await Task.Delay(focusDelayMilliseconds);
             isFocusing = false;
@@ -101,17 +102,17 @@ public partial class ScanBarcodeScreen : ContentPage {
         this.viewModel.DepoKonum = _selectedItem.DepoKonum;
     }
 
-        private async void Vazgec_Clicked(object sender, EventArgs e)
-        {
-            await Navigation.PopAsync();
-        }
+    private async void Vazgec_Clicked(object sender, EventArgs e) {
+        await Navigation.PopAsync();
+    }
 
-    private void EkleButton_Clicked(object sender, EventArgs e)
-    {
-        if (!string.IsNullOrWhiteSpace(barcodeEntry.Text) /*&& !string.IsNullOrWhiteSpace(countEntry.Text)*/)
-        {
-            string barcode = barcodeEntry.Text;
 
+    private void EkleButton_Clicked(object sender, EventArgs e) {
+        string barcode = barcodeEntry.Text;
+
+        barcode = new string(barcode.Where(char.IsDigit).ToArray());
+
+        if (!string.IsNullOrWhiteSpace(barcode)) {
             ReadBaseModel newItem = new ReadBaseModel { Barcode = barcode, Count = 1 };
             scannedBarcodes.Add(newItem);
 
@@ -120,30 +121,30 @@ public partial class ScanBarcodeScreen : ContentPage {
 
             barcodeEntry.Text = string.Empty;
         }
-        else
-        {
+        else {
+            DisplayAlert("Hata", "Lütfen yalnýzca rakam içeren bir deðer girin.", "Tamam");
         }
     }
 
 
-    public async void Onayla_Clicked(object sender, EventArgs e)
-        {
-                this.BackgroundColor = Color.FromRgb(51, 153, 255);
-                label1.TextColor = Color.FromRgb(255, 255, 255);
-                label2.TextColor = Color.FromRgb(255, 255, 255);
-                label3.TextColor = Color.FromRgb(255, 255, 255);
-                label4.TextColor = Color.FromRgb(255, 255, 255);
-                label5.TextColor = Color.FromRgb(255, 255, 255);
-                label6.TextColor = Color.FromRgb(255, 255, 255);
-                label7.TextColor = Color.FromRgb(255, 255, 255);
-                label8.TextColor = Color.FromRgb(255, 255, 255);
-                boxView1.Color = Color.FromRgb(255, 255, 255);
-                boxView2.Color = Color.FromRgb(255, 255, 255);
-                await Navigation.PushAsync(new EditItemPage(_selectedItem, viewModel.ReadedCount,viewModel.UrunCins,scannedBarcodes));
 
-           
+    public async void Onayla_Clicked(object sender, EventArgs e) {
+        this.BackgroundColor = Color.FromRgb(51, 153, 255);
+        label1.TextColor = Color.FromRgb(255, 255, 255);
+        label2.TextColor = Color.FromRgb(255, 255, 255);
+        label3.TextColor = Color.FromRgb(255, 255, 255);
+        label4.TextColor = Color.FromRgb(255, 255, 255);
+        label5.TextColor = Color.FromRgb(255, 255, 255);
+        label6.TextColor = Color.FromRgb(255, 255, 255);
+        label7.TextColor = Color.FromRgb(255, 255, 255);
+        label8.TextColor = Color.FromRgb(255, 255, 255);
+        boxView1.Color = Color.FromRgb(255, 255, 255);
+        boxView2.Color = Color.FromRgb(255, 255, 255);
+        await Navigation.PushAsync(new EditItemPage(_selectedItem, viewModel.ReadedCount, viewModel.UrunCins, scannedBarcodes));
 
-        }
-        #endregion
-}    
+
+
+    }
+    #endregion
+}
 

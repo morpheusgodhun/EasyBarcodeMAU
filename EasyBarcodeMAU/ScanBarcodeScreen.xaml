@@ -84,7 +84,6 @@
             <Grid.ColumnDefinitions >
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-
             <Button Text="Onayla"  Grid.Row="0" HeightRequest="40" Padding="0" BackgroundColor="LightSkyBlue" Clicked="Onayla_Clicked" FontSize="Body" FontAttributes="Bold" BorderWidth="1" BorderColor="Black"></Button>
             <Button Text="Vazgeç"  Grid.Row="1" HeightRequest="40" Padding="0" BackgroundColor="LightSlateGray" FontSize="Body" Clicked="Vazgec_Clicked" FontAttributes="Bold"  BorderWidth="1" BorderColor="Black"></Button>
         </Grid>
