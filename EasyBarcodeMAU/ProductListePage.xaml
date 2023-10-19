@@ -4,12 +4,12 @@
              x:Class="EasyBarcodeMAU.ProductListPage"
              xmlns:vm="clr-namespace:EasyBarcodeMAU.Models"
              BackgroundImageSource="page6"
-             Title="Ürün Seçiniz"
-             >
+             Title="Ürün Seçiniz">
 
     <ContentPage.BindingContext>
         <vm:ProductModel/>
     </ContentPage.BindingContext>
+    
     <ScrollView>
             <FlexLayout Direction="Column" AlignItems="Center" JustifyContent="Center"    >
                 <CollectionView ItemsSource="{Binding ProductItems}" Margin="10">

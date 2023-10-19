@@ -1,63 +1,44 @@
 using Camera.MAUI.ZXingHelper;
-
 using EasyBarcodeMAU.Models;
-
 using System.Collections.ObjectModel;
 
 namespace EasyBarcodeMAU;
-    public partial class ScanBarcodeScreen : ContentPage
-    {
+public partial class ScanBarcodeScreen : ContentPage {
 
-        #region Variables
+    #region Variables
 
-        private ProductItemBase _selectedItem;
-        private ReadBaseModel viewModel;
-        private bool isFocusing = false;
-        private int focusDelayMilliseconds = 1500;
-        private ObservableCollection<ReadBaseModel> scannedBarcodes = new ObservableCollection<ReadBaseModel>();
-
+    private ProductItemBase _selectedItem;
+    private ReadBaseModel viewModel;
+    private bool isFocusing = false;
+    private int focusDelayMilliseconds = 1500;
+    private ObservableCollection<ReadBaseModel> scannedBarcodes = new ObservableCollection<ReadBaseModel>();
 
 
-        #endregion
 
-        #region InitModel
+    #endregion
 
-        //private void ClearScannedBarcodes()
-        //{
-        //    scannedBarcodes.Clear();
-        //}
+    #region InitModel
 
+    public ScanBarcodeScreen() {
+        InitializeComponent();
+        viewModel = new ReadBaseModel();
+        BindingContext = viewModel;
+        barcodeListView.ItemsSource = scannedBarcodes;
+    }
 
-        public ScanBarcodeScreen()
-        {
-            InitializeComponent();
-            viewModel = new ReadBaseModel();
-            BindingContext = viewModel;
-            barcodeListView.ItemsSource = scannedBarcodes;
-        }
+    #endregion
 
-        #endregion
+    #region Methods
 
-        #region Properties
-
-      
-        #endregion
-
-        #region Methods
-
-
-        public ObservableCollection<ReadBaseModel> ScannedBarcodes
-        {
-            get { return scannedBarcodes; }
-            set
-            {
-                if (scannedBarcodes != value)
-                {
-                    scannedBarcodes = value;
-                    OnPropertyChanged(nameof(ScannedBarcodes));
-                }
+    public ObservableCollection<ReadBaseModel> ScannedBarcodes {
+        get { return scannedBarcodes; }
+        set {
+            if (scannedBarcodes != value) {
+                scannedBarcodes = value;
+                OnPropertyChanged(nameof(ScannedBarcodes));
             }
         }
+    }
 
 
 
@@ -76,15 +57,11 @@ namespace EasyBarcodeMAU;
                             var text = args.Result[i].Text;
                             //barcodeResult.Text = $"{text}";
 
-                            viewModel.ReadedCount++;
-
-                            // Bu kýsmý ayrý bir MainThread içine alýn
-                            MainThread.BeginInvokeOnMainThread(() =>
-                            {
-                                var existingItem = scannedBarcodes.FirstOrDefault(item => item.Barcode == text);
-                                if (existingItem != default)
-                                {
-                                    existingItem.Count++;
+                        viewModel.ReadedCount++;
+                        MainThread.BeginInvokeOnMainThread(() => {
+                            var existingItem = scannedBarcodes.FirstOrDefault(item => item.Barcode == text);
+                            if (existingItem != default) {
+                                existingItem.Count++;
 
                                 }
                                 else
@@ -101,31 +78,28 @@ namespace EasyBarcodeMAU;
                     }
                 });
 
-                await Task.Delay(focusDelayMilliseconds);
-                isFocusing = false;
-            }
+            await Task.Delay(focusDelayMilliseconds);
+            isFocusing = false;
         }
+    }
 
 
-        private void cameraView_CamerasLoaded(object sender, EventArgs e)
-        {
-            if (cameraView.Cameras.Count > 0)
-            {
-                cameraView.Camera = cameraView.Cameras.First();
-                MainThread.BeginInvokeOnMainThread(async () => {
-                    await cameraView.StopCameraAsync();
-                    await cameraView.StartCameraAsync();
-                });
-            }
+    private void cameraView_CamerasLoaded(object sender, EventArgs e) {
+        if (cameraView.Cameras.Count > 0) {
+            cameraView.Camera = cameraView.Cameras.First();
+            MainThread.BeginInvokeOnMainThread(async () => {
+                await cameraView.StopCameraAsync();
+                await cameraView.StartCameraAsync();
+            });
         }
+    }
 
-        public ScanBarcodeScreen(ProductItemBase _selectedItem) : this()
-        {
-            this._selectedItem = _selectedItem;
-            viewModel.SelectedProduct = _selectedItem?.UrunCins;
-            this.viewModel.RequiredCount = _selectedItem.RequiredCount;
-            this.viewModel.DepoKonum = _selectedItem.DepoKonum;
-        }
+    public ScanBarcodeScreen(ProductItemBase _selectedItem) : this() {
+        this._selectedItem = _selectedItem;
+        viewModel.SelectedProduct = _selectedItem?.UrunCins;
+        this.viewModel.RequiredCount = _selectedItem.RequiredCount;
+        this.viewModel.DepoKonum = _selectedItem.DepoKonum;
+    }
 
         private async void Vazgec_Clicked(object sender, EventArgs e)
         {

@@ -4,11 +4,13 @@
              xmlns:vm="clr-namespace:EasyBarcodeMAU.Models"
              xmlns:cv="clr-namespace:Camera.MAUI;assembly=Camera.MAUI"
              x:Class="EasyBarcodeMAU.EditItemPage"
-             Title="Ürün Değişikliği">
+             Title="Ürün Değişikliği"
+             BackgroundColor="White"  >
 
     <ContentPage.BindingContext>
         <vm:ReadBaseModel />
     </ContentPage.BindingContext>
+    
 
     <VerticalStackLayout VerticalOptions="Start" Margin="10">
         <StackLayout>
@@ -38,7 +40,7 @@
                                                 <ColumnDefinition Width="*" />
                                             </Grid.ColumnDefinitions>
                                             <StackLayout Grid.Column="0" >
-                                                <Label Text="{Binding Barcode}" TextColor="Black"/>
+                                                <Label Text="{Binding Barcode}" TextColor="Black" FontSize="Large" HeightRequest="40"/>
                                             </StackLayout>
                                             <Label Grid.Column="1" Text="{Binding Count}" TextColor="Black" />
                                             <StackLayout Grid.Column="2" Orientation="Horizontal" >
@@ -65,7 +67,7 @@
                         <ColumnDefinition />
                     </Grid.ColumnDefinitions>
                 </Grid>
-                <Button Grid.Row="0" Margin="10" Text="Düzenlemeyi Kaydet" BackgroundColor="LightSkyBlue"></Button>
+                <Button Grid.Row="0" Margin="10" Text="Düzenlemeyi Kaydet"  Clicked="Kaydet_Clicked" BackgroundColor="LightSkyBlue"></Button>
                 <Button Grid.Row="1" Margin="10" Text="Vazgeç" BackgroundColor="LightSlateGray"></Button>
             </StackLayout>
         </StackLayout>
