@@ -17,7 +17,7 @@ public partial class EditItemPage : ContentPage {
     #endregion
 
     #region InitModel
-    public EditItemPage(ProductItemBase selectedItem, int readedCount,string urunCins, ObservableCollection<ReadBaseModel> scannedBarcodes) {
+    public EditItemPage(ProductItemBase selectedItem, int readedCount, string urunCins, ObservableCollection<ReadBaseModel> scannedBarcodes) {
         InitializeComponent();
         _selectedItem = selectedItem;
         _readedCount = readedCount;
@@ -44,9 +44,14 @@ public partial class EditItemPage : ContentPage {
         if (selectedItem != null) {
             if (button.Text == "+") {
                 selectedItem.Count++;
+                _viewModel.ReadedCount ++;
+                
             }
             else if (button.Text == "-" && selectedItem.Count > 0) {
+                _viewModel.ReadedCount--;
                 selectedItem.Count--;
+
+                
             }
         }
     }
