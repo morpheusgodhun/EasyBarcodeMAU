@@ -74,7 +74,7 @@ namespace EasyBarcodeMAU;
                         {
                             var format = args.Result[i].BarcodeFormat;
                             var text = args.Result[i].Text;
-                            barcodeResult.Text = $"{text}";
+                            //barcodeResult.Text = $"{text}";
 
                             viewModel.ReadedCount++;
 
@@ -97,7 +97,7 @@ namespace EasyBarcodeMAU;
                     }
                     else
                     {
-                        barcodeResult.Text = "Barkod bulunamadý.";
+                        //barcodeResult.Text = "Barkod bulunamadý.";
                     }
                 });
 
@@ -132,13 +132,39 @@ namespace EasyBarcodeMAU;
             await Navigation.PopAsync();
         }
 
-        public async void Onayla_Clicked(object sender, EventArgs e)
+    private void EkleButton_Clicked(object sender, EventArgs e)
+    {
+        if (!string.IsNullOrWhiteSpace(barcodeEntry.Text) /*&& !string.IsNullOrWhiteSpace(countEntry.Text)*/)
+        {
+            string barcode = barcodeEntry.Text;
+            //int count = Convert.ToInt32(countEntry.Text);
+
+            // Yeni öðeyi listeye eklemek için model oluþtur
+            ReadBaseModel newItem = new ReadBaseModel { Barcode = barcode, Count = 1 };
+            scannedBarcodes.Add(newItem);
+
+            // Listeyi güncellemek için ListView'i yeniden ata
+            barcodeListView.ItemsSource = null;
+            barcodeListView.ItemsSource = scannedBarcodes;
+
+            // Giriþ alanlarýný temizle
+            barcodeEntry.Text = string.Empty;
+            //countEntry.Text = string.Empty;
+        }
+        else
+        {
+            // Kullanýcýdan gerekli bilgileri girmesi istenebilir
+        }
+    }
+
+
+    public async void Onayla_Clicked(object sender, EventArgs e)
         {
 
             //if (viewModel.ReadedCount != 0)
             //{
 
-                barcodeResult.Text = "Kayýt Onaylandý, Hedeflenen Stok Adedi Sayýmýna Ulaþýldý.";
+                //barcodeResult.Text = "Kayýt Onaylandý, Hedeflenen Stok Adedi Sayýmýna Ulaþýldý.";
                 this.BackgroundColor = Color.FromRgb(51, 153, 255);
                 label1.TextColor = Color.FromRgb(255, 255, 255);
                 label2.TextColor = Color.FromRgb(255, 255, 255);
@@ -171,5 +197,5 @@ namespace EasyBarcodeMAU;
 
         }
         #endregion
-}
+}    
 

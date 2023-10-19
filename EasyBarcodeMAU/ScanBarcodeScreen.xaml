@@ -39,10 +39,17 @@
                 <BoxView  x:Name="boxView2" HeightRequest="1" BackgroundColor="Gray" HorizontalOptions="FillAndExpand" VerticalOptions="Center" Margin="0,5"/>
             </StackLayout>
         </Frame>
+        <Frame Padding="20,10" CornerRadius="5" HasShadow="True" BackgroundColor="Transparent" Margin="10" HeightRequest="50">
+            <StackLayout Orientation="Horizontal" Spacing="10" >
+                <Entry x:Name="barcodeEntry" Placeholder="Barkod Numarası" WidthRequest="200" FontSize="Small"  HeightRequest="40"/>
+                <!--<Entry x:Name="countEntry" Placeholder="Miktar" WidthRequest="50" Keyboard="Numeric" FontSize="Small"  VerticalTextAlignment="Center"  HeightRequest="40" IsVisible="hidden"/>-->
+                <Button Text="Ekle"  FontSize="Small" Padding="0" Margin="5" TextColor="White" Clicked="EkleButton_Clicked" WidthRequest="35" HeightRequest="35"  CornerRadius="5"  BackgroundColor="LightSkyBlue"/>
+            </StackLayout>
+        </Frame>
         <StackLayout Padding="0,5" Margin="0,5,0,0"  >
-            <Frame BorderColor="LightGrey" CornerRadius="5"  BackgroundColor="Transparent" Margin="5">
+            <Frame BorderColor="LightGrey" CornerRadius="5"  BackgroundColor="Transparent" Margin="0">
                 <ScrollView Padding="5,0" >
-                    <ListView x:Name="barcodeListView" HeightRequest="220" RowHeight="35" >
+                    <ListView x:Name="barcodeListView" HeightRequest="200" RowHeight="35" >
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <ViewCell>
@@ -71,18 +78,18 @@
 
         <Grid Padding="10,20" WidthRequest="340"  >
             <Grid.RowDefinitions >
-                <RowDefinition Height="60"/>
-                <RowDefinition Height="60"/>
+                <RowDefinition Height="45"/>
+                <RowDefinition Height="45"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions >
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-            <Button Text="Onayla"  Grid.Row="0" HeightRequest="45" BackgroundColor="LightSkyBlue" Clicked="Onayla_Clicked" FontSize="Body" FontAttributes="Bold" BorderWidth="1" BorderColor="Black"></Button>
-            <Button Text="Vazgeç"  Grid.Row="1" HeightRequest="45" BackgroundColor="LightSlateGray" FontSize="Body" Clicked="Vazgec_Clicked" FontAttributes="Bold"  BorderWidth="1" BorderColor="Black"></Button>
+            <Button Text="Onayla"  Grid.Row="0" HeightRequest="40" Padding="0" BackgroundColor="LightSkyBlue" Clicked="Onayla_Clicked" FontSize="Body" FontAttributes="Bold" BorderWidth="1" BorderColor="Black"></Button>
+            <Button Text="Vazgeç"  Grid.Row="1" HeightRequest="40" Padding="0" BackgroundColor="LightSlateGray" FontSize="Body" Clicked="Vazgec_Clicked" FontAttributes="Bold"  BorderWidth="1" BorderColor="Black"></Button>
         </Grid>
-        <VerticalStackLayout>
+        <!--<VerticalStackLayout>
             <Label x:Name="barcodeResult"  FontSize="18" FontAttributes="Bold" TextColor="White" HorizontalTextAlignment="Center"  Margin="0,10" Padding="0,5" />
-        </VerticalStackLayout>
+        </VerticalStackLayout>-->
     </VerticalStackLayout>
 </ContentPage>

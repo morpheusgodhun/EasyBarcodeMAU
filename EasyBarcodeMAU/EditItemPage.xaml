@@ -20,26 +20,32 @@
                    MinimumHeightRequest="420">
 
                 <ScrollView>
-                    <StackLayout>
-                        <ListView x:Name="barcodeListView" HeightRequest="220" RowHeight="40" >
+                    <StackLayout> 
+                        <StackLayout HeightRequest="110" BackgroundColor="Red" Margin="5,20,10,5" >
+                            <!--burada bi düzenleme yapılıcak içerisine sayımı yapılan ürün ile alakalı bilgileri yazıcaz ufak bikaç bilgi olucak sonra altında sayım adetleri zaten gözüküyo --> 
+                        </StackLayout>
+                        <ListView x:Name="barcodeListView" HeightRequest="300" RowHeight="40" Margin="5" >
                             <ListView.ItemTemplate>
                                 <DataTemplate>
                                     <ViewCell>
-                                        <Grid Padding="10">
+                                        <Grid Padding="10" >
                                             <Grid.RowDefinitions>
                                                 <RowDefinition Height="*"/>
                                             </Grid.RowDefinitions>
                                             <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="150"/>
+                                                <ColumnDefinition Width="40"/>
                                                 <ColumnDefinition Width="*" />
-                                                <ColumnDefinition Width="100" />
                                             </Grid.ColumnDefinitions>
                                             <StackLayout Grid.Column="0" >
                                                 <Label Text="{Binding Barcode}" TextColor="Black"/>
                                             </StackLayout>
-                                            <StackLayout Grid.Column="1" Orientation="Horizontal" >
-                                                <Label Text="{Binding Count}" TextColor="Black" />
-                                                <Button Text="-" CommandParameter="{Binding .}" FontSize="Body" Padding="0" Margin="0" TextColor="White" Clicked="ArtirAzaltButton_Clicked" WidthRequest="25" HeightRequest="25"  CornerRadius="4"/>
-                                                <Button Text="+" CommandParameter="{Binding .}" FontSize="Body" Padding="0" Margin="0" TextColor="White" Clicked="ArtirAzaltButton_Clicked" WidthRequest="25" HeightRequest="25"  CornerRadius="4" />
+                                            <Label Grid.Column="1" Text="{Binding Count}" TextColor="Black" />
+                                            <StackLayout Grid.Column="2" Orientation="Horizontal" >
+                                                <StackLayout Orientation="Horizontal" >
+                                                    <Button Text="-" CommandParameter="{Binding .}" FontSize="Body" Padding="0" Margin="5" TextColor="White" Clicked="ArtirAzaltButton_Clicked" WidthRequest="35" HeightRequest="35"  CornerRadius="4" />
+                                                    <Button Text="+" CommandParameter="{Binding .}" FontSize="Body" Padding="0" Margin="5" TextColor="White" Clicked="ArtirAzaltButton_Clicked" WidthRequest="35" HeightRequest="35"  CornerRadius="4" />
+                                                </StackLayout>
                                             </StackLayout>
                                         </Grid>
                                     </ViewCell>
@@ -65,3 +71,4 @@
         </StackLayout>
     </VerticalStackLayout>
 </ContentPage>
+
