@@ -22,6 +22,17 @@ public class ReadBaseModel : BaseViewModel {
         }
     }
 
+    public int ManualMudahale;
+    private int _manualMudahale {
+        get { return _manualMudahale; }
+        set {
+            if (_manualMudahale != value) {
+                _defterNo = value;
+                OnPropertyChanged(nameof(ManualMudahale));
+            }
+        }
+    }
+
     public int Id { get; set; }
     private int _defterNo;
     public int DefterNo {

@@ -42,15 +42,7 @@ public partial class EditItemPage : ContentPage {
         barcodeListView.ItemsSource = scannedBarcodes;
 
     }
-
-
-    private void ManualMudahale(object sender, EventArgs e)
-        {
-        var button = (Button)sender;
-        var selectedItem = (ReadBaseModel)button.CommandParameter;
-        var manualMudahale = (selectedItem.Count) - _viewModel.ReadedCount;
-
-    }
+    
 
     private void ArtirAzaltButton_Clicked(object sender, EventArgs e) {
         var button = (Button)sender;
