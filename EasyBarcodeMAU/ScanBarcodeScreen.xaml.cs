@@ -117,6 +117,7 @@ public partial class ScanBarcodeScreen : ContentPage {
         else {
             DisplayAlert("Hata", "Lütfen yalnýzca rakam içeren bir deðer girin.", "Tamam");
         }
+
     }
 
     public async void Onayla_Clicked(object sender, EventArgs e) {
