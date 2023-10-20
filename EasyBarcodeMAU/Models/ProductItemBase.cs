@@ -13,7 +13,7 @@
         public string DepoKonum { get; set; }
         public long BarkodNo { get; set; }   
         public long RequiredCount { get; set; }   
-        public long ReadedCount { get; set; }
+        public int ReadedCount { get; set; }
         public Color BorderColor { get; set; }
         public bool IsSelected { get; set; }
         public Frame Frame { get; set; }

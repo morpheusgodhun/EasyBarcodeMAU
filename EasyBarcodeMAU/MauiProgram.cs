@@ -7,14 +7,12 @@ namespace EasyBarcodeMAU {
             var builder = MauiApp.CreateBuilder();
             builder
                 .UseMauiApp<App>()
-                .UseMauiCameraView() 
+                .UseMauiCameraView()
                 .ConfigureFonts(fonts => {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
                 });
-
-		builder.Logging.AddDebug();
-
+            builder.Logging.AddDebug();
             return builder.Build();
         }
     }

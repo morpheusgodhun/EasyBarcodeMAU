@@ -1,6 +1,5 @@
 ﻿namespace EasyBarcodeMAU.Models;
-public class ProductModel : BaseViewModel
-{
+public class ProductModel : BaseViewModel {
 
     #region List
     public List<ProductItemBase> ProductItems { get; set; } = new List<ProductItemBase>
@@ -13,20 +12,15 @@ public class ProductModel : BaseViewModel
             new ProductItemBase { Id = 6, DefterNo = 234322443, DepoGirisi = DateTime.Now, MusteriAd = "FarmTown", UrunCins = "Tahıl", UrunAdet = 3539531, UrunAgirlik = 650 , DepoKonum = "F Blok" , RequiredCount=50 },
             new ProductItemBase { Id = 7, DefterNo = 234324324, DepoGirisi = DateTime.Now, MusteriAd = "PetCat", UrunCins = "Hayvan Maması", UrunAdet = 3539531, UrunAgirlik = 50 , DepoKonum = "G Blok " , RequiredCount=60}
         };
-
     #endregion
 
     #region Properties
 
     private int _count;
-    public int Count
-    {
+    public int Count {
         get { return _count; }
-        set
-        {
-
-            if (_count != value)
-            {
+        set {
+            if (_count != value) {
                 _count = value;
                 OnPropertyChanged(nameof(Count));
             }
@@ -34,13 +28,10 @@ public class ProductModel : BaseViewModel
     }
 
     private string selectedProduct;
-    public string SelectedProduct
-    {
+    public string SelectedProduct {
         get { return selectedProduct; }
-        set
-        {
-            if (selectedProduct != value)
-            {
+        set {
+            if (selectedProduct != value) {
                 selectedProduct = value;
                 OnPropertyChanged(nameof(SelectedProduct));
 

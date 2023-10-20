@@ -49,7 +49,6 @@
                                             </Grid.RowDefinitions>
                                             <Grid.ColumnDefinitions>
                                                 <ColumnDefinition Width="170" />
-                                                <!-- Fixed width for barcode -->
                                                 <ColumnDefinition Width="30" />
                                                 <ColumnDefinition Width="*" />
                                             </Grid.ColumnDefinitions>
