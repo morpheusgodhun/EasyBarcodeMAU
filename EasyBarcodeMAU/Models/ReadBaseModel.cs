@@ -22,13 +22,13 @@ public class ReadBaseModel : BaseViewModel {
         }
     }
 
-    public int ManualMudahale;
-    private int _manualMudahale {
-        get { return _manualMudahale; }
+    public int ToplamCount;
+    private int _toplamCount {
+        get { return _toplamCount; }
         set {
-            if (_manualMudahale != value) {
-                _defterNo = value;
-                OnPropertyChanged(nameof(ManualMudahale));
+            if (_toplamCount != value) {
+                _toplamCount = value;
+                OnPropertyChanged(nameof(ToplamCount));
             }
         }
     }

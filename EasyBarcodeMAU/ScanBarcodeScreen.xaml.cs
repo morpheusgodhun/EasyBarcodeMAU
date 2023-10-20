@@ -60,20 +60,23 @@ public partial class ScanBarcodeScreen : ContentPage {
                     for (int i = 0; i < args.Result.Length; i++) {
                         var format = args.Result[i].BarcodeFormat;
                         var text = args.Result[i].Text;
-                        viewModel.ReadedCount++;
-                        MainThread.BeginInvokeOnMainThread(() => {
-                            var existingItem = scannedBarcodes.FirstOrDefault(item => item.Barcode == text);
-                            if (existingItem != default) {
-                                existingItem.Count++;
 
-                            }
-                            else {
-                                scannedBarcodes.Add(new ReadBaseModel { Barcode = text, Count = 1 });
-                            }
-                        });
+                        var existingItem = scannedBarcodes.FirstOrDefault(item => item.Barcode == text);
+
+                        if (existingItem != default) {
+                            viewModel.ReadedCount++;
+                            existingItem.Count++;
+                        }
+                        else {
+                            scannedBarcodes.Add(new ReadBaseModel { Barcode = text, Count = 1 });
+                            viewModel.ReadedCount++;
+                        }
                     }
-                }
-                else {
+                    int manuallyAddedBarcodeCount = scannedBarcodes.Sum(item => item.Count);
+
+                    int totalItemCount = viewModel.ReadedCount + manuallyAddedBarcodeCount;
+
+                    viewModel.ToplamCount = totalItemCount;
                 }
             });
 
@@ -81,6 +84,7 @@ public partial class ScanBarcodeScreen : ContentPage {
             isFocusing = false;
         }
     }
+
 
 
     private void cameraView_CamerasLoaded(object sender, EventArgs e) {
@@ -107,15 +111,14 @@ public partial class ScanBarcodeScreen : ContentPage {
 
     private void EkleButton_Clicked(object sender, EventArgs e) {
         string barcode = barcodeEntry.Text;
-
         barcode = new string(barcode.Where(char.IsDigit).ToArray());
-
         if (!string.IsNullOrWhiteSpace(barcode)) {
             ReadBaseModel newItem = new ReadBaseModel { Barcode = barcode, Count = 1 };
             scannedBarcodes.Add(newItem);
             barcodeListView.ItemsSource = null;
             barcodeListView.ItemsSource = scannedBarcodes;
             barcodeEntry.Text = string.Empty;
+            viewModel.ReadedCount++;
         }
         else {
             DisplayAlert("Hata", "Lütfen yalnýzca rakam içeren bir deðer girin.", "Tamam");
