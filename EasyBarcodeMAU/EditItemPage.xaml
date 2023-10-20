@@ -10,7 +10,6 @@
     <ContentPage.BindingContext>
         <vm:ReadBaseModel />
     </ContentPage.BindingContext>
-    
 
     <VerticalStackLayout VerticalOptions="Start" Margin="10">
         <StackLayout>
@@ -20,13 +19,18 @@
                    BackgroundColor="Transparent"
                    Margin="5"
                    MinimumHeightRequest="420">
-
                 <ScrollView>
-                    <StackLayout> 
-                        <StackLayout HeightRequest="110" BackgroundColor="Red" Margin="5,20,10,5" >
-                            <!--burada bi düzenleme yapılıcak içerisine sayımı yapılan ürün ile alakalı bilgileri yazıcaz ufak bikaç bilgi olucak sonra altında sayım adetleri zaten gözüküyo --> 
+                    
+                    <StackLayout>
+                        <StackLayout HeightRequest="130" BackgroundColor="LightSkyBlue" Margin="5,0,10,5" WidthRequest="300" >
+                            <Label x:Name="label90231" Text="Sayım Yapılan Müşteri: " TextColor="White" FontSize="25" FontAttributes="Bold" />
+                            <Label x:Name="label1957" Text="{Binding MusteriAd}" FontSize="20" FontAttributes="Bold" TextColor="White"/>
+                            <BoxView Color="Pink" WidthRequest="296" VerticalOptions="FillAndExpand" />
+                            <Label x:Name="label90232" Text="Sayım Yapılan Ürün: " FontSize="25" TextColor="White" FontAttributes="Bold" />
+                            <Label x:Name="label983" Text="{Binding UrunCins}" FontSize="20" FontAttributes="Bold" TextColor="White"/>
                         </StackLayout>
-                        <ListView x:Name="barcodeListView" HeightRequest="300" RowHeight="40" Margin="5"   >
+                        
+                        <ListView x:Name="barcodeListView" HeightRequest="300" RowHeight="40" Margin="5" >
                             <ListView.ItemTemplate>
                                 <DataTemplate>
                                     <ViewCell>
@@ -46,6 +50,8 @@
                                             <StackLayout Grid.Column="1">
                                                 <Label Text="{Binding Count, StringFormat='({0})'}" TextColor="Black" />
                                             </StackLayout>
+                                            
+                                            <Label Grid.Column="1" Text="{Binding Count}" TextColor ="Red" FontSize="Medium" HeightRequest="20" WidthRequest="30"/>
                                             <StackLayout Grid.Column="2" Orientation="Horizontal" >
                                                 <StackLayout Orientation="Horizontal" >
                                                     <Button Text="-" CommandParameter="{Binding .}" FontSize="Body" Padding="0" Margin="5" TextColor="White" Clicked="ArtirAzaltButton_Clicked" WidthRequest="35" HeightRequest="35"  CornerRadius="4" />
@@ -70,8 +76,12 @@
                         <ColumnDefinition />
                     </Grid.ColumnDefinitions>
                 </Grid>
+                <StackLayout Orientation="Horizontal" WidthRequest="155" >
+                    <Label x:Name="label22" Text="Okutulan Toplam Adet  : " TextColor="Black" FontAttributes="Bold"/>
+                    <Label x:Name="label23"  Text="{Binding ReadedCount}" TextColor="Black"/>
+                </StackLayout>
                 <Button Grid.Row="0" Margin="10" Text="Düzenlemeyi Kaydet"  Clicked="Kaydet_Clicked" BackgroundColor="LightSkyBlue"></Button>
-                <Button Grid.Row="1" Margin="10" Text="Vazgeç" BackgroundColor="LightSlateGray"></Button>
+                <Button Grid.Row="1" Margin="10" Text="Vazgeç" Clicked="Vazgec_Clicked" BackgroundColor="LightSlateGray"></Button>
             </StackLayout>
         </StackLayout>
     </VerticalStackLayout>
