@@ -22,6 +22,17 @@ public class ReadBaseModel : BaseViewModel {
         }
     }
 
+    public int ToplamCount;
+    private int _toplamCount {
+        get { return _toplamCount; }
+        set {
+            if (_toplamCount != value) {
+                _toplamCount = value;
+                OnPropertyChanged(nameof(ToplamCount));
+            }
+        }
+    }
+
     public int Id { get; set; }
     private int _defterNo;
     public int DefterNo {

@@ -109,11 +109,10 @@ public partial class ScanBarcodeScreen : ContentPage {
         if (!string.IsNullOrWhiteSpace(barcode)) {
             ReadBaseModel newItem = new ReadBaseModel { Barcode = barcode, Count = 1 };
             scannedBarcodes.Add(newItem);
-
             barcodeListView.ItemsSource = null;
             barcodeListView.ItemsSource = scannedBarcodes;
-
             barcodeEntry.Text = string.Empty;
+            viewModel.ReadedCount++;
         }
         else {
             DisplayAlert("Hata", "Lütfen yalnýzca rakam içeren bir deðer girin.", "Tamam");
