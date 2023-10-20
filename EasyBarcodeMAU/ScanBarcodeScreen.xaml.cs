@@ -22,11 +22,9 @@ public partial class ScanBarcodeScreen : ContentPage {
         BindingContext = viewModel;
         barcodeListView.ItemsSource = scannedBarcodes;
     }
-
     #endregion
 
     #region Methods
-
 
     private bool IsDigitsOnly(string str) {
         foreach (char c in str) {
@@ -35,7 +33,6 @@ public partial class ScanBarcodeScreen : ContentPage {
         }
         return true;
     }
-
 
     public ObservableCollection<ReadBaseModel> ScannedBarcodes {
         get { return scannedBarcodes; }
@@ -47,7 +44,7 @@ public partial class ScanBarcodeScreen : ContentPage {
         }
     }
     protected override async void OnAppearing() {
-        base.OnAppearing();
+        base.OnAppearing(); 
         await cameraView.StartCameraAsync();
     }
 
@@ -76,7 +73,6 @@ public partial class ScanBarcodeScreen : ContentPage {
                 else {
                 }
             });
-
             await Task.Delay(focusDelayMilliseconds);
             isFocusing = false;
         }
@@ -123,8 +119,6 @@ public partial class ScanBarcodeScreen : ContentPage {
             DisplayAlert("Hata", "Lütfen yalnýzca rakam içeren bir deðer girin.", "Tamam");
         }
     }
-
-
 
     public async void Onayla_Clicked(object sender, EventArgs e) {
         this.BackgroundColor = Color.FromRgb(51, 153, 255);

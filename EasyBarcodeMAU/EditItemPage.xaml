@@ -4,7 +4,7 @@
              xmlns:vm="clr-namespace:EasyBarcodeMAU.Models"
              xmlns:cv="clr-namespace:Camera.MAUI;assembly=Camera.MAUI"
              x:Class="EasyBarcodeMAU.EditItemPage"
-             Title="Ürün Değişikliği"
+             Title="Ürün Düzenleme"
              BackgroundColor="White"  >
 
     <ContentPage.BindingContext>
@@ -20,16 +20,25 @@
                    Margin="5"
                    MinimumHeightRequest="420">
                 <ScrollView>
-                    
                     <StackLayout>
-                        <StackLayout HeightRequest="130" BackgroundColor="LightSkyBlue" Margin="5,0,10,5" WidthRequest="300" >
-                            <Label x:Name="label90231" Text="Sayım Yapılan Müşteri: " TextColor="White" FontSize="25" FontAttributes="Bold" />
-                            <Label x:Name="label1957" Text="{Binding MusteriAd}" FontSize="20" FontAttributes="Bold" TextColor="White"/>
-                            <BoxView Color="Pink" WidthRequest="296" VerticalOptions="FillAndExpand" />
-                            <Label x:Name="label90232" Text="Sayım Yapılan Ürün: " FontSize="25" TextColor="White" FontAttributes="Bold" />
-                            <Label x:Name="label983" Text="{Binding UrunCins}" FontSize="20" FontAttributes="Bold" TextColor="White"/>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                        </Grid>
+                        <StackLayout HeightRequest="90" BackgroundColor="LightSkyBlue" WidthRequest="300" Padding="5,0,5,0" >
+                            <StackLayout Grid.Row="0" VerticalOptions="Center" HorizontalOptions="Center">
+                                <Label x:Name="label1957" Text="{Binding MusteriAd}" FontSize="35" FontAttributes="Bold" TextColor="White" TextTransform="Uppercase"/>
+                            </StackLayout>
+                            <BoxView HeightRequest="2" Color="White" WidthRequest="170"></BoxView>
+                            <StackLayout Grid.Row="1" VerticalOptions="Center" HorizontalOptions="Center" Padding="5,5,5,0">
+                                <Label x:Name="label983"  Text="{Binding UrunCins}" FontSize="20" FontAttributes="Bold" TextColor="White"/>
+                            </StackLayout>
                         </StackLayout>
-
                         <ListView x:Name="barcodeListView" HeightRequest="300" RowHeight="40" Margin="5"   >
                             <ListView.ItemTemplate>
                                 <DataTemplate>
