@@ -6,15 +6,11 @@ namespace EasyBarcodeMAU;
 public partial class ScanBarcodeScreen : ContentPage {
 
     #region Variables
-
-    private ProductItemBase _selectedItem;
     private ReadBaseModel viewModel;
+    private ProductItemBase _selectedItem;
     private bool isFocusing = false;
     private int focusDelayMilliseconds = 1500;
     private ObservableCollection<ReadBaseModel> scannedBarcodes = new ObservableCollection<ReadBaseModel>();
-
-
-
 
     #endregion
 
@@ -71,7 +67,6 @@ public partial class ScanBarcodeScreen : ContentPage {
                             else {
                                 scannedBarcodes.Add(new ReadBaseModel { Barcode = text, Count = 1 });
                             }
-                            Vibration.Vibrate();
                         });
                     }
                 }
@@ -140,10 +135,7 @@ public partial class ScanBarcodeScreen : ContentPage {
         label8.TextColor = Color.FromRgb(255, 255, 255);
         boxView1.Color = Color.FromRgb(255, 255, 255);
         boxView2.Color = Color.FromRgb(255, 255, 255);
-        await Navigation.PushAsync(new EditItemPage(_selectedItem, viewModel.ReadedCount, viewModel.UrunCins, scannedBarcodes));
-
-
-
+        await Navigation.PushAsync(new EditItemPage(_selectedItem, viewModel.ReadedCount, _selectedItem.UrunCins, _selectedItem.MusteriAd, scannedBarcodes));
     }
     #endregion
 }

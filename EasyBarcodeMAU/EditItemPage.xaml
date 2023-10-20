@@ -10,7 +10,6 @@
     <ContentPage.BindingContext>
         <vm:ReadBaseModel />
     </ContentPage.BindingContext>
-    
 
     <VerticalStackLayout VerticalOptions="Start" Margin="10">
         <StackLayout>
@@ -20,11 +19,17 @@
                    BackgroundColor="Transparent"
                    Margin="5"
                    MinimumHeightRequest="420">
-
                 <ScrollView>
+                    
                     <StackLayout>
-                        <StackLayout HeightRequest="110" BackgroundColor="Red" Margin="5,20,10,5" >
+                        <StackLayout HeightRequest="130" BackgroundColor="LightSkyBlue" Margin="5,0,10,5" WidthRequest="300" >
+                            <Label x:Name="label90231" Text="Sayım Yapılan Müşteri: " TextColor="White" FontSize="25" FontAttributes="Bold" />
+                            <Label x:Name="label1957" Text="{Binding MusteriAd}" FontSize="20" FontAttributes="Bold" TextColor="White"/>
+                            <BoxView Color="Pink" WidthRequest="296" VerticalOptions="FillAndExpand" />
+                            <Label x:Name="label90232" Text="Sayım Yapılan Ürün: " FontSize="25" TextColor="White" FontAttributes="Bold" />
+                            <Label x:Name="label983" Text="{Binding UrunCins}" FontSize="20" FontAttributes="Bold" TextColor="White"/>
                         </StackLayout>
+                        
                         <ListView x:Name="barcodeListView" HeightRequest="300" RowHeight="40" Margin="5" >
                             <ListView.ItemTemplate>
                                 <DataTemplate>
@@ -41,6 +46,7 @@
                                             <StackLayout Grid.Column="0" >
                                                 <Label Text="{Binding Barcode}" TextColor="Black" FontSize="Large" HeightRequest="40"/>
                                             </StackLayout>
+                                            
                                             <Label Grid.Column="1" Text="{Binding Count}" TextColor ="Red" FontSize="Medium" HeightRequest="20" WidthRequest="30"/>
                                             <StackLayout Grid.Column="2" Orientation="Horizontal" >
                                                 <StackLayout Orientation="Horizontal" >
