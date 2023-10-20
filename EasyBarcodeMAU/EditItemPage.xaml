@@ -26,7 +26,7 @@
                         <StackLayout HeightRequest="110" BackgroundColor="Red" Margin="5,20,10,5" >
                             <!--burada bi düzenleme yapılıcak içerisine sayımı yapılan ürün ile alakalı bilgileri yazıcaz ufak bikaç bilgi olucak sonra altında sayım adetleri zaten gözüküyo --> 
                         </StackLayout>
-                        <ListView x:Name="barcodeListView" HeightRequest="300" RowHeight="40" Margin="5" >
+                        <ListView x:Name="barcodeListView" HeightRequest="300" RowHeight="40" Margin="5"   >
                             <ListView.ItemTemplate>
                                 <DataTemplate>
                                     <ViewCell>
@@ -35,14 +35,17 @@
                                                 <RowDefinition Height="*"/>
                                             </Grid.RowDefinitions>
                                             <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="150"/>
-                                                <ColumnDefinition Width="40"/>
+                                                <ColumnDefinition Width="170" />
+                                                <!-- Fixed width for barcode -->
+                                                <ColumnDefinition Width="30" />
                                                 <ColumnDefinition Width="*" />
                                             </Grid.ColumnDefinitions>
-                                            <StackLayout Grid.Column="0" >
-                                                <Label Text="{Binding Barcode}" TextColor="Black" FontSize="Large" HeightRequest="40"/>
+                                            <StackLayout Grid.Column="0">
+                                                <Label Text="{Binding Barcode}" TextColor="Black" FontSize="Small" LineBreakMode="NoWrap" />
                                             </StackLayout>
-                                            <Label Grid.Column="1" Text="{Binding Count}" TextColor="Black" />
+                                            <StackLayout Grid.Column="1">
+                                                <Label Text="{Binding Count, StringFormat='({0})'}" TextColor="Black" />
+                                            </StackLayout>
                                             <StackLayout Grid.Column="2" Orientation="Horizontal" >
                                                 <StackLayout Orientation="Horizontal" >
                                                     <Button Text="-" CommandParameter="{Binding .}" FontSize="Body" Padding="0" Margin="5" TextColor="White" Clicked="ArtirAzaltButton_Clicked" WidthRequest="35" HeightRequest="35"  CornerRadius="4" />
