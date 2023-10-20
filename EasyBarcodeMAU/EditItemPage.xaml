@@ -41,7 +41,7 @@
                                             <StackLayout Grid.Column="0" >
                                                 <Label Text="{Binding Barcode}" TextColor="Black" FontSize="Large" HeightRequest="40"/>
                                             </StackLayout>
-                                            <Label Grid.Column="1" Text="{Binding Count}" TextColor="Black" />
+                                            <Label Grid.Column="1" Text="{Binding Count}" TextColor ="Red" FontSize="Medium" HeightRequest="20" WidthRequest="30"/>
                                             <StackLayout Grid.Column="2" Orientation="Horizontal" >
                                                 <StackLayout Orientation="Horizontal" >
                                                     <Button Text="-" CommandParameter="{Binding .}" FontSize="Body" Padding="0" Margin="5" TextColor="White" Clicked="ArtirAzaltButton_Clicked" WidthRequest="35" HeightRequest="35"  CornerRadius="4" />
