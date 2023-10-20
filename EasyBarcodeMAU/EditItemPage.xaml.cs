@@ -40,6 +40,7 @@ public partial class EditItemPage : ContentPage {
     protected override void OnAppearing() {
         base.OnAppearing();
         barcodeListView.ItemsSource = scannedBarcodes;
+
     }
 
 
@@ -82,4 +83,7 @@ public partial class EditItemPage : ContentPage {
     }
     #endregion
 
+    private async void Vazgec_Clicked(object sender, EventArgs e) {
+        await Navigation.PopAsync();
+    }
 }

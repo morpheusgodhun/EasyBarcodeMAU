@@ -46,7 +46,10 @@ public partial class ScanBarcodeScreen : ContentPage {
             }
         }
     }
-
+    protected override async void OnAppearing() {
+        base.OnAppearing();
+        await cameraView.StartCameraAsync();
+    }
 
 
     private async void cameraView_BarcodeDetected(object sender, BarcodeEventArgs args) {
@@ -136,6 +139,7 @@ public partial class ScanBarcodeScreen : ContentPage {
         boxView1.Color = Color.FromRgb(255, 255, 255);
         boxView2.Color = Color.FromRgb(255, 255, 255);
         await Navigation.PushAsync(new EditItemPage(_selectedItem, viewModel.ReadedCount, _selectedItem.UrunCins, _selectedItem.MusteriAd, scannedBarcodes));
+        await cameraView.StopCameraAsync();
     }
     #endregion
 }
