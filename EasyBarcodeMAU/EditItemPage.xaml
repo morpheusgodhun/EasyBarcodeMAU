@@ -84,7 +84,7 @@
                 </Grid>
                 <StackLayout Orientation="Horizontal" WidthRequest="155" >
                     <Label x:Name="label22" Text="Okutulan Toplam Adet  : " TextColor="Black" FontAttributes="Bold"/>
-                    <Label x:Name="label23"  Text="{Binding ReadedCount}" TextColor="Black"/>
+                    <Label   Text="{Binding TotalCount}" TextColor="Black"/>
                 </StackLayout>
                 <Button Grid.Row="0" Margin="10" Text="Düzenlemeyi Kaydet"  Clicked="Kaydet_Clicked" BackgroundColor="LightSkyBlue"></Button>
                 <Button Grid.Row="1" Margin="10" Text="Vazgeç" Clicked="Vazgec_Clicked" BackgroundColor="LightSlateGray"></Button>

@@ -40,27 +40,33 @@ public partial class EditItemPage : ContentPage {
     protected override void OnAppearing() {
         base.OnAppearing();
         barcodeListView.ItemsSource = scannedBarcodes;
-
+        ReadBaseModel viewModel = (ReadBaseModel)BindingContext;
+        // TotalCount deðerini hesaplayýn
+        viewModel.TotalCount = _viewModel.ReadedCount;
     }
-    
 
-    private void ArtirAzaltButton_Clicked(object sender, EventArgs e) {
+
+    private void ArtirAzaltButton_Clicked(object sender, EventArgs e)
+    {
         var button = (Button)sender;
         var selectedItem = (ReadBaseModel)button.CommandParameter;
-        if (selectedItem != null) {
-            if (button.Text == "+") {
+        if (selectedItem != null)
+        {
+            if (button.Text == "+")
+            {
                 selectedItem.Count++;
-                _viewModel.ReadedCount ++;
-                
+                _viewModel.TotalCount++;  
+                //_viewModel.ReadedCount++;
             }
-            else if (button.Text == "-" && selectedItem.Count > 0) {
-                _viewModel.ReadedCount--;
+            else if (button.Text == "-" && selectedItem.Count > 0)
+            {
                 selectedItem.Count--;
-
-                
+                _viewModel.TotalCount--;  
+                //_viewModel.ReadedCount--;
             }
         }
     }
+
 
     private async void Kaydet_Clicked(object sender, EventArgs e) {
 

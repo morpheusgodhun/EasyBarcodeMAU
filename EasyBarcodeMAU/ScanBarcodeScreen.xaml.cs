@@ -43,11 +43,16 @@ public partial class ScanBarcodeScreen : ContentPage {
             }
         }
     }
+
     protected override async void OnAppearing() {
         base.OnAppearing(); 
         await cameraView.StartCameraAsync();
-    }
+        barcodeListView.ItemsSource = scannedBarcodes;
+        ReadBaseModel viewModel = (ReadBaseModel)BindingContext;
 
+        viewModel.TotalCount = scannedBarcodes.Sum(item => item.Count);
+    }
+  
 
     private async void cameraView_BarcodeDetected(object sender, BarcodeEventArgs args) {
         if (!isFocusing) {
@@ -58,15 +63,19 @@ public partial class ScanBarcodeScreen : ContentPage {
                         var format = args.Result[i].BarcodeFormat;
                         var text = args.Result[i].Text;
                         viewModel.ReadedCount++;
-                        MainThread.BeginInvokeOnMainThread(() => {
+                        MainThread.BeginInvokeOnMainThread(() =>
+                        {
                             var existingItem = scannedBarcodes.FirstOrDefault(item => item.Barcode == text);
-                            if (existingItem != default) {
+                            if (existingItem != default)
+                            {
                                 existingItem.Count++;
-
                             }
-                            else {
+                            else
+                            {
                                 scannedBarcodes.Add(new ReadBaseModel { Barcode = text, Count = 1 });
                             }
+
+                            viewModel.TotalCount = scannedBarcodes.Sum(item => item.Count);
                         });
                     }
                 }
@@ -78,6 +87,27 @@ public partial class ScanBarcodeScreen : ContentPage {
         }
     }
 
+    private void EkleButton_Clicked(object sender, EventArgs e)
+    {
+        string barcode = barcodeEntry.Text;
+        barcode = new string(barcode.Where(char.IsDigit).ToArray());
+
+        if (!string.IsNullOrWhiteSpace(barcode))
+        {
+            ReadBaseModel newItem = new ReadBaseModel { Barcode = barcode, Count = 1 };
+            scannedBarcodes.Add(newItem);
+            barcodeListView.ItemsSource = null;
+            barcodeListView.ItemsSource = scannedBarcodes;
+            barcodeEntry.Text = string.Empty;
+            viewModel.ReadedCount++;
+
+            viewModel.TotalCount = scannedBarcodes.Sum(item => item.Count);
+        }
+        else
+        {
+            DisplayAlert("Hata", "Lütfen yalnýzca rakam içeren bir deðer girin.", "Tamam");
+        }
+    }
 
     private void cameraView_CamerasLoaded(object sender, EventArgs e) {
         if (cameraView.Cameras.Count > 0) {
@@ -101,38 +131,20 @@ public partial class ScanBarcodeScreen : ContentPage {
     }
 
 
-    private void EkleButton_Clicked(object sender, EventArgs e) {
-        string barcode = barcodeEntry.Text;
-
-        barcode = new string(barcode.Where(char.IsDigit).ToArray());
-
-        if (!string.IsNullOrWhiteSpace(barcode)) {
-            ReadBaseModel newItem = new ReadBaseModel { Barcode = barcode, Count = 1 };
-            scannedBarcodes.Add(newItem);
-            barcodeListView.ItemsSource = null;
-            barcodeListView.ItemsSource = scannedBarcodes;
-            barcodeEntry.Text = string.Empty;
-            viewModel.ReadedCount++;
-        }
-        else {
-            DisplayAlert("Hata", "Lütfen yalnýzca rakam içeren bir deðer girin.", "Tamam");
-        }
-
-    }
 
     public async void Onayla_Clicked(object sender, EventArgs e) {
         this.BackgroundColor = Color.FromRgb(51, 153, 255);
         label1.TextColor = Color.FromRgb(255, 255, 255);
         label2.TextColor = Color.FromRgb(255, 255, 255);
-        label3.TextColor = Color.FromRgb(255, 255, 255);
+        //label3.TextColor = Color.FromRgb(255, 255, 255);
         label4.TextColor = Color.FromRgb(255, 255, 255);
-        label5.TextColor = Color.FromRgb(255, 255, 255);
-        label6.TextColor = Color.FromRgb(255, 255, 255);
+        //label5.TextColor = Color.FromRgb(255, 255, 255);
+        //label6.TextColor = Color.FromRgb(255, 255, 255);
         label7.TextColor = Color.FromRgb(255, 255, 255);
         label8.TextColor = Color.FromRgb(255, 255, 255);
         boxView1.Color = Color.FromRgb(255, 255, 255);
         boxView2.Color = Color.FromRgb(255, 255, 255);
-        await Navigation.PushAsync(new EditItemPage(_selectedItem, viewModel.ReadedCount, _selectedItem.UrunCins, _selectedItem.MusteriAd, scannedBarcodes));
+        await Navigation.PushAsync(new EditItemPage(_selectedItem, viewModel.TotalCount, _selectedItem.UrunCins, _selectedItem.MusteriAd, scannedBarcodes));
         await cameraView.StopCameraAsync();
     }
     #endregion

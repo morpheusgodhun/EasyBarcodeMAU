@@ -11,26 +11,30 @@
 
     <VerticalStackLayout Padding="15,10" Margin="5">
         <VerticalStackLayout Spacing="10"  VerticalOptions="Center" Padding="10">
-            <cv:CameraView  x:Name="cameraView" WidthRequest="400" HeightRequest="100" CamerasLoaded="cameraView_CamerasLoaded" BarCodeDetectionEnabled="True" BarcodeDetected="cameraView_BarcodeDetected"/>
+            <cv:CameraView  x:Name="cameraView" WidthRequest="410" HeightRequest="100" CamerasLoaded="cameraView_CamerasLoaded" BarCodeDetectionEnabled="True" BarcodeDetected="cameraView_BarcodeDetected"/>
         </VerticalStackLayout>
         
         <Frame Padding="20,10" CornerRadius="5" HasShadow="True" BackgroundColor="Transparent" Margin="5" >
             <StackLayout>
-                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
-                    <StackLayout Orientation="Horizontal" WidthRequest="155" >
+                <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                    <!--<StackLayout Orientation="Horizontal" WidthRequest="155" >
                         <Label x:Name="label1" Text="Stok Adet  : " TextColor="Black" FontAttributes="Bold"/>
                         <Label x:Name="label2"  Text="{Binding RequiredCount}" TextColor="Black"/>
-                    </StackLayout>
-                    <StackLayout Orientation="Horizontal"  WidthRequest="155" >
-                        <Label  x:Name="label3"  Text="Ürün : " TextColor="Black" FontAttributes="Bold" />
-                        <Label  x:Name="label4"  Text="{Binding SelectedProduct}" TextColor="Black" />
+                    </StackLayout>-->
+                    <StackLayout Orientation="Horizontal"  HorizontalOptions="Center" >
+                        <!--<Label  x:Name="label3"   TextColor="Black" FontAttributes="Bold" />-->
+                        <Label  x:Name="label4"  Text="{Binding SelectedProduct}" HorizontalTextAlignment="Center" FontSize="Body" TextTransform="Uppercase" FontAttributes="Bold" TextColor="Black" />
                     </StackLayout>
                 </StackLayout>
                 <BoxView x:Name="boxView1" HeightRequest="1" BackgroundColor="Gray" HorizontalOptions="FillAndExpand" VerticalOptions="Center" Margin="0,5" />
                 <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" >
-                    <StackLayout Orientation="Horizontal" WidthRequest="155"  >
+                    <!--<StackLayout Orientation="Horizontal" WidthRequest="155"  >
                         <Label  x:Name="label5"  Text="Ürün Adet : " TextColor="Black" FontAttributes="Bold" />
                         <Label  x:Name="label6"  Text="{Binding ReadedCount}" TextColor="Black"/>
+                    </StackLayout>-->
+                    <StackLayout Orientation="Horizontal" WidthRequest="155" >
+                        <Label x:Name="label1" Text="Stok Adet  : " TextColor="Black" FontAttributes="Bold"/>
+                        <Label x:Name="label2"  Text="{Binding RequiredCount}" TextColor="Black"/>
                     </StackLayout>
                     <StackLayout Orientation="Horizontal"   WidthRequest="155"  >
                         <Label  x:Name="label7"  Text="Depo : " TextColor="Black" FontAttributes="Bold"   />
@@ -40,16 +44,16 @@
                 <BoxView  x:Name="boxView2" HeightRequest="1" BackgroundColor="Gray" HorizontalOptions="FillAndExpand" VerticalOptions="Center" Margin="0,5"/>
             </StackLayout>
         </Frame>
-        <Frame Padding="20,10" CornerRadius="5" HasShadow="True" BackgroundColor="Transparent" Margin="10" HeightRequest="50">
+        <Frame Padding="20,10" CornerRadius="5" HasShadow="True" BackgroundColor="Transparent" Margin="5" HeightRequest="50">
             <StackLayout Orientation="Horizontal" Spacing="10" >
-                <Entry x:Name="barcodeEntry" Placeholder="Barkod Numarası" WidthRequest="200" FontSize="Small"  HeightRequest="40"/>
+                <Entry x:Name="barcodeEntry" Placeholder="Barkod Numarası" WidthRequest="220" FontSize="Small"  HeightRequest="40"/>
                 <Button Text="Ekle"  FontSize="Small" Padding="0" Margin="5" TextColor="White" Clicked="EkleButton_Clicked" WidthRequest="35" HeightRequest="35"  CornerRadius="5"  BackgroundColor="LightSkyBlue"/>
             </StackLayout>
         </Frame>
-        <StackLayout Padding="0,5" Margin="0,5,0,0"  >
+        <StackLayout Padding="0,5" Margin="5,5,5,0"  >
             <Frame BorderColor="LightGrey" CornerRadius="5"  BackgroundColor="Transparent" Margin="0">
                 <ScrollView Padding="5,0" >
-                    <ListView x:Name="barcodeListView" HeightRequest="200" RowHeight="35" >
+                    <ListView x:Name="barcodeListView" HeightRequest="130" RowHeight="35" >
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <ViewCell>
@@ -74,6 +78,20 @@
                     </ListView>
                 </ScrollView>
             </Frame>
+        </StackLayout>
+        <StackLayout>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+            </Grid>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center" >
+                <Label x:Name="label22" Text="Okutulan Toplam Adet  : " TextColor="Black" FontAttributes="Bold"/>
+                <Label   Text="{Binding TotalCount}" TextColor="Black"/>
+            </StackLayout>
         </StackLayout>
 
         <Grid Padding="10,20" WidthRequest="340"  >
