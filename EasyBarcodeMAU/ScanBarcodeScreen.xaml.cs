@@ -100,8 +100,7 @@ public partial class ScanBarcodeScreen : ContentPage {
             barcodeListView.ItemsSource = scannedBarcodes;
             barcodeEntry.Text = string.Empty;
             viewModel.ReadedCount++;
-
-            viewModel.TotalCount = scannedBarcodes.Sum(item => item.Count);
+            viewModel.TotalCount = scannedBarcodes.Sum(item => item.Count);            
         }
         else
         {
@@ -124,22 +123,18 @@ public partial class ScanBarcodeScreen : ContentPage {
         viewModel.SelectedProduct = _selectedItem?.UrunCins;
         this.viewModel.RequiredCount = _selectedItem.RequiredCount;
         this.viewModel.DepoKonum = _selectedItem.DepoKonum;
+        this.viewModel.ReadedCount = _selectedItem.ReadedCount;
     }
 
     private async void Vazgec_Clicked(object sender, EventArgs e) {
         await Navigation.PopAsync();
     }
 
-
-
     public async void Onayla_Clicked(object sender, EventArgs e) {
         this.BackgroundColor = Color.FromRgb(51, 153, 255);
         label1.TextColor = Color.FromRgb(255, 255, 255);
         label2.TextColor = Color.FromRgb(255, 255, 255);
-        //label3.TextColor = Color.FromRgb(255, 255, 255);
         label4.TextColor = Color.FromRgb(255, 255, 255);
-        //label5.TextColor = Color.FromRgb(255, 255, 255);
-        //label6.TextColor = Color.FromRgb(255, 255, 255);
         label7.TextColor = Color.FromRgb(255, 255, 255);
         label8.TextColor = Color.FromRgb(255, 255, 255);
         boxView1.Color = Color.FromRgb(255, 255, 255);

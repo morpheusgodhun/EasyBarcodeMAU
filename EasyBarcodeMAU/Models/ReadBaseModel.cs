@@ -21,15 +21,23 @@ public class ReadBaseModel : BaseViewModel {
             }
         }
     }
+    private int _totalCountPlus;
+    public int TotalCountPlus {
+        get { return _count; }
+        set {
+            if (_totalCountPlus != value) {
+                _totalCountPlus = value;
+                OnPropertyChanged(nameof(TotalCountPlus));
+            }
+        }
+    }
+
 
     private int _totalCount;
-    public int TotalCount
-    {
+    public int TotalCount {
         get { return _totalCount; }
-        set
-        {
-            if (_totalCount != value)
-            {
+        set {
+            if (_totalCount != value) {
                 _totalCount = value;
                 OnPropertyChanged(nameof(TotalCount));
             }

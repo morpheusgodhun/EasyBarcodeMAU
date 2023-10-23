@@ -14,11 +14,13 @@ public partial class EditItemPage : ContentPage {
     private ReadBaseModel _viewModel;
     private ProductItemBase viewModel;
     private ObservableCollection<ReadBaseModel> scannedBarcodes;
+    ProductItemBase ProductItems;
+    ProductListPage frameTikla;
 
     #endregion
 
     #region InitModel
-    public EditItemPage(ProductItemBase selectedItem, int readedCount, string urunCins,string musteriAd, ObservableCollection<ReadBaseModel> scannedBarcodes) {
+    public EditItemPage(ProductItemBase selectedItem, int readedCount, string urunCins, string musteriAd, ObservableCollection<ReadBaseModel> scannedBarcodes) {
         InitializeComponent();
         _selectedItem = selectedItem;
         _readedCount = readedCount;
@@ -46,39 +48,39 @@ public partial class EditItemPage : ContentPage {
     }
 
 
-    private void ArtirAzaltButton_Clicked(object sender, EventArgs e)
-    {
+    private void ArtirAzaltButton_Clicked(object sender, EventArgs e) {
         var button = (Button)sender;
         var selectedItem = (ReadBaseModel)button.CommandParameter;
-        if (selectedItem != null)
-        {
-            if (button.Text == "+")
-            {
+        if (selectedItem != null) {
+            if (button.Text == "+") {
                 selectedItem.Count++;
-                _viewModel.TotalCount++;  
-                //_viewModel.ReadedCount++;
+                _viewModel.TotalCount++;
             }
-            else if (button.Text == "-" && selectedItem.Count > 0)
-            {
+            else if (button.Text == "-" && selectedItem.Count > 0) {
                 selectedItem.Count--;
-                _viewModel.TotalCount--;  
-                //_viewModel.ReadedCount--;
+                _viewModel.TotalCount--;
             }
         }
     }
 
 
     private async void Kaydet_Clicked(object sender, EventArgs e) {
+        int selectedItemId = _selectedItem.Id;
+        ProductModel productModel = new ProductModel();
 
-        int totalItemCount = scannedBarcodes.Sum(item => item.Count);
+        if (productModel != null) {
+            var itemToRemove = productModel.ProductItems.FirstOrDefault(item => item.Id == selectedItemId);
 
-        if (totalItemCount == _selectedItem.RequiredCount) {
-            await DisplayAlert("Baþarýlý", "Baþarýyla Kaydedildi", "Tamam");
-        }
-        else {
-            await DisplayAlert("Hata", "Baþarýsýz Ýþlem", "Tamam");
+            if (itemToRemove != null && itemToRemove.RequiredCount == _viewModel.TotalCount) {
+                productModel.ProductItems.Remove(itemToRemove);
+                await DisplayAlert("Baþarýlý", "Baþarýyla Kaydedildi", "Tamam");
+            }
+            else {
+                await DisplayAlert("Hata", "Baþarýsýz Ýþlem", "Tamam");
+            }
         }
     }
+
     #endregion
 
     private async void Vazgec_Clicked(object sender, EventArgs e) {
