@@ -74,10 +74,12 @@ public partial class EditItemPage : ContentPage {
 
         if (totalItemCount == _selectedItem.RequiredCount) {
             await DisplayAlert("Baþarýlý", "Baþarýyla Kaydedildi", "Tamam");
+            await Navigation.PushAsync(new ProductListPage());
         }
         else {
             await DisplayAlert("Hata", "Baþarýsýz Ýþlem", "Tamam");
         }
+ 
     }
     #endregion
 

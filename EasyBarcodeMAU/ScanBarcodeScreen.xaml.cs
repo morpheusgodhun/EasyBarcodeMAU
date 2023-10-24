@@ -25,7 +25,7 @@ public partial class ScanBarcodeScreen : ContentPage {
     #endregion
 
     #region Methods
-
+     
     private bool IsDigitsOnly(string str) {
         foreach (char c in str) {
             if (!char.IsDigit(c))
@@ -49,10 +49,14 @@ public partial class ScanBarcodeScreen : ContentPage {
         await cameraView.StartCameraAsync();
         barcodeListView.ItemsSource = scannedBarcodes;
         ReadBaseModel viewModel = (ReadBaseModel)BindingContext;
-
         viewModel.TotalCount = scannedBarcodes.Sum(item => item.Count);
     }
-  
+
+    private void BarcodeEntry_TextChanged(object sender, TextChangedEventArgs e)
+    {
+        string newText = new string(e.NewTextValue.Where(char.IsDigit).ToArray());
+        barcodeEntry.Text = newText;
+    }
 
     private async void cameraView_BarcodeDetected(object sender, BarcodeEventArgs args) {
         if (!isFocusing) {
@@ -94,8 +98,18 @@ public partial class ScanBarcodeScreen : ContentPage {
 
         if (!string.IsNullOrWhiteSpace(barcode))
         {
-            ReadBaseModel newItem = new ReadBaseModel { Barcode = barcode, Count = 1 };
-            scannedBarcodes.Add(newItem);
+            ReadBaseModel existingItem = scannedBarcodes.FirstOrDefault(item => item.Barcode == barcode);
+
+            if (existingItem != null)
+            {
+                existingItem.Count++;
+            }
+            else
+            {
+                ReadBaseModel newItem = new ReadBaseModel { Barcode = barcode, Count = 1 };
+                scannedBarcodes.Add(newItem);
+            }
+
             barcodeListView.ItemsSource = null;
             barcodeListView.ItemsSource = scannedBarcodes;
             barcodeEntry.Text = string.Empty;
@@ -108,6 +122,8 @@ public partial class ScanBarcodeScreen : ContentPage {
             DisplayAlert("Hata", "Lütfen yalnýzca rakam içeren bir deðer girin.", "Tamam");
         }
     }
+
+
 
     private void cameraView_CamerasLoaded(object sender, EventArgs e) {
         if (cameraView.Cameras.Count > 0) {
@@ -135,16 +151,15 @@ public partial class ScanBarcodeScreen : ContentPage {
     public async void Onayla_Clicked(object sender, EventArgs e) {
         this.BackgroundColor = Color.FromRgb(51, 153, 255);
         label1.TextColor = Color.FromRgb(255, 255, 255);
-        label2.TextColor = Color.FromRgb(255, 255, 255);
-        //label3.TextColor = Color.FromRgb(255, 255, 255);
+        label2.TextColor = Color.FromRgb(255, 255, 255);         
         label4.TextColor = Color.FromRgb(255, 255, 255);
-        //label5.TextColor = Color.FromRgb(255, 255, 255);
-        //label6.TextColor = Color.FromRgb(255, 255, 255);
         label7.TextColor = Color.FromRgb(255, 255, 255);
         label8.TextColor = Color.FromRgb(255, 255, 255);
+        textTotal.TextColor = Color.FromRgb(255, 255, 255);
+        labelTotalCount.TextColor = Color.FromRgb(255, 255, 255);
         boxView1.Color = Color.FromRgb(255, 255, 255);
         boxView2.Color = Color.FromRgb(255, 255, 255);
-        await Navigation.PushAsync(new EditItemPage(_selectedItem, viewModel.TotalCount, _selectedItem.UrunCins, _selectedItem.MusteriAd, scannedBarcodes));
+        await Navigation.PushAsync(new EditItemPage(_selectedItem, viewModel.TotalCount, _selectedItem.UrunCins, _selectedItem.MusteriAd, scannedBarcodes) );
         await cameraView.StopCameraAsync();
     }
     #endregion
