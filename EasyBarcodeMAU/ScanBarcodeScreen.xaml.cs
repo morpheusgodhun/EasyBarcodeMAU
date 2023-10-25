@@ -1,9 +1,12 @@
 using Camera.MAUI.ZXingHelper;
+
 using EasyBarcodeMAU.Models;
+
 using System.Collections.ObjectModel;
 
 namespace EasyBarcodeMAU;
-public partial class ScanBarcodeScreen : ContentPage {
+public partial class ScanBarcodeScreen : ContentPage
+{
 
     #region Variables
     private ReadBaseModel viewModel;
@@ -16,7 +19,8 @@ public partial class ScanBarcodeScreen : ContentPage {
 
     #region InitModel
 
-     public ScanBarcodeScreen() {
+    public ScanBarcodeScreen()
+    {
         InitializeComponent();
         viewModel = new ReadBaseModel();
         BindingContext = viewModel;
@@ -26,40 +30,54 @@ public partial class ScanBarcodeScreen : ContentPage {
 
     #region Methods
 
-    private bool IsDigitsOnly(string str) {
-        foreach (char c in str) {
+    private bool IsDigitsOnly(string str)
+    {
+        foreach (char c in str)
+        {
             if (!char.IsDigit(c))
                 return false;
         }
         return true;
     }
 
-    public ObservableCollection<ReadBaseModel> ScannedBarcodes {
+    public ObservableCollection<ReadBaseModel> ScannedBarcodes
+    {
         get { return scannedBarcodes; }
-        set {
-            if (scannedBarcodes != value) {
-                 scannedBarcodes = value;
+        set
+        {
+            if (scannedBarcodes != value)
+            {
+                scannedBarcodes = value;
                 OnPropertyChanged(nameof(ScannedBarcodes));
             }
         }
     }
 
-    protected override async void OnAppearing() {
-        base.OnAppearing(); 
+    protected override async void OnAppearing()
+    {
+        base.OnAppearing();
         await cameraView.StartCameraAsync();
         barcodeListView.ItemsSource = scannedBarcodes;
         ReadBaseModel viewModel = (ReadBaseModel)BindingContext;
-
         viewModel.TotalCount = scannedBarcodes.Sum(item => item.Count);
     }
-  
 
-    private async void cameraView_BarcodeDetected(object sender, BarcodeEventArgs args)  {
-        if (!isFocusing) {
+    private void BarcodeEntry_TextChanged(object sender, TextChangedEventArgs e)
+    {
+        string newText = new string(e.NewTextValue.Where(char.IsDigit).ToArray());
+        barcodeEntry.Text = newText;
+    }
+
+    private async void cameraView_BarcodeDetected(object sender, BarcodeEventArgs args)
+    {
+        if (!isFocusing)
+        {
             isFocusing = true;
             MainThread.BeginInvokeOnMainThread(() => {
-                if (args.Result.Length > 0) {
-                    for (int i = 0; i < args.Result.Length; i++) {
+                if (args.Result.Length > 0)
+                {
+                    for (int i = 0; i < args.Result.Length; i++)
+                    {
                         var format = args.Result[i].BarcodeFormat;
                         var text = args.Result[i].Text;
                         viewModel.ReadedCount++;
@@ -79,7 +97,8 @@ public partial class ScanBarcodeScreen : ContentPage {
                         });
                     }
                 }
-                else {
+                else
+                {
                 }
             });
             await Task.Delay(focusDelayMilliseconds);
@@ -94,13 +113,24 @@ public partial class ScanBarcodeScreen : ContentPage {
 
         if (!string.IsNullOrWhiteSpace(barcode))
         {
-            ReadBaseModel newItem = new ReadBaseModel { Barcode = barcode, Count = 1 };
-            scannedBarcodes.Add(newItem);
+            ReadBaseModel existingItem = scannedBarcodes.FirstOrDefault(item => item.Barcode == barcode);
+
+            if (existingItem != null)
+            {
+                existingItem.Count++;
+            }
+            else
+            {
+                ReadBaseModel newItem = new ReadBaseModel { Barcode = barcode, Count = 1 };
+                scannedBarcodes.Add(newItem);
+            }
+
             barcodeListView.ItemsSource = null;
             barcodeListView.ItemsSource = scannedBarcodes;
             barcodeEntry.Text = string.Empty;
             viewModel.ReadedCount++;
-            viewModel.TotalCount = scannedBarcodes.Sum(item => item.Count);            
+
+            viewModel.TotalCount = scannedBarcodes.Sum(item => item.Count);
         }
         else
         {
@@ -108,8 +138,12 @@ public partial class ScanBarcodeScreen : ContentPage {
         }
     }
 
-    private void cameraView_CamerasLoaded(object sender, EventArgs e) {
-        if (cameraView.Cameras.Count > 0) {
+
+
+    private void cameraView_CamerasLoaded(object sender, EventArgs e)
+    {
+        if (cameraView.Cameras.Count > 0)
+        {
             cameraView.Camera = cameraView.Cameras.First();
             MainThread.BeginInvokeOnMainThread(async () => {
                 await cameraView.StopCameraAsync();
@@ -118,29 +152,35 @@ public partial class ScanBarcodeScreen : ContentPage {
         }
     }
 
-    public ScanBarcodeScreen(ProductItemBase _selectedItem) : this() {
+    public ScanBarcodeScreen(ProductItemBase _selectedItem) : this()
+    {
         this._selectedItem = _selectedItem;
         viewModel.SelectedProduct = _selectedItem?.UrunCins;
         this.viewModel.RequiredCount = _selectedItem.RequiredCount;
         this.viewModel.DepoKonum = _selectedItem.DepoKonum;
-        this.viewModel.ReadedCount = _selectedItem.ReadedCount;
     }
 
-    private async void Vazgec_Clicked(object sender, EventArgs e) {
+    private async void Vazgec_Clicked(object sender, EventArgs e)
+    {
         await Navigation.PopAsync();
     }
 
-    public async void Onayla_Clicked(object sender, EventArgs e) {
+
+
+    public async void Onayla_Clicked(object sender, EventArgs e)
+    {
         this.BackgroundColor = Color.FromRgb(51, 153, 255);
         label1.TextColor = Color.FromRgb(255, 255, 255);
         label2.TextColor = Color.FromRgb(255, 255, 255);
         label4.TextColor = Color.FromRgb(255, 255, 255);
         label7.TextColor = Color.FromRgb(255, 255, 255);
         label8.TextColor = Color.FromRgb(255, 255, 255);
+        textTotal.TextColor = Color.FromRgb(255, 255, 255);
+        labelTotalCount.TextColor = Color.FromRgb(255, 255, 255);
         boxView1.Color = Color.FromRgb(255, 255, 255);
         boxView2.Color = Color.FromRgb(255, 255, 255);
         await Navigation.PushAsync(new EditItemPage(_selectedItem, viewModel.TotalCount, _selectedItem.UrunCins, _selectedItem.MusteriAd, scannedBarcodes));
-         await cameraView.StopCameraAsync();
+        await cameraView.StopCameraAsync();
     }
     #endregion
 }
