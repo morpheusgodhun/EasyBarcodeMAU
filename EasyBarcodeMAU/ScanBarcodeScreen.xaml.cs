@@ -38,7 +38,7 @@ public partial class ScanBarcodeScreen : ContentPage {
         get { return scannedBarcodes; }
         set {
             if (scannedBarcodes != value) {
-                scannedBarcodes = value;
+                 scannedBarcodes = value;
                 OnPropertyChanged(nameof(ScannedBarcodes));
             }
         }
