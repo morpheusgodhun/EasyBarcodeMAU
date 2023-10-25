@@ -20,9 +20,9 @@
                    Margin="5"
                    MinimumHeightRequest="420">
                 <ScrollView>
-                    <StackLayout >
-                        <Grid HorizontalOptions="Center" VerticalOptions="Center" >
-                            <Grid.RowDefinitions >
+                    <StackLayout>
+                        <Grid>
+                            <Grid.RowDefinitions>
                                 <RowDefinition Height="*"/>
                                 <RowDefinition Height="*"/>
                             </Grid.RowDefinitions>
@@ -30,12 +30,12 @@
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
                         </Grid>
-                        <StackLayout HeightRequest="100" BackgroundColor="LightSkyBlue" WidthRequest="300" HorizontalOptions="Center" VerticalOptions="Center">
-                            <StackLayout Grid.Row="0" VerticalOptions="Center" HorizontalOptions="Center" Padding="5">
+                        <StackLayout HeightRequest="90" BackgroundColor="LightSkyBlue" WidthRequest="300" Padding="5,0,5,0" >
+                            <StackLayout Grid.Row="0" VerticalOptions="Center" HorizontalOptions="Center">
                                 <Label x:Name="label1957" Text="{Binding MusteriAd}" FontSize="30" FontAttributes="Bold" TextColor="White" TextTransform="Uppercase"/>
                             </StackLayout>
                             <BoxView HeightRequest="2" Color="White" WidthRequest="170"></BoxView>
-                            <StackLayout Grid.Row="1" VerticalOptions="Center" HorizontalOptions="Center"  Padding="9" >
+                            <StackLayout Grid.Row="1" VerticalOptions="Center" HorizontalOptions="Center" Padding="5,5,5,0">
                                 <Label x:Name="label983"  Text="{Binding UrunCins}" FontSize="15" FontAttributes="Bold" TextColor="White"/>
                             </StackLayout>
                         </StackLayout>
@@ -83,7 +83,7 @@
                     </Grid.ColumnDefinitions>
                 </Grid>
                 <StackLayout Orientation="Horizontal" WidthRequest="155" >
-                    <Label x:Name="label22" Text="Okutulan Toplam Adet  : " TextColor="Black" FontAttributes="Bold" />
+                    <Label x:Name="label22" Text="Okutulan Toplam Adet  : " TextColor="Black" FontAttributes="Bold"/>
                     <Label   Text="{Binding TotalCount}" TextColor="Black"/>
                 </StackLayout>
                 <Button Grid.Row="0" Margin="10" Text="Düzenlemeyi Kaydet"  Clicked="Kaydet_Clicked" BackgroundColor="LightSkyBlue"></Button>
