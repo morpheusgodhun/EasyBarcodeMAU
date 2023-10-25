@@ -16,7 +16,7 @@ public partial class ScanBarcodeScreen : ContentPage {
 
     #region InitModel
 
-    public ScanBarcodeScreen() {
+     public ScanBarcodeScreen() {
         InitializeComponent();
         viewModel = new ReadBaseModel();
         BindingContext = viewModel;
