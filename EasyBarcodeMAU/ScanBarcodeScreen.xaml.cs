@@ -54,7 +54,7 @@ public partial class ScanBarcodeScreen : ContentPage {
     }
   
 
-    private async void cameraView_BarcodeDetected(object sender, BarcodeEventArgs args) {
+    private async void cameraView_BarcodeDetected(object sender, BarcodeEventArgs args)  {
         if (!isFocusing) {
             isFocusing = true;
             MainThread.BeginInvokeOnMainThread(() => {
