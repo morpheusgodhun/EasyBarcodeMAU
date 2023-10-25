@@ -84,6 +84,6 @@ public partial class EditItemPage : ContentPage {
     #endregion
 
     private async void Vazgec_Clicked(object sender, EventArgs e) {
-        await Navigation.PopAsync();
+       await Navigation.PopAsync();
     }
 }
