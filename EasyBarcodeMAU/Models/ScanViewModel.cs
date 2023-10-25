@@ -5,7 +5,7 @@ using System.Runtime.CompilerServices;
 namespace EasyBarcodeMAU.Models;
 public class ScanViewModel : INotifyPropertyChanged {
 
-    private ObservableCollection<ReadBaseModel> scannedBarcodes = new ObservableCollection<ReadBaseModel>();
+    private ObservableCollection<ReadBaseModel> scannedBarcodes = new ();
 
     public ObservableCollection<ReadBaseModel> ScannedBarcodes {
         get => scannedBarcodes;
