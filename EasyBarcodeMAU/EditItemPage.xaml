@@ -11,7 +11,7 @@
         <vm:ReadBaseModel />
     </ContentPage.BindingContext>
 
-    <VerticalStackLayout VerticalOptions="Start" Margin="10">
+    <VerticalStackLayout VerticalOptions="Start" Margin="10" >
         <StackLayout>
             <Frame BorderColor="DarkGrey"
                    Padding="10"
