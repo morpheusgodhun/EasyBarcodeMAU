@@ -20,5 +20,8 @@ public partial class SelectionPage : ContentPage {
     private async void ExitButton_Clicked(object sender, EventArgs e) {
         await Shell.Current.GoToAsync("//MainPage");
     }
+    private void OnBackPressed() {
+        Navigation.PushAsync(new SelectionPage());
+    }
 
 }
