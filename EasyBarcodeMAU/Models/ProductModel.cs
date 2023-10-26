@@ -2,8 +2,7 @@
 public class ProductModel : BaseViewModel {
 
     #region List
-    public List<ProductItemBase> ProductItems { get; set; } = new List<ProductItemBase>
-    {
+    public List<ProductItemBase> ProductItems { get; set; } = new List<ProductItemBase> { 
             new ProductItemBase { Id = 1, DefterNo = 123321456, DepoGirisi = DateTime.Now, MusteriAd = "Beko", UrunCins = "Sunta Kenar Bandı", UrunAdet = 7839858, UrunAgirlik = 195 , DepoKonum = "A Blok", RequiredCount=5 },
             new ProductItemBase { Id = 2, DefterNo = 213213123, DepoGirisi = DateTime.Now, MusteriAd = "Penta Teknoloji", UrunCins = "Ekran Kartı", UrunAdet = 3243243, UrunAgirlik = 250 , DepoKonum = "B Blok",RequiredCount=10},
             new ProductItemBase { Id = 3, DefterNo = 453223323, DepoGirisi = DateTime.Now, MusteriAd = "Vatan Computer", UrunCins = "MousePad", UrunAdet = 4829424, UrunAgirlik = 300 , DepoKonum = "C Blok", RequiredCount=20},
@@ -15,6 +14,15 @@ public class ProductModel : BaseViewModel {
     #endregion
 
     #region Properties
+
+    public event Action<ProductItemBase> OnDeleteSelectedItem;
+
+    public void DeleteSelectedItem(ProductItemBase selectedItem) {
+        if (ProductItems.Contains(selectedItem)) {
+            ProductItems.Remove(selectedItem);
+            OnDeleteSelectedItem?.Invoke(selectedItem);
+        }
+    }
 
     private int _count;
     public int Count {
