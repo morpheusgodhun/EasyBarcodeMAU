@@ -17,21 +17,13 @@
         <Frame Padding="20,10" CornerRadius="5" HasShadow="True" BackgroundColor="Transparent" Margin="5" >
             <StackLayout>
                 <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
-                    <!--<StackLayout Orientation="Horizontal" WidthRequest="155" >
-                        <Label x:Name="label1" Text="Stok Adet  : " TextColor="Black" FontAttributes="Bold"/>
-                        <Label x:Name="label2"  Text="{Binding RequiredCount}" TextColor="Black"/>
-                    </StackLayout>-->
+                    
                     <StackLayout Orientation="Horizontal"  HorizontalOptions="Center" >
-                        <!--<Label  x:Name="label3"   TextColor="Black" FontAttributes="Bold" />-->
                         <Label  x:Name="label4"  Text="{Binding SelectedProduct}" HorizontalTextAlignment="Center" FontSize="Body"  TextTransform="Uppercase" FontAttributes="Bold" TextColor="Black" />
                     </StackLayout>
                 </StackLayout>
                 <BoxView x:Name="boxView1" HeightRequest="1" BackgroundColor="Gray" HorizontalOptions="FillAndExpand" VerticalOptions="Center" Margin="0,5" />
                 <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" >
-                    <!--<StackLayout Orientation="Horizontal" WidthRequest="155"  >
-                        <Label  x:Name="label5"  Text="Ürün Adet : " TextColor="Black" FontAttributes="Bold" />
-                        <Label  x:Name="label6"  Text="{Binding ReadedCount}" TextColor="Black"/>
-                    </StackLayout>-->
                     <StackLayout Orientation="Horizontal" WidthRequest="155" >
                         <Label x:Name="label1" Text="Stok Adet  : " TextColor="Black" FontAttributes="Bold"/>
                         <Label x:Name="label2"  Text="{Binding RequiredCount}" TextColor="Black"/>
