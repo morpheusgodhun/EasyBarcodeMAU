@@ -11,6 +11,10 @@ public partial class SelectionPage : ContentPage {
         var selectPage = new ProductListPage();
         Navigation.PushAsync(selectPage);
 
+    }    
+    protected async void OnBackButtonPressedAsync() {
+        base.OnBackButtonPressed();
+       await Navigation.PushAsync(new MainPage());        
     }
 
     private void ProductOutputButton_Clicked(object sender, EventArgs e) {
