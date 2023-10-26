@@ -25,7 +25,7 @@ public partial class ScanBarcodeScreen : ContentPage {
 
     #region Methods
      
-    private static bool IsDigitsOnly(string str) {     // burada silince ne oluyo ona bakmak gerekiyor . static yaptým 
+    private static bool IsDigitsOnly(string str) {     // burada silince ne oluyo ona bakmak gerekiyor . statics yaptým 
         foreach (char c in str) {
             if (!char.IsDigit(c))
                 return false;
