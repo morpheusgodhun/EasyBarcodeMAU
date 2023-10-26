@@ -1,4 +1,5 @@
 using System.Collections.ObjectModel;
+using EasyBarcodeMAU;
 
 using EasyBarcodeMAU.Models;
 
