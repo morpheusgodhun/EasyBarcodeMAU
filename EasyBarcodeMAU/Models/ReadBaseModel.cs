@@ -21,18 +21,6 @@ public class ReadBaseModel : BaseViewModel {
             }
         }
     }
-    private int _totalCountPlus;
-    public int TotalCountPlus {
-        get { return _count; }
-        set {
-            if (_totalCountPlus != value) {
-                _totalCountPlus = value;
-                OnPropertyChanged(nameof(TotalCountPlus));
-            }
-        }
-    }
-
-
     private int _totalCount;
     public int TotalCount {
         get { return _totalCount; }
@@ -146,7 +134,6 @@ public class ReadBaseModel : BaseViewModel {
         }
     }
 
-    public object ScannedBarcodes { get; internal set; }
     #endregion
 
 }
