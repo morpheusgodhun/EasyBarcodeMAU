@@ -1,11 +1,8 @@
 using System.Collections.ObjectModel;
-using EasyBarcodeMAU;
-
 using EasyBarcodeMAU.Models;
 
 namespace EasyBarcodeMAU;
-public partial class EditItemPage : ContentPage
-{
+public partial class EditItemPage : ContentPage {
 
     #region Variables
 
@@ -21,8 +18,7 @@ public partial class EditItemPage : ContentPage
     #endregion
 
     #region InitModel
-    public EditItemPage(ProductItemBase selectedItem, int readedCount, string urunCins, string musteriAd, ObservableCollection<ReadBaseModel> scannedBarcodes)
-    {
+    public EditItemPage(ProductItemBase selectedItem, int readedCount, string urunCins, string musteriAd, ObservableCollection<ReadBaseModel> scannedBarcodes) {
         InitializeComponent();
         _selectedItem = selectedItem;
         _readedCount = readedCount;
@@ -41,58 +37,47 @@ public partial class EditItemPage : ContentPage
     #endregion
 
     #region Methods
-    protected override void OnAppearing()
-    {
+    protected override void OnAppearing() {
         base.OnAppearing();
         barcodeListView.ItemsSource = scannedBarcodes;
         ReadBaseModel viewModel = (ReadBaseModel)BindingContext;
-        // TotalCount deðerini hesaplayýn
         viewModel.TotalCount = _viewModel.ReadedCount;
     }
 
 
-    private void ArtirAzaltButton_Clicked(object sender, EventArgs e)
-    {
+    private void ArtirAzaltButton_Clicked(object sender, EventArgs e) {
         var button = (Button)sender;
         var selectedItem = (ReadBaseModel)button.CommandParameter;
-        if (selectedItem != null)
-        {
-            if (button.Text == "+")
-            {
+        if (selectedItem != null) {
+            if (button.Text == "+") {
                 selectedItem.Count++;
                 _viewModel.TotalCount++;
-                //_viewModel.ReadedCount++;
             }
-            else if (button.Text == "-" && selectedItem.Count > 0)
-            {
+            else if (button.Text == "-" && selectedItem.Count > 0) {
                 selectedItem.Count--;
                 _viewModel.TotalCount--;
-                //_viewModel.ReadedCount--;
             }
         }
     }
 
 
-    private async void Kaydet_Clicked(object sender, EventArgs e)
-    {
-
+    private async void Kaydet_Clicked(object sender, EventArgs e) {
         int totalItemCount = scannedBarcodes.Sum(item => item.Count);
 
-        if (totalItemCount == _selectedItem.RequiredCount)
-        {
+        if (totalItemCount == _selectedItem.RequiredCount) {
             await DisplayAlert("Baþarýlý", "Baþarýyla Kaydedildi", "Tamam");
             await Navigation.PushAsync(new SelectionPage());
         }
-        else
-        {
+        else {
             await DisplayAlert("Hata", "Baþarýsýz Ýþlem", "Tamam");
         }
 
     }
-    #endregion
 
-    private async void Vazgec_Clicked(object sender, EventArgs e)
-    {
+
+    private async void Vazgec_Clicked(object sender, EventArgs e) {
         await Navigation.PopAsync();
     }
+
+    #endregion
 }

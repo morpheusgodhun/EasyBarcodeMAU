@@ -17,13 +17,6 @@ public class ProductModel : BaseViewModel {
 
     public event Action<ProductItemBase> OnDeleteSelectedItem;
 
-    public void DeleteSelectedItem(ProductItemBase selectedItem) {
-        if (ProductItems.Contains(selectedItem)) {
-            ProductItems.Remove(selectedItem);
-            OnDeleteSelectedItem?.Invoke(selectedItem);
-        }
-    }
-
     private int _count;
     public int Count {
         get { return _count; }
