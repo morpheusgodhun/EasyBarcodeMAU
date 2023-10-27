@@ -1,6 +1,10 @@
 ﻿namespace EasyBarcodeMAU.Models;
 public class ProductModel : BaseViewModel {
 
+    private static ProductModel _instance;
+    public static ProductModel Instance => _instance ??= new ProductModel();
+    
+
     #region List
     public List<ProductItemBase> ProductItems { get; set; } = new List<ProductItemBase> { 
             new ProductItemBase { Id = 1, DefterNo = 123321456, DepoGirisi = DateTime.Now, MusteriAd = "Beko", UrunCins = "Sunta Kenar Bandı", UrunAdet = 7839858, UrunAgirlik = 195 , DepoKonum = "A Blok", RequiredCount=5 },
@@ -16,6 +20,14 @@ public class ProductModel : BaseViewModel {
     #region Properties
 
     public event Action<ProductItemBase> OnDeleteSelectedItem;
+
+    public void DeleteProductById(int id) {
+        var productToRemove = ProductItems.FirstOrDefault(p => p.Id == id);
+        if (productToRemove != null) {
+            ProductItems.Remove(productToRemove);
+            OnDeleteSelectedItem?.Invoke(productToRemove);
+        }
+    }
 
     private int _count;
     public int Count {
@@ -51,6 +63,7 @@ public class ProductModel : BaseViewModel {
             }
         }
     }
+    
 
     #endregion
 

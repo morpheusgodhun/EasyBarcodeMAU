@@ -6,18 +6,28 @@ public partial class ProductListPage : ContentPage {
     #region Variables
     private Frame lastTappedFrame;
     #endregion
- 
+
     #region InitModel
-    public ProductListPage()
-    {
+    public ProductListPage() {
         InitializeComponent();
-        BindingContext = new ProductModel();
+        var productModel = new ProductModel();
+        BindingContext = productModel;
+        productModel.OnDeleteSelectedItem += HandleItemDeletion;
     }
 
+    protected override void OnAppearing() {
+        base.OnAppearing();
+        BindingContext = null;
+        BindingContext = new ProductModel();
+    }
     #endregion
-     
+
     #region Methods
 
+    private void HandleItemDeletion(ProductItemBase deletedItem) {
+        BindingContext = null;
+        BindingContext = new ProductModel();
+    }
     private async void Frame_Tapped(object sender, EventArgs e) {
         if (lastTappedFrame != null) {
             lastTappedFrame.BorderColor = Color.FromRgb(173, 216, 230);
@@ -29,12 +39,11 @@ public partial class ProductListPage : ContentPage {
 
             if (tappedFrame.BindingContext is ProductItemBase itemBase) {
                 var scanPage = new ScanBarcodeScreen(itemBase);
-                await Navigation.PushAsync(scanPage);}
+                await Navigation.PushAsync(scanPage);
+            }
         }
     }
-
-    private void OnConfirmButtonClicked(object sender, EventArgs e)
-    {
+    private void OnConfirmButtonClicked(object sender, EventArgs e) {
         var scanPage = new ScanBarcodeScreen();
         Navigation.PushAsync(scanPage);
     }

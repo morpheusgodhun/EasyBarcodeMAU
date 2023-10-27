@@ -63,17 +63,16 @@ public partial class EditItemPage : ContentPage {
 
     private async void Kaydet_Clicked(object sender, EventArgs e) {
         int totalItemCount = scannedBarcodes.Sum(item => item.Count);
-
         if (totalItemCount == _selectedItem.RequiredCount) {
+            ProductModel.Instance.DeleteProductById(_selectedItem.Id);
             await DisplayAlert("Baþarýlý", "Baþarýyla Kaydedildi", "Tamam");
+
             await Navigation.PushAsync(new SelectionPage());
         }
         else {
             await DisplayAlert("Hata", "Baþarýsýz Ýþlem", "Tamam");
         }
-
     }
-
 
     private async void Vazgec_Clicked(object sender, EventArgs e) {
         await Navigation.PopAsync();
