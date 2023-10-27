@@ -17,7 +17,6 @@ public partial class MainPage : ContentPage {
         bool isCredentialsValid = ValidateCredentials(username, password);
 
         if (isCredentialsValid) {
-            await DisplayAlert("Doğru", "Başarıyla Giriş Yaptınız", "Tamam");
             await Navigation.PushAsync(new SelectionPage());
         }
         else {
