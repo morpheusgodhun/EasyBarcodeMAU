@@ -1,0 +1,5 @@
+﻿
+PAZARTESİ İÇİN !!!!! : Boyutlandırmada (MOBİL İÇİN) ScannedBarcodesDisplay düzenlemeler yapılmalı => GÖRÜNTÜ YETERSİZLİĞİNDEN 2 MADDE GÖZÜKÜYOR 
+WINDOWS MACHINE'DE TÜM LİSTE MADDELERİ GÖRÜNTÜLENİYOR DÜZENLE 
+OutputScanBarcode için okunan barkod değerleri ScannedBarcodesDisplay İÇERİSİNDE OLMALI ŞEKLİNDE ŞART KOŞ
+ScannedBarcodes için XAML görsel düzenlemeler yap 
