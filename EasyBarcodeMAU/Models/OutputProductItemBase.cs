@@ -1,10 +1,6 @@
-﻿using System.Collections.ObjectModel;
+﻿namespace EasyBarcodeMAU.Models;
 
-namespace EasyBarcodeMAU.Models;
-public class ProductItemBase {
-
-    #region Properties
-
+public class OutputProductItemBase {
     public int Id { get; set; }
     public int DefterNo { get; set; }
     public DateTime DepoGirisi { get; set; }
@@ -18,17 +14,4 @@ public class ProductItemBase {
     public Color BorderColor { get; set; }
     public Frame Frame { get; set; }
     public Color OriginalBorderColor { get; set; }
-    public List<long> ScannedBarcodes { get; set; } = new List<long>();
-
-    public string ScannedBarcodesDisplay {
-        get {
-            return string.Join(", ", ScannedBarcodes);
-        }
-    }
-    public void AddBarcode(long barcode) {
-        ScannedBarcodes.Add(barcode);
-    }
-
-    #endregion
-
 }

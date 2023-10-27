@@ -25,7 +25,7 @@ public partial class SelectionPage : ContentPage {
     }
 
     private void ProductOutputButton_Clicked(object sender, EventArgs e) {
-        var exitPage = new ProductListPage();
+        var exitPage = new OutputProductListPage();
         Navigation.PushAsync(exitPage);
     }
     private async void ExitButton_Clicked(object sender, EventArgs e) {

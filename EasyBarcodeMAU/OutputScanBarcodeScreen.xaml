@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:EasyBarcodeMAU.Models"
+             xmlns:cv="clr-namespace:Camera.MAUI;assembly=Camera.MAUI"
+             x:Class="EasyBarcodeMAU.OutputScanBarcodeScreen">
+
+    <ContentPage.BindingContext>
+        <vm:OutputReadBaseModel />
+    </ContentPage.BindingContext>
+
+    <VerticalStackLayout Padding="15,10" Margin="5">
+        <VerticalStackLayout Spacing="10"  VerticalOptions="Center" Padding="10">
+            <cv:CameraView  x:Name="cameraView" WidthRequest="410" HeightRequest="100" CamerasLoaded="Camerasloaded" BarCodeDetectionEnabled="True" BarcodeDetected="BarcodeDetected"/>
+        </VerticalStackLayout>
+
+        <Frame Padding="20,10" CornerRadius="5" HasShadow="True" BackgroundColor="Transparent" Margin="5" >
+            <StackLayout>
+                <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+
+                    <StackLayout Orientation="Horizontal"  HorizontalOptions="Center" >
+                        <Label  x:Name="label4"  Text="{Binding SelectedProduct}" HorizontalTextAlignment="Center" FontSize="Body"  TextTransform="Uppercase" FontAttributes="Bold" TextColor="Black" />
+                    </StackLayout>
+                </StackLayout>
+                <BoxView x:Name="boxView1" HeightRequest="1" BackgroundColor="Gray" HorizontalOptions="FillAndExpand" VerticalOptions="Center" Margin="0,5" />
+                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" >
+                    <StackLayout Orientation="Horizontal" WidthRequest="155" >
+                        <Label x:Name="label1" Text="Stok Adet  : " TextColor="Black" FontAttributes="Bold"/>
+                        <Label x:Name="label2"  Text="{Binding RequiredCount}" TextColor="Black"/>
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal"   WidthRequest="155"  >
+                        <Label  x:Name="label7"  Text="Depo : " TextColor="Black" FontAttributes="Bold"   />
+                        <Label  x:Name="label8"  Text="{Binding DepoKonum}" TextColor="Black" />
+                    </StackLayout>
+                </StackLayout>
+                <BoxView  x:Name="boxView2" HeightRequest="1" BackgroundColor="Gray" HorizontalOptions="FillAndExpand" VerticalOptions="Center" Margin="0,5"/>
+            </StackLayout>
+        </Frame>
+        <Frame Padding="20,10" CornerRadius="5" HasShadow="True" BackgroundColor="Transparent" Margin="5" HeightRequest="50">
+            <StackLayout Orientation="Horizontal" Spacing="10" >
+                <Entry x:Name="barcodeEntry" Placeholder="Barkod Numarası" WidthRequest="220" FontSize="Small" HeightRequest="40" TextChanged="BarcodeEntry_TextChanged" />
+                <Button Text="Ekle"  FontSize="Small" Padding="0" Margin="5" TextColor="White" Clicked="EkleButton_Clicked" WidthRequest="35" HeightRequest="35"  CornerRadius="5"  BackgroundColor="LightSkyBlue"/>
+            </StackLayout>
+        </Frame>
+        <StackLayout Padding="0,5" Margin="5,5,5,0"  >
+            <Frame BorderColor="LightGrey" CornerRadius="5"  BackgroundColor="Transparent" Margin="0">
+                <ScrollView Padding="5,0" >
+                    <ListView x:Name="barcodeListView" HeightRequest="130" RowHeight="35" >
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <Grid Padding="10">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="*"/>
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="50" />
+                                        </Grid.ColumnDefinitions>
+                                        <StackLayout Grid.Column="0" >
+                                            <Label Text="{Binding Barcode}" TextColor="Black"/>
+                                        </StackLayout>
+                                        <StackLayout Grid.Column="1" HorizontalOptions="End">
+                                            <Label Text="{Binding Count}" TextColor="Black"/>
+                                        </StackLayout>
+                                    </Grid>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </ScrollView>
+            </Frame>
+        </StackLayout>
+        <StackLayout>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+            </Grid>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center" >
+                <Label x:Name="textTotal" Text="Okutulan Toplam Adet  : " TextColor="Black" FontAttributes="Bold" />
+                <Label x:Name="labelTotalCount" Text="{Binding TotalCount}" TextColor="Black"  FontAttributes="Bold" />
+            </StackLayout>
+        </StackLayout>
+
+        <Grid Padding="10,10" WidthRequest="340"  >
+            <Grid.RowDefinitions >
+                <RowDefinition Height="45"/>
+                <RowDefinition Height="45"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions >
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Button Text="Onayla"  Grid.Row="0" HeightRequest="40" Padding="0" BackgroundColor="LightSkyBlue" Clicked="Onayla_Clicked" FontSize="Body" FontAttributes="Bold" BorderWidth="1" BorderColor="Black"></Button>
+            <Button Text="Vazgeç"  Grid.Row="1" HeightRequest="40" Padding="0" BackgroundColor="LightSlateGray" FontSize="Body" Clicked="Vazgec_Clicked" FontAttributes="Bold"  BorderWidth="1" BorderColor="Black"></Button>
+        </Grid>
+    </VerticalStackLayout>
+</ContentPage>

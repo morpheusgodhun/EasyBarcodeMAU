@@ -14,6 +14,7 @@ public partial class EditItemPage : ContentPage {
     private ReadBaseModel _viewModel;
     private ProductItemBase viewModel;
     private ObservableCollection<ReadBaseModel> scannedBarcodes;
+    private ObservableCollection<OutputReadBaseModel> outputScannedBarcodes;
 
     #endregion
 
@@ -40,6 +41,7 @@ public partial class EditItemPage : ContentPage {
     protected override void OnAppearing() {
         base.OnAppearing();
         barcodeListView.ItemsSource = scannedBarcodes;
+
         ReadBaseModel viewModel = (ReadBaseModel)BindingContext;
         viewModel.TotalCount = _viewModel.ReadedCount;
     }

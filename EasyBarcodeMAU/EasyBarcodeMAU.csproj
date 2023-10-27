@@ -56,7 +56,19 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Update="OutputProductListePage.xaml.cs">
+	    <DependentUpon>OutputProductListePage.xaml</DependentUpon>
+	  </Compile>
+	</ItemGroup>
+
+	<ItemGroup>
 	  <MauiXaml Update="EditItemPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="OutputProductListePage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="OutputScanBarcodeScreen.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="ProductListePage.xaml">

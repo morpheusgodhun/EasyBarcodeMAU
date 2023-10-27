@@ -1,6 +1,6 @@
 ﻿namespace EasyBarcodeMAU.Models;
 
-public class ReadBaseModel : BaseViewModel {
+public class OutputReadBaseModel : BaseViewModel {
 
     public event EventHandler SelectedProductChanged;
 
