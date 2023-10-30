@@ -68,7 +68,6 @@ public partial class EditItemPage : ContentPage {
         if (totalItemCount == _selectedItem.RequiredCount) {
             ProductModel.Instance.DeleteProductById(_selectedItem.Id);
             await DisplayAlert("Baþarýlý", "Baþarýyla Kaydedildi", "Tamam");
-
             await Navigation.PushAsync(new SelectionPage());
         }
         else {
