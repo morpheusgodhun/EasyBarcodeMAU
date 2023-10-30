@@ -26,7 +26,7 @@
                             <Frame.GestureRecognizers>
                                 <TapGestureRecognizer Tapped="Frame_Tapped"/>
                             </Frame.GestureRecognizers>
-                            <StackLayout MinimumWidthRequest="330">
+                            <StackLayout MinimumWidthRequest="250">
                                 <Grid ColumnSpacing="1" Padding="10">
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition  Width="105"/>
@@ -43,7 +43,7 @@
                                             <RowDefinition Height="20"/>
                                             <RowDefinition Height="40"/>
                                         </Grid.RowDefinitions>
-                                        <Label Grid.Row="0" FontAttributes="Bold" Text="Barkod"></Label>
+                                        <Label Grid.Row="0" FontAttributes="Bold" Text="Ana Barkod"></Label>
                                         <Label Grid.Row="1" FontAttributes="Bold" Text="Sıra"></Label>
                                         <Label Grid.Row="2" FontAttributes="Bold" Text="Müsteri Ad"></Label>
                                         <Label Grid.Row="3" FontAttributes="Bold" Text="Defter No"></Label>
@@ -59,8 +59,7 @@
                                             <RowDefinition Height="20"/>
                                             <RowDefinition Height="20"/>
                                             <RowDefinition Height="20"/>
-                                            <RowDefinition Height="20"/>
-                                            <RowDefinition Height="40"/>
+                                            <RowDefinition Height="60"/>
                                         </Grid.RowDefinitions>
 
                                         <Label Grid.Row="0" Text="{Binding  BarkodNo, StringFormat=': {0}'}"  />

@@ -2,6 +2,7 @@ using Camera.MAUI.ZXingHelper;
 using EasyBarcodeMAU.Models;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Runtime.ConstrainedExecution;
 
 namespace EasyBarcodeMAU {
     public partial class OutputScanBarcodeScreen : ContentPage {
@@ -55,7 +56,14 @@ namespace EasyBarcodeMAU {
             await cameraView.StartCameraAsync();
             viewModel.TotalCount = scannedBarcodes.Sum(item => item.Count);
         }
-
+        //!!!!!!!!!!!
+        //BarcodeModel oluþturuldu okutulan, yazýlan barkodlar tek yerde tutulacak þekilde
+        //YAPMAK ÝSTEDÝÐÝM ÜRÜN GÝRÝÞÝ EKRANINDA OKUTULAN BARKODLARI SAKLAYIP
+        //ÜRÜN ÇIKIÞINDA DA BU BARKODLARI OKUTMAK ÝDÝ, ÜRÜN GÝRÝÞÝNDEN DÝREKT ÜRÜN ÇIKIÞA YÖNLENDÝRÝP BUNU TEST ETTÝM,
+        //ÇALIÞIYOR ANCAK BU YAPIYA GEÇÝLEMEDÝ SEBEBÝ ARADA 4 SAYFA GEÇÝÞÝ OLDUÐU ÝÇÝN HER SAYFADA BU VERÝLERÝ SAKLAMAYA ÇALIÞMAK ÝÇÝN METHODLARIN
+        //ONAPPERING'INDE BU VERÝLERÝ SAKLAMAK ANCAK DÝNAMÝK OLARAK DEÐÝÞTÝÐÝ ÝÇÝN HER SINIFTA BU VERÝLER SAKLANSA BÝLE UYGULAMA KAPATILANA KADAR SAKLANIYOR,
+        //FARKLI BÝR BARKOD OKUTULMAK ÝSTENDÝÐÝNDE DE BUNLAR KALDIÐI ÝÇÝN BU DÜÞÜNCE VERÝ TABANINDA BÝLGÝ SAKLAYARAK YAPILABÝLÝR !!!!!!
+        //!!!!!!
         private void BarcodeEntry_TextChanged(object sender, TextChangedEventArgs e) {
             newText = new string(e.NewTextValue.Where(char.IsDigit).ToArray());
             barcodeEntry.Text = newText;
