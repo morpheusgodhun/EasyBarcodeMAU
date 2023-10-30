@@ -63,6 +63,9 @@
                                         <StackLayout Grid.Column="1" HorizontalOptions="End">
                                             <Label Text="{Binding Count}" TextColor="Black"/>
                                         </StackLayout>
+                                        <StackLayout Grid.Column="1" HorizontalOptions="End">
+                                            <Label Text="{Binding ScannedBarcodesDisplay}" TextColor="Black"/>
+                                        </StackLayout>
                                     </Grid>
                                 </ViewCell>
                             </DataTemplate>

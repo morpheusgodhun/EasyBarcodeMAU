@@ -138,7 +138,7 @@ public partial class ScanBarcodeScreen : ContentPage {
 
 
 
-    public async void Onayla_Clicked(object sender, EventArgs e) {
+    private async void Onayla_Clicked(object sender, EventArgs e) {
         this.BackgroundColor = Color.FromRgb(51, 153, 255);
         label1.TextColor = Color.FromRgb(255, 255, 255);
         label2.TextColor = Color.FromRgb(255, 255, 255);
