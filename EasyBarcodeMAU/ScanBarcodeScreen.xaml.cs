@@ -9,6 +9,7 @@ public partial class ScanBarcodeScreen : ContentPage {
     private ReadBaseModel viewModel;
     private ProductItemBase _selectedItem;
     private bool isFocusing = false;
+    private bool isScanned = false;
     private int focusDelayMilliseconds = 1470;
     private ObservableCollection<ReadBaseModel> scannedBarcodes = new();
     string newText;
@@ -57,35 +58,6 @@ public partial class ScanBarcodeScreen : ContentPage {
         barcodeEntry.Text = newText;
     }
 
-    //     private async void BarcodeDetected(object sender, BarcodeEventArgs args) {
-    //        if (!isFocusing) {
-
-    //            isFocusing = true;
-    //            MainThread.BeginInvokeOnMainThread(() => {
-    //                if (args.Result.Length > 0) {
-    //                    for (int i = 0; i<args.Result.Length; i++) {
-    //                        var format = args.Result[i].BarcodeFormat;
-    //    var text = args.Result[i].Text;
-    //    viewModel.ReadedCount++;
-    //                        MainThread.BeginInvokeOnMainThread(() => {
-    //                            var existingItem = BarcodeManager.Instance.GlobalScannedBarcodes.FirstOrDefault(item => item.Barcode == text);
-    //                            if (existingItem != default) {
-    //                                existingItem.Count++;
-    //                            }
-    //                            else {
-    //                                BarcodeManager.Instance.GlobalScannedBarcodes.Add(new ReadBaseModel { Barcode = text, Count = 1 });
-    //                            }
-    //                            viewModel.TotalCount = scannedBarcodes.Sum(item => item.Count);
-    //                        });
-    //                    }
-    //                }
-    //                else {
-    //}
-    //            });
-    //await Task.Delay(focusDelayMilliseconds);
-    //isFocusing = false;
-    //        }
-    //    }
     private async void BarcodeDetected(object sender, BarcodeEventArgs args) {
         if (!isFocusing) {
             isFocusing = true;
@@ -142,8 +114,6 @@ public partial class ScanBarcodeScreen : ContentPage {
         }
     }
 
-
-
     private void Camerasloaded(object sender, EventArgs e) {
         if (cameraView.Cameras.Count > 0) {
             cameraView.Camera = cameraView.Cameras.First();
@@ -164,8 +134,6 @@ public partial class ScanBarcodeScreen : ContentPage {
     private async void Vazgec_Clicked(object sender, EventArgs e) {
         await Navigation.PopAsync();
     }
-
-
 
     private async void Onayla_Clicked(object sender, EventArgs e) {
         this.BackgroundColor = Color.FromRgb(51, 153, 255);

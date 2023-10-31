@@ -29,7 +29,7 @@
                             <StackLayout MinimumWidthRequest="250">
                                 <Grid ColumnSpacing="1" Padding="10">
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition  Width="105"/>
+                                        <ColumnDefinition  Width="90"/>
                                         <ColumnDefinition  Width="*"/>
                                     </Grid.ColumnDefinitions>
                                     <Grid Grid.Column="0" BackgroundColor="LightSkyBlue" RowSpacing="7" Padding="5" >
@@ -61,7 +61,6 @@
                                             <RowDefinition Height="20"/>
                                             <RowDefinition Height="60"/>
                                         </Grid.RowDefinitions>
-
                                         <Label Grid.Row="0" Text="{Binding  BarkodNo, StringFormat=': {0}'}"  />
                                         <Label Grid.Row="1" Text="{Binding  Id, StringFormat=': {0}'}"  />
                                         <Label Grid.Row="2"  Text="{Binding MusteriAd, StringFormat=': {0}'}" />
@@ -69,7 +68,6 @@
                                         <Label Grid.Row="4"  Text="{Binding UrunCins, StringFormat=': {0}'}" />
                                         <Label Grid.Row="5"  Text="{Binding UrunAdet, StringFormat=': {0}'}" />
                                         <Label Grid.Row="6"  Text="{Binding ScannedBarcodesDisplay, StringFormat=': {0}'}" />
-                                        <Label Grid.Row="9" IsVisible="false" Text="{Binding RequiredCount, StringFormat=': {0}'}" />
                                     </Grid>
                                 </Grid>
                             </StackLayout>

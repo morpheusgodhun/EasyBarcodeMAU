@@ -8,6 +8,16 @@ public class ReadBaseModel : BaseViewModel {
 
     public string Barcode { get; set; }
 
+    private int _scannedBarcodes;
+    public int ScannedBarcodes {
+        get { return _scannedBarcodes; }
+        set {
+            if (_scannedBarcodes != value) {
+                _scannedBarcodes = value;
+                OnPropertyChanged(nameof(ScannedBarcodes));
+            }
+        }
+    }
 
     private int _count;
     public int Count {

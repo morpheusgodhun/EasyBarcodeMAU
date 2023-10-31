@@ -1,5 +1,11 @@
-﻿
-PAZARTESİ İÇİN !!!!! : Boyutlandırmada (MOBİL İÇİN) ScannedBarcodesDisplay düzenlemeler yapılmalı => GÖRÜNTÜ YETERSİZLİĞİNDEN 2 MADDE GÖZÜKÜYOR 
-WINDOWS MACHINE'DE TÜM LİSTE MADDELERİ GÖRÜNTÜLENİYOR DÜZENLE 
-OutputScanBarcode için okunan barkod değerleri ScannedBarcodesDisplay İÇERİSİNDE OLMALI ŞEKLİNDE ŞART KOŞ
-ScannedBarcodes için XAML görsel düzenlemeler yap 
+﻿count => 
+bir fonksiyon için adet zorunluluğu getirip belirtilenb adette yoksa fazlaysa uyarı verelim.
+adet sayısı hatalıdır şeklinde uyarıyı diğer sayfaya doğru barkodları okuttuysa adet hatalıysa yine de yönlendiriyoruz sadece bir uyarı mesajı verelim
+ScannedBarcodeControl
+Bir fonksiyon içinde barkod kontrolü yapılacak.
+Bu kontrol gerekli barkodların hepsini girerse ! eksiksiz bir biçimde olmalı, diğer sayfaya uyarı vermeden yönlendirelim.
+
+Kontrollerden uyarı ile geçerse Okunan Barkod değeri KIRMIZI renk yapıp devam etmesine izin verelim ancak bu uyarıyı ve rengi görsün, barkodların hepsini
+eksiksiz bir biçimde girdiyse bahsettiğimiz Okunan Barkod değerinin rengini yeşil yapıp EditItemPage'e yönlendirelim.
+Eğer zorunlu okunması gereken barkodu okutmazsa, birini okutur diğerlerini okutmazsa gibi aksiyonlarda Okunan Barkod yine kırmızı olsun ve yönlendirmeye izin vermeyelim
+Stop edelim.
