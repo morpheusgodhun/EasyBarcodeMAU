@@ -190,14 +190,17 @@ public partial class OutputScanBarcodeScreen : ContentPage {
         boxView1.Color = Color.FromRgb(255, 255, 255);
         boxView2.Color = Color.FromRgb(255, 255, 255);
 
+        bool shouldNavigate = true;
+
         if (!AreBarcodeCountsValid(productId)) {
             barcodeListView.BackgroundColor = Color.FromRgb(255, 0, 0);
-            shouldNavigate = false; //yönlendirmeyi burda iptal et
+            shouldNavigate = false;
+            RemoveExcessBarcodes(productId); 
         }
         else if (!AreBarcodesValid(productId)) {
             barcodeListView.BackgroundColor = Color.FromRgb(255, 0, 0);
             await DisplayAlert("Hata", "Taradýðýnýz barkodlar veya miktarlar ürünle eþleþmiyor.", "Tamam");
-            shouldNavigate = false; //yönlendirmeyi burda iptal et 
+            shouldNavigate = false;
         }
 
         if (shouldNavigate) {
@@ -208,6 +211,27 @@ public partial class OutputScanBarcodeScreen : ContentPage {
             await cameraView.StopCameraAsync();
         }
     }
+
+    private void RemoveExcessBarcodes(int productId) {
+        var product = OutPutProductModel.Instance.ProductItems.FirstOrDefault(p => p.Id == productId);
+        if (product == null) return;
+
+        var productBarcodeSet = new HashSet<long>(product.ScannedBarcodes);
+
+        // Barkodu fazla girerse oto sil
+        var excessBarcodes = scannedBarcodes.Where(scanned => {
+            long barcodeAsLong;
+            if (long.TryParse(scanned.Barcode, out barcodeAsLong)) {
+                return productBarcodeSet.Contains(barcodeAsLong) && scanned.Count > product.ScannedBarcodes.Count(b => b == barcodeAsLong);
+            }
+            return false;
+        }).ToList();
+
+        foreach (var excessBarcode in excessBarcodes) {
+            scannedBarcodes.Remove(excessBarcode);
+        }
+    }
+
     private void Onayla_Clicked(object sender, EventArgs e) {
         int productId = _selectedItem.Id;
         HandleOnaylaClick(productId);
