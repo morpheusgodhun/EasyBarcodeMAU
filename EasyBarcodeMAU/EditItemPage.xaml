@@ -65,8 +65,8 @@
                                             </StackLayout>
                                             <StackLayout Grid.Column="2" Orientation="Horizontal">
                                                 <StackLayout Orientation="Horizontal">
-                                                    <Entry Placeholder="Adet Miktarı" Keyboard="Numeric" Text="{Binding Count}" Margin="0" WidthRequest="90" HeightRequest="50" />
-                                                    <Button Text="Adet" Clicked="Guncelle_Clicked" BackgroundColor="LightSkyBlue" Margin="0,0,0,0" WidthRequest="80" HeightRequest="50" />
+                                                    <Entry Placeholder="Adet Miktarı" Keyboard="Numeric" Text="{Binding Count}" Margin="0" WidthRequest="95" HeightRequest="55" />
+                                                    <Button Text="Güncelle" Clicked="Guncelle_Clicked" BackgroundColor="LightSkyBlue" Margin="0,0,0,0" WidthRequest="90" HeightRequest="55" />
                                                     <!--<Button Text="-" CommandParameter="{Binding .}" FontSize="Body" Padding="0" Margin="0" TextColor="White" Clicked="ArtirAzaltButton_Clicked" WidthRequest="33" HeightRequest="40" CornerRadius="2" />
                                                     <Button Text="+" CommandParameter="{Binding .}" BackgroundColor="BlueViolet" FontSize="Body" Padding="0" Margin="0" TextColor="White" Clicked="ArtirAzaltButton_Clicked" WidthRequest="33" HeightRequest="40" CornerRadius="2" />-->
                                                 </StackLayout>
