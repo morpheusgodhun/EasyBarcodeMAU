@@ -21,7 +21,7 @@ public partial class OutputScanBarcodeScreen : ContentPage {
         InitializeComponent();
         viewModel = new OutputReadBaseModel();
         BindingContext = viewModel;
-        barcodeListView.ItemsSource = scannedBarcodes;       
+        barcodeListView.ItemsSource = scannedBarcodes;
     }
 
     public OutputScanBarcodeScreen(ProductItemBase selectedItem) : this() {
@@ -38,6 +38,13 @@ public partial class OutputScanBarcodeScreen : ContentPage {
     private static bool IsDigitsOnly(string str) {
         return str.All(char.IsDigit);
     }
+
+    protected override void OnDisappearing() {
+        base.OnDisappearing();
+
+        loadingIndicator.IsVisible = false;
+        loadingIndicator.IsRunning = false;
+    }  
 
     public ObservableCollection<ReadBaseModel> ScannedBarcodes {
         get { return scannedBarcodes; }
