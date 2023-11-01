@@ -9,7 +9,6 @@ public partial class ScanBarcodeScreen : ContentPage {
     private ReadBaseModel viewModel;
     private ProductItemBase _selectedItem;
     private bool isFocusing = false;
-    private bool isScanned = false;
     private int focusDelayMilliseconds = 1470;
     private ObservableCollection<ReadBaseModel> scannedBarcodes = new();
     string newText;

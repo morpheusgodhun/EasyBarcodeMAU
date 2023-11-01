@@ -11,7 +11,7 @@ public partial class OutputScanBarcodeScreen : ContentPage {
     private bool isFocusing = false;
     private int focusDelayMilliseconds = 1470;
     private ObservableCollection<ReadBaseModel> scannedBarcodes = new();
-    string newText;
+    string newText;    
 
     #endregion
 
@@ -21,14 +21,14 @@ public partial class OutputScanBarcodeScreen : ContentPage {
         InitializeComponent();
         viewModel = new OutputReadBaseModel();
         BindingContext = viewModel;
-        barcodeListView.ItemsSource = scannedBarcodes;
+        barcodeListView.ItemsSource = scannedBarcodes;       
     }
 
     public OutputScanBarcodeScreen(ProductItemBase selectedItem) : this() {
         _selectedItem = selectedItem;
         viewModel.SelectedProduct = selectedItem?.UrunCins;
         viewModel.RequiredCount = selectedItem.RequiredCount;
-        viewModel.DepoKonum = selectedItem.DepoKonum;
+        viewModel.DepoKonum = selectedItem.DepoKonum;     
     }
 
     #endregion
@@ -145,7 +145,7 @@ public partial class OutputScanBarcodeScreen : ContentPage {
 
     public bool AreBarcodeCountsValid(int productId) {
         var product = OutPutProductModel.Instance.ProductItems.FirstOrDefault(p => p.Id == productId);
-        if (product == null) return false;
+        if (product == null) return true; // Ürün veritabanýnda yoksa devam et
 
         var productBarcodeSet = new HashSet<long>(product.ScannedBarcodes);
 
@@ -153,10 +153,10 @@ public partial class OutputScanBarcodeScreen : ContentPage {
             long barcodeAsLong;
             if (long.TryParse(scanned.Barcode, out barcodeAsLong)) {
                 if (!productBarcodeSet.Contains(barcodeAsLong)) {
-                    continue; // Burasý olmayan bir barkodun SAYISINA BAKMA DEVAM ET, AÞAÐISI OLAN BARKODLARIN MAKSÝMUMUM ADEDÝNÝ KONTROL ET
+                    continue; // Ürün veritabanýnda olmayan bir barkodun SAYISINA BAKMA DEVAM ET
                 }
                 int requiredCount = product.ScannedBarcodes.Count(b => b == barcodeAsLong);
-                if (scanned.Count != requiredCount) {
+                if (scanned.Count > requiredCount) {
                     barcodeListView.BackgroundColor = Color.FromRgb(255, 0, 0);
                     DisplayAlert("Hata", "Tanýmlý MAKSÝMUM barkod adedini aþtýnýz", "Tamam");
                     return false;
@@ -194,6 +194,9 @@ public partial class OutputScanBarcodeScreen : ContentPage {
         }
 
         if (shouldNavigate) {
+            loadingIndicator.IsVisible = true;
+            loadingIndicator.IsRunning = true;
+            await Task.Delay(2000);
             await Navigation.PushAsync(new EditItemPage(_selectedItem, viewModel.TotalCount, _selectedItem.UrunCins, _selectedItem.MusteriAd, scannedBarcodes));
             await cameraView.StopCameraAsync();
         }

@@ -17,6 +17,9 @@
         <Frame Padding="20,10" CornerRadius="5" HasShadow="True" BackgroundColor="Transparent" Margin="5" >
             <StackLayout>
                 <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                    <StackLayout Orientation="Horizontal"  HorizontalOptions="Center" >
+                        <ActivityIndicator x:Name="loadingIndicator" IsRunning="False" IsVisible="False" Color="Red" HeightRequest="150" WidthRequest="150" Margin="70" />
+                    </StackLayout>
 
                     <StackLayout Orientation="Horizontal"  HorizontalOptions="Center" >
                         <Label  x:Name="label4"  Text="{Binding SelectedProduct}" HorizontalTextAlignment="Center" FontSize="Body"  TextTransform="Uppercase" FontAttributes="Bold" TextColor="Black" />

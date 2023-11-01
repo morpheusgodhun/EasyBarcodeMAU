@@ -14,7 +14,6 @@ public partial class EditItemPage : ContentPage {
     private ReadBaseModel _viewModel;
     private ProductItemBase viewModel;
     private ObservableCollection<ReadBaseModel> scannedBarcodes;
-    private ObservableCollection<OutputReadBaseModel> outputScannedBarcodes;
 
     #endregion
 
