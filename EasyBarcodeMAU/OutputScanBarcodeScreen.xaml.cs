@@ -66,6 +66,7 @@ public partial class OutputScanBarcodeScreen : ContentPage {
                 foreach (var result in args.Result) {
                     var text = result.Text;
                     viewModel.ReadedCount++;
+                    this.BackgroundColor = Color.FromRgb(51, 153, 255);
                     Vibration.Vibrate();
 
                     // Barkodun veritabanýnýzdaki listeye dahil edilip edilmediðini kontrol et
@@ -80,6 +81,7 @@ public partial class OutputScanBarcodeScreen : ContentPage {
                     }
                     else {
                         // Barkod veritabanýnda yoksa uyarý ver
+                        this.BackgroundColor = Color.FromRgb(256, 165, 0);
                         DisplayAlert("Uyarý", "Bu barkod mevcut deðil.", "Tamam");
                     }
 
