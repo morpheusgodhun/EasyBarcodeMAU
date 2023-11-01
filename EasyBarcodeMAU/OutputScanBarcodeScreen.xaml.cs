@@ -114,28 +114,43 @@ public partial class OutputScanBarcodeScreen : ContentPage {
             });
         }
     }
-
     public bool AreBarcodesValid(int productId) {
         var product = OutPutProductModel.Instance.ProductItems.FirstOrDefault(p => p.Id == productId);
         if (product == null) return false;
 
-        foreach (var requiredBarcode in product.ScannedBarcodes) {
-            if (!scannedBarcodes.Any(b => b.Barcode == requiredBarcode.ToString()))
-                return false;
-        }
-        return true;
+        return scannedBarcodes.Any(scannedBarcode => product.ScannedBarcodes.Contains(Convert.ToInt64(scannedBarcode.Barcode)));
     }
 
     public bool AreBarcodeCountsValid(int productId) {
         var product = OutPutProductModel.Instance.ProductItems.FirstOrDefault(p => p.Id == productId);
         if (product == null) return false;
 
+        var productBarcodeDict = product.ScannedBarcodes.ToDictionary(pair => pair, pair => 0);
+
         foreach (var scanned in scannedBarcodes) {
             long barcodeAsLong = Convert.ToInt64(scanned.Barcode);
-            int requiredCount = product.ScannedBarcodes.Count(b => b == barcodeAsLong);
-            if (scanned.Count != requiredCount)
+
+            if (productBarcodeDict.ContainsKey(barcodeAsLong)) {
+                productBarcodeDict[barcodeAsLong]++;
+            }
+            else {
+                barcodeListView.BackgroundColor = Color.FromRgb(255, 0, 0);
+                DisplayAlert("Hata", "Okutulan barkod sistemde tanýmlý deðil.", "Tamam");
                 return false;
+            }
         }
+
+        foreach (var pair in productBarcodeDict) {
+            long barcode = pair.Key;
+            int requiredCount = pair.Value;
+
+            if (scannedBarcodes.Any(scanned => Convert.ToInt64(scanned.Barcode) == barcode && scanned.Count != requiredCount)) {
+                barcodeListView.BackgroundColor = Color.FromRgb(255, 0, 0);
+                DisplayAlert("Hata", "Okutulan barkodun miktarý doðru deðil.", "Tamam");
+                return false;
+            }
+        }
+
         return true;
     }
 
@@ -158,14 +173,18 @@ public partial class OutputScanBarcodeScreen : ContentPage {
             await Navigation.PushAsync(new EditItemPage(_selectedItem, viewModel.TotalCount, _selectedItem.UrunCins, _selectedItem.MusteriAd, scannedBarcodes));
             await cameraView.StopCameraAsync();
         }
-        else if (!AreBarcodesValid(productId)) {
+        else {
             barcodeListView.BackgroundColor = Color.FromRgb(255, 0, 0);
-            await DisplayAlert("Hata", "Taradýðýnýz barkodlar ürünle eþleþmiyor.", "Tamam");
+            await DisplayAlert("HATA", "Tanýmsýz Barkod Çýkýþý.", "Tamam");
         }
-        else if (!AreBarcodeCountsValid(productId)) {
-            barcodeListView.BackgroundColor = Color.FromRgb(255, 0, 0);
-            await DisplayAlert("Barkod Adedi Hedeflenen Miktar Deðil", "Okunan Barkod adet beklenen miktarda deðil, FAZLA" , "TAMAM");
+
+        if (AreBarcodeCountsValid(productId)) {
             await Navigation.PushAsync(new EditItemPage(_selectedItem, viewModel.TotalCount, _selectedItem.UrunCins, _selectedItem.MusteriAd, scannedBarcodes));
+            await cameraView.StopCameraAsync();
+        }
+        else {
+            barcodeListView.BackgroundColor = Color.FromRgb(255, 0, 0);
+            await DisplayAlert("Adet Hatasý", "Maksimum Barkod Adedini Aþtýnýz", "Tamam");
         }
     }
     private void Onayla_Clicked(object sender, EventArgs e) {
