@@ -46,7 +46,11 @@ public partial class EditItemPage : ContentPage {
         viewModel.TotalCount = _viewModel.ReadedCount;
     }
 
-
+    private void Guncelle_Clicked(object sender, EventArgs e) {
+        int newCount = _viewModel.Count;
+        _viewModel.Count = newCount;
+        _viewModel.TotalCount = scannedBarcodes.Sum(item => item.Count);
+    }
     private void ArtirAzaltButton_Clicked(object sender, EventArgs e) {
         var button = (Button)sender;
         var selectedItem = (ReadBaseModel)button.CommandParameter;

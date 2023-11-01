@@ -43,29 +43,32 @@
                                 <Label x:Name="label983"  Text="{Binding UrunCins}" FontSize="15" FontAttributes="Bold" TextColor="White"/>
                             </StackLayout>
                         </StackLayout>
-                        <ListView x:Name="barcodeListView" HeightRequest="300" RowHeight="40" Margin="5"   >
+                        <ListView x:Name="barcodeListView" HeightRequest="300" RowHeight="40" Margin="5">
                             <ListView.ItemTemplate>
                                 <DataTemplate>
                                     <ViewCell>
-                                        <Grid Padding="10" >
+                                        <Grid Padding="10">
                                             <Grid.RowDefinitions>
-                                                <RowDefinition Height="*"/>
+                                                <RowDefinition Height="*" />
                                             </Grid.RowDefinitions>
                                             <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="170" />
-                                                <ColumnDefinition Width="30" />
+                                                <ColumnDefinition Width="45" />
+                                                <ColumnDefinition Width="Auto" />
+                                                <ColumnDefinition Width="Auto" />
                                                 <ColumnDefinition Width="*" />
                                             </Grid.ColumnDefinitions>
                                             <StackLayout Grid.Column="0">
                                                 <Label Text="{Binding Barcode}" TextColor="Black" FontSize="Small" LineBreakMode="NoWrap" />
                                             </StackLayout>
-                                            <StackLayout Grid.Column="1">
-                                                <Label Text="{Binding Count, StringFormat='({0})'}" TextColor="Black" />
+                                            <StackLayout Grid.Column="1" HorizontalOptions="StartAndExpand">
+                                                <Label Text="{Binding Count, StringFormat='({0})'}" TextColor="Black" HorizontalTextAlignment="Center" VerticalTextAlignment="Start" />
                                             </StackLayout>
-                                            <StackLayout Grid.Column="2" Orientation="Horizontal" >
-                                                <StackLayout Orientation="Horizontal" >
-                                                    <Button Text="-" CommandParameter="{Binding .}" FontSize="Body" Padding="0" Margin="5" TextColor="White" Clicked="ArtirAzaltButton_Clicked" WidthRequest="35" HeightRequest="35"  CornerRadius="4" />
-                                                    <Button Text="+" CommandParameter="{Binding .}" FontSize="Body" Padding="0" Margin="5" TextColor="White" Clicked="ArtirAzaltButton_Clicked" WidthRequest="35" HeightRequest="35"  CornerRadius="4" />
+                                            <StackLayout Grid.Column="2" Orientation="Horizontal">
+                                                <StackLayout Orientation="Horizontal">
+                                                    <Entry Placeholder="Adet Miktarı" Keyboard="Numeric" Text="{Binding Count}" Margin="0" />
+                                                    <Button Text="Adet" Clicked="Guncelle_Clicked" BackgroundColor="LightSkyBlue" Margin="0,0,0,0" WidthRequest="80" HeightRequest="50" />
+                                                    <Button Text="-" CommandParameter="{Binding .}" FontSize="Body" Padding="0" Margin="0" TextColor="White" Clicked="ArtirAzaltButton_Clicked" WidthRequest="33" HeightRequest="40" CornerRadius="2" />
+                                                    <Button Text="+" CommandParameter="{Binding .}" BackgroundColor="BlueViolet" FontSize="Body" Padding="0" Margin="0" TextColor="White" Clicked="ArtirAzaltButton_Clicked" WidthRequest="33" HeightRequest="40" CornerRadius="2" />
                                                 </StackLayout>
                                             </StackLayout>
                                         </Grid>

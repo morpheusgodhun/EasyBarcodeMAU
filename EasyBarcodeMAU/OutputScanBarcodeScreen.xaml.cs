@@ -67,19 +67,39 @@ public partial class OutputScanBarcodeScreen : ContentPage {
                     var text = result.Text;
                     viewModel.ReadedCount++;
                     Vibration.Vibrate();
-                    var existingItem = scannedBarcodes.FirstOrDefault(item => item.Barcode == text);
-                    if (existingItem != default) {
-                        existingItem.Count++;
+
+                    // Barkodun veritabanýnýzdaki listeye dahil edilip edilmediðini kontrol et
+                    if (IsBarcodeInDatabase(text)) {
+                        var existingItem = scannedBarcodes.FirstOrDefault(item => item.Barcode == text);
+                        if (existingItem != default) {
+                            existingItem.Count++;
+                        }
+                        else {
+                            scannedBarcodes.Add(new ReadBaseModel { Barcode = text, Count = 1 });
+                        }
                     }
                     else {
-                        scannedBarcodes.Add(new ReadBaseModel { Barcode = text, Count = 1 });
+                        // Barkod veritabanýnda yoksa uyarý ver
+                        DisplayAlert("Uyarý", "Bu barkod mevcut deðil.", "Tamam");
                     }
+
                     viewModel.TotalCount = scannedBarcodes.Sum(item => item.Count);
                 }
             });
             await Task.Delay(focusDelayMilliseconds);
             isFocusing = false;
         }
+    }
+
+    private bool IsBarcodeInDatabase(string barcode) {
+        var product = OutPutProductModel.Instance.ProductItems.FirstOrDefault(p => p.Id == _selectedItem.Id);
+        if (product == null) return false;
+
+        long barcodeAsLong;
+        if (long.TryParse(barcode, out barcodeAsLong)) {
+            return product.ScannedBarcodes.Contains(barcodeAsLong);
+        }
+        return false;
     }
 
     private void EkleButton_Clicked(object sender, EventArgs e) {
@@ -163,7 +183,6 @@ public partial class OutputScanBarcodeScreen : ContentPage {
 
         if (!AreBarcodeCountsValid(productId)) {
             barcodeListView.BackgroundColor = Color.FromRgb(255, 0, 0);
-            await DisplayAlert("Adet Hatasý", "Hedeflenen Barkod Adedini aþtýnýz..", "Tamam");
             shouldNavigate = false; //yönlendirmeyi burda iptal et
         }
         else if (!AreBarcodesValid(productId)) {

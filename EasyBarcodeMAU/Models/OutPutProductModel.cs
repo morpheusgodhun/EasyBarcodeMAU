@@ -15,12 +15,12 @@ public class OutPutProductModel : BaseViewModel {
 
     public List<ProductItemBase> ProductItems { get; set; } = new List<ProductItemBase> {
     new ProductItemBase {
-        Id = 1, DefterNo = 123321456, MusteriAd = "Beko", UrunCins = "Sunta Kenar Bandı", UrunAdet = 7839858,DepoKonum = "A Blok", RequiredCount=5, BarkodNo = 13252523,
-        ScannedBarcodes = ConvertBarcodeDictionaryToList(new Dictionary<long, int> { {1324234233, 1}, {342342342345, 1}, { 6782342432, 1},{ 2342342456, 1},{ 1021312321, 1}  })
+        Id = 1, DefterNo = 123321456, MusteriAd = "Beko", UrunCins = "Sunta Kenar Bandı", UrunAdet = 7839858,DepoKonum = "A Blok", RequiredCount=10, BarkodNo = 13252523,
+        ScannedBarcodes = ConvertBarcodeDictionaryToList(new Dictionary<long, int> { {1324234233, 2}, {342342342345, 2}, { 6782342432, 2},{ 2342342456, 2},{ 1021312321, 2}  })
     },
     new ProductItemBase {
         Id = 2, DefterNo = 213213123, MusteriAd = "Penta Teknoloji", UrunCins = "Ekran Kartı", UrunAdet = 3243243, DepoKonum = "B Blok",RequiredCount=10, BarkodNo = 23325224,
-        ScannedBarcodes = ConvertBarcodeDictionaryToList(new Dictionary<long, int> { {2342342456, 1}, {7324234223, 1}, {1021312321, 1} })
+        ScannedBarcodes = ConvertBarcodeDictionaryToList(new Dictionary<long, int> { {2342342456, 4}, {7324234223, 4}, {1021312321, 2} })
     },
     new ProductItemBase {
         Id = 3, DefterNo = 453223323, MusteriAd = "Vatan Computer", UrunCins = "MousePad", UrunAdet = 4829424, DepoKonum = "C Blok", RequiredCount=20, BarkodNo = 54325256,
