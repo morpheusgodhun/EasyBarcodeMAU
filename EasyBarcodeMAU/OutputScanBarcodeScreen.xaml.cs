@@ -80,8 +80,8 @@ public partial class OutputScanBarcodeScreen : ContentPage {
                         }
                     }
                     else {
-                        // Barkod veritabanýnda yoksa uyarý ver
-                        this.BackgroundColor = Color.FromRgb(256, 165, 0);
+                        // Barkod veritabanýnda yoksa uyarý veriyorum
+                        this.BackgroundColor = Color.FromRgb(256, 165, 0);               
                         DisplayAlert("Uyarý", "Bu barkod mevcut deðil.", "Tamam");
                     }
 
