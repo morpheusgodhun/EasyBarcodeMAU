@@ -11,7 +11,7 @@ public partial class OutputScanBarcodeScreen : ContentPage {
     private bool isFocusing = false;
     private int focusDelayMilliseconds = 1470;
     private ObservableCollection<ReadBaseModel> scannedBarcodes = new();
-    string newText;    
+    string newText;
 
     #endregion
 
@@ -28,7 +28,7 @@ public partial class OutputScanBarcodeScreen : ContentPage {
         _selectedItem = selectedItem;
         viewModel.SelectedProduct = selectedItem?.UrunCins;
         viewModel.RequiredCount = selectedItem.RequiredCount;
-        viewModel.DepoKonum = selectedItem.DepoKonum;     
+        viewModel.DepoKonum = selectedItem.DepoKonum;
     }
 
     #endregion
@@ -44,7 +44,7 @@ public partial class OutputScanBarcodeScreen : ContentPage {
 
         loadingIndicator.IsVisible = false;
         loadingIndicator.IsRunning = false;
-    }  
+    }
 
     public ObservableCollection<ReadBaseModel> ScannedBarcodes {
         get { return scannedBarcodes; }
@@ -88,7 +88,7 @@ public partial class OutputScanBarcodeScreen : ContentPage {
                     }
                     else {
                         // Barkod veritabanýnda yoksa uyarý veriyorum
-                        this.BackgroundColor = Color.FromRgb(256, 165, 0);               
+                        this.BackgroundColor = Color.FromRgb(256, 165, 0);
                         DisplayAlert("Uyarý", "Bu barkod mevcut deðil.", "Tamam");
                     }
 
@@ -113,25 +113,50 @@ public partial class OutputScanBarcodeScreen : ContentPage {
 
     private void EkleButton_Clicked(object sender, EventArgs e) {
         string barcode = new string(barcodeEntry.Text.Where(char.IsDigit).ToArray());
-
         if (!string.IsNullOrWhiteSpace(barcode)) {
-            var existingItem = scannedBarcodes.FirstOrDefault(item => item.Barcode == barcode);
+            if (IsBarcodeInDatabase(barcode)) {
+                if (IsBarcodeCountValid(barcode)) {
+                    var existingItem = scannedBarcodes.FirstOrDefault(item => item.Barcode == barcode);
 
-            if (existingItem != null) {
-                existingItem.Count++;
-                Vibration.Vibrate();
+                    if (existingItem != null) {
+                        existingItem.Count++;
+                        Vibration.Vibrate();
+                    }
+                    else {
+                        scannedBarcodes.Add(new ReadBaseModel { Barcode = barcode, Count = 1 });
+                    }
+
+                    barcodeEntry.Text = string.Empty;
+                    viewModel.ReadedCount++;
+                    viewModel.TotalCount = scannedBarcodes.Sum(item => item.Count);
+                }
+                else {
+                    DisplayAlert("Hata", "Tanýmlý MAKSÝMUM barkod adedini aþtýnýz", "Tamam");
+                }
             }
             else {
-                scannedBarcodes.Add(new ReadBaseModel { Barcode = barcode, Count = 1 });
+                this.BackgroundColor = Color.FromRgb(256, 165, 0);
+                DisplayAlert("Uyarý", "Bu barkod mevcut deðil.", "Tamam");
             }
-
-            barcodeEntry.Text = string.Empty;
-            viewModel.ReadedCount++;
-            viewModel.TotalCount = scannedBarcodes.Sum(item => item.Count);
         }
         else {
             DisplayAlert("Hata", "Lütfen yalnýzca rakam içeren bir deðer girin.", "Tamam");
         }
+    }
+
+    private bool IsBarcodeCountValid(string barcode) {
+        var product = OutPutProductModel.Instance.ProductItems.FirstOrDefault(p => p.Id == _selectedItem.Id);
+        if (product == null) return true;
+
+        long barcodeAsLong;
+        if (long.TryParse(barcode, out barcodeAsLong)) {
+            int requiredCount = product.ScannedBarcodes.Count(b => b == barcodeAsLong);
+            var existingItem = scannedBarcodes.FirstOrDefault(item => item.Barcode == barcode);
+            if (existingItem != null && existingItem.Count > requiredCount) {
+                return false;
+            }
+        }
+        return true;
     }
 
     private void Camerasloaded(object sender, EventArgs e) {
@@ -152,7 +177,7 @@ public partial class OutputScanBarcodeScreen : ContentPage {
 
     public bool AreBarcodeCountsValid(int productId) {
         var product = OutPutProductModel.Instance.ProductItems.FirstOrDefault(p => p.Id == productId);
-        if (product == null) return true; // Ürün veritabanýnda yoksa devam et
+        if (product == null) return true;
 
         var productBarcodeSet = new HashSet<long>(product.ScannedBarcodes);
 
@@ -160,7 +185,7 @@ public partial class OutputScanBarcodeScreen : ContentPage {
             long barcodeAsLong;
             if (long.TryParse(scanned.Barcode, out barcodeAsLong)) {
                 if (!productBarcodeSet.Contains(barcodeAsLong)) {
-                    continue; // Ürün veritabanýnda olmayan bir barkodun SAYISINA BAKMA DEVAM ET
+                    continue; // Barkod Listede olmayan bir barkodsa SAYISINA BAKMA DEVAM ET
                 }
                 int requiredCount = product.ScannedBarcodes.Count(b => b == barcodeAsLong);
                 if (scanned.Count > requiredCount) {
@@ -195,7 +220,7 @@ public partial class OutputScanBarcodeScreen : ContentPage {
         if (!AreBarcodeCountsValid(productId)) {
             barcodeListView.BackgroundColor = Color.FromRgb(255, 0, 0);
             shouldNavigate = false;
-            RemoveExcessBarcodes(productId); 
+            RemoveExcessBarcodes(productId);
         }
         else if (!AreBarcodesValid(productId)) {
             barcodeListView.BackgroundColor = Color.FromRgb(255, 0, 0);
@@ -218,7 +243,6 @@ public partial class OutputScanBarcodeScreen : ContentPage {
 
         var productBarcodeSet = new HashSet<long>(product.ScannedBarcodes);
 
-        // Barkodu fazla girerse oto sil
         var excessBarcodes = scannedBarcodes.Where(scanned => {
             long barcodeAsLong;
             if (long.TryParse(scanned.Barcode, out barcodeAsLong)) {
