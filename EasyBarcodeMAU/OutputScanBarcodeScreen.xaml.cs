@@ -72,12 +72,20 @@ public partial class OutputScanBarcodeScreen : ContentPage {
             MainThread.BeginInvokeOnMainThread(() => {
                 foreach (var result in args.Result) {
                     var text = result.Text;
-                    viewModel.ReadedCount++;
-                    this.BackgroundColor = Color.FromRgb(51, 153, 255);
-                    Vibration.Vibrate();
 
-                    // Barkodun veritabanýnýzdaki listeye dahil edilip edilmediðini kontrol et
+                    // Barkodun veritabanýnda olup olmadýðýný kontrol et
                     if (IsBarcodeInDatabase(text)) {
+
+                        // Eðer barkod adeti geçerli deðilse barkodu eklemeyip devam ediyoruz.
+                        if (!IsBarcodeCountValid(text)) {
+                            DisplayAlert("Hata", "Tanýmlý MAKSÝMUM barkod adedini aþtýnýz", "Tamam");
+                            continue;
+                        }
+
+                        viewModel.ReadedCount++;
+                        this.BackgroundColor = Color.FromRgb(51, 153, 255);
+                        Vibration.Vibrate();
+
                         var existingItem = scannedBarcodes.FirstOrDefault(item => item.Barcode == text);
                         if (existingItem != default) {
                             existingItem.Count++;
@@ -152,7 +160,7 @@ public partial class OutputScanBarcodeScreen : ContentPage {
         if (long.TryParse(barcode, out barcodeAsLong)) {
             int requiredCount = product.ScannedBarcodes.Count(b => b == barcodeAsLong);
             var existingItem = scannedBarcodes.FirstOrDefault(item => item.Barcode == barcode);
-            if (existingItem != null && existingItem.Count > requiredCount) {
+            if (existingItem != null && existingItem.Count == requiredCount) {
                 return false;
             }
         }
@@ -232,7 +240,7 @@ public partial class OutputScanBarcodeScreen : ContentPage {
             loadingIndicator.IsVisible = true;
             loadingIndicator.IsRunning = true;
             await Task.Delay(2000);
-            await Navigation.PushAsync(new EditItemPage(_selectedItem, viewModel.TotalCount, _selectedItem.UrunCins, _selectedItem.MusteriAd, scannedBarcodes));
+            await Navigation.PushAsync(new OutputEditItemPage(_selectedItem, viewModel.TotalCount, _selectedItem.UrunCins, _selectedItem.MusteriAd, scannedBarcodes));
             await cameraView.StopCameraAsync();
         }
     }
