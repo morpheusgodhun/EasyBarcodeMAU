@@ -61,14 +61,14 @@
                                                 <Label Text="{Binding Barcode}" TextColor="Black" FontSize="Small" LineBreakMode="NoWrap" />
                                             </StackLayout>
                                             <StackLayout Grid.Column="1" HorizontalOptions="StartAndExpand">
-                                                <Label Text="{Binding Count, StringFormat='({0})'}" TextColor="Black" HorizontalTextAlignment="Center" VerticalTextAlignment="Start" />
+                                                <Label Text="{Binding Count, StringFormat='({0})'}" TextColor="Blue" HorizontalTextAlignment="Center" VerticalTextAlignment="Start" />
                                             </StackLayout>
                                             <StackLayout Grid.Column="2" Orientation="Horizontal">
                                                 <StackLayout Orientation="Horizontal">
-                                                    <Entry Placeholder="Adet Miktarı" Keyboard="Numeric" Text="{Binding Count}" Margin="0" />
+                                                    <Entry Placeholder="Adet Miktarı" Keyboard="Numeric" Text="{Binding Count}" Margin="0" HorizontalOptions="End" />
                                                     <Button Text="Adet" Clicked="Guncelle_Clicked" BackgroundColor="LightSkyBlue" Margin="0,0,0,0" WidthRequest="80" HeightRequest="50" />
-                                                    <Button Text="-" CommandParameter="{Binding .}" FontSize="Body" Padding="0" Margin="0" TextColor="White" Clicked="ArtirAzaltButton_Clicked" WidthRequest="33" HeightRequest="40" CornerRadius="2" />
-                                                    <Button Text="+" CommandParameter="{Binding .}" BackgroundColor="BlueViolet" FontSize="Body" Padding="0" Margin="0" TextColor="White" Clicked="ArtirAzaltButton_Clicked" WidthRequest="33" HeightRequest="40" CornerRadius="2" />
+                                                    <!--<Button Text="-" CommandParameter="{Binding .}" FontSize="Body" Padding="0" Margin="0" TextColor="White" Clicked="ArtirAzaltButton_Clicked" WidthRequest="33" HeightRequest="40" CornerRadius="2" />
+                                                    <Button Text="+" CommandParameter="{Binding .}" BackgroundColor="BlueViolet" FontSize="Body" Padding="0" Margin="0" TextColor="White" Clicked="ArtirAzaltButton_Clicked" WidthRequest="33" HeightRequest="40" CornerRadius="2" />-->
                                                 </StackLayout>
                                             </StackLayout>
                                         </Grid>
