@@ -143,6 +143,8 @@ public partial class OutputScanBarcodeScreen : ContentPage {
                     viewModel.TotalCount = scannedBarcodes.Sum(item => item.Count);
                 }
                 else {
+                    textTotal.TextColor = Color.FromRgb(255, 0, 0);
+                    labelTotalCount.TextColor = Color.FromRgb(255, 0, 0);
                     DisplayAlert("Hata", "Tanýmlý MAKSÝMUM barkod adedini aþtýnýz", "Tamam");
                 }
             }
