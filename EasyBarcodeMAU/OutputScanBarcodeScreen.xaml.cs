@@ -72,18 +72,13 @@ public partial class OutputScanBarcodeScreen : ContentPage {
             MainThread.BeginInvokeOnMainThread(() => {
                 foreach (var result in args.Result) {
                     var text = result.Text;
-
-                    // Barkodun veritabanýnda olup olmadýðýný kontrol et
                     if (IsBarcodeInDatabase(text)) {
-
-                        // Eðer barkod adeti geçerli deðilse barkodu eklemeyip devam ediyoruz.
                         if (!IsBarcodeCountValid(text)) {
                             DisplayAlert("Hata", "Tanýmlý MAKSÝMUM barkod adedini aþtýnýz", "Tamam");
                             continue;
                         }
 
                         viewModel.ReadedCount++;
-                        this.BackgroundColor = Color.FromRgb(51, 153, 255);
                         Vibration.Vibrate();
 
                         var existingItem = scannedBarcodes.FirstOrDefault(item => item.Barcode == text);
@@ -95,8 +90,8 @@ public partial class OutputScanBarcodeScreen : ContentPage {
                         }
                     }
                     else {
-                        // Barkod veritabanýnda yoksa uyarý veriyorum
-                        this.BackgroundColor = Color.FromRgb(256, 165, 0);
+                        textTotal.TextColor = Color.FromRgb(255, 0, 0);
+                        labelTotalCount.TextColor = Color.FromRgb(255, 0, 0);
                         DisplayAlert("Uyarý", "Bu barkod mevcut deðil.", "Tamam");
                     }
 
@@ -194,7 +189,7 @@ public partial class OutputScanBarcodeScreen : ContentPage {
             long barcodeAsLong;
             if (long.TryParse(scanned.Barcode, out barcodeAsLong)) {
                 if (!productBarcodeSet.Contains(barcodeAsLong)) {
-                    continue; // Barkod Listede olmayan bir barkodsa SAYISINA BAKMA DEVAM ET
+                    continue;
                 }
                 int requiredCount = product.ScannedBarcodes.Count(b => b == barcodeAsLong);
                 if (scanned.Count > requiredCount) {
@@ -215,7 +210,7 @@ public partial class OutputScanBarcodeScreen : ContentPage {
     private async void HandleOnaylaClick(int productId) {
         this.BackgroundColor = Color.FromRgb(51, 153, 255);
         label1.TextColor = Color.FromRgb(255, 255, 255);
-        label2.TextColor = Color.FromRgb(255, 255, 255);      
+        label2.TextColor = Color.FromRgb(255, 255, 255);
         label4.TextColor = Color.FromRgb(255, 255, 255);
         label7.TextColor = Color.FromRgb(255, 255, 255);
         label8.TextColor = Color.FromRgb(255, 255, 255);
