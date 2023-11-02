@@ -132,7 +132,6 @@ public partial class OutputScanBarcodeScreen : ContentPage {
 
                     if (existingItem != null) {
                         existingItem.Count++;
-                        Vibration.Vibrate();
                     }
                     else {
                         scannedBarcodes.Add(new ReadBaseModel { Barcode = barcode, Count = 1 });
@@ -149,8 +148,8 @@ public partial class OutputScanBarcodeScreen : ContentPage {
                 }
             }
             else {
-                textTotal.TextColor = Color.FromRgb(175, 255, 0);
-                labelTotalCount.TextColor = Color.FromRgb(175, 255, 0);
+                textTotal.TextColor = Color.FromRgb(255, 0, 0);
+                labelTotalCount.TextColor = Color.FromRgb(255, 0, 0);
                 DisplayAlert("Uyarý", "Bu barkod mevcut deðil.", "Tamam");
             }
         }
