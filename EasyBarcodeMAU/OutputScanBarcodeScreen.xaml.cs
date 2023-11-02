@@ -74,7 +74,9 @@ public partial class OutputScanBarcodeScreen : ContentPage {
                     var text = result.Text;
                     if (IsBarcodeInDatabase(text)) {
                         if (!IsBarcodeCountValid(text)) {
-                            DisplayAlert("Hata", "Tanýmlý MAKSÝMUM barkod adedini aþtýnýz", "Tamam");
+                            textTotal.TextColor = Color.FromRgb(255, 0, 0);
+                            labelTotalCount.TextColor = Color.FromRgb(255, 0, 0);
+                            DisplayAlert("Hata", "Okuttuðunuz Barkodun MAKSÝMUM barkod adedine zaten ulaþtýnýz.", "Tamam");
                             continue;
                         }
 
@@ -194,7 +196,7 @@ public partial class OutputScanBarcodeScreen : ContentPage {
                 int requiredCount = product.ScannedBarcodes.Count(b => b == barcodeAsLong);
                 if (scanned.Count > requiredCount) {
                     barcodeListView.BackgroundColor = Color.FromRgb(255, 0, 0);
-                    DisplayAlert("Hata", "Tanýmlý MAKSÝMUM barkod adedini aþtýnýz", "Tamam");
+                    DisplayAlert("Adet Aþým", "Tanýmlý MAKSÝMUM barkod adedini aþtýnýz", "Tamam");
                     return false;
                 }
             }
