@@ -132,6 +132,7 @@ public partial class OutputScanBarcodeScreen : ContentPage {
 
                     if (existingItem != null) {
                         existingItem.Count++;
+                        Vibration.Vibrate();
                     }
                     else {
                         scannedBarcodes.Add(new ReadBaseModel { Barcode = barcode, Count = 1 });
