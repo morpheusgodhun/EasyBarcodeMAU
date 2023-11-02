@@ -84,7 +84,6 @@ public partial class OutputScanBarcodeScreen : ContentPage {
                             textTotal.TextColor = Color.FromRgb(255, 0, 0);
                             label4.TextColor = Color.FromRgb(255, 0, 0);
                             labelTotalCount.TextColor = Color.FromRgb(255, 0, 0);
-                            DisplayAlert("Hata", "Okuttuðunuz Barkodun MAKSÝMUM barkod adedine zaten ulaþtýnýz.", "Tamam");
                             continue;
                         }
 
@@ -102,7 +101,6 @@ public partial class OutputScanBarcodeScreen : ContentPage {
                         textTotal.TextColor = Color.FromRgb(255, 0, 0);
                         label4.TextColor = Color.FromRgb(255, 0, 0);
                         labelTotalCount.TextColor = Color.FromRgb(255, 0, 0);
-                        DisplayAlert("Uyarý", "Bu barkod mevcut deðil.", "Tamam");
                     }
 
                     viewModel.TotalCount = scannedBarcodes.Sum(item => item.Count);
@@ -149,18 +147,15 @@ public partial class OutputScanBarcodeScreen : ContentPage {
                     label4.TextColor = Color.FromRgb(255, 0, 0);
                     textTotal.TextColor = Color.FromRgb(255, 0, 0);
                     labelTotalCount.TextColor = Color.FromRgb(255, 0, 0);
-                    DisplayAlert("Hata", "Tanýmlý MAKSÝMUM barkod adedini aþtýnýz", "Tamam");
                 }
             }
             else {
                 label4.TextColor = Color.FromRgb(255, 0, 0);
                 textTotal.TextColor = Color.FromRgb(255, 0, 0);
                 labelTotalCount.TextColor = Color.FromRgb(255, 0, 0);
-                DisplayAlert("Uyarý", "Bu barkod mevcut deðil.", "Tamam");
             }
         }
         else {
-            DisplayAlert("Hata", "Lütfen yalnýzca rakam içeren bir deðer girin.", "Tamam");
         }
     }
 
@@ -210,7 +205,6 @@ public partial class OutputScanBarcodeScreen : ContentPage {
                 int requiredCount = product.ScannedBarcodes.Count(b => b == barcodeAsLong);
                 if (scanned.Count > requiredCount) {
                     barcodeListView.BackgroundColor = Color.FromRgb(255, 0, 0);
-                    DisplayAlert("Adet Aþým", "Tanýmlý MAKSÝMUM barkod adedini aþtýnýz", "Tamam");
                     return false;
                 }
             }
@@ -244,7 +238,6 @@ public partial class OutputScanBarcodeScreen : ContentPage {
         }
         else if (!AreBarcodesValid(productId)) {
             barcodeListView.BackgroundColor = Color.FromRgb(255, 0, 0);
-            await DisplayAlert("Hata", "Taradýðýnýz barkodlar veya miktarlar ürünle eþleþmiyor.", "Tamam");
             shouldNavigate = false;
         }
 
