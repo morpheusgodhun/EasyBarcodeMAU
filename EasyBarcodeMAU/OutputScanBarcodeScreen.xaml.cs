@@ -75,22 +75,24 @@ public partial class OutputScanBarcodeScreen : ContentPage {
                     var text = result.Text;
                     if (text != lastScannedBarcode) {
                         textTotal.TextColor = Color.FromRgb(175, 255, 0);
+                        label4.TextColor = Color.FromRgb(175, 255, 0);
                         labelTotalCount.TextColor = Color.FromRgb(175, 255, 0);
                     }
 
                     if (IsBarcodeInDatabase(text)) {
                         if (!IsBarcodeCountValid(text)) {
                             textTotal.TextColor = Color.FromRgb(255, 0, 0);
+                            label4.TextColor = Color.FromRgb(255, 0, 0);
                             labelTotalCount.TextColor = Color.FromRgb(255, 0, 0);
                             DisplayAlert("Hata", "Okuttuðunuz Barkodun MAKSÝMUM barkod adedine zaten ulaþtýnýz.", "Tamam");
                             continue;
                         }
 
-                        viewModel.ReadedCount++;
-                        Vibration.Vibrate();
+                        viewModel.ReadedCount++;                  
                         var existingItem = scannedBarcodes.FirstOrDefault(item => item.Barcode == text);
                         if (existingItem != default) {
                             existingItem.Count++;
+                            Vibration.Vibrate();
                         }
                         else {
                             scannedBarcodes.Add(new ReadBaseModel { Barcode = text, Count = 1 });
@@ -98,6 +100,7 @@ public partial class OutputScanBarcodeScreen : ContentPage {
                     }
                     else {
                         textTotal.TextColor = Color.FromRgb(255, 0, 0);
+                        label4.TextColor = Color.FromRgb(255, 0, 0);
                         labelTotalCount.TextColor = Color.FromRgb(255, 0, 0);
                         DisplayAlert("Uyarý", "Bu barkod mevcut deðil.", "Tamam");
                     }
@@ -143,12 +146,14 @@ public partial class OutputScanBarcodeScreen : ContentPage {
                     viewModel.TotalCount = scannedBarcodes.Sum(item => item.Count);
                 }
                 else {
+                    label4.TextColor = Color.FromRgb(255, 0, 0);
                     textTotal.TextColor = Color.FromRgb(255, 0, 0);
                     labelTotalCount.TextColor = Color.FromRgb(255, 0, 0);
                     DisplayAlert("Hata", "Tanýmlý MAKSÝMUM barkod adedini aþtýnýz", "Tamam");
                 }
             }
             else {
+                label4.TextColor = Color.FromRgb(255, 0, 0);
                 textTotal.TextColor = Color.FromRgb(255, 0, 0);
                 labelTotalCount.TextColor = Color.FromRgb(255, 0, 0);
                 DisplayAlert("Uyarý", "Bu barkod mevcut deðil.", "Tamam");
