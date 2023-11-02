@@ -24,19 +24,19 @@ public class OutPutProductModel : BaseViewModel {
     },
     new ProductItemBase {
         Id = 3, DefterNo = 453223323, MusteriAd = "Vatan Computer", UrunCins = "MousePad", UrunAdet = 4829424, DepoKonum = "C Blok", RequiredCount=20, BarkodNo = 54325256,
-        ScannedBarcodes = ConvertBarcodeDictionaryToList(new Dictionary<long, int> { {4543534656, 1}, {7832422343, 1}, {9101342422, 1} })
+        ScannedBarcodes = ConvertBarcodeDictionaryToList(new Dictionary<long, int> { {4543534656, 7}, {7832422343, 7}, {9101342422, 6} })
     },
     new ProductItemBase {
         Id = 4, DefterNo = 234142323, MusteriAd = "Teknosa", UrunCins = "Laptop", UrunAdet = 2935643, DepoKonum = "D Blok", RequiredCount=30,BarkodNo = 12325323,
-        ScannedBarcodes = ConvertBarcodeDictionaryToList(new Dictionary<long, int> { {5234234356, 1}, {7235232352, 1}, {1235222201, 1} })
+        ScannedBarcodes = ConvertBarcodeDictionaryToList(new Dictionary<long, int> { {5234234356, 10}, {7235232352, 10}, {1235222201, 10} })
     },
     new ProductItemBase {
         Id = 5, DefterNo = 533532323, MusteriAd = "Armut Kırtasiye", UrunCins = "Kitap", UrunAdet = 3539531,DepoKonum = "E Blok", RequiredCount=40,BarkodNo = 63432254,
-        ScannedBarcodes = ConvertBarcodeDictionaryToList(new Dictionary<long, int> { {6523423426, 1}, {7893242353, 1}, {2325235201, 1} })
+        ScannedBarcodes = ConvertBarcodeDictionaryToList(new Dictionary<long, int> { {6523423426, 10}, {7893242353, 20}, {2325235201, 10} })
     },
     new ProductItemBase {
         Id = 6, DefterNo = 234322443, MusteriAd = "FarmTown", UrunCins = "Tahıl", UrunAdet = 3539531, DepoKonum = "F Blok", RequiredCount=50,BarkodNo = 1232152311,
-        ScannedBarcodes = ConvertBarcodeDictionaryToList(new Dictionary<long, int> { {7324222356, 1}, {7823423432, 1}, {3101342323, 1} })
+        ScannedBarcodes = ConvertBarcodeDictionaryToList(new Dictionary<long, int> { {7324222356, 20}, {7823423432, 20}, {3101342323, 10} })
     },
     new ProductItemBase {
         Id = 7, DefterNo = 234324324, MusteriAd = "PetCat", UrunCins = "Hayvan Maması", UrunAdet = 3539531, DepoKonum = "G Blok", RequiredCount=60,BarkodNo=12352151,
@@ -54,7 +54,6 @@ public class OutPutProductModel : BaseViewModel {
         }
         return result;
     }
-
 
 
     #endregion

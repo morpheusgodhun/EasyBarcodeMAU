@@ -6,6 +6,18 @@ public class OutputReadBaseModel : BaseViewModel {
 
     #region Properties
 
+    public int Id { get; set; }
+    private int _defterNo;
+    public int DefterNo {
+        get { return _defterNo; }
+        set {
+            if (_defterNo != value) {
+                _defterNo = value;
+                OnPropertyChanged(nameof(DefterNo));
+            }
+        }
+    }
+
     public string Barcode { get; set; }
 
     private int _scannedBarcodes;
@@ -41,17 +53,7 @@ public class OutputReadBaseModel : BaseViewModel {
     }
 
 
-    public int Id { get; set; }
-    private int _defterNo;
-    public int DefterNo {
-        get { return _defterNo; }
-        set {
-            if (_defterNo != value) {
-                _defterNo = value;
-                OnPropertyChanged(nameof(DefterNo));
-            }
-        }
-    }
+   
     public DateTime DepoGirisi { get; set; }
 
     private string _musteriAd;

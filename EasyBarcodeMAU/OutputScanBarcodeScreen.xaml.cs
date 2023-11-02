@@ -218,7 +218,6 @@ public partial class OutputScanBarcodeScreen : ContentPage {
     private bool shouldNavigate = true;
 
     private async void HandleOnaylaClick(int productId) {
-        this.BackgroundColor = Color.FromRgb(51, 153, 255);
         label1.TextColor = Color.FromRgb(255, 255, 255);
         label2.TextColor = Color.FromRgb(255, 255, 255);
         label4.TextColor = Color.FromRgb(255, 255, 255);
