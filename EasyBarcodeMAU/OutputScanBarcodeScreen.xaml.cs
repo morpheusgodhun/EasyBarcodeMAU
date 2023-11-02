@@ -12,6 +12,7 @@ public partial class OutputScanBarcodeScreen : ContentPage {
     private int focusDelayMilliseconds = 1470;
     private ObservableCollection<ReadBaseModel> scannedBarcodes = new();
     string newText;
+    private string lastScannedBarcode = "";
 
     #endregion
 
@@ -72,6 +73,11 @@ public partial class OutputScanBarcodeScreen : ContentPage {
             MainThread.BeginInvokeOnMainThread(() => {
                 foreach (var result in args.Result) {
                     var text = result.Text;
+                    if (text != lastScannedBarcode) {
+                        textTotal.TextColor = Color.FromRgb(175, 255, 0);
+                        labelTotalCount.TextColor = Color.FromRgb(175, 255, 0);
+                    }
+
                     if (IsBarcodeInDatabase(text)) {
                         if (!IsBarcodeCountValid(text)) {
                             textTotal.TextColor = Color.FromRgb(255, 0, 0);
@@ -82,7 +88,6 @@ public partial class OutputScanBarcodeScreen : ContentPage {
 
                         viewModel.ReadedCount++;
                         Vibration.Vibrate();
-
                         var existingItem = scannedBarcodes.FirstOrDefault(item => item.Barcode == text);
                         if (existingItem != default) {
                             existingItem.Count++;
@@ -98,12 +103,14 @@ public partial class OutputScanBarcodeScreen : ContentPage {
                     }
 
                     viewModel.TotalCount = scannedBarcodes.Sum(item => item.Count);
+                    lastScannedBarcode = text;
                 }
             });
             await Task.Delay(focusDelayMilliseconds);
             isFocusing = false;
         }
     }
+
 
     private bool IsBarcodeInDatabase(string barcode) {
         var product = OutPutProductModel.Instance.ProductItems.FirstOrDefault(p => p.Id == _selectedItem.Id);
