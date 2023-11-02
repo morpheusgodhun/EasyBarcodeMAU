@@ -143,7 +143,8 @@ public partial class OutputScanBarcodeScreen : ContentPage {
                 }
             }
             else {
-                this.BackgroundColor = Color.FromRgb(256, 165, 0);
+                textTotal.TextColor = Color.FromRgb(175, 255, 0);
+                labelTotalCount.TextColor = Color.FromRgb(175, 255, 0);
                 DisplayAlert("Uyarý", "Bu barkod mevcut deðil.", "Tamam");
             }
         }
@@ -214,7 +215,7 @@ public partial class OutputScanBarcodeScreen : ContentPage {
     private async void HandleOnaylaClick(int productId) {
         this.BackgroundColor = Color.FromRgb(51, 153, 255);
         label1.TextColor = Color.FromRgb(255, 255, 255);
-        label2.TextColor = Color.FromRgb(255, 255, 255);
+        label2.TextColor = Color.FromRgb(255, 255, 255);      
         label4.TextColor = Color.FromRgb(255, 255, 255);
         label7.TextColor = Color.FromRgb(255, 255, 255);
         label8.TextColor = Color.FromRgb(255, 255, 255);
