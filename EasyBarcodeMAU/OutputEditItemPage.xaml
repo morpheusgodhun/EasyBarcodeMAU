@@ -36,11 +36,11 @@
                         </Grid>
                         <StackLayout HeightRequest="100" BackgroundColor="LightSkyBlue" WidthRequest="300" HorizontalOptions="Center" VerticalOptions="Center">
                             <StackLayout Grid.Row="0" VerticalOptions="Center" HorizontalOptions="Center" Padding="5">
-                                <Label x:Name="label1957" Text="{Binding MusteriAd}" FontSize="30" FontAttributes="Bold" TextColor="White" TextTransform="Uppercase"/>
+                                <Label x:Name="label1957" Text="{Binding CustomerName}" FontSize="30" FontAttributes="Bold" TextColor="White" TextTransform="Uppercase"/>
                             </StackLayout>
                             <BoxView HeightRequest="2" Color="White" WidthRequest="170"></BoxView>
                             <StackLayout Grid.Row="1" VerticalOptions="Center" HorizontalOptions="Center"  Padding="9" >
-                                <Label x:Name="label983"  Text="{Binding UrunCins}" FontSize="15" FontAttributes="Bold" TextColor="White"/>
+                                <Label x:Name="label983"  Text="{Binding ProductType}" FontSize="15" FontAttributes="Bold" TextColor="White"/>
                             </StackLayout>
                         </StackLayout>
                         <ListView x:Name="barcodeListView" HeightRequest="300" RowHeight="40" Margin="5">

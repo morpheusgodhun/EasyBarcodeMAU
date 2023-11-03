@@ -7,8 +7,8 @@ public partial class EditItemPage : ContentPage {
     #region Variables
 
     private int _readedCount;
-    private string _musteriAd;
-    private string _urunCins;
+    private string _customerName;
+    private string _productType;
     private int _count = 0;
     private ProductItemBase _selectedItem;
     private ReadBaseModel _viewModel;
@@ -22,14 +22,14 @@ public partial class EditItemPage : ContentPage {
         InitializeComponent();
         _selectedItem = selectedItem;
         _readedCount = readedCount;
-        _urunCins = urunCins;
-        _musteriAd = musteriAd;
+        _productType = urunCins;
+        _customerName = musteriAd;
         viewModel = new ProductItemBase();
         this.scannedBarcodes = scannedBarcodes;
         _viewModel = new ReadBaseModel();
         _viewModel.ReadedCount = _readedCount;
-        _viewModel.UrunCins = _urunCins;
-        _viewModel.MusteriAd = _musteriAd;
+        _viewModel.ProductType = _productType;
+        _viewModel.CustomerName = _customerName;
         _viewModel.Count = _count;
         BindingContext = _viewModel;
     }

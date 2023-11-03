@@ -30,7 +30,7 @@
                     </StackLayout>
                     <StackLayout Orientation="Horizontal"   WidthRequest="155"  >
                         <Label  x:Name="label7"  Text="Depo : " TextColor="Black" FontAttributes="Bold"   />
-                        <Label  x:Name="label8"  Text="{Binding DepoKonum}" TextColor="Black" />
+                        <Label  x:Name="label8"  Text="{Binding WareHouseLocation}" TextColor="Black" />
                     </StackLayout>
                 </StackLayout>
                 <BoxView  x:Name="boxView2" HeightRequest="1" BackgroundColor="Gray" HorizontalOptions="FillAndExpand" VerticalOptions="Center" Margin="0,5"/>

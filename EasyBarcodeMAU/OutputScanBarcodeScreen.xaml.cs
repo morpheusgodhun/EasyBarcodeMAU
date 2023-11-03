@@ -27,9 +27,9 @@ public partial class OutputScanBarcodeScreen : ContentPage {
 
     public OutputScanBarcodeScreen(ProductItemBase selectedItem) : this() {
         _selectedItem = selectedItem;
-        viewModel.SelectedProduct = selectedItem?.UrunCins;
+        viewModel.SelectedProduct = selectedItem?.ProductType;
         viewModel.RequiredCount = selectedItem.RequiredCount;
-        viewModel.DepoKonum = selectedItem.DepoKonum;
+        viewModel.WareHouseLocation = selectedItem.WareHouseLocation;
     }
 
     #endregion
@@ -244,7 +244,7 @@ public partial class OutputScanBarcodeScreen : ContentPage {
             loadingIndicator.IsVisible = true;
             loadingIndicator.IsRunning = true;
             await Task.Delay(2000);
-            await Navigation.PushAsync(new OutputEditItemPage(_selectedItem, viewModel.TotalCount, _selectedItem.UrunCins, _selectedItem.MusteriAd, scannedBarcodes));
+            await Navigation.PushAsync(new OutputEditItemPage(_selectedItem, viewModel.TotalCount, _selectedItem.ProductType, _selectedItem.CustomerName, scannedBarcodes));
             await cameraView.StopCameraAsync();
         }
     }

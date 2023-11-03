@@ -15,31 +15,31 @@ public class OutPutProductModel : BaseViewModel {
 
     public List<ProductItemBase> ProductItems { get; set; } = new List<ProductItemBase> {
     new ProductItemBase {
-        Id = 1, DefterNo = 123321456, MusteriAd = "Beko", UrunCins = "Sunta Kenar Bandı", UrunAdet = 7839858,DepoKonum = "A Blok", RequiredCount=10, BarkodNo = 13252523,
+        Id = 1, BookNumber = 123321456, CustomerName = "Beko", ProductType = "Sunta Kenar Bandı", ProductCount = 7839858,WareHouseLocation = "A Blok", RequiredCount=10, BarkodNo = 13252523,
         ScannedBarcodes = ConvertBarcodeDictionaryToList(new Dictionary<long, int> { {1324234233, 2}, {342342342345, 2}, { 6782342432, 2},{ 2342342456, 2},{ 1021312321, 2}  })
     },
     new ProductItemBase {
-        Id = 2, DefterNo = 213213123, MusteriAd = "Penta Teknoloji", UrunCins = "Ekran Kartı", UrunAdet = 3243243, DepoKonum = "B Blok",RequiredCount=10, BarkodNo = 23325224,
+        Id = 2, BookNumber = 213213123, CustomerName = "Penta Teknoloji", ProductType = "Ekran Kartı", ProductCount = 3243243, WareHouseLocation = "B Blok",RequiredCount=10, BarkodNo = 23325224,
         ScannedBarcodes = ConvertBarcodeDictionaryToList(new Dictionary<long, int> { {2342342456, 4}, {7324234223, 4}, {1021312321, 2} })
     },
     new ProductItemBase {
-        Id = 3, DefterNo = 453223323, MusteriAd = "Vatan Computer", UrunCins = "MousePad", UrunAdet = 4829424, DepoKonum = "C Blok", RequiredCount=20, BarkodNo = 54325256,
+        Id = 3, BookNumber = 453223323, CustomerName = "Vatan Computer", ProductType = "MousePad", ProductCount = 4829424, WareHouseLocation = "C Blok", RequiredCount=20, BarkodNo = 54325256,
         ScannedBarcodes = ConvertBarcodeDictionaryToList(new Dictionary<long, int> { {4543534656, 7}, {7832422343, 7}, {9101342422, 6} })
     },
     new ProductItemBase {
-        Id = 4, DefterNo = 234142323, MusteriAd = "Teknosa", UrunCins = "Laptop", UrunAdet = 2935643, DepoKonum = "D Blok", RequiredCount=30,BarkodNo = 12325323,
+        Id = 4, BookNumber = 234142323, CustomerName = "Teknosa", ProductType = "Laptop", ProductCount = 2935643, WareHouseLocation = "D Blok", RequiredCount=30,BarkodNo = 12325323,
         ScannedBarcodes = ConvertBarcodeDictionaryToList(new Dictionary<long, int> { {5234234356, 10}, {7235232352, 10}, {1235222201, 10} })
     },
     new ProductItemBase {
-        Id = 5, DefterNo = 533532323, MusteriAd = "Armut Kırtasiye", UrunCins = "Kitap", UrunAdet = 3539531,DepoKonum = "E Blok", RequiredCount=40,BarkodNo = 63432254,
+        Id = 5, BookNumber = 533532323, CustomerName = "Armut Kırtasiye", ProductType = "Kitap", ProductCount = 3539531,WareHouseLocation = "E Blok", RequiredCount=40,BarkodNo = 63432254,
         ScannedBarcodes = ConvertBarcodeDictionaryToList(new Dictionary<long, int> { {6523423426, 10}, {7893242353, 20}, {2325235201, 10} })
     },
     new ProductItemBase {
-        Id = 6, DefterNo = 234322443, MusteriAd = "FarmTown", UrunCins = "Tahıl", UrunAdet = 3539531, DepoKonum = "F Blok", RequiredCount=50,BarkodNo = 1232152311,
+        Id = 6, BookNumber = 234322443, CustomerName = "FarmTown", ProductType = "Tahıl", ProductCount = 3539531, WareHouseLocation = "F Blok", RequiredCount=50,BarkodNo = 1232152311,
         ScannedBarcodes = ConvertBarcodeDictionaryToList(new Dictionary<long, int> { {7324222356, 20}, {7823423432, 20}, {3101342323, 10} })
     },
     new ProductItemBase {
-        Id = 7, DefterNo = 234324324, MusteriAd = "PetCat", UrunCins = "Hayvan Maması", UrunAdet = 3539531, DepoKonum = "G Blok", RequiredCount=60,BarkodNo=12352151,
+        Id = 7, BookNumber = 234324324, CustomerName = "PetCat", ProductType = "Hayvan Maması", ProductCount = 3539531, WareHouseLocation = "G Blok", RequiredCount=60,BarkodNo=12352151,
         ScannedBarcodes = ConvertBarcodeDictionaryToList(new Dictionary<long, int> { {8342423456, 20}, {7823423231, 20}, {4324240132, 20} })
     }
 };

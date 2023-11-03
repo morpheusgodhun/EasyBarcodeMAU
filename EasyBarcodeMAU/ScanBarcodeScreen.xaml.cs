@@ -125,9 +125,9 @@ public partial class ScanBarcodeScreen : ContentPage {
 
     public ScanBarcodeScreen(ProductItemBase _selectedItem) : this() {
         this._selectedItem = _selectedItem;
-        viewModel.SelectedProduct = _selectedItem?.UrunCins;
+        viewModel.SelectedProduct = _selectedItem?.ProductType;
         this.viewModel.RequiredCount = _selectedItem.RequiredCount;
-        this.viewModel.DepoKonum = _selectedItem.DepoKonum;
+        this.viewModel.WareHouseLocation = _selectedItem.WareHouseLocation;
     }
 
     private async void Vazgec_Clicked(object sender, EventArgs e) {
@@ -145,7 +145,7 @@ public partial class ScanBarcodeScreen : ContentPage {
         labelTotalCount.TextColor = Color.FromRgb(255, 255, 255);
         boxView1.Color = Color.FromRgb(255, 255, 255);
         boxView2.Color = Color.FromRgb(255, 255, 255);
-        await Navigation.PushAsync(new EditItemPage(_selectedItem, viewModel.TotalCount, _selectedItem.UrunCins, _selectedItem.MusteriAd, scannedBarcodes));
+        await Navigation.PushAsync(new EditItemPage(_selectedItem, viewModel.TotalCount, _selectedItem.ProductType, _selectedItem.CustomerName, scannedBarcodes));
         await cameraView.StopCameraAsync();
     }
     #endregion

@@ -63,10 +63,10 @@
                                         </Grid.RowDefinitions>
                                         <Label Grid.Row="0" Text="{Binding  BarkodNo, StringFormat=': {0}'}"  />
                                         <Label Grid.Row="1" Text="{Binding  Id, StringFormat=': {0}'}"  />
-                                        <Label Grid.Row="2"  Text="{Binding MusteriAd, StringFormat=': {0}'}" />
-                                        <Label Grid.Row="3"  Text="{Binding DefterNo, StringFormat=': {0}'}" />
-                                        <Label Grid.Row="4"  Text="{Binding UrunCins, StringFormat=': {0}'}" />
-                                        <Label Grid.Row="5"  Text="{Binding UrunAdet, StringFormat=': {0}'}" />
+                                        <Label Grid.Row="2"  Text="{Binding CustomerName, StringFormat=': {0}'}" />
+                                        <Label Grid.Row="3"  Text="{Binding BookNumber, StringFormat=': {0}'}" />
+                                        <Label Grid.Row="4"  Text="{Binding ProductType, StringFormat=': {0}'}" />
+                                        <Label Grid.Row="5"  Text="{Binding ProductCount, StringFormat=': {0}'}" />
                                         <Label Grid.Row="6"  Text="{Binding ScannedBarcodesDisplay, StringFormat=': {0}'}" />
                                     </Grid>
                                 </Grid>

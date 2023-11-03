@@ -42,66 +42,67 @@ public class ReadBaseModel : BaseViewModel {
 
 
     public int Id { get; set; }
-    private int _defterNo;
-    public int DefterNo {
-        get { return _defterNo; }
-        set {
-            if (_defterNo != value) {
-                _defterNo = value;
-                OnPropertyChanged(nameof(DefterNo));
-            }
-        }
-    }
-    public DateTime DepoGirisi { get; set; }
 
-    private string _musteriAd;
-    public string MusteriAd {
-        get { return _musteriAd; }
+    private int _bookNumber;
+    public int BookNumber {
+        get { return _bookNumber; }
         set {
-            if (_musteriAd != value) {
-                _musteriAd = value;
-                OnPropertyChanged(nameof(MusteriAd));
+            if (_bookNumber != value) {
+                _bookNumber = value;
+                OnPropertyChanged(nameof(BookNumber));
             }
         }
     }
-    private string _urunCins;
-    public string UrunCins {
-        get { return _urunCins; }
+    public DateTime WareHouseEntry { get; set; }
+
+    private string _customerName;
+    public string CustomerName {
+        get { return _customerName; }
         set {
-            if (_urunCins != value) {
-                _urunCins = value;
-                OnPropertyChanged(nameof(UrunCins));
+            if (_customerName != value) {
+                _customerName = value;
+                OnPropertyChanged(nameof(CustomerName));
+            }
+        }
+    }
+    private string _productType;
+    public string ProductType {
+        get { return _productType; }
+        set {
+            if (_productType != value) {
+                _productType = value;
+                OnPropertyChanged(nameof(ProductType));
             }
         }
     }
 
-    private int _urunAdet;
-    public int UrunAdet {
-        get { return _urunAdet; }
+    private int _productCount;
+    public int ProductCount {
+        get { return _productCount; }
         set {
-            if (_urunAdet != value) {
-                _urunAdet = value;
-                OnPropertyChanged(nameof(UrunAdet));
+            if (_productCount != value) {
+                _productCount = value;
+                OnPropertyChanged(nameof(ProductCount));
             }
         }
     }
-    private int _urunAgirlik;
-    public int UrunAgirlik {
-        get { return _urunAgirlik; }
+    private int _productWeight;
+    public int ProductWeight {
+        get { return _productWeight; }
         set {
-            if (_urunAgirlik != value) {
-                _urunAgirlik = value;
-                OnPropertyChanged(nameof(UrunAgirlik));
+            if (_productWeight != value) {
+                _productWeight = value;
+                OnPropertyChanged(nameof(ProductWeight));
             }
         }
     }
-    private string _depoKonum;
-    public string DepoKonum {
-        get { return _depoKonum; }
+    private string _wareHouseLocation;
+    public string WareHouseLocation {
+        get { return _wareHouseLocation; }
         set {
-            if (_depoKonum != value) {
-                _depoKonum = value;
-                OnPropertyChanged(nameof(DepoKonum));
+            if (_wareHouseLocation != value) {
+                _wareHouseLocation = value;
+                OnPropertyChanged(nameof(WareHouseLocation));
             }
         }
     }

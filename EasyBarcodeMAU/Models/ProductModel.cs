@@ -6,13 +6,13 @@ public class ProductModel : BaseViewModel {
 
     #region List
     public List<ProductItemBase> ProductItems { get; set; } = new List<ProductItemBase> {
-            new ProductItemBase { Id = 1, DefterNo = 123321456, DepoGirisi = DateTime.Now, MusteriAd = "Beko", UrunCins = "Sunta Kenar Bandı", UrunAdet = 7839858, UrunAgirlik = 195 , DepoKonum = "A Blok", RequiredCount=10 },
-            new ProductItemBase { Id = 2, DefterNo = 213213123, DepoGirisi = DateTime.Now, MusteriAd = "Penta Teknoloji", UrunCins = "Ekran Kartı", UrunAdet = 3243243, UrunAgirlik = 250 , DepoKonum = "B Blok",RequiredCount=10},
-            new ProductItemBase { Id = 3, DefterNo = 453223323, DepoGirisi = DateTime.Now, MusteriAd = "Vatan Computer", UrunCins = "MousePad", UrunAdet = 4829424, UrunAgirlik = 300 , DepoKonum = "C Blok", RequiredCount=20},
-            new ProductItemBase { Id = 4, DefterNo = 234142323, DepoGirisi = DateTime.Now, MusteriAd = "Teknosa", UrunCins = "Laptop", UrunAdet = 2935643, UrunAgirlik = 500 , DepoKonum = "D Blok" , RequiredCount=30 },
-            new ProductItemBase { Id = 5, DefterNo = 533532323, DepoGirisi = DateTime.Now, MusteriAd = "Armut Kırtasiye", UrunCins = "Kitap", UrunAdet = 3539531, UrunAgirlik = 210 , DepoKonum = "E Blok" , RequiredCount=40},
-            new ProductItemBase { Id = 6, DefterNo = 234322443, DepoGirisi = DateTime.Now, MusteriAd = "FarmTown", UrunCins = "Tahıl", UrunAdet = 3539531, UrunAgirlik = 650 , DepoKonum = "F Blok" , RequiredCount=50 },
-            new ProductItemBase { Id = 7, DefterNo = 234324324, DepoGirisi = DateTime.Now, MusteriAd = "PetCat", UrunCins = "Hayvan Maması", UrunAdet = 3539531, UrunAgirlik = 50 , DepoKonum = "G Blok " , RequiredCount=60}
+            new ProductItemBase { Id = 1, BookNumber = 123321456, WareHouseEntry = DateTime.Now, CustomerName = "Beko", ProductType = "Sunta Kenar Bandı", ProductCount = 7839858, ProductWeight = 195 , WareHouseLocation = "A Blok", RequiredCount=10 },
+            new ProductItemBase { Id = 2, BookNumber = 213213123, WareHouseEntry = DateTime.Now, CustomerName = "Penta Teknoloji", ProductType = "Ekran Kartı", ProductCount = 3243243, ProductWeight = 250 , WareHouseLocation = "B Blok",RequiredCount=10},
+            new ProductItemBase { Id = 3, BookNumber = 453223323, WareHouseEntry = DateTime.Now, CustomerName = "Vatan Computer", ProductType = "MousePad", ProductCount = 4829424, ProductWeight = 300 , WareHouseLocation = "C Blok", RequiredCount=20},
+            new ProductItemBase { Id = 4, BookNumber = 234142323, WareHouseEntry = DateTime.Now, CustomerName = "Teknosa", ProductType = "Laptop", ProductCount = 2935643, ProductWeight = 500 , WareHouseLocation = "D Blok" , RequiredCount=30 },
+            new ProductItemBase { Id = 5, BookNumber = 533532323, WareHouseEntry = DateTime.Now, CustomerName = "Armut Kırtasiye", ProductType = "Kitap", ProductCount = 3539531, ProductWeight = 210 , WareHouseLocation = "E Blok" , RequiredCount=40},
+            new ProductItemBase { Id = 6, BookNumber = 234322443, WareHouseEntry = DateTime.Now, CustomerName = "FarmTown", ProductType = "Tahıl", ProductCount = 3539531, ProductWeight = 650 , WareHouseLocation = "F Blok" , RequiredCount=50 },
+            new ProductItemBase { Id = 7, BookNumber = 234324324, WareHouseEntry = DateTime.Now, CustomerName = "PetCat", ProductType = "Hayvan Maması", ProductCount = 3539531, ProductWeight = 50 , WareHouseLocation = "G Blok " , RequiredCount=60}
         };
     #endregion
 
@@ -42,8 +42,8 @@ public class ProductModel : BaseViewModel {
         get { return _readedBarcode; }
         set {
             if (_readedBarcode != value) {
-                _readedBarcode = value;
-                OnPropertyChanged(nameof(ReadedBarcode));
+                _count = value;
+                OnPropertyChanged(nameof(Count));
             }
         }
     }
