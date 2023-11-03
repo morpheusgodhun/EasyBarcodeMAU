@@ -21,6 +21,7 @@ public class ScanBarcodeViewModel : INotifyPropertyChanged {
             }
         }
     }
+
     #endregion
 
     #region Methods
