@@ -37,6 +37,16 @@ public class ProductModel : BaseViewModel {
             }
         }
     }
+    private int _readedBarcode;
+    public int ReadedBarcode {
+        get { return _readedBarcode; }
+        set {
+            if (_readedBarcode != value) {
+                _readedBarcode = value;
+                OnPropertyChanged(nameof(ReadedBarcode));
+            }
+        }
+    }
 
     private string selectedProduct;
     public string SelectedProduct {

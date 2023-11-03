@@ -14,6 +14,7 @@ public class ProductItemBase {
     public int UrunAgirlik { get; set; }
     public string DepoKonum { get; set; }
     public long BarkodNo { get; set; }
+    public long ReadedBarcode { get; set; }
     public long RequiredCount { get; set; }
     public Color BorderColor { get; set; }
     public Frame Frame { get; set; }
