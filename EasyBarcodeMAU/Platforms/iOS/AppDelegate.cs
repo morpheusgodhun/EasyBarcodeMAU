@@ -1,4 +1,5 @@
-﻿using Foundation;
+﻿using EasyBarcodeMAUI;
+using Foundation;
 
 namespace EasyBarcodeMAU {
     [Register("AppDelegate")]

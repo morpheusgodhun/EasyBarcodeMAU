@@ -8,17 +8,20 @@ public class OutPutProductModel : BaseViewModel {
 
     #region Instance
     private static OutPutProductModel _instance;
+    private readonly DbContext context;
     public static OutPutProductModel Instance => _instance ??= new OutPutProductModel();
     #endregion
 
     #region List
 
+    
     public List<ProductItemBase> ProductItems { get; set; } = new List<ProductItemBase> {
     new ProductItemBase {
         Id = 1, BookNumber = 123321456, CustomerName = "Beko", ProductType = "Sunta Kenar Bandı", ProductCount = 7839858,WareHouseLocation = "A Blok", RequiredCount=10, BarkodNo = 13252523,
         ScannedBarcodes = ConvertBarcodeDictionaryToList(new Dictionary<long, int> { {1324234233, 2}, {342342342345, 2}, { 6782342432, 2},{ 2342342456, 2},{ 1021312321, 2}  })
     },
     new ProductItemBase {
+        
         Id = 2, BookNumber = 213213123, CustomerName = "Penta Teknoloji", ProductType = "Ekran Kartı", ProductCount = 3243243, WareHouseLocation = "B Blok",RequiredCount=10, BarkodNo = 23325224,
         ScannedBarcodes = ConvertBarcodeDictionaryToList(new Dictionary<long, int> { {2342342456, 4}, {7324234223, 4}, {1021312321, 2} })
     },
@@ -43,6 +46,8 @@ public class OutPutProductModel : BaseViewModel {
         ScannedBarcodes = ConvertBarcodeDictionaryToList(new Dictionary<long, int> { {8342423456, 20}, {7823423231, 20}, {4324240132, 20} })
     }
 };
+
+
     public ObservableCollection<OutPutProductModel> ScannedBarcodes { get; set; } = new ObservableCollection<OutPutProductModel>();
     private static List<long> ConvertBarcodeDictionaryToList(Dictionary<long, int> barcodeDict) {
         List<long> result = new List<long>();

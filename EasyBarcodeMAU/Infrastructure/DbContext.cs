@@ -1,8 +1,8 @@
 ﻿using EasyBarcodeMAU.Models;
 using Microsoft.EntityFrameworkCore;
 
-public class Infrastructure : DbContext {
-    public Infrastructure(DbContextOptions<Infrastructure> options)
+public class DbContext : Microsoft.EntityFrameworkCore.DbContext {
+    public DbContext(DbContextOptions<DbContext> options)
         : base(options) {
     }
     public DbSet<OutPutProductModel> outPutProductModels { get; set; }

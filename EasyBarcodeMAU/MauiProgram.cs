@@ -8,7 +8,7 @@ namespace EasyBarcodeMAUI {
         public static MauiApp CreateMauiApp() {
             var builder = MauiApp.CreateBuilder();
             string connectionString = "Server=IST-010504-1134\\SQLEXPRESS;Database=DboUrunGirisCikis;Trusted_Connection=True;";
-            builder.Services.AddDbContext<Infrastructure>(options =>
+            builder.Services.AddDbContext<DbContext>(options =>
                 options.UseSqlServer(connectionString));
             builder
                 .UseMauiApp<App>()
