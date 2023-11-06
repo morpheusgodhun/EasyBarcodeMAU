@@ -8,22 +8,16 @@ public partial class OutputProductListPage : ContentPage {
     #endregion
 
     #region InitModel
-    public OutputProductListPage() {
+    public OutputProductListPage(OutPutProductModel outputProductModel) {
         InitializeComponent();
-        var outputproductModel = new OutPutProductModel();
-        BindingContext = outputproductModel;
-        outputproductModel.OnDeleteSelectedItem += HandleItemDeletion;
+        BindingContext = outputProductModel;
     }
 
-    protected override void OnAppearing() {
+    protected override async void OnAppearing() {
         base.OnAppearing();
-        BindingContext = null;
-        BindingContext = new OutPutProductModel();
+        await (BindingContext as OutPutProductModel)?.LoadProductItemsAsync();
     }
     #endregion
-
-    
-
 
     #region Methods
 

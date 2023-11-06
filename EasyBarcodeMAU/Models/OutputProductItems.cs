@@ -1,6 +1,6 @@
 ﻿namespace EasyBarcodeMAU.Models;
 
-public class OutputProductItemBase {
+public class OutputProductItems {
     public int Id { get; set; }
     public int BookNumber { get; set; }
     public DateTime WareHouseEntry { get; set; }
@@ -14,4 +14,5 @@ public class OutputProductItemBase {
     public Color BorderColor { get; set; }
     public Frame Frame { get; set; }
     public Color OriginalBorderColor { get; set; }
+  
 }

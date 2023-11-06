@@ -1,3 +1,5 @@
+using EasyBarcodeMAU.Models;
+
 namespace EasyBarcodeMAU;
 
 [XamlCompilation(XamlCompilationOptions.Compile)]
@@ -25,9 +27,12 @@ public partial class SelectionPage : ContentPage {
     }
 
     private void ProductOutputButton_Clicked(object sender, EventArgs e) {
-        var exitPage = new OutputProductListPage();
-        Navigation.PushAsync(exitPage);
+        var outputProductModel = new OutPutProductModel();
+        var outputProductListPage = new OutputProductListPage(outputProductModel);
+        Navigation.PushAsync(outputProductListPage);
     }
+
+
     private async void ExitButton_Clicked(object sender, EventArgs e) {
         await Shell.Current.GoToAsync("//MainPage");
     }
