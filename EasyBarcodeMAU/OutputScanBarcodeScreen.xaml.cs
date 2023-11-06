@@ -8,6 +8,7 @@ public partial class OutputScanBarcodeScreen : ContentPage {
 
     private OutputReadBaseModel viewModel;
     private ProductItemBase _selectedItem;
+    private OutputProductItems outputProductItems;
     private bool isFocusing = false;
     private int focusDelayMilliseconds = 1470;
     private ObservableCollection<ReadBaseModel> scannedBarcodes = new();
@@ -114,7 +115,7 @@ public partial class OutputScanBarcodeScreen : ContentPage {
 
 
     private bool IsBarcodeInDatabase(string barcode) {
-        var product = OutPutProductModel.Instance.ProductItems.FirstOrDefault(p => p.Id == _selectedItem.Id);
+        var product = outputProductItems.ProductItems.FirstOrDefault(p => p.Id == _selectedItem.Id);
         if (product == null) return false;
 
         long barcodeAsLong;
@@ -160,7 +161,7 @@ public partial class OutputScanBarcodeScreen : ContentPage {
     }
 
     private bool IsBarcodeCountValid(string barcode) {
-        var product = OutPutProductModel.Instance.ProductItems.FirstOrDefault(p => p.Id == _selectedItem.Id);
+        var product = outputProductItems.ProductItems.FirstOrDefault(p => p.Id == _selectedItem.Id);
         if (product == null) return true;
 
         long barcodeAsLong;
@@ -184,14 +185,14 @@ public partial class OutputScanBarcodeScreen : ContentPage {
         }
     }
     public bool AreBarcodesValid(int productId) {
-        var product = OutPutProductModel.Instance.ProductItems.FirstOrDefault(p => p.Id == productId);
+        var product = outputProductItems.ProductItems.FirstOrDefault(p => p.Id == productId);
         if (product == null) return false;
 
         return scannedBarcodes.Any(scannedBarcode => product.ScannedBarcodes.Contains(Convert.ToInt64(scannedBarcode.Barcode)));
     }
 
     public bool AreBarcodeCountsValid(int productId) {
-        var product = OutPutProductModel.Instance.ProductItems.FirstOrDefault(p => p.Id == productId);
+        var product = outputProductItems.ProductItems.FirstOrDefault(p => p.Id == productId);
         if (product == null) return true;
 
         var productBarcodeSet = new HashSet<long>(product.ScannedBarcodes);
@@ -250,7 +251,7 @@ public partial class OutputScanBarcodeScreen : ContentPage {
     }
 
     private void RemoveExcessBarcodes(int productId) {
-        var product = OutPutProductModel.Instance.ProductItems.FirstOrDefault(p => p.Id == productId);
+        var product = outputProductItems.ProductItems.FirstOrDefault(p => p.Id == productId);
         if (product == null) return;
 
         var productBarcodeSet = new HashSet<long>(product.ScannedBarcodes);

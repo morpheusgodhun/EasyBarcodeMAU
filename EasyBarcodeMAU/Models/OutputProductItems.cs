@@ -1,6 +1,13 @@
-﻿namespace EasyBarcodeMAU.Models;
+﻿using EasyBarcodeMAU.Infrastructure.Repositories;
+using Microsoft.EntityFrameworkCore;
+using System.Collections.ObjectModel;
+
+namespace EasyBarcodeMAU.Models;
 
 public class OutputProductItems {
+    private readonly EasyDbContext context;
+    public ObservableCollection<ProductItemBase> ProductItems { get; set; } = new ObservableCollection<ProductItemBase>();
+
     public int Id { get; set; }
     public int BookNumber { get; set; }
     public DateTime WareHouseEntry { get; set; }
@@ -14,5 +21,17 @@ public class OutputProductItems {
     public Color BorderColor { get; set; }
     public Frame Frame { get; set; }
     public Color OriginalBorderColor { get; set; }
-  
+
+    public async Task LoadProductItemsAsync() {
+        if (context == null) {
+            throw new InvalidOperationException("Veritabanı bağlamı (context) başlatılmamış.");
+        }
+
+        var productItemsFromDb = await context.outPutProductModels.ToListAsync();
+        ProductItems.Clear();
+        foreach (var item in productItemsFromDb) {
+            ProductItems.Add(item);
+        }
+    }
+
 }

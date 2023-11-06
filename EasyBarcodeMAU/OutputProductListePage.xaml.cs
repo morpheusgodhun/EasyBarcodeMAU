@@ -1,4 +1,5 @@
 using EasyBarcodeMAU.Models;
+using EasyBarcodeMAU.Infrastructure.Repositories;
 
 namespace EasyBarcodeMAU;
 public partial class OutputProductListPage : ContentPage {
@@ -15,7 +16,7 @@ public partial class OutputProductListPage : ContentPage {
 
     protected override async void OnAppearing() {
         base.OnAppearing();
-        await (BindingContext as OutPutProductModel)?.LoadProductItemsAsync();
+        await (BindingContext as OutputProductItems)?.LoadProductItemsAsync();
     }
     #endregion
 
